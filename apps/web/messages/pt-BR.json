@@ -772,5 +772,70 @@
   "webPreview": {
     "editCard": "Editar Card de Visualização Web",
     "openInPopup": "Abrir popup no aplicativo (pode não funcionar em todos os sites)"
+  },
+  "install": {
+    "pageTitle": "Instalar LearnHouse",
+    "pageDescription": "Instalar Learnhouse no seu servidor",
+    "getStarted": {
+      "stepName": "Começar",
+      "title": "Iniciar nova instalação",
+      "startButton": "Iniciar",
+      "alreadyStarted": "Você já iniciou uma instalação",
+      "continueButton": "Continuar"
+    },
+    "orgCreation": {
+      "stepName": "Criação da Organização",
+      "name": "Nome",
+      "description": "Descrição",
+      "slug": "Slug",
+      "email": "E-mail",
+      "createButton": "Criar Organização",
+      "success": "Organização Criada com Sucesso",
+      "validation": {
+        "nameRequired": "Campo obrigatório",
+        "descriptionRequired": "Campo obrigatório",
+        "slugRequired": "Campo obrigatório",
+        "emailRequired": "Campo obrigatório",
+        "invalidEmail": "Endereço de e-mail inválido"
+      }
+    },
+    "accountCreation": {
+      "stepName": "Criação de Conta",
+      "email": "E-mail",
+      "password": "Senha",
+      "confirmPassword": "Confirmar Senha",
+      "username": "Nome de Usuário",
+      "createButton": "Criar Conta Admin",
+      "validation": {
+        "emailRequired": "Campo obrigatório",
+        "invalidEmail": "Endereço de e-mail inválido",
+        "passwordRequired": "Campo obrigatório",
+        "passwordMinLength": "A senha deve ter pelo menos 8 caracteres",
+        "confirmPasswordRequired": "Campo obrigatório",
+        "passwordsMustMatch": "As senhas devem coincidir",
+        "usernameRequired": "Campo obrigatório",
+        "usernameMinLength": "O nome de usuário deve ter pelo menos 3 caracteres"
+      }
+    },
+    "defaultElements": {
+      "stepName": "Elementos Padrão",
+      "title": "Instalar Elementos Padrão",
+      "installButton": "Instalar"
+    },
+    "sampleData": {
+      "stepName": "Dados de Exemplo",
+      "title": "Instalar dados de exemplo na sua organização",
+      "startButton": "Iniciar"
+    },
+    "finish": {
+      "stepName": "Finalizar",
+      "title": "Instalação Completa",
+      "nextButton": "Próximo Passo"
+    },
+    "disableInstallMode": {
+      "stepName": "Desabilitando Modo de Instalação",
+      "message": "Você chegou ao final do processo de instalação, por favor não se esqueça de desabilitar o modo de instalação.",
+      "docsLink": "Documentação do LearnHouse"
+    }
   }
 }

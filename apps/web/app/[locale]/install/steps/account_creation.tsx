@@ -15,38 +15,40 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import { BarLoader } from 'react-spinners'
 import useSWR from 'swr'
-
-const validate = (values: any) => {
-  const errors: any = {}
-
-  if (!values.email) {
-    errors.email = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
-  }
-
-  if (!values.password) {
-    errors.password = 'Required'
-  } else if (values.password.length < 8) {
-    errors.password = 'Password must be at least 8 characters'
-  }
-
-  if (!values.confirmPassword) {
-    errors.confirmPassword = 'Required'
-  } else if (values.confirmPassword !== values.password) {
-    errors.confirmPassword = 'Passwords must match'
-  }
-
-  if (!values.username) {
-    errors.username = 'Required'
-  } else if (values.username.length < 3) {
-    errors.username = 'Username must be at least 3 characters'
-  }
-
-  return errors
-}
+import { useTranslations } from 'next-intl'
 
 function AccountCreation() {
+  const t = useTranslations('install.accountCreation')
+
+  const validate = (values: any) => {
+    const errors: any = {}
+
+    if (!values.email) {
+      errors.email = t('validation.emailRequired')
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = t('validation.invalidEmail')
+    }
+
+    if (!values.password) {
+      errors.password = t('validation.passwordRequired')
+    } else if (values.password.length < 8) {
+      errors.password = t('validation.passwordMinLength')
+    }
+
+    if (!values.confirmPassword) {
+      errors.confirmPassword = t('validation.confirmPasswordRequired')
+    } else if (values.confirmPassword !== values.password) {
+      errors.confirmPassword = t('validation.passwordsMustMatch')
+    }
+
+    if (!values.username) {
+      errors.username = t('validation.usernameRequired')
+    } else if (values.username.length < 3) {
+      errors.username = t('validation.usernameMinLength')
+    }
+
+    return errors
+  }
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
@@ -99,7 +101,7 @@ function AccountCreation() {
     <div>
       <FormLayout onSubmit={formik.handleSubmit}>
         <FormField name="email">
-          <FormLabelAndMessage label="Email" message={formik.errors.email} />
+          <FormLabelAndMessage label={t('email')} message={formik.errors.email} />
           <Form.Control asChild>
             <Input
               onChange={formik.handleChange}
@@ -112,7 +114,7 @@ function AccountCreation() {
         {/* for password  */}
         <FormField name="password">
           <FormLabelAndMessage
-            label="Password"
+            label={t('password')}
             message={formik.errors.password}
           />
 
@@ -128,7 +130,7 @@ function AccountCreation() {
         {/* for confirm password  */}
         <FormField name="confirmPassword">
           <FormLabelAndMessage
-            label="Confirm Password"
+            label={t('confirmPassword')}
             message={formik.errors.confirmPassword}
           />
 
@@ -144,7 +146,7 @@ function AccountCreation() {
         {/* for username  */}
         <FormField name="username">
           <FormLabelAndMessage
-            label="Username"
+            label={t('username')}
             message={formik.errors.username}
           />
 
@@ -168,7 +170,7 @@ function AccountCreation() {
                   color="#ffffff"
                 />
               ) : (
-                'Create Admin Account'
+                t('createButton')
               )}
             </ButtonBlack>
           </Form.Submit>

@@ -772,5 +772,70 @@
   "webPreview": {
     "editCard": "Edit Web Preview Card",
     "openInPopup": "Open popup in app (may not work on all websites)"
+  },
+  "install": {
+    "pageTitle": "Install LearnHouse",
+    "pageDescription": "Install Learnhouse on your server",
+    "getStarted": {
+      "stepName": "Get started",
+      "title": "Start a new installation",
+      "startButton": "Start",
+      "alreadyStarted": "You already started an installation",
+      "continueButton": "Continue"
+    },
+    "orgCreation": {
+      "stepName": "Organization Creation",
+      "name": "Name",
+      "description": "Description",
+      "slug": "Slug",
+      "email": "Email",
+      "createButton": "Create Organization",
+      "success": "Organization Created Successfully",
+      "validation": {
+        "nameRequired": "Required",
+        "descriptionRequired": "Required",
+        "slugRequired": "Required",
+        "emailRequired": "Required",
+        "invalidEmail": "Invalid email address"
+      }
+    },
+    "accountCreation": {
+      "stepName": "Account Creation",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "username": "Username",
+      "createButton": "Create Admin Account",
+      "validation": {
+        "emailRequired": "Required",
+        "invalidEmail": "Invalid email address",
+        "passwordRequired": "Required",
+        "passwordMinLength": "Password must be at least 8 characters",
+        "confirmPasswordRequired": "Required",
+        "passwordsMustMatch": "Passwords must match",
+        "usernameRequired": "Required",
+        "usernameMinLength": "Username must be at least 3 characters"
+      }
+    },
+    "defaultElements": {
+      "stepName": "Default Elements",
+      "title": "Install Default Elements",
+      "installButton": "Install"
+    },
+    "sampleData": {
+      "stepName": "Sample Data",
+      "title": "Install Sample data on your organization",
+      "startButton": "Start"
+    },
+    "finish": {
+      "stepName": "Finish",
+      "title": "Installation Complete",
+      "nextButton": "Next Step"
+    },
+    "disableInstallMode": {
+      "stepName": "Disabling Installation Mode",
+      "message": "You have reached the end of the Installation process, please don't forget to disable installation mode.",
+      "docsLink": "LearnHouse Docs"
+    }
   }
 }

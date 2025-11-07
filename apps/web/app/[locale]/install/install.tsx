@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect } from 'react'
-import { INSTALL_STEPS } from './steps/steps'
+import { useInstallSteps } from './steps/steps'
 import GeneralWrapperStyled from '@components/Objects/StyledElements/Wrappers/GeneralWrapper'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
@@ -22,7 +22,8 @@ const Stepscomp = () => {
   const router = useRouter()
   const step: any = parseInt(searchParams.get('step') || '0')
   const [stepNumber, setStepNumber] = React.useState(step)
-  const [stepsState, setStepsState] = React.useState(INSTALL_STEPS)
+  const installSteps = useInstallSteps()
+  const [stepsState, setStepsState] = React.useState(installSteps)
 
   function handleStepChange(stepNumber: number) {
     setStepNumber(stepNumber)

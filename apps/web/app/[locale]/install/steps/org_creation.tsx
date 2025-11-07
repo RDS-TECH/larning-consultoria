@@ -1,3 +1,4 @@
+'use client'
 import FormLayout, {
   ButtonBlack,
   FormField,
@@ -15,32 +16,34 @@ import { createNewOrgInstall, updateInstall } from '@services/install/install'
 import { useRouter } from 'next/navigation'
 import { Check } from 'lucide-react'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
-
-const validate = (values: any) => {
-  const errors: any = {}
-
-  if (!values.name) {
-    errors.name = 'Required'
-  }
-
-  if (!values.description) {
-    errors.description = 'Required'
-  }
-
-  if (!values.slug) {
-    errors.slug = 'Required'
-  }
-
-  if (!values.email) {
-    errors.email = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
-  }
-
-  return errors
-}
+import { useTranslations } from 'next-intl'
 
 function OrgCreation() {
+  const t = useTranslations('install.orgCreation')
+
+  const validate = (values: any) => {
+    const errors: any = {}
+
+    if (!values.name) {
+      errors.name = t('validation.nameRequired')
+    }
+
+    if (!values.description) {
+      errors.description = t('validation.descriptionRequired')
+    }
+
+    if (!values.slug) {
+      errors.slug = t('validation.slugRequired')
+    }
+
+    if (!values.email) {
+      errors.email = t('validation.emailRequired')
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      errors.email = t('validation.invalidEmail')
+    }
+
+    return errors
+  }
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
   const {
@@ -86,7 +89,7 @@ function OrgCreation() {
     <div>
       <FormLayout onSubmit={formik.handleSubmit}>
         <FormField name="name">
-          <FormLabelAndMessage label="Name" message={formik.errors.name} />
+          <FormLabelAndMessage label={t('name')} message={formik.errors.name} />
           <Form.Control asChild>
             <Input
               onChange={formik.handleChange}
@@ -99,7 +102,7 @@ function OrgCreation() {
 
         <FormField name="description">
           <FormLabelAndMessage
-            label="Description"
+            label={t('description')}
             message={formik.errors.description}
           />
 
@@ -114,7 +117,7 @@ function OrgCreation() {
         </FormField>
 
         <FormField name="slug">
-          <FormLabelAndMessage label="Slug" message={formik.errors.slug} />
+          <FormLabelAndMessage label={t('slug')} message={formik.errors.slug} />
 
           <Form.Control asChild>
             <Input
@@ -127,7 +130,7 @@ function OrgCreation() {
         </FormField>
         {/* for username  */}
         <FormField name="email">
-          <FormLabelAndMessage label="Email" message={formik.errors.email} />
+          <FormLabelAndMessage label={t('email')} message={formik.errors.email} />
 
           <Form.Control asChild>
             <Input
@@ -149,7 +152,7 @@ function OrgCreation() {
                   color="#ffffff"
                 />
               ) : (
-                'Create Organization'
+                t('createButton')
               )}
             </ButtonBlack>
           </Form.Submit>
@@ -158,7 +161,7 @@ function OrgCreation() {
         {isSubmitted && (
           <div className="flex space-x-3">
             {' '}
-            <Check /> Organization Created Successfully
+            <Check /> {t('success')}
           </div>
         )}
       </FormLayout>
