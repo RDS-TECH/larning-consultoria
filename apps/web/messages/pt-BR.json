@@ -914,6 +914,16 @@
           "selectFile": "Por favor, selecione um arquivo"
         }
       },
+      "access": {
+        "changeToPublicButton": "Mudar para Público",
+        "changeToPublicConfirm": "Tem certeza que deseja que este curso seja publicamente disponível na internet?",
+        "changeToPublicTitle": "Mudar para Público?",
+        "changeToUsersButton": "Mudar para Apenas Usuários",
+        "changeToUsersConfirm": "Tem certeza que deseja que este curso seja acessível apenas para usuários logados?",
+        "changeToUsersTitle": "Mudar para Apenas Usuários?",
+        "removeUserGroupConfirm": "Usuários deste Grupo de Usuários não terão mais acesso a este curso",
+        "linkUserGroupDescription": "Escolha um Grupo de Usuários para vincular a este curso. Usuários deste Grupo de Usuários terão acesso a este curso."
+      },
       "structure": {
         "createChapterTitle": "Criar capítulo",
         "createChapterDescription": "Adicionar um novo capítulo ao curso",

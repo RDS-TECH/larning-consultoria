@@ -17,6 +17,7 @@ type EditCourseAccessProps = {
 }
 
 function EditCourseAccess(props: EditCourseAccessProps) {
+import { useTranslations } from 'next-intl'
     const session = useLHSession() as any;
     const access_token = session?.data?.tokens?.access_token;
     const course = useCourse() as any;
@@ -39,6 +40,7 @@ function EditCourseAccess(props: EditCourseAccessProps) {
                 const updatedCourse = {
                     ...courseStructure,
                     public: isClientPublic,
+  const t = useTranslations('courses.edit.access');
                 };
                 dispatchCourse({ type: 'setCourseStructure', payload: updatedCourse });
             }
@@ -59,9 +61,9 @@ function EditCourseAccess(props: EditCourseAccessProps) {
                         </div>
                         <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 mx-auto mb-3">
                             <ConfirmationModal
-                                confirmationButtonText="Change to Public"
-                                confirmationMessage="Are you sure you want this course to be publicly available on the internet?"
-                                dialogTitle="Change to Public?"
+                                confirmationButtonText={t('changeToPublicButton')}
+                                confirmationMessage={t('changeToPublicConfirm')}
+                                dialogTitle={t('changeToPublicTitle')}
                                 dialogTrigger={
                                     <div className="w-full h-[200px] bg-slate-100 rounded-lg cursor-pointer hover:bg-slate-200 transition-all">
                                         {isClientPublic && (
@@ -84,9 +86,9 @@ function EditCourseAccess(props: EditCourseAccessProps) {
                                 status="info"
                             />
                             <ConfirmationModal
-                                confirmationButtonText="Change to Users Only"
-                                confirmationMessage="Are you sure you want this course to be only accessible to signed in users?"
-                                dialogTitle="Change to Users Only?"
+                                confirmationButtonText={t('changeToUsersButton')}
+                                confirmationMessage={t('changeToUsersConfirm')}
+                                dialogTitle={t('changeToUsersTitle')}
                                 dialogTrigger={
                                     <div className="w-full h-[200px] bg-slate-100 rounded-lg cursor-pointer hover:bg-slate-200 transition-all">
                                         {!isClientPublic && (
@@ -160,7 +162,7 @@ function UserGroupsSection({ usergroups }: { usergroups: any[] }) {
                                 <td className="py-3 px-4">
                                     <ConfirmationModal
                                         confirmationButtonText="Delete Link"
-                                        confirmationMessage="Users from this UserGroup will no longer have access to this course"
+                                        confirmationMessage={t('removeUserGroupConfirm')}
                                         dialogTitle="Unlink UserGroup?"
                                         dialogTrigger={
                                             <button className="mr-2 flex space-x-2 hover:cursor-pointer p-1 px-3 bg-rose-700 rounded-md font-bold items-center text-sm text-rose-100">
@@ -185,7 +187,7 @@ function UserGroupsSection({ usergroups }: { usergroups: any[] }) {
                     minWidth="md"
                     dialogContent={<LinkToUserGroup setUserGroupModal={setUserGroupModal} />}
                     dialogTitle="Link Course to a UserGroup"
-                    dialogDescription="Choose a UserGroup to link this course to. Users from this UserGroup will have access to this course."
+                    dialogDescription={t('linkUserGroupDescription')}
                     dialogTrigger={
                         <button className="flex space-x-2 hover:cursor-pointer p-1 px-3 bg-green-700 rounded-md font-bold items-center text-xs sm:text-sm text-green-100">
                             <SquareUserRound className="w-3 h-3 sm:w-4 sm:h-4" />

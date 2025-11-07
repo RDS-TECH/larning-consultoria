@@ -914,6 +914,16 @@
           "selectFile": "Please select a file"
         }
       },
+      "access": {
+        "changeToPublicButton": "Change to Public",
+        "changeToPublicConfirm": "Are you sure you want this course to be publicly available on the internet?",
+        "changeToPublicTitle": "Change to Public?",
+        "changeToUsersButton": "Change to Users Only",
+        "changeToUsersConfirm": "Are you sure you want this course to be only accessible to signed in users?",
+        "changeToUsersTitle": "Change to Users Only?",
+        "removeUserGroupConfirm": "Users from this UserGroup will no longer have access to this course",
+        "linkUserGroupDescription": "Choose a UserGroup to link this course to. Users from this UserGroup will have access to this course."
+      },
       "structure": {
         "createChapterTitle": "Create chapter",
         "createChapterDescription": "Add a new chapter to the course",
