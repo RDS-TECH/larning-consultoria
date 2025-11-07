@@ -9,6 +9,7 @@ from src.core.events.database import get_db_session
 from config.config import get_learnhouse_config
 from src.security.auth import AuthJWT, authenticate_user, get_current_user
 from src.services.auth.utils import signWithGoogle
+from src.utils.i18n import get_translator
 
 
 router = APIRouter()
@@ -45,13 +46,15 @@ async def login(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db_session: Session = Depends(get_db_session),
 ):
+    t = get_translator(request)
+
     user = await authenticate_user(
         request, form_data.username, form_data.password, db_session
     )
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect Email or password",
+            detail=t("auth.incorrect_credentials"),
             headers={"WWW-Authenticate": "Bearer"},
         )
 
@@ -93,6 +96,8 @@ async def third_party_login(
     db_session: Session = Depends(get_db_session),
     Authorize: AuthJWT = Depends(),
 ):
+    t = get_translator(request)
+
     # Google
     if body.provider == "google":
 
@@ -103,7 +108,7 @@ async def third_party_login(
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect Email or password",
+            detail=t("auth.oauth_error", provider=body.provider.capitalize()),
             headers={"WWW-Authenticate": "Bearer"},
         )
 
@@ -130,13 +135,15 @@ async def third_party_login(
 
 
 @router.delete("/logout")
-def logout(Authorize: AuthJWT = Depends()):
+def logout(request: Request, Authorize: AuthJWT = Depends()):
     """
     Because the JWT are stored in an httponly cookie now, we cannot
     log the user out by simply deleting the cookies in the frontend.
     We need the backend to send us a response to delete the cookies.
     """
+    t = get_translator(request)
+
     Authorize.jwt_required()
 
     Authorize.unset_jwt_cookies()
-    return {"msg": "Successfully logout"}
+    return {"msg": t("auth.logout_successful")}
