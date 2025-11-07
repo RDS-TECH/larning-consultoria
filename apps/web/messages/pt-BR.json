@@ -330,12 +330,32 @@
   },
   "users": {
     "title": "Usuários",
+    "activeUsers": "Usuários ativos",
+    "activeUsersDescription": "Gerencie os usuários da sua organização, atribua funções e permissões",
     "manageUsers": "Gerenciar Usuários do Grupo",
     "addUser": "Adicionar Usuário",
     "removeUser": "Remover Usuário",
     "noUsers": "Nenhum usuário encontrado",
     "noUserSelected": "Nenhum usuário selecionado",
     "searchUsers": "Pesquisar usuários por nome ou nome de usuário",
+    "table": {
+      "user": "Usuário",
+      "role": "Função",
+      "actions": "Ações"
+    },
+    "updateRoles": "Atualizar Funções",
+    "updateRole": "Atualizar Função",
+    "updateRoleDescription": "Atualizar a função de @{username}",
+    "editRole": "Editar Função",
+    "removeUserButton": "Remover Usuário",
+    "removeUserConfirm": "Tem certeza que deseja remover este usuário da organização?",
+    "deleteUserTitle": "Excluir {username}?",
+    "removeFromOrganization": "Remover da organização",
+    "toast": {
+      "removing": "Removendo...",
+      "removed": "Usuário removido da organização",
+      "removeError": "Erro ao remover usuário"
+    },
     "profile": {
       "editProfile": "Editar Perfil",
       "yourUsername": "Seu nome de usuário",

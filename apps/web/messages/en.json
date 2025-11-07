@@ -330,12 +330,32 @@
   },
   "users": {
     "title": "Users",
+    "activeUsers": "Active users",
+    "activeUsersDescription": "Manage your organization users, assign roles and permissions",
     "manageUsers": "Manage Group Users",
     "addUser": "Add User",
     "removeUser": "Remove User",
     "noUsers": "No users found",
     "noUserSelected": "No user selected",
     "searchUsers": "Search users by name or username",
+    "table": {
+      "user": "User",
+      "role": "Role",
+      "actions": "Actions"
+    },
+    "updateRoles": "Update Roles",
+    "updateRole": "Update Role",
+    "updateRoleDescription": "Update @{username}'s role",
+    "editRole": "Edit Role",
+    "removeUserButton": "Remove User",
+    "removeUserConfirm": "Are you sure you want remove this user from the organization?",
+    "deleteUserTitle": "Delete {username}?",
+    "removeFromOrganization": "Remove from organization",
+    "toast": {
+      "removing": "Removing...",
+      "removed": "Removed user from org",
+      "removeError": "Error removing user"
+    },
     "profile": {
       "editProfile": "Edit Profile",
       "yourUsername": "Your username",
