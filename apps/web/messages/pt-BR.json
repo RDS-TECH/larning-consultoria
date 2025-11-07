@@ -975,6 +975,25 @@
           "lifestyle": "Estilo de Vida",
           "gaming": "Games"
         }
+      },
+      "certification": {
+        "certificationName": "Nome da Certificação",
+        "certificationType": "Tipo de Certificação",
+        "certificationDescription": "Descrição da Certificação",
+        "certificatePattern": "Padrão do Certificado",
+        "instructorName": "Nome do Instrutor (Opcional)",
+        "certificationNamePlaceholder": "ex: Certificação Avançada em JavaScript",
+        "descriptionPlaceholder": "Descreva o que esta certificação representa e seu valor...",
+        "instructorNamePlaceholder": "ex: Dr. João Silva",
+        "qrCodeAlt": "QR Code do Certificado",
+        "orgLogoAlt": "Logo da Organização"
+      },
+      "contributors": {
+        "title": "Contribuidores",
+        "addContributor": "Adicionar Contribuidor",
+        "removeContributor": "Remover Contribuidor",
+        "noContributors": "Nenhum contribuidor adicionado",
+        "selectUser": "Selecionar usuário..."
       }
     }
   }

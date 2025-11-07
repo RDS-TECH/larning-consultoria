@@ -975,6 +975,25 @@
           "lifestyle": "Lifestyle",
           "gaming": "Gaming"
         }
+      },
+      "certification": {
+        "certificationName": "Certification Name",
+        "certificationType": "Certification Type",
+        "certificationDescription": "Certification Description",
+        "certificatePattern": "Certificate Pattern",
+        "instructorName": "Instructor Name (Optional)",
+        "certificationNamePlaceholder": "e.g., Advanced JavaScript Certification",
+        "descriptionPlaceholder": "Describe what this certification represents and its value...",
+        "instructorNamePlaceholder": "e.g., Dr. Jane Smith",
+        "qrCodeAlt": "Certificate QR Code",
+        "orgLogoAlt": "Organization Logo"
+      },
+      "contributors": {
+        "title": "Contributors",
+        "addContributor": "Add Contributor",
+        "removeContributor": "Remove Contributor",
+        "noContributors": "No contributors added",
+        "selectUser": "Select user..."
       }
     }
   }
