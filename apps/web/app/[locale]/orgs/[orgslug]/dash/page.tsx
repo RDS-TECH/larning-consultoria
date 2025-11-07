@@ -4,8 +4,10 @@ import learnhousetextlogo from '../../../../public/learnhouse_logo.png'
 import { BookCopy, School, Settings, University, Users } from 'lucide-react'
 import Link from 'next/link'
 import AdminAuthorization from '@components/Security/AdminAuthorization'
+import { getTranslations } from 'next-intl/server'
 
-function DashboardHome() {
+async function DashboardHome() {
+  const t = await getTranslations('dashboard.home');
   return (
     <div className="flex items-center justify-center mx-auto min-h-screen flex-col p-4 sm:mb-0 mb-16">
       <div className="mx-auto pb-6 sm:pb-10">
@@ -22,20 +24,20 @@ function DashboardHome() {
           <DashboardCard
             href="/dash/courses"
             icon={<BookCopy className="mx-auto text-gray-500/100" size={50} />}
-            title="Courses"
-            description="Create and manage courses, chapters and activities"
+            title={t('courses.title')}
+            description={t('courses.description')}
           />
           <DashboardCard
             href="/dash/org/settings/general"
             icon={<School className="mx-auto text-gray-500/100" size={50} />}
-            title="Organization"
-            description="Configure your Organization general settings"
+            title={t('organization.title')}
+            description={t('organization.description')}
           />
           <DashboardCard
             href="/dash/users/settings/users"
             icon={<Users className="mx-auto text-gray-500/100" size={50} />}
-            title="Users"
-            description="Manage your Organization's users, roles"
+            title={t('users.title')}
+            description={t('users.description')}
           />
         </div>
       </AdminAuthorization>
@@ -50,7 +52,7 @@ function DashboardHome() {
             >
               <University className="text-gray-100/100" size={20} />
               <div className="text-sm font-bold text-gray-100/100">
-                LearnHouse University
+                {t('learnhouseUniversity')}
               </div>
             </Link>
           </div>
@@ -64,9 +66,9 @@ function DashboardHome() {
           <div className="flex flex-col sm:flex-row mx-auto gap-2 sm:gap-3 items-center text-center sm:text-left">
             <Settings className="text-gray-500/100" size={20} />
             <div>
-              <div className="font-bold text-gray-500/100">Account Settings</div>
+              <div className="font-bold text-gray-500/100">{t('accountSettings.title')}</div>
               <p className="text-sm text-gray-400/100">
-                Configure your personal settings, passwords, email
+                {t('accountSettings.description')}
               </p>
             </div>
           </div>

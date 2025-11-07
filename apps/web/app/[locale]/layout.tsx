@@ -4,7 +4,7 @@ import StyledComponentsRegistry from '../../components/Utils/libs/styled-registr
 import { motion } from 'framer-motion'
 import { SessionProvider } from 'next-auth/react'
 import LHSessionProvider from '@components/Contexts/LHSessionContext'
-import { isDevEnv } from '../../app/auth/options'
+import { isDevEnv } from './auth/options'
 import Script from 'next/script'
 import { NextIntlClientProvider } from 'next-intl';
 import { useEffect, useState } from 'react';
