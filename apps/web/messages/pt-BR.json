@@ -1,0 +1,762 @@
+{
+  "auth": {
+    "login": {
+      "title": "Entrar em",
+      "email": "E-mail",
+      "password": "Senha",
+      "forgotPassword": "Esqueceu a senha?",
+      "loginButton": "Entrar",
+      "loading": "Carregando...",
+      "or": "OU",
+      "signUp": "Criar conta",
+      "signInWithGoogle": "Entrar com Google",
+      "errors": {
+        "required": "Campo obrigatório",
+        "invalidEmail": "E-mail inválido",
+        "passwordTooShort": "A senha deve ter pelo menos 8 caracteres",
+        "wrongCredentials": "E-mail ou senha incorretos"
+      }
+    },
+    "signup": {
+      "title": "Criar conta",
+      "openSignup": "Cadastro Aberto",
+      "inviteOnly": "Somente por Convite"
+    },
+    "forgot": {
+      "title": "Esqueci a senha",
+      "reset": "Redefinir senha"
+    }
+  },
+  "common": {
+    "actions": {
+      "save": "Salvar",
+      "saveChanges": "Salvar Alterações",
+      "cancel": "Cancelar",
+      "delete": "Excluir",
+      "edit": "Editar",
+      "create": "Criar",
+      "add": "Adicionar",
+      "remove": "Remover",
+      "submit": "Enviar",
+      "close": "Fechar",
+      "open": "Abrir",
+      "back": "Voltar",
+      "next": "Próximo",
+      "previous": "Anterior",
+      "clear": "Limpar",
+      "clearAll": "Limpar Tudo",
+      "reset": "Redefinir",
+      "search": "Pesquisar",
+      "filter": "Filtrar",
+      "upload": "Enviar",
+      "download": "Baixar",
+      "view": "Visualizar",
+      "preview": "Visualizar",
+      "show": "Mostrar",
+      "hide": "Ocultar",
+      "showMore": "Mostrar mais",
+      "showLess": "Mostrar menos",
+      "backToDashboard": "Voltar ao Painel",
+      "loading": "Carregando...",
+      "saving": "Salvando...",
+      "updating": "Atualizando...",
+      "deleting": "Excluindo...",
+      "uploading": "Enviando...",
+      "undo": "Desfazer",
+      "redo": "Refazer"
+    },
+    "status": {
+      "active": "Ativo",
+      "inactive": "Inativo",
+      "pending": "Pendente",
+      "completed": "Concluído",
+      "draft": "Rascunho",
+      "published": "Publicado",
+      "unpublished": "Não publicado",
+      "archived": "Arquivado"
+    },
+    "labels": {
+      "welcome": "Bem-vindo",
+      "profile": "Perfil",
+      "settings": "Configurações",
+      "about": "Sobre",
+      "description": "Descrição",
+      "title": "Título",
+      "name": "Nome",
+      "email": "E-mail",
+      "username": "Nome de usuário",
+      "password": "Senha",
+      "confirmPassword": "Confirmar Senha",
+      "firstName": "Primeiro Nome",
+      "lastName": "Sobrenome",
+      "url": "URL",
+      "image": "Imagem",
+      "video": "Vídeo",
+      "document": "Documento",
+      "file": "Arquivo",
+      "date": "Data",
+      "startDate": "Data de Início",
+      "endDate": "Data de Término",
+      "current": "Atual",
+      "yes": "Sim",
+      "no": "Não"
+    },
+    "messages": {
+      "noBiography": "Nenhuma biografia fornecida",
+      "noContent": "Sem conteúdo ainda",
+      "noData": "Sem dados disponíveis",
+      "noResults": "Nenhum resultado encontrado",
+      "noPermissions": "Sem permissões",
+      "noDescription": "Sem descrição",
+      "accessDenied": "Acesso Negado",
+      "accessRestricted": "Acesso Restrito",
+      "desktopOnly": "Somente Desktop",
+      "desktopOnlyMessage": "Esta página só é acessível a partir de um dispositivo desktop.",
+      "pleaseSwitch": "Por favor, mude para um desktop para visualizar e gerenciar"
+    }
+  },
+  "dashboard": {
+    "home": {
+      "title": "Painel",
+      "courses": {
+        "title": "Cursos",
+        "description": "Criar e gerenciar cursos, capítulos e atividades"
+      },
+      "organization": {
+        "title": "Organização",
+        "description": "Configurar as definições gerais da sua Organização"
+      },
+      "users": {
+        "title": "Usuários",
+        "description": "Gerenciar os usuários e funções da sua Organização"
+      },
+      "accountSettings": {
+        "title": "Configurações da Conta",
+        "description": "Configure suas definições pessoais, senhas e e-mail"
+      },
+      "learnhouseUniversity": "LearnHouse University"
+    },
+    "menu": {
+      "home": "Início",
+      "courses": "Cursos",
+      "assignments": "Tarefas",
+      "users": "Usuários",
+      "payments": "Pagamentos",
+      "organization": "Organização",
+      "settings": "Configurações",
+      "logout": "Sair",
+      "backToHome": "Voltar ao Início",
+      "yourOrganization": "Sua Organização",
+      "manageCourses": "Gerenciar cursos",
+      "manageAssignments": "Gerenciar tarefas",
+      "manageUsers": "Gerenciar usuários",
+      "managePayments": "Gerenciar pagamentos e cobranças",
+      "organizationSettings": "Configurações da organização",
+      "userAccountSettings": "Configurações da conta de usuário",
+      "goToDashboardHome": "Ir para o início do painel"
+    }
+  },
+  "courses": {
+    "title": "Cursos",
+    "myCourses": "Meus Cursos",
+    "myCoursesDescription": "Cursos que você comprou ou assinou",
+    "createCourse": "Criar Curso",
+    "editCourse": "Editar Curso",
+    "deleteCourse": "Excluir Curso",
+    "courseEditor": "Editor de Curso",
+    "courseName": "Nome do Curso",
+    "courseDescription": "Descrição do Curso",
+    "noCourses": "Nenhum curso disponível",
+    "noAssignments": "Nenhuma tarefa disponível para este curso, crie tarefas do curso a partir do editor de curso",
+    "linkCourseToProduct": "Vincular Curso ao Produto",
+    "linkCourseToUserGroup": "Vincular Curso ao Grupo de Usuários",
+    "courseLinkedSuccess": "Curso vinculado com sucesso",
+    "courseUnlinkedSuccess": "Curso desvinculado com sucesso",
+    "noCoursesLinked": "Nenhum curso vinculado ainda",
+    "discoverNextLearning": "Descubra Sua Próxima Jornada de Aprendizado",
+    "sections": "Seções",
+    "editContent": "Editar Conteúdo",
+    "courseProgress": "Progresso do Curso",
+    "purchaseCourse": "Comprar Curso",
+    "startCourse": "Iniciar Curso",
+    "leaveCourse": "Sair do Curso",
+    "successfullyStarted": "Curso iniciado com sucesso",
+    "successfullyLeft": "Você saiu do curso com sucesso",
+    "publishCourse": "Publicar",
+    "unpublishCourse": "Despublicar",
+    "updates": {
+      "title": "Atualizações",
+      "addUpdate": "Adicionar Nova Atualização do Curso",
+      "whatsNew": "O que há de novo nesta atualização?",
+      "shareDetails": "Compartilhe os detalhes da sua atualização...",
+      "noUpdates": "Sem atualizações ainda",
+      "deleteUpdate": "Excluir Atualização",
+      "newUpdate": "Nova Atualização",
+      "addSuccess": "Atualização adicionada com sucesso",
+      "deleteSuccess": "Atualização excluída com sucesso",
+      "addFailed": "Falha ao adicionar atualização",
+      "deleteFailed": "Falha ao excluir atualização"
+    },
+    "access": {
+      "accessDenied": "Você não tem permissão para acessar este curso.",
+      "accessRestricted": "Acesso Restrito",
+      "publicCourse": "Tem certeza de que deseja que este curso esteja publicamente disponível na internet?",
+      "privateCourse": "Tem certeza de que deseja que este curso seja acessível apenas para usuários conectados?"
+    },
+    "contributors": {
+      "openToContributors": "Abrir para Colaboradores",
+      "closeToContributors": "Fechar para Colaboradores",
+      "addContributors": "Adicionar Colaboradores",
+      "searchContributors": "Pesquisar usuários por nome ou nome de usuário para adicionar como colaboradores...",
+      "applyToContribute": "Solicitar para Contribuir",
+      "applicationSubmitted": "Sua solicitação para contribuir foi enviada com sucesso",
+      "applicationFailed": "Falha ao enviar sua solicitação. Por favor, tente novamente mais tarde.",
+      "contributorsAdded": "Colaborador(es) adicionado(s) com sucesso",
+      "contributorsAddFailed": "Falha ao adicionar colaboradores",
+      "contributorsRemoved": "Colaboradores removidos com sucesso",
+      "contributorsRemoveFailed": "Falha ao remover colaboradores",
+      "cannotModifyCreator": "Não é possível modificar a função ou status de um criador",
+      "removeThisContributor": "Remover este colaborador",
+      "removeFailed": "Falha ao remover este colaborador"
+    },
+    "confirmations": {
+      "deleteTitle": "Excluir '{name}'?",
+      "deleteMessage": "Tem certeza de que deseja excluir este curso?",
+      "deleteButton": "Excluir Curso",
+      "deleteSuccess": "Curso excluído com sucesso",
+      "deleteFailed": "Falha ao excluir curso",
+      "openToContributorsMessage": "Tem certeza de que deseja abrir este curso para colaboradores?",
+      "closeToContributorsMessage": "Tem certeza de que deseja fechar este curso para colaboradores?"
+    }
+  },
+  "chapters": {
+    "title": "Capítulo",
+    "createChapter": "Criar capítulo",
+    "addChapter": "Adicionar Capítulo",
+    "chapterName": "Nome do Capítulo",
+    "deleteChapter": "Excluir Capítulo",
+    "addNewChapter": "Adicionar um novo capítulo ao curso",
+    "confirmations": {
+      "deleteTitle": "Excluir '{name}'?",
+      "deleteMessage": "Tem certeza de que deseja excluir este capítulo?",
+      "deleteButton": "Excluir Capítulo"
+    }
+  },
+  "activities": {
+    "title": "Atividade",
+    "createActivity": "Criar Atividade",
+    "activityName": "Nome da Atividade",
+    "deleteActivity": "Excluir Atividade",
+    "creatingActivity": "Criando atividade...",
+    "uploadingFile": "Enviando arquivo e criando atividade...",
+    "deletingActivity": "Excluindo atividade...",
+    "markAsDone": "Marcar Atividade como Concluída para o Usuário",
+    "allowedFormats": "Formatos permitidos: pdf, docx, mp4, jpg, jpeg, png, pptx, zip",
+    "success": {
+      "created": "Atividade criada com sucesso",
+      "deleted": "Atividade excluída com sucesso",
+      "nameUpdated": "Nome da atividade atualizado com sucesso",
+      "updated": "A atividade foi atualizada com sucesso",
+      "fileUploaded": "Arquivo enviado com sucesso"
+    },
+    "errors": {
+      "updateName": "Falha ao atualizar o nome da atividade"
+    },
+    "confirmations": {
+      "deleteTitle": "Excluir '{name}'?",
+      "deleteMessage": "Tem certeza de que deseja excluir esta atividade?",
+      "deleteButton": "Excluir Atividade"
+    }
+  },
+  "assignments": {
+    "title": "Tarefas",
+    "editAssignment": "Editar Tarefa",
+    "deleteAssignment": "Excluir Tarefa",
+    "submissions": "Submissões",
+    "general": "Geral",
+    "content": "Conteúdo",
+    "tasks": "Tarefas",
+    "noAssignments": "Nenhuma tarefa disponível",
+    "updating": "Atualizando tarefa...",
+    "setFinalGrade": "Definir nota final",
+    "rejectAssignment": "Rejeitar Tarefa",
+    "reject": "Rejeitar",
+    "status": {
+      "sent": "Enviado",
+      "late": "Atrasado",
+      "submitted": "Submetido",
+      "graded": "Avaliado",
+      "submission": "Submissão"
+    },
+    "tasks": {
+      "quiz": {
+        "title": "Quiz",
+        "description": "Perguntas com respostas de múltipla escolha"
+      },
+      "fileSubmission": {
+        "title": "Submissão de arquivo",
+        "description": "Os alunos podem enviar arquivos para esta tarefa"
+      },
+      "form": {
+        "title": "Formulário",
+        "description": "Formulários de preenchimento para os alunos"
+      },
+      "task": "Tarefa",
+      "hint": "Dica",
+      "referenceDocument": "Documento de Referência",
+      "deleteTask": "Excluir Tarefa"
+    },
+    "success": {
+      "updated": "Tarefa atualizada com sucesso"
+    },
+    "errors": {
+      "update": "Ocorreu um erro ao atualizar a tarefa",
+      "failed": "Falha ao atualizar tarefa"
+    }
+  },
+  "users": {
+    "title": "Usuários",
+    "manageUsers": "Gerenciar Usuários do Grupo",
+    "addUser": "Adicionar Usuário",
+    "removeUser": "Remover Usuário",
+    "noUsers": "Nenhum usuário encontrado",
+    "noUserSelected": "Nenhum usuário selecionado",
+    "searchUsers": "Pesquisar usuários por nome ou nome de usuário",
+    "profile": {
+      "editProfile": "Editar Perfil",
+      "yourUsername": "Seu nome de usuário",
+      "yourFirstName": "Seu primeiro nome",
+      "yourLastName": "Seu sobrenome",
+      "yourEmail": "Seu endereço de e-mail",
+      "bio": "Biografia",
+      "tellUsAbout": "Conte-nos sobre você",
+      "savingProfile": "Salvando perfil...",
+      "profileUpdated": "Perfil Atualizado com Sucesso",
+      "profileUpdateFailed": "Falha ao atualizar perfil",
+      "loadFailed": "Falha ao carregar dados do perfil"
+    },
+    "roles": {
+      "title": "Funções",
+      "createRole": "Criar uma Função",
+      "editRole": "Editar Função",
+      "deleteRole": "Excluir Função",
+      "updateRole": "Atualizar Função",
+      "roleHierarchy": "Hierarquia de Funções",
+      "editPermissions": "Editar as permissões e detalhes da função",
+      "rolesDescription": "As funções definem o que os usuários podem fazer dentro da sua organização. Crie funções personalizadas com permissões específicas para diferentes tipos de usuários.",
+      "confirmDeleteTitle": "Excluir Função?",
+      "confirmDeleteMessage": "Esta ação não pode ser desfeita. Todos os usuários com esta função perderão suas permissões. Tem certeza de que deseja excluir esta função?",
+      "errorDeleting": "Erro ao excluir função"
+    },
+    "userGroups": {
+      "title": "Grupos de Usuários",
+      "createUserGroup": "Criar um Grupo de Usuários",
+      "noUserGroups": "Nenhum Grupo de Usuários disponível",
+      "confirmDeleteTitle": "Excluir Grupo de Usuários?",
+      "confirmDeleteMessage": "O acesso a todos os recursos será removido para todos os usuários neste Grupo. Tem certeza de que deseja excluir este Grupo de Usuários?",
+      "unlinkUserGroup": "Desvincular Grupo de Usuários?",
+      "unlinkMessage": "Os usuários deste Grupo não terão mais acesso a este curso",
+      "userLinked": "Usuário vinculado com sucesso",
+      "userUnlinked": "Usuário desvinculado com sucesso",
+      "successUnlinked": "Desvinculado com sucesso do grupo de usuários",
+      "errorUnlinking": "Ocorreu um erro ao desvincular o grupo de usuários",
+      "errorDeleting": "Erro ao excluir grupo de usuários"
+    },
+    "invites": {
+      "generateCode": "Gerar Código de Convite",
+      "confirmDeleteTitle": "Excluir código?",
+      "confirmDeleteMessage": "Tem certeza de que deseja remover este código de convite?",
+      "errorSending": "Erro ao enviar convite"
+    },
+    "organization": {
+      "removeFromOrg": "Remover da organização",
+      "confirmRemoveTitle": "Excluir '{username}'?",
+      "confirmRemoveMessage": "Tem certeza de que deseja remover este usuário da organização?",
+      "errorRemoving": "Erro ao remover usuário"
+    }
+  },
+  "organization": {
+    "title": "Organização",
+    "settings": "Configurações",
+    "general": "Geral",
+    "yourOrganization": "Sua Organização",
+    "orgLabel": "Rótulo da Organização",
+    "showcaseInExplore": "Mostrar no LearnHouse Explore",
+    "uploadLogo": "Enviar Logo",
+    "uploadThumbnail": "Enviar Miniatura",
+    "logoURL": "URL do Logo",
+    "thumbnailURL": "URL da Miniatura",
+    "logoURLPlaceholder": "URL para o logo da organização",
+    "name": "Nome da Organização",
+    "briefDescription": "Breve descrição da sua organização",
+    "detailedDescription": "Descrição detalhada da sua organização",
+    "additionalDetails": "Detalhes Adicionais",
+    "socialLinks": {
+      "facebook": "URL do perfil do Facebook",
+      "twitter": "URL do perfil do Twitter",
+      "instagram": "URL do perfil do Instagram",
+      "youtube": "URL do canal do YouTube"
+    },
+    "signup": {
+      "changeToOpen": "Mudar para aberto?",
+      "changeToClosed": "Mudar para fechado?",
+      "openMessage": "Tem certeza de que deseja mudar o mecanismo de cadastro para aberto? Isso permitirá que os usuários ingressem na sua organização livremente.",
+      "closedMessage": "Tem certeza de que deseja mudar o mecanismo de cadastro para fechado? Isso permitirá que os usuários ingressem na sua organização apenas por convite.",
+      "errorChanging": "Erro ao alterar o método de ingresso"
+    },
+    "updating": "Atualizando organização...",
+    "uploadingLogo": "Enviando logo...",
+    "uploadingThumbnail": "Enviando miniatura...",
+    "orgUpdated": "Organização Atualizada",
+    "logoUpdated": "Logo Atualizado",
+    "thumbnailUpdated": "Miniatura Atualizada",
+    "updateFailed": "Falha ao atualizar organização",
+    "logoUploadFailed": "Falha ao enviar logo",
+    "thumbnailUploadFailed": "Falha ao enviar miniatura",
+    "orgIdNotFound": "ID da organização não encontrado",
+    "selectOrgLabel": "Selecionar rótulo da organização",
+    "ownership": {
+      "title": "Tipos de Propriedade do Curso"
+    }
+  },
+  "payments": {
+    "title": "Pagamentos",
+    "configuration": "Configuração de Pagamentos",
+    "notAvailable": "Pagamentos Não Disponíveis",
+    "notAvailableMessage": "O recurso de pagamentos não está habilitado para esta organização.",
+    "contactAdmin": "Entre em contato com seu administrador para habilitar pagamentos.",
+    "customers": "Clientes",
+    "viewCustomers": "Visualizar e gerenciar informações dos seus clientes",
+    "noCustomerData": "Nenhum dado de cliente disponível",
+    "products": {
+      "title": "Produtos",
+      "createProduct": "Criar Novo Produto",
+      "editProduct": "Editar Produto",
+      "archiveProduct": "Arquivar Produto",
+      "addProduct": "Adicionar um novo produto à sua organização",
+      "noProducts": "Nenhum produto disponível. Crie um novo produto para começar.",
+      "productName": "Nome do Produto",
+      "productDescription": "Descrição do Produto",
+      "productBenefits": "Benefícios do Produto",
+      "price": "Preço",
+      "currency": "Moeda",
+      "linkedCourses": "Cursos Vinculados",
+      "confirmArchiveMessage": "Tem certeza de que deseja arquivar este produto?",
+      "createSuccess": "Produto criado com sucesso",
+      "createError": "Ocorreu um erro ao criar o produto",
+      "updateSuccess": "Produto atualizado com sucesso",
+      "updateFailed": "Falha ao atualizar produto",
+      "archiveSuccess": "Produto arquivado com sucesso",
+      "linkSuccess": "Curso vinculado com sucesso",
+      "linkFailed": "Falha ao vincular curso",
+      "unlinkSuccess": "Curso desvinculado com sucesso",
+      "unlinkFailed": "Falha ao desvincular curso",
+      "loadFailed": "Falha ao carregar cursos vinculados"
+    },
+    "stripe": {
+      "title": "Configuração Stripe",
+      "edit": "Editar Configuração Stripe",
+      "editDescription": "Editar sua configuração do stripe",
+      "accountId": "ID da Conta Stripe",
+      "enable": "Habilitar Stripe",
+      "removeConnection": "Remover Conexão",
+      "confirmRemoveMessage": "Tem certeza de que deseja remover a conexão Stripe? Esta ação não pode ser desfeita.",
+      "enableSuccess": "Stripe habilitado com sucesso",
+      "enableFailed": "Falha ao habilitar Stripe",
+      "onboardingFailed": "Falha ao iniciar integração com Stripe",
+      "configUpdated": "Configuração atualizada com sucesso",
+      "configUpdateFailed": "Falha ao atualizar configuração",
+      "configLoadFailed": "Falha ao carregar configuração existente",
+      "deleteSuccess": "Configuração Stripe excluída com sucesso",
+      "deleteFailed": "Falha ao excluir configuração Stripe"
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "toolbar": {
+      "undo": "Desfazer última ação",
+      "redo": "Refazer última ação",
+      "bold": "Alternar formatação em negrito",
+      "italic": "Alternar formatação em itálico",
+      "strikethrough": "Alternar texto tachado",
+      "list": "Inserir lista",
+      "table": "Inserir tabela",
+      "infoCallout": "Inserir balão de informação",
+      "warningCallout": "Inserir balão de aviso",
+      "link": "Inserir ou editar link",
+      "image": "Inserir imagem",
+      "video": "Inserir vídeo",
+      "youtube": "Inserir vídeo do YouTube",
+      "mathEquation": "Inserir equação matemática (LaTeX)",
+      "pdf": "Inserir documento PDF",
+      "quiz": "Inserir quiz interativo",
+      "codeBlock": "Inserir bloco de código",
+      "embed": "Inserir objeto externo ou incorporado",
+      "badge": "Inserir emblema",
+      "button": "Inserir botão",
+      "userReference": "Inserir referência de usuário"
+    },
+    "placeholders": {
+      "enterContent": "Digite seu conteúdo aqui...",
+      "enterQuestion": "Digite sua pergunta...",
+      "enterAnswer": "Digite sua resposta...",
+      "mathEquation": "Inserir uma Equação Matemática (LaTeX)",
+      "websiteURL": "Digite a URL do site...",
+      "embedCode": "Cole o código de incorporação (iframe, script de incorporação, etc.)"
+    },
+    "actions": {
+      "editURL": "Editar URL",
+      "editEmbed": "Editar incorporação",
+      "removeEmbed": "Remover incorporação",
+      "deleteCard": "Excluir card",
+      "expandImage": "Expandir imagem",
+      "downloadImage": "Baixar imagem",
+      "downloadVideo": "Baixar vídeo",
+      "expandVideo": "Expandir vídeo",
+      "downloadPDF": "Baixar PDF",
+      "expandPDF": "Expandir PDF"
+    },
+    "alignment": {
+      "left": "Alinhar à esquerda",
+      "center": "Centralizar",
+      "right": "Alinhar à direita"
+    },
+    "size": {
+      "small": "Tamanho Pequeno",
+      "medium": "Tamanho Médio",
+      "large": "Tamanho Grande"
+    },
+    "quiz": {
+      "yourQuestion": "Sua Pergunta",
+      "answer": "Resposta",
+      "resetAnswers": "Redefinir respostas",
+      "deleteAnswer": "Excluir resposta",
+      "deleteOption": "Excluir opção",
+      "addResponseOption": "Adicionar opção de resposta"
+    },
+    "scenarios": {
+      "editScenarios": "Editar Cenários",
+      "clickToEdit": "Clique em \"Editar Cenários\" para configurar sua história interativa ramificada",
+      "resetScenario": "Redefinir cenário",
+      "setAsStarting": "Definir como cenário inicial",
+      "deleteScenario": "Excluir cenário",
+      "scenarioPreview": "Visualização do Cenário",
+      "backSide": "Lado Traseiro (Resposta)",
+      "previewFlip": "Visualizar Virada"
+    },
+    "embed": {
+      "title": "Visualização de Site Incorporado",
+      "noPreview": "Nenhum arquivo disponível para visualização."
+    },
+    "color": {
+      "changeColor": "Mudar Cor"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "editPage": "Editar Página",
+    "about": "Sobre",
+    "noBiography": "Nenhuma biografia fornecida",
+    "builder": {
+      "sections": {
+        "heading": "Título",
+        "subheading": "Subtítulo",
+        "text": "Texto",
+        "images": "Imagens",
+        "links": "Links",
+        "skills": "Habilidades",
+        "experience": "Experiência",
+        "education": "Educação",
+        "affiliations": "Afiliações",
+        "learningItems": "Itens de Aprendizado"
+      },
+      "addSection": "Adicionar Seção",
+      "addHeading": "Adicionar um título",
+      "addSubheading": "Adicionar um subtítulo",
+      "addText": "Adicionar conteúdo de texto formatado",
+      "addImages": "Adicionar uma coleção de imagens",
+      "addLinks": "Adicionar links sociais ou profissionais",
+      "addSkills": "Adicionar habilidades",
+      "addExperience": "Adicionar experiência de trabalho ou projeto",
+      "addEducation": "Adicionar histórico educacional",
+      "addAffiliations": "Adicionar afiliações organizacionais",
+      "addLearningItems": "Adicionar itens de aprendizado",
+      "placeholders": {
+        "sectionTitle": "Digite o título da seção",
+        "heading": "Digite o texto do título",
+        "subheading": "Digite o texto do subtítulo",
+        "text": "Digite para adicionar...",
+        "imageURL": "URL da imagem",
+        "imageCaption": "Legenda da imagem",
+        "linkTitle": "Título do link",
+        "linkURL": "URL",
+        "skillName": "Nome da habilidade",
+        "position": "Cargo ou função",
+        "organization": "Empresa ou organização",
+        "description": "Descrição ou função",
+        "additionalDetails": "Detalhes adicionais sobre sua educação",
+        "institution": "Escola ou universidade",
+        "degree": "Tipo de diploma",
+        "major": "Curso ou concentração",
+        "personName": "Nome da pessoa",
+        "learningItem": "Digite o item de aprendizado..."
+      },
+      "background": {
+        "title": "Fundo",
+        "type": "Tipo de Fundo",
+        "color": "Cor de Fundo",
+        "image": "Imagem de Fundo",
+        "selectType": "Selecionar tipo de fundo",
+        "selectGradientDirection": "Selecionar direção do gradiente",
+        "selectGradientPreset": "Selecionar predefinição de gradiente",
+        "selectGradientType": "Selecionar tipo de gradiente",
+        "selectImagePosition": "Selecionar posição da imagem"
+      },
+      "savingPage": "Salvando página de destino...",
+      "pageUpdated": "Página de destino salva com sucesso",
+      "errorSaving": "Erro ao salvar página de destino"
+    }
+  },
+  "certifications": {
+    "title": "Certificações",
+    "noCertification": "Nenhuma Certificação Configurada",
+    "descriptionPlaceholder": "Descreva o que esta certificação representa e seu valor...",
+    "namePlaceholder": "ex., Certificação Avançada de JavaScript",
+    "issuerPlaceholder": "ex., Dr. Jane Smith",
+    "selectVisibility": "Selecionar visibilidade",
+    "createSuccess": "Certificação criada com sucesso",
+    "createFailed": "Falha ao criar certificação",
+    "removeSuccess": "Certificação removida com sucesso",
+    "removeFailed": "Falha ao remover certificação"
+  },
+  "collections": {
+    "title": "Coleções",
+    "deleteCollection": "Excluir Coleção",
+    "confirmDelete": "Excluir '{name}'?",
+    "confirmDeleteMessage": "Tem certeza de que deseja excluir esta coleção?"
+  },
+  "scripts": {
+    "title": "Scripts",
+    "addScripts": "Adicionar scripts JavaScript personalizados à sua organização",
+    "noScripts": "Nenhum script adicionado ainda",
+    "addFirstScript": "Adicione seu primeiro script para começar",
+    "enterScriptName": "Digite o nome do script",
+    "enterJSCode": "Digite o código JavaScript",
+    "deletingScript": "Excluindo script...",
+    "deleteSuccess": "Script excluído com sucesso",
+    "deleteFailed": "Falha ao excluir script",
+    "saveSuccess": "Script salvo com sucesso",
+    "saveFailed": "Falha ao salvar script"
+  },
+  "media": {
+    "uploadImage": "Enviar Imagem",
+    "chooseFromUnsplash": "Escolher uma imagem do Unsplash",
+    "searchImages": "Pesquisar imagens...",
+    "uploadSuccess": "Imagem enviada com sucesso",
+    "uploadFailed": "Falha ao enviar imagem",
+    "uploadingFile": "Enviando arquivo e criando atividade...",
+    "addVideoPreview": "Adicionar Visualização",
+    "addingVideoPreview": "Adicionando visualização de vídeo...",
+    "videoPreviewAdded": "Visualização de vídeo adicionada",
+    "videoAlreadyAdded": "Este vídeo já foi adicionado",
+    "failedToAddVideo": "Falha ao adicionar visualização de vídeo",
+    "addYouTubeVideo": "Adicionar vídeo do YouTube",
+    "addLoomVideo": "Adicionar vídeo do Loom",
+    "removingPreview": "Removendo visualização...",
+    "previewRemoved": "Visualização removida",
+    "previewRemoveFailed": "Falha ao remover visualização",
+    "updatingPreviewOrder": "Atualizando ordem das visualizações...",
+    "previewOrderUpdated": "Ordem das visualizações atualizada",
+    "previewOrderUpdateFailed": "Falha ao atualizar ordem das visualizações",
+    "uploadPreviewsFailed": "Falha ao enviar visualizações",
+    "changeReferenceFile": "Alterar Arquivo de Referência",
+    "uploadVideo": "Enviar Vídeo",
+    "pdfDocument": "Documento PDF",
+    "imageViewer": "Visualizador de Imagens",
+    "videoPlayer": "Reprodutor de Vídeo"
+  },
+  "ai": {
+    "askAboutLecture": "Perguntar à IA Sobre esta Palestra",
+    "askAI": "Perguntar à IA"
+  },
+  "rights": {
+    "title": "Guia de Autorizações e Direitos",
+    "guide": "Guia de Direitos"
+  },
+  "success": {
+    "generic": "Operação concluída com sucesso",
+    "updateSuccess": "Atualização bem-sucedida",
+    "deleteSuccess": "Exclusão bem-sucedida",
+    "createSuccess": "Criação bem-sucedida",
+    "uploadSuccess": "Envio bem-sucedido"
+  },
+  "errors": {
+    "generic": "Ocorreu um erro",
+    "updateFailed": "Falha na atualização",
+    "deleteFailed": "Falha na exclusão",
+    "createFailed": "Falha na criação",
+    "uploadFailed": "Falha no envio",
+    "loadFailed": "Falha ao carregar dados",
+    "networkError": "Erro de rede. Por favor, verifique sua conexão.",
+    "unauthorized": "Você não está autorizado a realizar esta ação.",
+    "notFound": "Recurso não encontrado"
+  },
+  "confirmations": {
+    "areYouSure": "Tem certeza?",
+    "cannotBeUndone": "Esta ação não pode ser desfeita.",
+    "confirmDelete": "Confirmar Exclusão",
+    "confirmAction": "Confirmar Ação"
+  },
+  "navigation": {
+    "breadcrumbs": {
+      "home": "Início",
+      "dashboard": "Painel",
+      "courses": "Cursos",
+      "users": "Usuários",
+      "settings": "Configurações"
+    }
+  },
+  "forms": {
+    "validation": {
+      "required": "Este campo é obrigatório",
+      "email": "Digite um endereço de e-mail válido",
+      "url": "Digite uma URL válida",
+      "minLength": "Deve ter pelo menos {min} caracteres",
+      "maxLength": "Deve ter no máximo {max} caracteres",
+      "passwordMatch": "As senhas devem coincidir"
+    },
+    "labels": {
+      "selectLevel": "Selecionar nível",
+      "selectPosition": "Selecionar posição",
+      "selectSize": "Selecionar tamanho",
+      "selectIcon": "Selecionar ícone",
+      "showButton": "Mostrar botão",
+      "buttonLabel": "Rótulo do botão",
+      "buttonText": "Texto do botão",
+      "buttonLink": "Link do botão",
+      "categoryOptional": "Categoria (opcional)"
+    },
+    "placeholders": {
+      "enterToAdd": "Digite para adicionar...",
+      "enterLabel": "Digite o rótulo (ex., Título, Localização)",
+      "enterDetail": "Digite o texto do detalhe",
+      "enterSectionContent": "Digite o conteúdo da seção",
+      "websiteURL": "Digite a URL do site...",
+      "languages": "Japonês, Árabe, Alemão, etc."
+    }
+  },
+  "instructors": {
+    "updateRoleFailed": "Falha ao atualizar função de instrutor",
+    "removeFailed": "Falha ao remover instrutor"
+  },
+  "contributors": {
+    "updateSuccess": "Colaborador atualizado com sucesso",
+    "updateFailed": "Falha ao atualizar colaborador",
+    "removeSuccess": "Colaborador removido com sucesso",
+    "removeFailed": "Ocorreu um erro ao remover o colaborador"
+  },
+  "webPreview": {
+    "editCard": "Editar Card de Visualização Web",
+    "openInPopup": "Abrir popup no aplicativo (pode não funcionar em todos os sites)"
+  }
+}

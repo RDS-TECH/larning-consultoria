@@ -340,3 +340,4 @@ Default ports:
 - Backend returns structured JSON errors with appropriate HTTP status codes
 - Frontend should check for undefined API URLs and provide user-friendly messages
 - API responses follow consistent error format defined in routers
+- All the documentation that was generated should be saved in the docs/ folder

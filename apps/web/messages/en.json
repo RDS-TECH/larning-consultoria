@@ -1,0 +1,43 @@
+{
+  "auth": {
+    "login": {
+      "title": "Login to",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "loginButton": "Login",
+      "loading": "Loading...",
+      "or": "OR",
+      "signUp": "Sign up",
+      "signInWithGoogle": "Sign in with Google",
+      "errors": {
+        "required": "Required",
+        "invalidEmail": "Invalid email address",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "wrongCredentials": "Wrong Email or password"
+      }
+    }
+  },
+  "common": {
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "create": "Create"
+    }
+  },
+  "dashboard": {
+    "home": {
+      "courses": {
+        "title": "Courses",
+        "description": "Create and manage courses, chapters and activities"
+      }
+    },
+    "menu": {
+      "home": "Home",
+      "courses": "Courses",
+      "users": "Users"
+    }
+  }
+}
