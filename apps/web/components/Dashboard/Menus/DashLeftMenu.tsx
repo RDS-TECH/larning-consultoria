@@ -12,8 +12,11 @@ import AdminAuthorization from '@components/Security/AdminAuthorization'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { getUriWithOrg, getUriWithoutOrg } from '@services/config/config'
 import useFeatureFlag from '@components/Hooks/useFeatureFlag'
+import { useTranslations } from 'next-intl'
+import { LanguageSwitcher } from '@/components/ui/language-switcher'
 
 function DashLeftMenu() {
+  const t = useTranslations('dashboard.menu');
   const org = useOrg() as any
   const session = useLHSession() as any
   const [loading, setLoading] = React.useState(true)
@@ -54,7 +57,7 @@ function DashLeftMenu() {
             href={'/'}
           >
             <ToolTip
-              content={'Back to Home'}
+              content={t('backToHome')}
               slateBlack
               sideOffset={8}
               side="right"
@@ -66,7 +69,7 @@ function DashLeftMenu() {
               />
             </ToolTip>
             <ToolTip
-              content={'Your Organization'}
+              content={t('yourOrganization')}
               slateBlack
               sideOffset={8}
               side="right"
@@ -82,36 +85,36 @@ function DashLeftMenu() {
                         <Link className='bg-white text-black hover:text-white rounded-lg p-2 hover:bg-white/10 transition-all ease-linear' href={`/`} ><ArrowLeft className='hover:text-white' size={18} /></Link>
                     </ToolTip> */}
           <AdminAuthorization authorizationMode="component">
-            <ToolTip content={'Home'} slateBlack sideOffset={8} side="right">
+            <ToolTip content={t('home')} slateBlack sideOffset={8} side="right">
               <Link
-                aria-label="Home"
+                aria-label={t('home')}
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
                 href={`/dash`}
               >
                 <Home size={18} />
               </Link>
             </ToolTip>
-            <ToolTip content={'Courses'} slateBlack sideOffset={8} side="right">
+            <ToolTip content={t('courses')} slateBlack sideOffset={8} side="right">
               <Link
-                aria-label="Courses"
+                aria-label={t('courses')}
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
                 href={`/dash/courses`}
               >
                 <BookCopy size={18} />
               </Link>
             </ToolTip>
-            <ToolTip content={'Assignments'} slateBlack sideOffset={8} side="right">
+            <ToolTip content={t('assignments')} slateBlack sideOffset={8} side="right">
               <Link
-                aria-label="Assignments"
+                aria-label={t('assignments')}
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
                 href={`/dash/assignments`}
               >
                 <Backpack size={18} />
               </Link>
             </ToolTip>
-            <ToolTip content={'Users'} slateBlack sideOffset={8} side="right">
+            <ToolTip content={t('users')} slateBlack sideOffset={8} side="right">
               <Link
-                aria-label="Users"
+                aria-label={t('users')}
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
                 href={`/dash/users/settings/users`}
               >
@@ -119,9 +122,9 @@ function DashLeftMenu() {
               </Link>
             </ToolTip>
             {isPaymentsEnabled && (
-              <ToolTip content={'Payments'} slateBlack sideOffset={8} side="right">
+              <ToolTip content={t('payments')} slateBlack sideOffset={8} side="right">
                 <Link
-                  aria-label="Payments"
+                  aria-label={t('payments')}
                   className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
                   href={`/dash/payments/customers`}
                 >
@@ -130,7 +133,7 @@ function DashLeftMenu() {
               </ToolTip>
             )}
             <ToolTip
-              content={'Organization'}
+              content={t('organization')}
               slateBlack
               sideOffset={8}
               side="right"
@@ -193,7 +196,17 @@ function DashLeftMenu() {
                 </ToolTip>
               </div>
               <ToolTip
-                content={'Logout'}
+                content={t('settings')}
+                slateBlack
+                sideOffset={8}
+                side="right"
+              >
+                <div className="mx-auto">
+                  <LanguageSwitcher />
+                </div>
+              </ToolTip>
+              <ToolTip
+                content={t('logout')}
                 slateBlack
                 sideOffset={8}
                 side="right"
