@@ -914,6 +914,30 @@
           "selectFile": "Por favor, selecione um arquivo"
         }
       },
+      "structure": {
+        "createChapterTitle": "Criar capítulo",
+        "createChapterDescription": "Adicionar um novo capítulo ao curso",
+        "addChapter": "Adicionar Capítulo",
+        "chapterNamePlaceholder": "Nome do capítulo",
+        "deleteChapterConfirm": "Tem certeza que deseja excluir este capítulo?",
+        "createActivityTitle": "Criar Atividade",
+        "createActivityDescription": "Escolha entre os tipos de atividades para adicionar ao curso",
+        "activityNamePlaceholder": "Nome da atividade",
+        "deleteActivityConfirm": "Tem certeza que deseja excluir esta atividade?",
+        "toast": {
+          "creatingActivity": "Criando atividade...",
+          "activityCreated": "Atividade criada com sucesso",
+          "uploadingFile": "Enviando arquivo e criando atividade...",
+          "fileUploaded": "Arquivo enviado com sucesso",
+          "creatingActivityWithFile": "Criando atividade e enviando arquivo...",
+          "deletingActivity": "Excluindo atividade...",
+          "activityDeleted": "Atividade excluída com sucesso",
+          "updatingAssignment": "Atualizando atividade...",
+          "activityUpdated": "A atividade foi atualizada com sucesso",
+          "activityNameUpdated": "Nome da atividade atualizado com sucesso",
+          "activityNameUpdateFailed": "Falha ao atualizar nome da atividade"
+        }
+      },
       "unsplash": {
         "dialogTitle": "Escolha uma imagem do Unsplash",
         "search": "Pesquisar imagens...",

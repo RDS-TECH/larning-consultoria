@@ -1,3 +1,4 @@
+'use client'
 import { useCourse } from '@components/Contexts/CourseContext'
 import NewActivityModal from '@components/Objects/Modals/Activities/Create/NewActivity'
 import Modal from '@components/Objects/StyledElements/Modal/Modal'
@@ -17,6 +18,7 @@ import { mutate } from 'swr'
 import toast from 'react-hot-toast'
 
 type NewActivityButtonProps = {
+import { useTranslations } from 'next-intl'
   chapterId: string
   orgslug: string
 }
@@ -27,6 +29,7 @@ function NewActivityButton(props: NewActivityButtonProps) {
   const course = useCourse() as any
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
+  const t = useTranslations('courses.edit.structure');
   const withUnpublishedActivities = course ? course.withUnpublishedActivities : false
 
   const openNewActivityModal = async (chapterId: any) => {
@@ -43,11 +46,11 @@ function NewActivityButton(props: NewActivityButtonProps) {
       props.orgslug,
       { revalidate: 1800 }
     )
-    const toast_loading = toast.loading('Creating activity...')
+    const toast_loading = toast.loading(t('toast.creatingActivity'))
     await createActivity(activity, props.chapterId, org.org_id, access_token)
     mutate(`${getAPIUrl()}courses/${course.courseStructure.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
     toast.dismiss(toast_loading)
-    toast.success('Activity created successfully')
+    toast.success(t('toast.activityCreated'))
     setNewActivityModal(false)
     await revalidateTags(['courses'], props.orgslug)
     router.refresh()
@@ -60,13 +63,13 @@ function NewActivityButton(props: NewActivityButtonProps) {
     activity: any,
     chapterId: string
   ) => {
-    toast.loading('Uploading file and creating activity...')
+    toast.loading(t('toast.uploadingFile'))
     await createFileActivity(file, type, activity, chapterId, access_token)
     mutate(`${getAPIUrl()}courses/${course.courseStructure.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
     setNewActivityModal(false)
     toast.dismiss()
-    toast.success('File uploaded successfully')
-    toast.success('Activity created successfully')
+    toast.success(t('toast.fileUploaded'))
+    toast.success(t('toast.activityCreated'))
     await revalidateTags(['courses'], props.orgslug)
     router.refresh()
   }
@@ -77,7 +80,7 @@ function NewActivityButton(props: NewActivityButtonProps) {
     activity: any,
     chapterId: string
   ) => {
-    const toast_loading = toast.loading('Creating activity and uploading file...')
+    const toast_loading = toast.loading(t('toast.creatingActivityWithFile'))
     await createExternalVideoActivity(
       external_video_data,
       activity,
@@ -86,7 +89,7 @@ function NewActivityButton(props: NewActivityButtonProps) {
     mutate(`${getAPIUrl()}courses/${course.courseStructure.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
     setNewActivityModal(false)
     toast.dismiss(toast_loading)
-    toast.success('Activity created successfully')
+    toast.success(t('toast.activityCreated'))
     await revalidateTags(['courses'], props.orgslug)
     router.refresh()
   }
@@ -111,8 +114,8 @@ function NewActivityButton(props: NewActivityButtonProps) {
             course={course}
           ></NewActivityModal>
         }
-        dialogTitle="Create Activity"
-        dialogDescription="Choose between types of activities to add to the course"
+        dialogTitle={t('createActivityTitle')}
+        dialogDescription={t('createActivityDescription')}
       />
       <div
         onClick={() => {

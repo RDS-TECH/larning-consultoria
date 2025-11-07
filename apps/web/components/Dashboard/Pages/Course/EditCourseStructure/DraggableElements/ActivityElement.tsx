@@ -1,3 +1,4 @@
+'use client'
 import ConfirmationModal from '@components/Objects/StyledElements/ConfirmationModal/ConfirmationModal'
 import { getAPIUrl, getUriWithOrg } from '@services/config/config'
 import { deleteActivity, updateActivity } from '@services/courses/activities'
@@ -18,6 +19,7 @@ import {
 } from 'lucide-react'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { Draggable } from '@hello-pangea/dnd'
@@ -43,6 +45,7 @@ interface ModifiedActivityInterface {
 
 function ActivityElement(props: ActivitiyElementProps) {
   const router = useRouter()
+  const t = useTranslations('courses.edit.structure');
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
   const [modifiedActivity, setModifiedActivity] = React.useState<
@@ -58,8 +61,8 @@ function ActivityElement(props: ActivitiyElementProps) {
   const withUnpublishedActivities = course ? course.withUnpublishedActivities : false
 
   async function deleteActivityUI() {
-    const toast_loading = toast.loading('Deleting activity...')
-    // Assignments 
+    const toast_loading = toast.loading(t('toast.deletingActivity'))
+    // Assignments
     if (props.activity.activity_type === 'TYPE_ASSIGNMENT') {
       await deleteAssignmentUsingActivityUUID(props.activity.activity_uuid, access_token)
     }
@@ -68,12 +71,12 @@ function ActivityElement(props: ActivitiyElementProps) {
     mutate(`${getAPIUrl()}courses/${props.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
     await revalidateTags(['courses'], props.orgslug)
     toast.dismiss(toast_loading)
-    toast.success('Activity deleted successfully')
+    toast.success(t('toast.activityDeleted'))
     router.refresh()
   }
 
   async function changePublicStatus() {
-    const toast_loading = toast.loading('Updating assignment...')
+    const toast_loading = toast.loading(t('toast.updatingAssignment'))
     await updateActivity(
       {
         ...props.activity,
@@ -84,7 +87,7 @@ function ActivityElement(props: ActivitiyElementProps) {
     )
     mutate(`${getAPIUrl()}courses/${props.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
     toast.dismiss(toast_loading)
-    toast.success('The activity has been updated successfully')
+    toast.success(t('toast.activityUpdated'))
     await revalidateTags(['courses'], props.orgslug)
     router.refresh()
   }
@@ -95,7 +98,7 @@ function ActivityElement(props: ActivitiyElementProps) {
       selectedActivity !== undefined
     ) {
       setIsUpdatingName(true)
-      
+
       let modifiedActivityCopy = {
         ...props.activity,
         name: modifiedActivity.activityName,
@@ -105,10 +108,10 @@ function ActivityElement(props: ActivitiyElementProps) {
         await updateActivity(modifiedActivityCopy, activityUUID, access_token)
         mutate(`${getAPIUrl()}courses/${props.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
         await revalidateTags(['courses'], props.orgslug)
-        toast.success('Activity name updated successfully')
+        toast.success(t('toast.activityNameUpdated'))
         router.refresh()
       } catch (error) {
-        toast.error('Failed to update activity name')
+        toast.error(t('toast.activityNameUpdateFailed'))
         console.error('Error updating activity name:', error)
       } finally {
         setIsUpdatingName(false)
@@ -151,7 +154,7 @@ function ActivityElement(props: ActivitiyElementProps) {
                 <input
                   type="text"
                   className="bg-transparent outline-hidden text-xs text-gray-500"
-                  placeholder="Activity name"
+                  placeholder={t('activityNamePlaceholder')}
                   value={
                     modifiedActivity
                       ? modifiedActivity?.activityName
@@ -226,7 +229,7 @@ function ActivityElement(props: ActivitiyElementProps) {
             </ToolTip>
             {/*   Delete Button  */}
             <ConfirmationModal
-              confirmationMessage="Are you sure you want to delete this activity ?"
+              confirmationMessage={t('deleteActivityConfirm')}
               confirmationButtonText="Delete Activity"
               dialogTitle={'Delete ' + props.activity.name + ' ?'}
               dialogTrigger={

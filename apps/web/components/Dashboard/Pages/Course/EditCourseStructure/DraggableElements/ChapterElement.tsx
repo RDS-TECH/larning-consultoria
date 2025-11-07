@@ -1,3 +1,4 @@
+'use client'
 import ConfirmationModal from '@components/Objects/StyledElements/ConfirmationModal/ConfirmationModal'
 import {
   Hexagon,
@@ -18,6 +19,7 @@ import { getAPIUrl } from '@services/config/config'
 import { mutate } from 'swr'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { useCourse } from '@components/Contexts/CourseContext'
+import { useTranslations } from 'next-intl'
 
 type ChapterElementProps = {
   chapter: any
@@ -32,6 +34,7 @@ interface ModifiedChapterInterface {
 }
 
 function ChapterElement(props: ChapterElementProps) {
+  const t = useTranslations('courses.edit.structure');
   const activities = props.chapter.activities || []
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
@@ -97,7 +100,7 @@ function ChapterElement(props: ChapterElementProps) {
                     <input
                       type="text"
                       className="bg-transparent outline-hidden text-sm text-neutral-700 w-full max-w-[150px] sm:max-w-none"
-                      placeholder="Chapter name"
+                      placeholder={t('chapterNamePlaceholder')}
                       value={
                         modifiedChapter
                           ? modifiedChapter?.chapterName
@@ -133,7 +136,7 @@ function ChapterElement(props: ChapterElementProps) {
               <MoreVertical size={15} className="text-gray-300" />
               <ConfirmationModal
                 confirmationButtonText="Delete Chapter"
-                confirmationMessage="Are you sure you want to delete this chapter?"
+                confirmationMessage={t('deleteChapterConfirm')}
                 dialogTitle={'Delete ' + props.chapter.name + ' ?'}
                 dialogTrigger={
                   <button

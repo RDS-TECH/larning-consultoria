@@ -914,6 +914,30 @@
           "selectFile": "Please select a file"
         }
       },
+      "structure": {
+        "createChapterTitle": "Create chapter",
+        "createChapterDescription": "Add a new chapter to the course",
+        "addChapter": "Add Chapter",
+        "chapterNamePlaceholder": "Chapter name",
+        "deleteChapterConfirm": "Are you sure you want to delete this chapter?",
+        "createActivityTitle": "Create Activity",
+        "createActivityDescription": "Choose between types of activities to add to the course",
+        "activityNamePlaceholder": "Activity name",
+        "deleteActivityConfirm": "Are you sure you want to delete this activity?",
+        "toast": {
+          "creatingActivity": "Creating activity...",
+          "activityCreated": "Activity created successfully",
+          "uploadingFile": "Uploading file and creating activity...",
+          "fileUploaded": "File uploaded successfully",
+          "creatingActivityWithFile": "Creating activity and uploading file...",
+          "deletingActivity": "Deleting activity...",
+          "activityDeleted": "Activity deleted successfully",
+          "updatingAssignment": "Updating assignment...",
+          "activityUpdated": "The activity has been updated successfully",
+          "activityNameUpdated": "Activity name updated successfully",
+          "activityNameUpdateFailed": "Failed to update activity name"
+        }
+      },
       "unsplash": {
         "dialogTitle": "Choose an image from Unsplash",
         "search": "Search images...",
