@@ -1,7 +1,7 @@
 # Progresso da Migração i18n - LearnHouse
 
 **Data:** 07/11/2025
-**Status:** ✅ Fases 1-3 Completas | ✅ Fase 4.1 Completa | 🔄 Fase 4.2+ Pendente (~8% componentes)
+**Status:** ✅ Fases 1-4.4 Completas | 🔄 Fase 4.5+ Pendente (~12% componentes)
 
 ---
 
@@ -15,7 +15,7 @@
 - **Traduções Base**: 500+ chaves em pt-BR e en (en.json completo)
 - **Language Switcher**: Componente funcional no dashboard
 
-#### ✅ Componentes Migrados (22 componentes = ~8% do total)
+#### ✅ Componentes Migrados (31 componentes = ~12% do total)
 
 **Fase 1: Infraestrutura ✅**
 - Frontend: next-intl + middleware + routing ✅
@@ -48,6 +48,21 @@
 - `apps/web/app/[locale]/orgs/[orgslug]/dash/courses/page.tsx` ✅
 - `apps/web/app/[locale]/orgs/[orgslug]/dash/courses/client.tsx` ✅
 
+**Fase 4.2: Cursos - Edição Geral ✅ (4 componentes)**
+- `apps/web/components/Dashboard/Pages/Course/EditCourseGeneral/EditCourseGeneral.tsx` ✅
+- `apps/web/components/Dashboard/Pages/Course/EditCourseGeneral/LearningItemsList.tsx` ✅
+- `apps/web/components/Dashboard/Pages/Course/EditCourseGeneral/ThumbnailUpdate.tsx` ✅
+- `apps/web/components/Dashboard/Pages/Course/EditCourseGeneral/UnsplashImagePicker.tsx` ✅
+
+**Fase 4.3: Cursos - Estrutura ✅ (4 componentes)**
+- `apps/web/components/Dashboard/Pages/Course/EditCourseStructure/EditCourseStructure.tsx` ✅
+- `apps/web/components/Dashboard/Pages/Course/EditCourseStructure/DraggableElements/ChapterElement.tsx` ✅
+- `apps/web/components/Dashboard/Pages/Course/EditCourseStructure/DraggableElements/ActivityElement.tsx` ✅
+- `apps/web/components/Dashboard/Pages/Course/EditCourseStructure/Buttons/NewActivityButton.tsx` ✅
+
+**Fase 4.4: Cursos - Acesso ✅ (1 componente)**
+- `apps/web/components/Dashboard/Pages/Course/EditCourseAccess/EditCourseAccess.tsx` ✅
+
 **Dashboard Base:**
 - `apps/web/app/[locale]/orgs/[orgslug]/dash/page.tsx` ✅
 - `apps/web/components/Dashboard/Menus/DashLeftMenu.tsx` ✅
@@ -57,22 +72,26 @@
 
 ## 🎯 Próximas Prioridades
 
-### ✅ Fase 3: Módulo de Instalação - COMPLETO
+### ✅ Fase 4.2: Cursos - Edição Geral - COMPLETO
 
-Todos os 8 componentes migrados com sucesso! 🎉
+Todos os 4 componentes migrados com sucesso! 🎉
+- EditCourseGeneral.tsx (285 linhas)
+- LearningItemsList.tsx (350 linhas)
+- ThumbnailUpdate.tsx (350 linhas)
+- UnsplashImagePicker.tsx (175 linhas)
+
+Adicionadas 110+ chaves de tradução no namespace courses.edit.*
 
 ---
 
-### 🔄 Fase 4.2: Cursos - Edição Geral (PRÓXIMA - 5 componentes)
-📁 `apps/web/components/Dashboard/Pages/Course/`
+### 🔄 Fase 4.3: Cursos - Estrutura (PRÓXIMA - 5 componentes)
+📁 `apps/web/components/Dashboard/Pages/Course/EditCourseStructure/`
 
-**Sub-módulos:**
-- **EditCourseGeneral** (5 componentes)
-- **EditCourseStructure** (5 componentes)
+**Próximas sub-fases:**
+- **EditCourseStructure** (5 componentes) ⬅️ PRÓXIMO
 - **EditCourseAccess** (2 componentes)
 - **EditCourseCertification** (2 componentes)
 - **EditCourseContributors** (3 componentes)
-- **Course Listing** (3 componentes)
 
 **Padrão de migração:**
 ```typescript
@@ -338,7 +357,11 @@ git commit -m "feat(i18n): adicionar módulo de certificados
 | **Dashboard Base** | 7 | 4 | 🔶 57% |
 | **Instalação** | 10 | 10 | ✅ 100% |
 | **Cursos - Listagem** | 2 | 2 | ✅ 100% |
-| **Cursos - Edição** | 13 | 0 | ⬜ 0% |
+| **Cursos - Edição Geral** | 4 | 4 | ✅ 100% |
+| **Cursos - Estrutura** | 4 | 4 | ✅ 100% |
+| **Cursos - Acesso** | 1 | 1 | ✅ 100% |
+| **Cursos - Certificação** | 2 | 0 | ⬜ 0% |
+| **Cursos - Contribuidores** | 3 | 0 | ⬜ 0% |
 | **Usuários** | 20+ | 0 | ⬜ 0% |
 | **Organização** | 15+ | 0 | ⬜ 0% |
 | **Atividades** | 30+ | 0 | ⬜ 0% |
@@ -346,7 +369,7 @@ git commit -m "feat(i18n): adicionar módulo de certificados
 | **Editor** | 40+ | 0 | ⬜ 0% |
 | **Pagamentos** | 15+ | 0 | ⬜ 0% |
 | **Páginas Públicas** | 30+ | 0 | ⬜ 0% |
-| **TOTAL** | **270+** | **22** | 🔵 **~8%** |
+| **TOTAL** | **270+** | **31** | 🔵 **~12%** |
 
 ---
 
