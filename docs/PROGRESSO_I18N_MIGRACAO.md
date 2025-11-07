@@ -1,7 +1,7 @@
 # Progresso da Migração i18n - LearnHouse
 
 **Data:** 07/11/2025
-**Status:** ✅ Infraestrutura completa | 🔄 Migração em andamento (~5% componentes)
+**Status:** ✅ Fases 1-3 Completas | ✅ Fase 4.1 Completa | 🔄 Fase 4.2+ Pendente (~8% componentes)
 
 ---
 
@@ -15,60 +15,55 @@
 - **Traduções Base**: 500+ chaves em pt-BR e en (en.json completo)
 - **Language Switcher**: Componente funcional no dashboard
 
-#### ✅ Componentes Migrados (12 componentes)
+#### ✅ Componentes Migrados (22 componentes = ~8% do total)
 
-**Autenticação:**
+**Fase 1: Infraestrutura ✅**
+- Frontend: next-intl + middleware + routing ✅
+- Backend: Python i18n system ✅
+- Translation files: en.json (850+ chaves) + pt-BR.json (850+ chaves) ✅
+- `apps/api/src/utils/i18n.py` ✅ (módulo completo)
+- `apps/api/src/routers/auth.py` ✅ (migrado para i18n)
+
+**Fase 1.3: Language Switcher ✅**
+- `apps/web/components/ui/language-switcher.tsx` ✅
+
+**Fase 2: Autenticação ✅**
 - `apps/web/app/[locale]/auth/login/login.tsx` ✅
-- `apps/web/app/[locale]/auth/signup/signup.tsx` ✅
+- `apps/web/app/[locale]/auth/signup/signup.tsx` ✅ (+ sub-componentes)
 - `apps/web/app/[locale]/auth/forgot/forgot.tsx` ✅
 
-**Dashboard:**
+**Fase 3: Instalação ✅ (8 componentes)**
+- `apps/web/app/[locale]/install/page.tsx` ✅
+- `apps/web/app/[locale]/install/install.tsx` ✅
+- `apps/web/app/[locale]/install/steps/get_started.tsx` ✅
+- `apps/web/app/[locale]/install/steps/org_creation.tsx` ✅
+- `apps/web/app/[locale]/install/steps/account_creation.tsx` ✅
+- `apps/web/app/[locale]/install/steps/default_elements.tsx` ✅
+- `apps/web/app/[locale]/install/steps/sample_data.tsx` ✅
+- `apps/web/app/[locale]/install/steps/finish.tsx` ✅
+- `apps/web/app/[locale]/install/steps/disable_install_mode.tsx` ✅
+- `apps/web/app/[locale]/install/steps/steps.tsx` ✅
+
+**Fase 4.1: Cursos - Listagem ✅**
+- `apps/web/app/[locale]/orgs/[orgslug]/dash/courses/page.tsx` ✅
+- `apps/web/app/[locale]/orgs/[orgslug]/dash/courses/client.tsx` ✅
+
+**Dashboard Base:**
 - `apps/web/app/[locale]/orgs/[orgslug]/dash/page.tsx` ✅
 - `apps/web/components/Dashboard/Menus/DashLeftMenu.tsx` ✅
 - `apps/web/components/Dashboard/Menus/DashMobileMenu.tsx` ✅
-
-**UI Components:**
-- `apps/web/components/ui/language-switcher.tsx` ✅
-- `apps/web/components/Footer/Footer.tsx` ✅ (não requer tradução)
-
-**Backend:**
-- `apps/api/src/routers/auth.py` ✅
-- `apps/api/src/utils/i18n.py` ✅ (módulo completo)
 
 ---
 
 ## 🎯 Próximas Prioridades
 
-### Fase 3: Módulo de Instalação (CRÍTICO - 8 componentes)
-📁 `apps/web/app/[locale]/install/steps/`
+### ✅ Fase 3: Módulo de Instalação - COMPLETO
 
-Primeira experiência do usuário ao configurar o sistema.
-
-**Componentes:**
-1. `Step1GetStarted.tsx`
-2. `Step2CreateOrg.tsx`
-3. `Step3CreateAccount.tsx`
-4. `Step4CreateDefaultElements.tsx`
-5. `Step5ImportSampleData.tsx`
-6. `Step6Finish.tsx`
-7. `page.tsx` (instalação principal)
-
-**Traduções necessárias** (adicionar em pt-BR.json e en.json):
-```json
-{
-  "install": {
-    "welcome": "Bem-vindo ao LearnHouse",
-    "getStarted": "Começar",
-    "createOrg": "Criar Organização",
-    "orgName": "Nome da Organização",
-    // ... etc
-  }
-}
-```
+Todos os 8 componentes migrados com sucesso! 🎉
 
 ---
 
-### Fase 4: Dashboard - Módulo de Cursos (ALTA - 30+ componentes)
+### 🔄 Fase 4.2: Cursos - Edição Geral (PRÓXIMA - 5 componentes)
 📁 `apps/web/components/Dashboard/Pages/Course/`
 
 **Sub-módulos:**
@@ -341,8 +336,9 @@ git commit -m "feat(i18n): adicionar módulo de certificados
 |--------|-------|----------|---|
 | **Autenticação** | 5 | 5 | ✅ 100% |
 | **Dashboard Base** | 7 | 4 | 🔶 57% |
-| **Instalação** | 8 | 0 | ⬜ 0% |
-| **Cursos** | 50+ | 0 | ⬜ 0% |
+| **Instalação** | 10 | 10 | ✅ 100% |
+| **Cursos - Listagem** | 2 | 2 | ✅ 100% |
+| **Cursos - Edição** | 13 | 0 | ⬜ 0% |
 | **Usuários** | 20+ | 0 | ⬜ 0% |
 | **Organização** | 15+ | 0 | ⬜ 0% |
 | **Atividades** | 30+ | 0 | ⬜ 0% |
@@ -350,7 +346,7 @@ git commit -m "feat(i18n): adicionar módulo de certificados
 | **Editor** | 40+ | 0 | ⬜ 0% |
 | **Pagamentos** | 15+ | 0 | ⬜ 0% |
 | **Páginas Públicas** | 30+ | 0 | ⬜ 0% |
-| **TOTAL** | **256+** | **12** | 🔵 **~5%** |
+| **TOTAL** | **270+** | **22** | 🔵 **~8%** |
 
 ---
 
