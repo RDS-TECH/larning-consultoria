@@ -837,5 +837,20 @@
       "message": "You have reached the end of the Installation process, please don't forget to disable installation mode.",
       "docsLink": "LearnHouse Docs"
     }
+  },
+  "courses": {
+    "pageTitle": "Courses",
+    "pageTitleWithOrg": "Courses — {orgName}",
+    "listing": {
+      "title": "Courses",
+      "rightsGuide": "Rights Guide",
+      "createCourse": "Create Course",
+      "createCourseDescription": "Create a new course",
+      "emptyState": {
+        "title": "No courses yet",
+        "adminMessage": "Create a course to add content",
+        "userMessage": "No courses available yet"
+      }
+    }
   }
 }

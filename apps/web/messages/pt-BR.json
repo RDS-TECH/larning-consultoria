@@ -837,5 +837,20 @@
       "message": "Você chegou ao final do processo de instalação, por favor não se esqueça de desabilitar o modo de instalação.",
       "docsLink": "Documentação do LearnHouse"
     }
+  },
+  "courses": {
+    "pageTitle": "Cursos",
+    "pageTitleWithOrg": "Cursos — {orgName}",
+    "listing": {
+      "title": "Cursos",
+      "rightsGuide": "Guia de Permissões",
+      "createCourse": "Criar Curso",
+      "createCourseDescription": "Criar um novo curso",
+      "emptyState": {
+        "title": "Ainda sem cursos",
+        "adminMessage": "Crie um curso para adicionar conteúdo",
+        "userMessage": "Ainda não há cursos disponíveis"
+      }
+    }
   }
 }
