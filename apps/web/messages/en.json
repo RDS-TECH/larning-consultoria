@@ -20,11 +20,25 @@
     "signup": {
       "title": "Create account",
       "openSignup": "Open Signup",
-      "inviteOnly": "Invite Only"
+      "inviteOnly": "Invite Only",
+      "invitedToJoin": "You've been invited to join",
+      "hi": "Hi",
+      "joinOrg": "join {orgName}?",
+      "join": "Join",
+      "inviteRequired": "An invite code is required to join {orgName}",
+      "enterInviteCode": "Please enter an invite code",
+      "submit": "Submit",
+      "inviteValid": "Invite code is valid, you'll be redirected to the signup page in a few seconds",
+      "inviteInvalid": "Invite code is invalid"
     },
     "forgot": {
       "title": "Forgot password",
-      "reset": "Reset password"
+      "reset": "Reset password",
+      "description": "Enter your email address and we will send you a link to reset your password",
+      "email": "Email",
+      "sendResetLink": "Send Reset Link",
+      "loading": "Loading...",
+      "emailSent": ", please check your email"
     }
   },
   "common": {

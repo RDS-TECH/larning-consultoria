@@ -20,11 +20,25 @@
     "signup": {
       "title": "Criar conta",
       "openSignup": "Cadastro Aberto",
-      "inviteOnly": "Somente por Convite"
+      "inviteOnly": "Somente por Convite",
+      "invitedToJoin": "Você foi convidado para participar",
+      "hi": "Olá",
+      "joinOrg": "entrar em {orgName}?",
+      "join": "Participar",
+      "inviteRequired": "Um código de convite é necessário para participar de {orgName}",
+      "enterInviteCode": "Por favor, insira um código de convite",
+      "submit": "Enviar",
+      "inviteValid": "Código de convite válido, você será redirecionado para a página de cadastro em alguns segundos",
+      "inviteInvalid": "Código de convite inválido"
     },
     "forgot": {
       "title": "Esqueci a senha",
-      "reset": "Redefinir senha"
+      "reset": "Redefinir senha",
+      "description": "Digite seu endereço de e-mail e nós enviaremos um link para redefinir sua senha",
+      "email": "E-mail",
+      "sendResetLink": "Enviar Link de Redefinição",
+      "loading": "Carregando...",
+      "emailSent": ", por favor verifique seu e-mail"
     }
   },
   "common": {
