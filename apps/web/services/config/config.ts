@@ -1,13 +1,26 @@
 export const LEARNHOUSE_HTTP_PROTOCOL =
   process.env.NEXT_PUBLIC_LEARNHOUSE_HTTPS?.toLowerCase() === 'true' ? 'https://' : 'http://'
-const LEARNHOUSE_API_URL = `${process.env.NEXT_PUBLIC_LEARNHOUSE_API_URL}`
-export const LEARNHOUSE_BACKEND_URL = `${process.env.NEXT_PUBLIC_LEARNHOUSE_BACKEND_URL}`
+const LEARNHOUSE_API_URL = process.env.NEXT_PUBLIC_LEARNHOUSE_API_URL
+export const LEARNHOUSE_BACKEND_URL = process.env.NEXT_PUBLIC_LEARNHOUSE_BACKEND_URL
 export const LEARNHOUSE_DOMAIN = process.env.NEXT_PUBLIC_LEARNHOUSE_DOMAIN
 export const LEARNHOUSE_TOP_DOMAIN =
   process.env.NEXT_PUBLIC_LEARNHOUSE_TOP_DOMAIN
 
-export const getAPIUrl = () => LEARNHOUSE_API_URL
-export const getBackendUrl = () => LEARNHOUSE_BACKEND_URL
+export const getAPIUrl = () => {
+  if (!LEARNHOUSE_API_URL) {
+    console.error('NEXT_PUBLIC_LEARNHOUSE_API_URL is not defined. Please check your environment variables and redeploy.')
+    return ''
+  }
+  return LEARNHOUSE_API_URL
+}
+
+export const getBackendUrl = () => {
+  if (!LEARNHOUSE_BACKEND_URL) {
+    console.error('NEXT_PUBLIC_LEARNHOUSE_BACKEND_URL is not defined. Please check your environment variables and redeploy.')
+    return ''
+  }
+  return LEARNHOUSE_BACKEND_URL
+}
 
 // Multi Organization Mode
 export const isMultiOrgModeEnabled = () =>
