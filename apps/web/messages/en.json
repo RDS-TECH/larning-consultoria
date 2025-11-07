@@ -851,6 +851,97 @@
         "adminMessage": "Create a course to add content",
         "userMessage": "No courses available yet"
       }
+    },
+    "edit": {
+      "general": {
+        "loading": "Loading...",
+        "name": "Name",
+        "description": "Description",
+        "about": "About",
+        "learnings": "What you'll learn",
+        "tags": "Tags",
+        "tagsPlaceholder": "Enter to add...",
+        "thumbnailType": "Thumbnail Type",
+        "thumbnail": "Thumbnail",
+        "thumbnailTypes": {
+          "image": "Image",
+          "video": "Video",
+          "both": "Both"
+        },
+        "validation": {
+          "required": "Required",
+          "nameTooLong": "Must be 100 characters or less",
+          "descriptionTooLong": "Must be 1000 characters or less",
+          "invalidFormat": "Invalid format",
+          "atLeastOneLearningItem": "At least one learning item is required",
+          "allLearningItemsMustHaveText": "All learning items must have text",
+          "invalidJSONFormat": "Invalid JSON format"
+        }
+      },
+      "learningItems": {
+        "emptyState": "No learning items added yet. Click the button below to add one.",
+        "placeholder": "Enter learning item...",
+        "addLink": "Add link",
+        "editLink": "Edit link",
+        "removeItem": "Remove item",
+        "urlPlaceholder": "Enter URL...",
+        "addItem": "Add learning item"
+      },
+      "thumbnail": {
+        "uploadImage": "Upload Image",
+        "uploadVideo": "Upload Video",
+        "gallery": "Gallery",
+        "browseUnsplash": "Browse Unsplash",
+        "dropOrClick": "Drag & drop or click to upload",
+        "imageFormats": "PNG, JPG or JPEG (max 8MB)",
+        "videoFormats": "MP4 or WebM (max 100MB)",
+        "uploading": "Uploading...",
+        "uploadSuccess": "Thumbnail updated successfully",
+        "uploadError": "Failed to update thumbnail",
+        "unsplashError": "Failed to process Unsplash image",
+        "unsplashInvalidFormat": "Invalid image format from Unsplash",
+        "previewAlt": "Course thumbnail preview",
+        "currentAlt": "Current course thumbnail",
+        "tabImage": "Image",
+        "tabVideo": "Video",
+        "supportedFormatsImage": "Supported formats: PNG, JPG/JPEG (max 8MB)",
+        "supportedFormatsVideo": "Supported formats: MP4, WebM (max 100MB)",
+        "errors": {
+          "invalidImageType": "Invalid file type: {type}. Please upload only PNG or JPG/JPEG images",
+          "invalidVideoType": "Invalid file type: {type}. Please upload only MP4 or WebM videos",
+          "imageTooLarge": "File size ({size}MB) exceeds the 8MB limit",
+          "videoTooLarge": "File size ({size}MB) exceeds the 100MB limit",
+          "selectFile": "Please select a file"
+        }
+      },
+      "unsplash": {
+        "dialogTitle": "Choose an image from Unsplash",
+        "search": "Search images...",
+        "loading": "Loading...",
+        "loadMore": "Load more",
+        "categories": {
+          "nature": "Nature",
+          "technology": "Technology",
+          "business": "Business",
+          "education": "Education",
+          "health": "Health",
+          "art": "Art",
+          "science": "Science",
+          "travel": "Travel",
+          "food": "Food",
+          "sports": "Sports",
+          "music": "Music",
+          "fashion": "Fashion",
+          "history": "History",
+          "architecture": "Architecture",
+          "fitness": "Fitness",
+          "photography": "Photography",
+          "biology": "Biology",
+          "finance": "Finance",
+          "lifestyle": "Lifestyle",
+          "gaming": "Gaming"
+        }
+      }
     }
   }
 }

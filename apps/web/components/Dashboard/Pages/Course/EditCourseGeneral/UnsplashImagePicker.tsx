@@ -1,9 +1,11 @@
+'use client'
 import React, { useState, useEffect, useCallback } from 'react';
 import { createApi } from 'unsplash-js';
-import { Search, Cpu, Briefcase, GraduationCap, Heart, Palette, Plane, Utensils, 
-  Dumbbell, Music, Shirt, Book, Building, Bike, Camera, Microscope, Coins, Coffee, Gamepad, 
+import { Search, Cpu, Briefcase, GraduationCap, Heart, Palette, Plane, Utensils,
+  Dumbbell, Music, Shirt, Book, Building, Bike, Camera, Microscope, Coins, Coffee, Gamepad,
   Flower} from 'lucide-react';
 import Modal from '@components/Objects/StyledElements/Modal/Modal';
+import { useTranslations } from 'next-intl';
 
 const unsplash = createApi({
   accessKey: process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY as string,
@@ -11,27 +13,27 @@ const unsplash = createApi({
 
 const IMAGES_PER_PAGE = 20;
 
-const predefinedLabels = [
-  { name: 'Nature', icon: Flower },
-  { name: 'Technology', icon: Cpu },
-  { name: 'Business', icon: Briefcase },
-  { name: 'Education', icon: GraduationCap },
-  { name: 'Health', icon: Heart },
-  { name: 'Art', icon: Palette },
-  { name: 'Science', icon: Microscope },
-  { name: 'Travel', icon: Plane },
-  { name: 'Food', icon: Utensils },
-  { name: 'Sports', icon: Dumbbell },
-  { name: 'Music', icon: Music },
-  { name: 'Fashion', icon: Shirt },
-  { name: 'History', icon: Book },
-  { name: 'Architecture', icon: Building },
-  { name: 'Fitness', icon: Bike },
-  { name: 'Photography', icon: Camera },
-  { name: 'Biology', icon: Microscope },
-  { name: 'Finance', icon: Coins },
-  { name: 'Lifestyle', icon: Coffee },
-  { name: 'Gaming', icon: Gamepad },
+const categoryDefinitions = [
+  { key: 'nature', icon: Flower, searchQuery: 'Nature' },
+  { key: 'technology', icon: Cpu, searchQuery: 'Technology' },
+  { key: 'business', icon: Briefcase, searchQuery: 'Business' },
+  { key: 'education', icon: GraduationCap, searchQuery: 'Education' },
+  { key: 'health', icon: Heart, searchQuery: 'Health' },
+  { key: 'art', icon: Palette, searchQuery: 'Art' },
+  { key: 'science', icon: Microscope, searchQuery: 'Science' },
+  { key: 'travel', icon: Plane, searchQuery: 'Travel' },
+  { key: 'food', icon: Utensils, searchQuery: 'Food' },
+  { key: 'sports', icon: Dumbbell, searchQuery: 'Sports' },
+  { key: 'music', icon: Music, searchQuery: 'Music' },
+  { key: 'fashion', icon: Shirt, searchQuery: 'Fashion' },
+  { key: 'history', icon: Book, searchQuery: 'History' },
+  { key: 'architecture', icon: Building, searchQuery: 'Architecture' },
+  { key: 'fitness', icon: Bike, searchQuery: 'Fitness' },
+  { key: 'photography', icon: Camera, searchQuery: 'Photography' },
+  { key: 'biology', icon: Microscope, searchQuery: 'Biology' },
+  { key: 'finance', icon: Coins, searchQuery: 'Finance' },
+  { key: 'lifestyle', icon: Coffee, searchQuery: 'Lifestyle' },
+  { key: 'gaming', icon: Gamepad, searchQuery: 'Gaming' },
 ];
 
 interface UnsplashImagePickerProps {
@@ -41,6 +43,7 @@ interface UnsplashImagePickerProps {
 }
 
 const UnsplashImagePicker: React.FC<UnsplashImagePickerProps> = ({ onSelect, onClose, isOpen = true }) => {
+  const t = useTranslations('courses.edit.unsplash');
   const [query, setQuery] = useState('');
   const [images, setImages] = useState<any[]>([]);
   const [page, setPage] = useState(1);
@@ -82,8 +85,8 @@ const UnsplashImagePicker: React.FC<UnsplashImagePickerProps> = ({ onSelect, onC
     setQuery(e.target.value);
   };
 
-  const handleLabelClick = (label: string) => {
-    setQuery(label);
+  const handleLabelClick = (searchQuery: string) => {
+    setQuery(searchQuery);
   };
 
   const handleLoadMore = () => {
@@ -105,20 +108,20 @@ const UnsplashImagePicker: React.FC<UnsplashImagePickerProps> = ({ onSelect, onC
             type="text"
             value={query}
             onChange={handleSearch}
-            placeholder="Search for images..."
+            placeholder={t('search')}
             className="w-full p-2 pl-10 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500"
           />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
         </div>
         <div className="flex flex-wrap gap-2">
-          {predefinedLabels.map(label => (
+          {categoryDefinitions.map(category => (
             <button
-              key={label.name}
-              onClick={() => handleLabelClick(label.name)}
+              key={category.key}
+              onClick={() => handleLabelClick(category.searchQuery)}
               className="px-3 py-1 bg-neutral-100 rounded-lg hover:bg-neutral-200 nice-shadow transition-colors flex items-center gap-1 space-x-1"
             >
-              <label.icon size={16} />
-              <span>{label.name}</span>
+              <category.icon size={16} />
+              <span>{t(`categories.${category.key}`)}</span>
             </button>
           ))}
         </div>
@@ -137,13 +140,13 @@ const UnsplashImagePicker: React.FC<UnsplashImagePickerProps> = ({ onSelect, onC
             </div>
           ))}
         </div>
-        {loading && <p className="text-center mt-4">Loading...</p>}
+        {loading && <p className="text-center mt-4">{t('loading')}</p>}
         {!loading && images.length > 0 && (
           <button
             onClick={handleLoadMore}
             className="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
-            Load More
+            {t('loadMore')}
           </button>
         )}
       </div>
@@ -152,7 +155,7 @@ const UnsplashImagePicker: React.FC<UnsplashImagePickerProps> = ({ onSelect, onC
 
   return (
     <Modal
-      dialogTitle="Choose an image from Unsplash"
+      dialogTitle={t('dialogTitle')}
       dialogContent={modalContent}
       onOpenChange={onClose}
       isDialogOpen={isOpen}

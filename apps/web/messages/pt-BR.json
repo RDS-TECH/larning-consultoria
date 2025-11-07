@@ -851,6 +851,97 @@
         "adminMessage": "Crie um curso para adicionar conteúdo",
         "userMessage": "Ainda não há cursos disponíveis"
       }
+    },
+    "edit": {
+      "general": {
+        "loading": "Carregando...",
+        "name": "Nome",
+        "description": "Descrição",
+        "about": "Sobre",
+        "learnings": "O que você vai aprender",
+        "tags": "Tags",
+        "tagsPlaceholder": "Digite para adicionar...",
+        "thumbnailType": "Tipo de Miniatura",
+        "thumbnail": "Miniatura",
+        "thumbnailTypes": {
+          "image": "Imagem",
+          "video": "Vídeo",
+          "both": "Ambos"
+        },
+        "validation": {
+          "required": "Campo obrigatório",
+          "nameTooLong": "Deve ter no máximo 100 caracteres",
+          "descriptionTooLong": "Deve ter no máximo 1000 caracteres",
+          "invalidFormat": "Formato inválido",
+          "atLeastOneLearningItem": "Pelo menos um item de aprendizado é necessário",
+          "allLearningItemsMustHaveText": "Todos os itens de aprendizado devem ter texto",
+          "invalidJSONFormat": "Formato JSON inválido"
+        }
+      },
+      "learningItems": {
+        "emptyState": "Nenhum item de aprendizado adicionado ainda. Clique no botão abaixo para adicionar um.",
+        "placeholder": "Digite o item de aprendizado...",
+        "addLink": "Adicionar link",
+        "editLink": "Editar link",
+        "removeItem": "Remover item",
+        "urlPlaceholder": "Digite a URL...",
+        "addItem": "Adicionar item de aprendizado"
+      },
+      "thumbnail": {
+        "uploadImage": "Carregar Imagem",
+        "uploadVideo": "Carregar Vídeo",
+        "gallery": "Galeria",
+        "browseUnsplash": "Navegar Unsplash",
+        "dropOrClick": "Arraste e solte ou clique para carregar",
+        "imageFormats": "PNG, JPG ou JPEG (máx. 8MB)",
+        "videoFormats": "MP4 ou WebM (máx. 100MB)",
+        "uploading": "Enviando...",
+        "uploadSuccess": "Miniatura atualizada com sucesso",
+        "uploadError": "Falha ao atualizar miniatura",
+        "unsplashError": "Falha ao processar imagem do Unsplash",
+        "unsplashInvalidFormat": "Formato de imagem inválido do Unsplash",
+        "previewAlt": "Pré-visualização da miniatura do curso",
+        "currentAlt": "Miniatura atual do curso",
+        "tabImage": "Imagem",
+        "tabVideo": "Vídeo",
+        "supportedFormatsImage": "Formatos suportados: PNG, JPG/JPEG (máx. 8MB)",
+        "supportedFormatsVideo": "Formatos suportados: MP4, WebM (máx. 100MB)",
+        "errors": {
+          "invalidImageType": "Tipo de arquivo inválido: {type}. Por favor, envie apenas imagens PNG ou JPG/JPEG",
+          "invalidVideoType": "Tipo de arquivo inválido: {type}. Por favor, envie apenas vídeos MP4 ou WebM",
+          "imageTooLarge": "Tamanho do arquivo ({size}MB) excede o limite de 8MB",
+          "videoTooLarge": "Tamanho do arquivo ({size}MB) excede o limite de 100MB",
+          "selectFile": "Por favor, selecione um arquivo"
+        }
+      },
+      "unsplash": {
+        "dialogTitle": "Escolha uma imagem do Unsplash",
+        "search": "Pesquisar imagens...",
+        "loading": "Carregando...",
+        "loadMore": "Carregar mais",
+        "categories": {
+          "nature": "Natureza",
+          "technology": "Tecnologia",
+          "business": "Negócios",
+          "education": "Educação",
+          "health": "Saúde",
+          "art": "Arte",
+          "science": "Ciência",
+          "travel": "Viagem",
+          "food": "Comida",
+          "sports": "Esportes",
+          "music": "Música",
+          "fashion": "Moda",
+          "history": "História",
+          "architecture": "Arquitetura",
+          "fitness": "Fitness",
+          "photography": "Fotografia",
+          "biology": "Biologia",
+          "finance": "Finanças",
+          "lifestyle": "Estilo de Vida",
+          "gaming": "Games"
+        }
+      }
     }
   }
 }
