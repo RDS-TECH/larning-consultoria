@@ -1,5 +1,5 @@
 export const LEARNHOUSE_HTTP_PROTOCOL =
-  process.env.NEXT_PUBLIC_LEARNHOUSE_HTTPS === 'true' ? 'https://' : 'http://'
+  process.env.NEXT_PUBLIC_LEARNHOUSE_HTTPS?.toLowerCase() === 'true' ? 'https://' : 'http://'
 const LEARNHOUSE_API_URL = `${process.env.NEXT_PUBLIC_LEARNHOUSE_API_URL}`
 export const LEARNHOUSE_BACKEND_URL = `${process.env.NEXT_PUBLIC_LEARNHOUSE_BACKEND_URL}`
 export const LEARNHOUSE_DOMAIN = process.env.NEXT_PUBLIC_LEARNHOUSE_DOMAIN
@@ -11,7 +11,7 @@ export const getBackendUrl = () => LEARNHOUSE_BACKEND_URL
 
 // Multi Organization Mode
 export const isMultiOrgModeEnabled = () =>
-  process.env.NEXT_PUBLIC_LEARNHOUSE_MULTI_ORG === 'true' ? true : false
+  process.env.NEXT_PUBLIC_LEARNHOUSE_MULTI_ORG?.toLowerCase() === 'true' ? true : false
 
 export const getUriWithOrg = (orgslug: string, path: string) => {
   const multi_org = isMultiOrgModeEnabled()
