@@ -1,3 +1,4 @@
+'use client'
 import { useCourse, useCourseDispatch } from '@components/Contexts/CourseContext'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { useOrg } from '@components/Contexts/OrgContext'
@@ -10,6 +11,7 @@ import { Check, ChevronDown, Search, UserPen, Users } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import useSWR, { mutate } from 'swr'
+import { useTranslations } from 'next-intl'
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -84,6 +86,12 @@ const formatDate = (dateString: string) => {
 };
 
 function EditCourseContributors(props: EditCourseContributorsProps) {
+    const t = useTranslations('courses.edit.contributors');
+    const tToast = useTranslations('courses.edit.contributors.toast');
+    const tRoles = useTranslations('courses.edit.contributors.roles');
+    const tStatuses = useTranslations('courses.edit.contributors.statuses');
+    const tTable = useTranslations('courses.edit.contributors.table');
+
     const session = useLHSession() as any;
     const access_token = session?.data?.tokens?.access_token;
     const course = useCourse() as any;
@@ -190,15 +198,15 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
             const response = await bulkAddContributors(courseStructure.course_uuid, selectedUsers, access_token);
             if (response.status === 200) {
                 const result = response.data as BulkAddResponse;
-                
+
                 // Show success message for successful adds
                 if (result.successful.length > 0) {
-                    toast.success(`Successfully added ${result.successful.length} contributor(s)`);
+                    toast.success(tToast('addSuccess', { count: result.successful.length }));
                 }
-                
+
                 // Show error messages for failed adds
                 result.failed.forEach(failure => {
-                    toast.error(`Failed to add ${failure.username}: ${failure.reason}`);
+                    toast.error(tToast('addFailed', { username: failure.username, reason: failure.reason }));
                 });
 
                 // Refresh contributors list
@@ -209,7 +217,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
             }
         } catch (error) {
             console.error('Error adding contributors:', error);
-            toast.error('Failed to add contributors');
+            toast.error(tToast('addError'));
         }
     };
 
@@ -221,7 +229,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
 
             // Don't allow editing if the user is a CREATOR
             if (currentContributor.authorship === 'CREATOR') {
-                toast.error('Cannot modify a creator\'s role or status');
+                toast.error(tToast('cannotModifyCreator'));
                 return;
             }
 
@@ -233,13 +241,13 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
 
             const res = await editContributor(courseStructure.course_uuid, contributorId, updatedData.authorship, updatedData.authorship_status, access_token);
             if (res.status === 200 && res.data?.status === 'success') {
-                toast.success(res.data.detail || 'Successfully updated contributor');
+                toast.success(res.data.detail || tToast('updateSuccess'));
                 mutate(`${getAPIUrl()}courses/${courseStructure.course_uuid}/contributors`);
             } else {
-                toast.error(`Error: ${res.data?.detail || 'Failed to update contributor'}`);
+                toast.error(`${tToast('updateFailed')}: ${res.data?.detail || ''}`);
             }
         } catch (error) {
-            toast.error('An error occurred while updating the contributor.');
+            toast.error(tToast('updateError'));
         }
     };
 
@@ -342,13 +350,13 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
             console.log('Sending usernames:', selectedUsernames); // Debug log
 
             const response = await bulkRemoveContributors(
-                courseStructure.course_uuid, 
+                courseStructure.course_uuid,
                 selectedUsernames, // Send as raw array, not stringified
                 access_token
             );
-            
+
             if (response.status === 200) {
-                toast.success(`Successfully removed ${selectedContributors.length} contributor(s)`);
+                toast.success(tToast('removeSuccess', { count: selectedContributors.length }));
                 // Refresh contributors list
                 mutate(`${getAPIUrl()}courses/${courseStructure.course_uuid}/contributors`);
                 // Clear selection
@@ -356,7 +364,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
             }
         } catch (error) {
             console.error('Error removing contributors:', error);
-            toast.error('Failed to remove contributors');
+            toast.error(tToast('removeFailed'));
         }
     };
 
@@ -367,30 +375,30 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                     <div className="h-6"></div>
                     <div className="mx-4 sm:mx-10 bg-white rounded-xl shadow-xs px-4 py-4">
                         <div className="flex flex-col bg-gray-50 -space-y-1 px-3 sm:px-5 py-3 rounded-md mb-3">
-                            <h1 className="font-bold text-lg sm:text-xl text-gray-800">Course Contributors</h1>
+                            <h1 className="font-bold text-lg sm:text-xl text-gray-800">{t('title')}</h1>
                             <h2 className="text-gray-500 text-xs sm:text-sm">
-                                Manage contributors and add new ones to your course
+                                {t('description')}
                             </h2>
                         </div>
                         <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 mx-auto mb-3">
                             <ConfirmationModal
-                                confirmationButtonText="Open to Contributors"
-                                confirmationMessage="Are you sure you want to open this course to contributors?"
-                                dialogTitle="Open to Contributors?"
+                                confirmationButtonText={t('openToContributors.button')}
+                                confirmationMessage={t('openToContributors.confirm')}
+                                dialogTitle={t('openToContributors.title')}
                                 dialogTrigger={
                                     <div className="w-full h-[200px] bg-slate-100 rounded-lg cursor-pointer hover:bg-slate-200 transition-all">
                                         {isOpenToContributors && (
                                             <div className="bg-green-200 text-green-600 font-bold w-fit my-3 mx-3 absolute text-sm px-3 py-1 rounded-lg">
-                                                Active
+                                                {t('active')}
                                             </div>
                                         )}
                                         <div className="flex flex-col space-y-1 justify-center items-center h-full p-2 sm:p-4">
                                             <UserPen className="text-slate-400" size={32} />
                                             <div className="text-xl sm:text-2xl text-slate-700 font-bold">
-                                                Open to Contributors
+                                                {t('openToContributors.title')}
                                             </div>
                                             <div className="text-gray-400 text-sm sm:text-md tracking-tight w-full sm:w-[500px] leading-5 text-center">
-                                                The course is open for contributors. Users can apply to become contributors and help improve the course content.
+                                                {t('openToContributors.description')}
                                             </div>
                                         </div>
                                     </div>
@@ -399,23 +407,23 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                 status="info"
                             />
                             <ConfirmationModal
-                                confirmationButtonText="Close to Contributors"
-                                confirmationMessage="Are you sure you want to close this course to contributors?"
-                                dialogTitle="Close to Contributors?"
+                                confirmationButtonText={t('closedToContributors.button')}
+                                confirmationMessage={t('closedToContributors.confirm')}
+                                dialogTitle={t('closedToContributors.title')}
                                 dialogTrigger={
                                     <div className="w-full h-[200px] bg-slate-100 rounded-lg cursor-pointer hover:bg-slate-200 transition-all">
                                         {!isOpenToContributors && (
                                             <div className="bg-green-200 text-green-600 font-bold w-fit my-3 mx-3 absolute text-sm px-3 py-1 rounded-lg">
-                                                Active
+                                                {t('active')}
                                             </div>
                                         )}
                                         <div className="flex flex-col space-y-1 justify-center items-center h-full p-2 sm:p-4">
                                             <Users className="text-slate-400" size={32} />
                                             <div className="text-xl sm:text-2xl text-slate-700 font-bold">
-                                                Closed to Contributors
+                                                {t('closedToContributors.title')}
                                             </div>
                                             <div className="text-gray-400 text-sm sm:text-md tracking-tight w-full sm:w-[500px] leading-5 text-center">
-                                                The course is closed for contributors. Only existing contributors can modify the course content.
+                                                {t('closedToContributors.description')}
                                             </div>
                                         </div>
                                     </div>
@@ -428,7 +436,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                             <div className="relative">
                                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                                 <Input
-                                    placeholder="Search users by name or username to add as contributors..."
+                                    placeholder={t('searchPlaceholder')}
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     className="pl-8"
@@ -438,7 +446,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                 <div className="bg-white rounded-xl nice-shadow divide-y">
                                     {isSearching ? (
                                         <div className="p-4 text-center text-sm text-gray-500">
-                                            Searching...
+                                            {t('searching')}
                                         </div>
                                     ) : searchResults && searchResults.length > 0 ? (
                                         <>
@@ -446,7 +454,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                                 <div className="p-3 bg-gray-100">
                                                     <div className="flex items-center justify-between">
                                                         <span className="text-sm text-gray-700">
-                                                            {selectedUsers.length} user{selectedUsers.length > 1 ? 's' : ''} selected
+                                                            {t('usersSelected', { count: selectedUsers.length })}
                                                         </span>
                                                         <div className="flex gap-2">
                                                             <Button
@@ -454,13 +462,13 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                                                 variant="outline"
                                                                 className="text-sm"
                                                             >
-                                                                Clear
+                                                                {t('clear')}
                                                             </Button>
                                                             <Button
                                                                 onClick={handleAddContributors}
                                                                 className="bg-gray-900 text-white hover:bg-gray-800 text-sm"
                                                             >
-                                                                Add Selected
+                                                                {t('addSelected')}
                                                             </Button>
                                                         </div>
                                                     </div>
@@ -518,7 +526,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                                         </div>
                                                         {isExistingContributor && (
                                                             <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                                                                Already a contributor
+                                                                {t('alreadyContributor')}
                                                             </span>
                                                         )}
                                                     </div>
@@ -527,7 +535,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                         </>
                                     ) : (
                                         <div className="p-4 text-center text-sm text-gray-500">
-                                            No users found
+                                            {t('noUsersFound')}
                                         </div>
                                     )}
                                 </div>
@@ -537,7 +545,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                     <div className="p-3 bg-gray-100 rounded-t-xl border-b">
                                         <div className="flex items-center justify-between">
                                             <span className="text-sm text-gray-700">
-                                                {selectedContributors.length} contributor{selectedContributors.length > 1 ? 's' : ''} selected
+                                                {t('contributorsSelected', { count: selectedContributors.length })}
                                             </span>
                                             <div className="flex gap-2">
                                                 <Button
@@ -545,13 +553,13 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                                     variant="outline"
                                                     className="text-sm"
                                                 >
-                                                    Clear
+                                                    {t('clear')}
                                                 </Button>
                                                 <Button
                                                     onClick={handleBulkRemove}
                                                     className="bg-red-600 text-white hover:bg-red-700 text-sm"
                                                 >
-                                                    Remove Selected
+                                                    {t('removeSelected')}
                                                 </Button>
                                             </div>
                                         </div>
@@ -583,12 +591,12 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                                                     />
                                                 </TableHead>
                                                 <TableHead className="w-[50px]"></TableHead>
-                                                <TableHead>Name</TableHead>
-                                                <TableHead>Username</TableHead>
-                                                <TableHead>Email</TableHead>
-                                                <TableHead>Role</TableHead>
-                                                <TableHead>Status</TableHead>
-                                                <TableHead>Added On</TableHead>
+                                                <TableHead>{tTable('name')}</TableHead>
+                                                <TableHead>{tTable('username')}</TableHead>
+                                                <TableHead>{tTable('email')}</TableHead>
+                                                <TableHead>{tTable('role')}</TableHead>
+                                                <TableHead>{tTable('status')}</TableHead>
+                                                <TableHead>{tTable('addedOn')}</TableHead>
                                             </TableRow>
                                         </TableHeader>
                                         <TableBody>

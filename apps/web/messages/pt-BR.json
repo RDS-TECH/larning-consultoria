@@ -977,6 +977,10 @@
         }
       },
       "certification": {
+        "title": "Certificação do Curso",
+        "description": "Habilite e configure certificados para alunos que completarem este curso",
+        "loading": "Carregando...",
+        "errorLoading": "Erro ao carregar certificações",
         "certificationName": "Nome da Certificação",
         "certificationType": "Tipo de Certificação",
         "certificationDescription": "Descrição da Certificação",
@@ -986,14 +990,119 @@
         "descriptionPlaceholder": "Descreva o que esta certificação representa e seu valor...",
         "instructorNamePlaceholder": "ex: Dr. João Silva",
         "qrCodeAlt": "QR Code do Certificado",
-        "orgLogoAlt": "Logo da Organização"
+        "orgLogoAlt": "Logo da Organização",
+        "sections": {
+          "basicInfo": "Informações Básicas",
+          "basicInfoDescription": "Configure os detalhes básicos da sua certificação",
+          "design": "Design do Certificado",
+          "designDescription": "Escolha um padrão decorativo para seu certificado",
+          "preview": "Visualização do Certificado",
+          "previewDescription": "Visualização ao vivo do seu certificado"
+        },
+        "types": {
+          "completion": "Conclusão do Curso",
+          "achievement": "Baseado em Conquistas",
+          "assessment": "Baseado em Avaliação",
+          "participation": "Participação",
+          "mastery": "Domínio de Habilidades",
+          "professional": "Desenvolvimento Profissional",
+          "continuing": "Educação Continuada",
+          "workshop": "Participação em Workshop",
+          "specialization": "Especialização"
+        },
+        "patterns": {
+          "royal": { "name": "Real", "description": "Ornamentado com motivos de coroa" },
+          "tech": { "name": "Tecnologia", "description": "Padrões inspirados em circuitos" },
+          "nature": { "name": "Natureza", "description": "Padrões orgânicos de folhas" },
+          "geometric": { "name": "Geométrico", "description": "Formas e linhas abstratas" },
+          "vintage": { "name": "Vintage", "description": "Estilo art deco" },
+          "waves": { "name": "Ondas", "description": "Padrões de água fluindo" },
+          "minimal": { "name": "Minimalista", "description": "Limpo e simples" },
+          "professional": { "name": "Profissional", "description": "Design pronto para negócios" },
+          "academic": { "name": "Acadêmico", "description": "Estilo universitário tradicional" },
+          "modern": { "name": "Moderno", "description": "Linhas limpas contemporâneas" }
+        },
+        "noCertification": {
+          "title": "Nenhuma Certificação Configurada",
+          "description": "Habilite a certificação para fornecer certificados aos alunos após a conclusão do curso.",
+          "button": "Habilitar Certificação",
+          "creating": "Criando..."
+        },
+        "creating": {
+          "title": "Criando Certificação...",
+          "description": "Por favor, aguarde enquanto configuramos a certificação do seu curso."
+        },
+        "validation": {
+          "requiredWhenEnabled": "Obrigatório quando a certificação está habilitada",
+          "nameTooLong": "Deve ter 100 caracteres ou menos",
+          "descriptionTooLong": "Deve ter 500 caracteres ou menos"
+        },
+        "toast": {
+          "created": "Certificação criada com sucesso",
+          "createFailed": "Falha ao criar certificação",
+          "removed": "Certificação removida com sucesso",
+          "removeFailed": "Falha ao remover certificação"
+        }
       },
       "contributors": {
-        "title": "Contribuidores",
+        "title": "Contribuidores do Curso",
+        "description": "Gerencie contribuidores e adicione novos ao seu curso",
         "addContributor": "Adicionar Contribuidor",
         "removeContributor": "Remover Contribuidor",
         "noContributors": "Nenhum contribuidor adicionado",
-        "selectUser": "Selecionar usuário..."
+        "selectUser": "Selecionar usuário...",
+        "searchPlaceholder": "Pesquisar usuários por nome ou nome de usuário para adicionar como contribuidores...",
+        "searching": "Pesquisando...",
+        "noUsersFound": "Nenhum usuário encontrado",
+        "alreadyContributor": "Já é um contribuidor",
+        "usersSelected": "{count} usuário(s) selecionado(s)",
+        "contributorsSelected": "{count} contribuidor(es) selecionado(s)",
+        "clear": "Limpar",
+        "addSelected": "Adicionar Selecionados",
+        "removeSelected": "Remover Selecionados",
+        "openToContributors": {
+          "title": "Aberto para Contribuidores",
+          "description": "O curso está aberto para contribuidores. Usuários podem se candidatar para se tornar contribuidores e ajudar a melhorar o conteúdo do curso.",
+          "button": "Abrir para Contribuidores",
+          "confirm": "Tem certeza que deseja abrir este curso para contribuidores?"
+        },
+        "closedToContributors": {
+          "title": "Fechado para Contribuidores",
+          "description": "O curso está fechado para contribuidores. Apenas contribuidores existentes podem modificar o conteúdo do curso.",
+          "button": "Fechar para Contribuidores",
+          "confirm": "Tem certeza que deseja fechar este curso para contribuidores?"
+        },
+        "active": "Ativo",
+        "table": {
+          "name": "Nome",
+          "username": "Nome de Usuário",
+          "email": "Email",
+          "role": "Função",
+          "status": "Status",
+          "addedOn": "Adicionado em"
+        },
+        "roles": {
+          "CREATOR": "CRIADOR",
+          "CONTRIBUTOR": "CONTRIBUIDOR",
+          "MAINTAINER": "MANTENEDOR",
+          "REPORTER": "REPÓRTER"
+        },
+        "statuses": {
+          "ACTIVE": "ATIVO",
+          "INACTIVE": "INATIVO",
+          "PENDING": "PENDENTE"
+        },
+        "toast": {
+          "addSuccess": "Adicionado(s) {count} contribuidor(es) com sucesso",
+          "addFailed": "Falha ao adicionar {username}: {reason}",
+          "addError": "Falha ao adicionar contribuidores",
+          "updateSuccess": "Contribuidor atualizado com sucesso",
+          "updateFailed": "Falha ao atualizar contribuidor",
+          "updateError": "Ocorreu um erro ao atualizar o contribuidor.",
+          "cannotModifyCreator": "Não é possível modificar a função ou status de um criador",
+          "removeSuccess": "Removido(s) {count} contribuidor(es) com sucesso",
+          "removeFailed": "Falha ao remover contribuidores"
+        }
       }
     }
   }

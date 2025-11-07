@@ -977,6 +977,10 @@
         }
       },
       "certification": {
+        "title": "Course Certification",
+        "description": "Enable and configure certificates for students who complete this course",
+        "loading": "Loading...",
+        "errorLoading": "Error loading certifications",
         "certificationName": "Certification Name",
         "certificationType": "Certification Type",
         "certificationDescription": "Certification Description",
@@ -986,14 +990,119 @@
         "descriptionPlaceholder": "Describe what this certification represents and its value...",
         "instructorNamePlaceholder": "e.g., Dr. Jane Smith",
         "qrCodeAlt": "Certificate QR Code",
-        "orgLogoAlt": "Organization Logo"
+        "orgLogoAlt": "Organization Logo",
+        "sections": {
+          "basicInfo": "Basic Information",
+          "basicInfoDescription": "Configure the basic details of your certification",
+          "design": "Certificate Design",
+          "designDescription": "Choose a decorative pattern for your certificate",
+          "preview": "Certificate Preview",
+          "previewDescription": "Live preview of your certificate"
+        },
+        "types": {
+          "completion": "Course Completion",
+          "achievement": "Achievement Based",
+          "assessment": "Assessment Based",
+          "participation": "Participation",
+          "mastery": "Skill Mastery",
+          "professional": "Professional Development",
+          "continuing": "Continuing Education",
+          "workshop": "Workshop Attendance",
+          "specialization": "Specialization"
+        },
+        "patterns": {
+          "royal": { "name": "Royal", "description": "Ornate with crown motifs" },
+          "tech": { "name": "Tech", "description": "Circuit-inspired patterns" },
+          "nature": { "name": "Nature", "description": "Organic leaf patterns" },
+          "geometric": { "name": "Geometric", "description": "Abstract shapes & lines" },
+          "vintage": { "name": "Vintage", "description": "Art deco styling" },
+          "waves": { "name": "Waves", "description": "Flowing water patterns" },
+          "minimal": { "name": "Minimal", "description": "Clean and simple" },
+          "professional": { "name": "Professional", "description": "Business-ready design" },
+          "academic": { "name": "Academic", "description": "Traditional university style" },
+          "modern": { "name": "Modern", "description": "Contemporary clean lines" }
+        },
+        "noCertification": {
+          "title": "No Certification Configured",
+          "description": "Enable certification to provide students with certificates upon course completion.",
+          "button": "Enable Certification",
+          "creating": "Creating..."
+        },
+        "creating": {
+          "title": "Creating Certification...",
+          "description": "Please wait while we set up your course certification."
+        },
+        "validation": {
+          "requiredWhenEnabled": "Required when certification is enabled",
+          "nameTooLong": "Must be 100 characters or less",
+          "descriptionTooLong": "Must be 500 characters or less"
+        },
+        "toast": {
+          "created": "Certification created successfully",
+          "createFailed": "Failed to create certification",
+          "removed": "Certification removed successfully",
+          "removeFailed": "Failed to remove certification"
+        }
       },
       "contributors": {
-        "title": "Contributors",
+        "title": "Course Contributors",
+        "description": "Manage contributors and add new ones to your course",
         "addContributor": "Add Contributor",
         "removeContributor": "Remove Contributor",
         "noContributors": "No contributors added",
-        "selectUser": "Select user..."
+        "selectUser": "Select user...",
+        "searchPlaceholder": "Search users by name or username to add as contributors...",
+        "searching": "Searching...",
+        "noUsersFound": "No users found",
+        "alreadyContributor": "Already a contributor",
+        "usersSelected": "{count} user(s) selected",
+        "contributorsSelected": "{count} contributor(s) selected",
+        "clear": "Clear",
+        "addSelected": "Add Selected",
+        "removeSelected": "Remove Selected",
+        "openToContributors": {
+          "title": "Open to Contributors",
+          "description": "The course is open for contributors. Users can apply to become contributors and help improve the course content.",
+          "button": "Open to Contributors",
+          "confirm": "Are you sure you want to open this course to contributors?"
+        },
+        "closedToContributors": {
+          "title": "Closed to Contributors",
+          "description": "The course is closed for contributors. Only existing contributors can modify the course content.",
+          "button": "Close to Contributors",
+          "confirm": "Are you sure you want to close this course to contributors?"
+        },
+        "active": "Active",
+        "table": {
+          "name": "Name",
+          "username": "Username",
+          "email": "Email",
+          "role": "Role",
+          "status": "Status",
+          "addedOn": "Added On"
+        },
+        "roles": {
+          "CREATOR": "CREATOR",
+          "CONTRIBUTOR": "CONTRIBUTOR",
+          "MAINTAINER": "MAINTAINER",
+          "REPORTER": "REPORTER"
+        },
+        "statuses": {
+          "ACTIVE": "ACTIVE",
+          "INACTIVE": "INACTIVE",
+          "PENDING": "PENDING"
+        },
+        "toast": {
+          "addSuccess": "Successfully added {count} contributor(s)",
+          "addFailed": "Failed to add {username}: {reason}",
+          "addError": "Failed to add contributors",
+          "updateSuccess": "Successfully updated contributor",
+          "updateFailed": "Failed to update contributor",
+          "updateError": "An error occurred while updating the contributor.",
+          "cannotModifyCreator": "Cannot modify a creator's role or status",
+          "removeSuccess": "Successfully removed {count} contributor(s)",
+          "removeFailed": "Failed to remove contributors"
+        }
       }
     }
   }
