@@ -741,6 +741,308 @@
     "selectOrgLabel": "Select organization label",
     "ownership": {
       "title": "Course Ownership Types"
+    },
+    "edit": {
+      "general": {
+        "title": "Organization Settings",
+        "subtitle": "Manage your organization's profile and settings",
+        "organizationName": "Organization Name",
+        "charactersLeft": "{count} characters left",
+        "shortDescription": "Short Description",
+        "organizationLabel": "Organization Label",
+        "aboutOrganization": "About Organization",
+        "showcaseTitle": "Showcase in LearnHouse Explore",
+        "showcaseDescription": "Share your organization's courses and content with the LearnHouse community. Enable this to help learners discover your valuable educational resources.",
+        "exploreLabel": "EXPLORE",
+        "placeholders": {
+          "organizationName": "Organization Name",
+          "briefDescription": "Brief description of your organization",
+          "detailedDescription": "Detailed description of your organization"
+        },
+        "labels": {
+          "languages": "🌐 Languages",
+          "business": "💰 Business",
+          "ecommerce": "🛍 E-commerce",
+          "gaming": "🎮 Gaming",
+          "music": "🎸 Music",
+          "sports": "⚽ Sports",
+          "cars": "🚗 Cars",
+          "sales_marketing": "🚀 Sales & Marketing",
+          "tech": "💻 Tech",
+          "photo_video": "📸 Photo & Video",
+          "pets": "🐕 Pets",
+          "personal_development": "📚 Personal Development",
+          "real_estate": "🏠 Real Estate",
+          "beauty_fashion": "👠 Beauty & Fashion",
+          "travel": "✈️ Travel",
+          "productivity": "⏳ Productivity",
+          "health_fitness": "🍎 Health & Fitness",
+          "finance": "📈 Finance",
+          "arts_crafts": "🎨 Arts & Crafts",
+          "education": "📚 Education",
+          "stem": "🔬 STEM",
+          "humanities": "📖 Humanities",
+          "professional_skills": "💼 Professional Skills",
+          "digital_skills": "💻 Digital Skills",
+          "creative_arts": "🎨 Creative Arts",
+          "social_sciences": "🌍 Social Sciences",
+          "test_prep": "✍️ Test Preparation",
+          "vocational": "🔧 Vocational Training",
+          "early_education": "🎯 Early Education"
+        },
+        "validation": {
+          "nameRequired": "Name is required",
+          "nameTooLong": "Organization name must be 60 characters or less",
+          "descriptionRequired": "Short description is required",
+          "descriptionTooLong": "Short description must be 100 characters or less",
+          "aboutTooLong": "About text must be 400 characters or less",
+          "labelRequired": "Organization label is required"
+        },
+        "toast": {
+          "updating": "Updating organization...",
+          "updated": "Organization Updated",
+          "updateFailed": "Failed to update organization"
+        }
+      },
+      "images": {
+        "title": "Images & Previews",
+        "subtitle": "Manage your organization's logo, thumbnail, and preview images",
+        "tabs": {
+          "logo": "Logo",
+          "thumbnail": "Thumbnail",
+          "previews": "Previews"
+        },
+        "uploadNewLogo": "Upload New Logo",
+        "uploadNewThumbnail": "Upload New Thumbnail",
+        "addPreview": "Add Preview",
+        "acceptsFormats": "Accepts PNG, JPG (max 5MB)",
+        "recommendedSize": "Recommended size: 200x100 pixels",
+        "dragToReorder": "Drag to reorder • Maximum 4 previews • Supports images & videos",
+        "uploadImages": "Upload Images",
+        "uploadImagesDescription": "PNG, JPG (max 5MB)",
+        "youtubeTitle": "Add YouTube Video",
+        "youtubeDescription": "Paste your YouTube video URL",
+        "loomTitle": "Add Loom Video",
+        "loomDescription": "Paste your Loom video URL",
+        "addVideo": "Add Video",
+        "placeholders": {
+          "youtubeUrl": "https://youtube.com/watch?v=...",
+          "loomUrl": "https://www.loom.com/share/..."
+        },
+        "toast": {
+          "uploadingLogo": "Uploading logo...",
+          "logoUpdated": "Logo Updated",
+          "logoUploadFailed": "Failed to upload logo",
+          "uploadingThumbnail": "Uploading thumbnail...",
+          "thumbnailUpdated": "Thumbnail Updated",
+          "thumbnailUploadFailed": "Failed to upload thumbnail",
+          "uploadingPreviews": "Uploading {count} preview{plural}...",
+          "previewsAdded": "{count} preview{plural} added",
+          "uploadPreviewsFailed": "Failed to upload previews",
+          "canOnlyUpload": "You can only upload {count} more preview{plural}",
+          "removingPreview": "Removing preview...",
+          "previewRemoved": "Preview removed",
+          "previewRemoveFailed": "Failed to remove preview",
+          "addingVideo": "Adding video preview...",
+          "videoAdded": "Video preview added",
+          "videoAddFailed": "Failed to add video preview",
+          "invalidUrl": "Invalid {service} URL",
+          "videoAlreadyAdded": "This video has already been added",
+          "updatingOrder": "Updating preview order...",
+          "orderUpdated": "Preview order updated",
+          "orderUpdateFailed": "Failed to update preview order"
+        }
+      },
+      "landing": {
+        "title": "Landing Page",
+        "subtitle": "Customize your organization's landing page",
+        "beta": "BETA",
+        "enabledLabel": "Landing Page Enabled",
+        "sections": "Sections",
+        "addSection": "Add Section",
+        "selectToEdit": "Select a section to edit or add a new one",
+        "sectionTypes": {
+          "hero": {
+            "label": "Hero",
+            "description": "Add a hero section with heading and call-to-action"
+          },
+          "textAndImage": {
+            "label": "Text & Image",
+            "description": "Add a section with text and an image"
+          },
+          "logos": {
+            "label": "Logos",
+            "description": "Add a section to showcase logos"
+          },
+          "people": {
+            "label": "People",
+            "description": "Add a section to highlight team members"
+          },
+          "featuredCourses": {
+            "label": "Courses",
+            "description": "Add a section to showcase selected courses"
+          }
+        },
+        "editor": {
+          "sectionTitle": "Section Title",
+          "placeholders": {
+            "sectionTitle": "Enter section title",
+            "headingText": "Enter heading text",
+            "subheadingText": "Enter subheading text",
+            "imageUrl": "Image URL",
+            "altText": "Alt text",
+            "buttonText": "Button text",
+            "buttonLink": "Button link",
+            "logoUrl": "Logo URL",
+            "personName": "Person's name",
+            "username": "@username",
+            "imageUrl": "Image URL",
+            "description": "Description or role"
+          },
+          "hero": {
+            "title": "Hero Section",
+            "tabs": {
+              "content": "Content",
+              "background": "Background",
+              "buttons": "Buttons",
+              "illustration": "Illustration"
+            },
+            "heading": "Heading",
+            "headingColor": "Heading Color",
+            "subheading": "Subheading",
+            "subheadingColor": "Subheading Color",
+            "backgroundType": "Background Type",
+            "backgroundColor": "Background Color",
+            "backgroundImage": "Background Image",
+            "uploadImage": "Upload Image",
+            "addButton": "Add Button",
+            "buttonText": "Button Text & Colors",
+            "buttonLink": "Button Link",
+            "illustrationImage": "Illustration Image",
+            "position": "Position",
+            "size": "Size",
+            "removeIllustration": "Remove Illustration",
+            "backgroundTypes": {
+              "solid": "Solid Color",
+              "gradient": "Gradient",
+              "image": "Image"
+            },
+            "gradientType": "Gradient Type",
+            "gradientPreset": "Gradient Preset",
+            "gradientDirection": "Gradient Direction",
+            "startColor": "Start Color",
+            "endColor": "End Color",
+            "presetGradients": "Preset Gradients",
+            "customGradient": "Custom Gradient",
+            "positions": {
+              "left": "Left",
+              "right": "Right"
+            },
+            "sizes": {
+              "small": "Small",
+              "medium": "Medium",
+              "large": "Large"
+            },
+            "directions": {
+              "topRight": "↗️ Top Right",
+              "top": "⬆️ Top",
+              "topLeft": "↖️ Top Left",
+              "left": "⬅️ Left",
+              "bottomLeft": "↙️ Bottom Left",
+              "bottom": "⬇️ Bottom",
+              "bottomRight": "↘️ Bottom Right",
+              "right": "➡️ Right"
+            }
+          },
+          "textAndImage": {
+            "title": "Text & Image Section",
+            "content": "Content",
+            "imagePosition": "Image Position",
+            "image": "Image",
+            "uploadNewImage": "Upload New Image"
+          },
+          "logos": {
+            "title": "Logos Section",
+            "logos": "Logos",
+            "uploadLogo": "Upload Logo",
+            "addLogo": "Add Logo"
+          },
+          "people": {
+            "title": "People Section",
+            "people": "People",
+            "name": "Name",
+            "username": "Username",
+            "image": "Image",
+            "description": "Description",
+            "uploadAvatar": "Upload Avatar",
+            "addPerson": "Add Person"
+          },
+          "courses": {
+            "title": "Courses Section",
+            "selectCourses": "Select Courses",
+            "loadingCourses": "Loading courses...",
+            "selected": "Selected",
+            "select": "Select"
+          }
+        },
+        "toast": {
+          "saving": "Saving...",
+          "saved": "Landing page saved successfully",
+          "saveFailed": "Error saving landing page",
+          "orgIdNotFound": "Organization ID not found",
+          "uploadSuccess": "Image uploaded successfully",
+          "uploadFailed": "Failed to upload image"
+        }
+      },
+      "other": {
+        "title": "Scripts",
+        "subtitle": "Add custom JavaScript scripts to your organization",
+        "safetyWarning": "For your organization's safety, please ensure you trust and understand any scripts before adding them. Scripts can interact with your organization's pages.",
+        "addScript": "Add Script",
+        "noScriptsYet": "No scripts added yet",
+        "addFirstScript": "Add your first script to get started",
+        "scriptName": "Script Name",
+        "scriptContent": "Script Content",
+        "placeholders": {
+          "scriptName": "Enter script name",
+          "scriptContent": "Enter JavaScript code"
+        },
+        "cancel": "Cancel",
+        "saveScript": "Save Script",
+        "validation": {
+          "nameRequired": "Script name is required",
+          "contentRequired": "Script content is required"
+        },
+        "toast": {
+          "updating": "Updating organization...",
+          "saved": "Script saved successfully",
+          "saveFailed": "Failed to save script",
+          "deleting": "Deleting script...",
+          "deleted": "Script deleted successfully",
+          "deleteFailed": "Failed to delete script"
+        }
+      },
+      "socials": {
+        "title": "Social Links",
+        "subtitle": "Manage your organization's social media presence",
+        "socialLinks": "Social Links",
+        "customLinks": "Custom Links",
+        "customLinksDescription": "Add up to 3 custom links that will appear on your organization's profile",
+        "addLink": "Add Link",
+        "placeholders": {
+          "twitterUrl": "Twitter profile URL",
+          "facebookUrl": "Facebook profile URL",
+          "instagramUrl": "Instagram profile URL",
+          "youtubeUrl": "YouTube channel URL",
+          "linkLabel": "Label",
+          "linkUrl": "URL"
+        },
+        "toast": {
+          "updating": "Updating organization...",
+          "updated": "Organization Updated",
+          "updateFailed": "Failed to update organization"
+        }
+      }
     }
   },
   "payments": {

@@ -741,6 +741,308 @@
     "selectOrgLabel": "Selecionar rótulo da organização",
     "ownership": {
       "title": "Tipos de Propriedade do Curso"
+    },
+    "edit": {
+      "general": {
+        "title": "Configurações da Organização",
+        "subtitle": "Gerencie o perfil e configurações da sua organização",
+        "organizationName": "Nome da Organização",
+        "charactersLeft": "{count} caracteres restantes",
+        "shortDescription": "Descrição Curta",
+        "organizationLabel": "Rótulo da Organização",
+        "aboutOrganization": "Sobre a Organização",
+        "showcaseTitle": "Mostrar no LearnHouse Explore",
+        "showcaseDescription": "Compartilhe os cursos e conteúdo da sua organização com a comunidade LearnHouse. Habilite isso para ajudar os alunos a descobrir seus valiosos recursos educacionais.",
+        "exploreLabel": "EXPLORAR",
+        "placeholders": {
+          "organizationName": "Nome da Organização",
+          "briefDescription": "Breve descrição da sua organização",
+          "detailedDescription": "Descrição detalhada da sua organização"
+        },
+        "labels": {
+          "languages": "🌐 Idiomas",
+          "business": "💰 Negócios",
+          "ecommerce": "🛍 E-commerce",
+          "gaming": "🎮 Games",
+          "music": "🎸 Música",
+          "sports": "⚽ Esportes",
+          "cars": "🚗 Carros",
+          "sales_marketing": "🚀 Vendas e Marketing",
+          "tech": "💻 Tecnologia",
+          "photo_video": "📸 Foto e Vídeo",
+          "pets": "🐕 Animais de Estimação",
+          "personal_development": "📚 Desenvolvimento Pessoal",
+          "real_estate": "🏠 Imóveis",
+          "beauty_fashion": "👠 Beleza e Moda",
+          "travel": "✈️ Viagens",
+          "productivity": "⏳ Produtividade",
+          "health_fitness": "🍎 Saúde e Fitness",
+          "finance": "📈 Finanças",
+          "arts_crafts": "🎨 Artes e Artesanato",
+          "education": "📚 Educação",
+          "stem": "🔬 STEM",
+          "humanities": "📖 Humanidades",
+          "professional_skills": "💼 Habilidades Profissionais",
+          "digital_skills": "💻 Habilidades Digitais",
+          "creative_arts": "🎨 Artes Criativas",
+          "social_sciences": "🌍 Ciências Sociais",
+          "test_prep": "✍️ Preparação para Testes",
+          "vocational": "🔧 Treinamento Vocacional",
+          "early_education": "🎯 Educação Infantil"
+        },
+        "validation": {
+          "nameRequired": "Nome é obrigatório",
+          "nameTooLong": "O nome da organização deve ter no máximo 60 caracteres",
+          "descriptionRequired": "Descrição curta é obrigatória",
+          "descriptionTooLong": "A descrição curta deve ter no máximo 100 caracteres",
+          "aboutTooLong": "O texto sobre deve ter no máximo 400 caracteres",
+          "labelRequired": "Rótulo da organização é obrigatório"
+        },
+        "toast": {
+          "updating": "Atualizando organização...",
+          "updated": "Organização Atualizada",
+          "updateFailed": "Falha ao atualizar organização"
+        }
+      },
+      "images": {
+        "title": "Imagens e Pré-visualizações",
+        "subtitle": "Gerencie o logo, miniatura e imagens de pré-visualização da sua organização",
+        "tabs": {
+          "logo": "Logo",
+          "thumbnail": "Miniatura",
+          "previews": "Pré-visualizações"
+        },
+        "uploadNewLogo": "Enviar Novo Logo",
+        "uploadNewThumbnail": "Enviar Nova Miniatura",
+        "addPreview": "Adicionar Pré-visualização",
+        "acceptsFormats": "Aceita PNG, JPG (máx. 5MB)",
+        "recommendedSize": "Tamanho recomendado: 200x100 pixels",
+        "dragToReorder": "Arraste para reordenar • Máximo 4 pré-visualizações • Suporta imagens e vídeos",
+        "uploadImages": "Enviar Imagens",
+        "uploadImagesDescription": "PNG, JPG (máx. 5MB)",
+        "youtubeTitle": "Adicionar Vídeo do YouTube",
+        "youtubeDescription": "Cole a URL do seu vídeo do YouTube",
+        "loomTitle": "Adicionar Vídeo do Loom",
+        "loomDescription": "Cole a URL do seu vídeo do Loom",
+        "addVideo": "Adicionar Vídeo",
+        "placeholders": {
+          "youtubeUrl": "https://youtube.com/watch?v=...",
+          "loomUrl": "https://www.loom.com/share/..."
+        },
+        "toast": {
+          "uploadingLogo": "Enviando logo...",
+          "logoUpdated": "Logo Atualizado",
+          "logoUploadFailed": "Falha ao enviar logo",
+          "uploadingThumbnail": "Enviando miniatura...",
+          "thumbnailUpdated": "Miniatura Atualizada",
+          "thumbnailUploadFailed": "Falha ao enviar miniatura",
+          "uploadingPreviews": "Enviando {count} pré-visualização{plural}...",
+          "previewsAdded": "{count} pré-visualização{plural} adicionada{plural}",
+          "uploadPreviewsFailed": "Falha ao enviar pré-visualizações",
+          "canOnlyUpload": "Você só pode enviar mais {count} pré-visualização{plural}",
+          "removingPreview": "Removendo pré-visualização...",
+          "previewRemoved": "Pré-visualização removida",
+          "previewRemoveFailed": "Falha ao remover pré-visualização",
+          "addingVideo": "Adicionando pré-visualização de vídeo...",
+          "videoAdded": "Pré-visualização de vídeo adicionada",
+          "videoAddFailed": "Falha ao adicionar pré-visualização de vídeo",
+          "invalidUrl": "URL {service} inválida",
+          "videoAlreadyAdded": "Este vídeo já foi adicionado",
+          "updatingOrder": "Atualizando ordem das pré-visualizações...",
+          "orderUpdated": "Ordem das pré-visualizações atualizada",
+          "orderUpdateFailed": "Falha ao atualizar ordem das pré-visualizações"
+        }
+      },
+      "landing": {
+        "title": "Página de Destino",
+        "subtitle": "Personalize a página de destino da sua organização",
+        "beta": "BETA",
+        "enabledLabel": "Página de Destino Habilitada",
+        "sections": "Seções",
+        "addSection": "Adicionar Seção",
+        "selectToEdit": "Selecione uma seção para editar ou adicione uma nova",
+        "sectionTypes": {
+          "hero": {
+            "label": "Hero",
+            "description": "Adicione uma seção hero com título e chamada para ação"
+          },
+          "textAndImage": {
+            "label": "Texto e Imagem",
+            "description": "Adicione uma seção com texto e uma imagem"
+          },
+          "logos": {
+            "label": "Logos",
+            "description": "Adicione uma seção para exibir logos"
+          },
+          "people": {
+            "label": "Pessoas",
+            "description": "Adicione uma seção para destacar membros da equipe"
+          },
+          "featuredCourses": {
+            "label": "Cursos",
+            "description": "Adicione uma seção para mostrar cursos selecionados"
+          }
+        },
+        "editor": {
+          "sectionTitle": "Título da Seção",
+          "placeholders": {
+            "sectionTitle": "Digite o título da seção",
+            "headingText": "Digite o texto do título",
+            "subheadingText": "Digite o texto do subtítulo",
+            "imageUrl": "URL da imagem",
+            "altText": "Texto alternativo",
+            "buttonText": "Texto do botão",
+            "buttonLink": "Link do botão",
+            "logoUrl": "URL do logo",
+            "personName": "Nome da pessoa",
+            "username": "@nome_usuario",
+            "imageUrl": "URL da imagem",
+            "description": "Descrição ou função"
+          },
+          "hero": {
+            "title": "Seção Hero",
+            "tabs": {
+              "content": "Conteúdo",
+              "background": "Fundo",
+              "buttons": "Botões",
+              "illustration": "Ilustração"
+            },
+            "heading": "Título",
+            "headingColor": "Cor do Título",
+            "subheading": "Subtítulo",
+            "subheadingColor": "Cor do Subtítulo",
+            "backgroundType": "Tipo de Fundo",
+            "backgroundColor": "Cor de Fundo",
+            "backgroundImage": "Imagem de Fundo",
+            "uploadImage": "Enviar Imagem",
+            "addButton": "Adicionar Botão",
+            "buttonText": "Texto do Botão e Cores",
+            "buttonLink": "Link do Botão",
+            "illustrationImage": "Imagem de Ilustração",
+            "position": "Posição",
+            "size": "Tamanho",
+            "removeIllustration": "Remover Ilustração",
+            "backgroundTypes": {
+              "solid": "Cor Sólida",
+              "gradient": "Gradiente",
+              "image": "Imagem"
+            },
+            "gradientType": "Tipo de Gradiente",
+            "gradientPreset": "Predefinição de Gradiente",
+            "gradientDirection": "Direção do Gradiente",
+            "startColor": "Cor Inicial",
+            "endColor": "Cor Final",
+            "presetGradients": "Gradientes Predefinidos",
+            "customGradient": "Gradiente Personalizado",
+            "positions": {
+              "left": "Esquerda",
+              "right": "Direita"
+            },
+            "sizes": {
+              "small": "Pequeno",
+              "medium": "Médio",
+              "large": "Grande"
+            },
+            "directions": {
+              "topRight": "↗️ Superior Direito",
+              "top": "⬆️ Superior",
+              "topLeft": "↖️ Superior Esquerdo",
+              "left": "⬅️ Esquerda",
+              "bottomLeft": "↙️ Inferior Esquerdo",
+              "bottom": "⬇️ Inferior",
+              "bottomRight": "↘️ Inferior Direito",
+              "right": "➡️ Direita"
+            }
+          },
+          "textAndImage": {
+            "title": "Seção Texto e Imagem",
+            "content": "Conteúdo",
+            "imagePosition": "Posição da Imagem",
+            "image": "Imagem",
+            "uploadNewImage": "Enviar Nova Imagem"
+          },
+          "logos": {
+            "title": "Seção de Logos",
+            "logos": "Logos",
+            "uploadLogo": "Enviar Logo",
+            "addLogo": "Adicionar Logo"
+          },
+          "people": {
+            "title": "Seção de Pessoas",
+            "people": "Pessoas",
+            "name": "Nome",
+            "username": "Nome de Usuário",
+            "image": "Imagem",
+            "description": "Descrição",
+            "uploadAvatar": "Enviar Avatar",
+            "addPerson": "Adicionar Pessoa"
+          },
+          "courses": {
+            "title": "Seção de Cursos",
+            "selectCourses": "Selecionar Cursos",
+            "loadingCourses": "Carregando cursos...",
+            "selected": "Selecionado",
+            "select": "Selecionar"
+          }
+        },
+        "toast": {
+          "saving": "Salvando...",
+          "saved": "Página de destino salva com sucesso",
+          "saveFailed": "Erro ao salvar página de destino",
+          "orgIdNotFound": "ID da organização não encontrado",
+          "uploadSuccess": "Imagem enviada com sucesso",
+          "uploadFailed": "Falha ao enviar imagem"
+        }
+      },
+      "other": {
+        "title": "Scripts",
+        "subtitle": "Adicione scripts JavaScript personalizados à sua organização",
+        "safetyWarning": "Para a segurança da sua organização, certifique-se de confiar e entender qualquer script antes de adicioná-lo. Scripts podem interagir com as páginas da sua organização.",
+        "addScript": "Adicionar Script",
+        "noScriptsYet": "Nenhum script adicionado ainda",
+        "addFirstScript": "Adicione seu primeiro script para começar",
+        "scriptName": "Nome do Script",
+        "scriptContent": "Conteúdo do Script",
+        "placeholders": {
+          "scriptName": "Digite o nome do script",
+          "scriptContent": "Digite o código JavaScript"
+        },
+        "cancel": "Cancelar",
+        "saveScript": "Salvar Script",
+        "validation": {
+          "nameRequired": "Nome do script é obrigatório",
+          "contentRequired": "Conteúdo do script é obrigatório"
+        },
+        "toast": {
+          "updating": "Atualizando organização...",
+          "saved": "Script salvo com sucesso",
+          "saveFailed": "Falha ao salvar script",
+          "deleting": "Excluindo script...",
+          "deleted": "Script excluído com sucesso",
+          "deleteFailed": "Falha ao excluir script"
+        }
+      },
+      "socials": {
+        "title": "Links Sociais",
+        "subtitle": "Gerencie a presença da sua organização nas redes sociais",
+        "socialLinks": "Links Sociais",
+        "customLinks": "Links Personalizados",
+        "customLinksDescription": "Adicione até 3 links personalizados que aparecerão no perfil da sua organização",
+        "addLink": "Adicionar Link",
+        "placeholders": {
+          "twitterUrl": "URL do perfil do Twitter",
+          "facebookUrl": "URL do perfil do Facebook",
+          "instagramUrl": "URL do perfil do Instagram",
+          "youtubeUrl": "URL do canal do YouTube",
+          "linkLabel": "Rótulo",
+          "linkUrl": "URL"
+        },
+        "toast": {
+          "updating": "Atualizando organização...",
+          "updated": "Organização Atualizada",
+          "updateFailed": "Falha ao atualizar organização"
+        }
+      }
     }
   },
   "payments": {

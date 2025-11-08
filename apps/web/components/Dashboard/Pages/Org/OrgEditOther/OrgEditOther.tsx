@@ -20,6 +20,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { useTranslations } from 'next-intl'
 
 interface Script {
   name: string
@@ -30,12 +31,18 @@ interface OrganizationScripts {
   scripts: Script[]
 }
 
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Script name is required'),
-  content: Yup.string().required('Script content is required')
-})
-
 const OrgEditOther: React.FC = () => {
+  const t = useTranslations('organization.edit.other')
+  const tToast = useTranslations('organization.edit.other.toast')
+  const tValidation = useTranslations('organization.edit.other.validation')
+  const tPlaceholders = useTranslations('organization.edit.other.placeholders')
+  const tCommon = useTranslations('common.actions')
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required(tValidation('nameRequired')),
+    content: Yup.string().required(tValidation('contentRequired'))
+  })
+
   const router = useRouter()
   const session = useLHSession() as any
   const access_token = session?.data?.tokens?.access_token
@@ -54,13 +61,13 @@ const OrgEditOther: React.FC = () => {
   }, [org])
 
   const updateOrg = async (values: Script) => {
-    const loadingToast = toast.loading('Updating organization...')
+    const loadingToast = toast.loading(tToast('updating'))
     try {
       let updatedScripts: Script[]
-      
+
       if (currentScript) {
         // Edit existing script
-        updatedScripts = scripts.map(script => 
+        updatedScripts = scripts.map(script =>
           script.name === currentScript.name ? values : script
         )
       } else {
@@ -75,25 +82,25 @@ const OrgEditOther: React.FC = () => {
           scripts: updatedScripts
         }
       }
-      
+
       await updateOrganization(org.id, updateData, access_token)
       await revalidateTags(['organizations'], org.slug)
       mutate(`${getAPIUrl()}orgs/slug/${org.slug}`)
       setScripts(updatedScripts)
       setSelectedView('list')
       setCurrentScript(null)
-      toast.success('Script saved successfully', { id: loadingToast })
+      toast.success(tToast('saved'), { id: loadingToast })
     } catch (err) {
       console.error('Error updating organization:', err)
-      toast.error('Failed to save script', { id: loadingToast })
+      toast.error(tToast('saveFailed'), { id: loadingToast })
     }
   }
 
   const deleteScript = async (scriptToDelete: Script) => {
-    const loadingToast = toast.loading('Deleting script...')
+    const loadingToast = toast.loading(tToast('deleting'))
     try {
       const updatedScripts = scripts.filter(script => script.name !== scriptToDelete.name)
-      
+
       // Create a new organization object with scripts array wrapped in an object
       const updateData = {
         id: org.id,
@@ -106,10 +113,10 @@ const OrgEditOther: React.FC = () => {
       await revalidateTags(['organizations'], org.slug)
       mutate(`${getAPIUrl()}orgs/slug/${org.slug}`)
       setScripts(updatedScripts)
-      toast.success('Script deleted successfully', { id: loadingToast })
+      toast.success(tToast('deleted'), { id: loadingToast })
     } catch (err) {
       console.error('Error deleting script:', err)
-      toast.error('Failed to delete script', { id: loadingToast })
+      toast.error(tToast('deleteFailed'), { id: loadingToast })
     }
   }
 
@@ -121,23 +128,23 @@ const OrgEditOther: React.FC = () => {
             <div>
               <h1 className="font-bold text-xl text-gray-800 flex items-center space-x-2">
                 <Code2 className="h-5 w-5" />
-                <span>Scripts</span>
+                <span>{t('title')}</span>
                 <TooltipProvider delayDuration={100}>
                   <Tooltip>
                     <TooltipTrigger>
                       <AlertTriangle className="h-4 w-4 text-orange-500 hover:text-orange-600 transition-colors" />
                     </TooltipTrigger>
-                    <TooltipContent 
+                    <TooltipContent
                       className="max-w-[400px] bg-orange-50 border-orange-100 text-orange-900 [&>p]:text-orange-800 data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1"
                       sideOffset={8}
                     >
-                      <p className="p-2 leading-relaxed">For your organization's safety, please ensure you trust and understand any scripts before adding them. Scripts can interact with your organization's pages.</p>
+                      <p className="p-2 leading-relaxed">{t('safetyWarning')}</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               </h1>
               <h2 className="text-gray-500 text-md">
-                Add custom JavaScript scripts to your organization
+                {t('subtitle')}
               </h2>
             </div>
             {selectedView === 'list' && (
@@ -149,7 +156,7 @@ const OrgEditOther: React.FC = () => {
                 className="bg-black text-white hover:bg-black/90"
               >
                 <Plus className="h-4 w-4 mr-2" />
-                Add Script
+                {t('addScript')}
               </Button>
             )}
           </div>
@@ -162,8 +169,8 @@ const OrgEditOther: React.FC = () => {
             {(!scripts || scripts.length === 0) ? (
               <div className="text-center py-8 px-4 text-gray-500 bg-gray-50/50 rounded-lg border border-dashed border-gray-200">
                 <Code2 className="h-8 w-8 mx-auto mb-2 text-gray-400" />
-                <p className="text-sm font-medium">No scripts added yet</p>
-                <p className="text-xs text-gray-400 mt-1">Add your first script to get started</p>
+                <p className="text-sm font-medium">{t('noScriptsYet')}</p>
+                <p className="text-xs text-gray-400 mt-1">{t('addFirstScript')}</p>
               </div>
             ) : (
               scripts.map((script, index) => (
@@ -221,7 +228,7 @@ const OrgEditOther: React.FC = () => {
               <Form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="name">Script Name</Label>
+                    <Label htmlFor="name">{t('scriptName')}</Label>
                     <input
                       type="text"
                       id="name"
@@ -229,21 +236,21 @@ const OrgEditOther: React.FC = () => {
                       value={values.name}
                       onChange={handleChange}
                       className="mt-1 w-full px-3 py-2 border rounded-md"
-                      placeholder="Enter script name"
+                      placeholder={tPlaceholders('scriptName')}
                     />
                     {touched.name && errors.name && (
                       <p className="text-red-500 text-sm mt-1">{errors.name}</p>
                     )}
                   </div>
                   <div>
-                    <Label htmlFor="content">Script Content</Label>
+                    <Label htmlFor="content">{t('scriptContent')}</Label>
                     <Textarea
                       id="content"
                       name="content"
                       value={values.content}
                       onChange={handleChange}
                       className="mt-1 font-mono"
-                      placeholder="Enter JavaScript code"
+                      placeholder={tPlaceholders('scriptContent')}
                       rows={10}
                     />
                     {touched.content && errors.content && (
@@ -259,14 +266,14 @@ const OrgEditOther: React.FC = () => {
                         setCurrentScript(null)
                       }}
                     >
-                      Cancel
+                      {t('cancel')}
                     </Button>
-                    <Button 
+                    <Button
                       type="submit"
                       disabled={isSubmitting}
                       className="bg-black text-white hover:bg-black/90"
                     >
-                      {isSubmitting ? 'Saving...' : 'Save Script'}
+                      {isSubmitting ? tCommon('saving') : t('saveScript')}
                     </Button>
                   </div>
                 </div>
