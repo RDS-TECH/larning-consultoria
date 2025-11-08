@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { NodeViewWrapper } from '@tiptap/react'
 import { v4 as uuidv4 } from 'uuid'
 import { twMerge } from 'tailwind-merge'

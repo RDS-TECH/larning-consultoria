@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { useEditorProvider } from '@components/Contexts/Editor/EditorContext'
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/react'
 import { AlertTriangle, X } from 'lucide-react'
