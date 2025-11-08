@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 
 export default function RootPage() {
-  redirect('/home')
+  // Redireciona para login - se já estiver logado, o /login irá redirecionar para /home
+  redirect('/login')
 }
