@@ -266,15 +266,122 @@
     "deletingActivity": "Excluindo atividade...",
     "markAsDone": "Marcar Atividade como Concluída para o Usuário",
     "allowedFormats": "Formatos permitidos: pdf, docx, mp4, jpg, jpeg, png, pptx, zip",
+    "breadcrumbs": {
+      "courses": "Cursos"
+    },
+    "navigation": {
+      "previous": "Anterior",
+      "next": "Próxima",
+      "noPrevious": "Nenhuma atividade anterior",
+      "noNext": "Nenhuma próxima atividade",
+      "current": "Atual",
+      "of": "de"
+    },
+    "chapterDropdown": {
+      "viewAllActivities": "Ver todas as atividades",
+      "chapters": "Capítulos",
+      "courseContent": "Conteúdo do Curso"
+    },
+    "types": {
+      "video": "Vídeo",
+      "document": "Documento",
+      "page": "Página",
+      "assignment": "Tarefa",
+      "learningMaterial": "Material de Aprendizado",
+      "dynamicPage": "Página Dinâmica",
+      "assignments": "Tarefas"
+    },
+    "courseEnd": {
+      "congratulations": "Parabéns!",
+      "successfullyCompleted": "Você concluiu com sucesso",
+      "dedication": "Sua dedicação e trabalho duro valeram a pena. Você dominou todo o conteúdo deste curso.",
+      "certificate": "Seu Certificado",
+      "downloadCertificate": "Baixar Certificado em PDF",
+      "verifyCertificate": "Verificar Certificado",
+      "loadingCertificate": "Carregando seu certificado...",
+      "noCertificate": "Nenhum certificado está disponível para este curso. Entre em contato com seu instrutor para mais informações.",
+      "backToCourse": "Voltar ao Curso",
+      "keepGoing": "Continue Assim!",
+      "makingProgress": "Você está fazendo um ótimo progresso em",
+      "courseProgress": "Progresso do Curso",
+      "progress": "Progresso",
+      "activitiesCompleted": "de {total} atividades concluídas",
+      "doingGreat": "Você está indo muito bem! Complete as atividades restantes para desbloquear seu certificado de conclusão do curso.",
+      "continueLearning": "Continuar Aprendendo"
+    },
+    "secondaryBar": {
+      "course": "Curso"
+    },
+    "creation": {
+      "modalTitle": "Criar Atividade",
+      "modalDescription": "Selecione o tipo de atividade que deseja criar",
+      "dynamicPage": "Página Dinâmica",
+      "video": "Vídeo",
+      "document": "Documento",
+      "assignments": "Tarefas",
+      "activityName": "Nome da Atividade",
+      "activityNamePlaceholder": "Digite o nome da atividade...",
+      "activityDescription": "Descrição da atividade",
+      "activityDescriptionPlaceholder": "Digite a descrição da atividade...",
+      "createActivityButton": "Criar Atividade",
+      "videoSettings": "Configurações de Vídeo",
+      "startTime": "Hora de Início",
+      "endTime": "Hora de Término (opcional)",
+      "minutes": "Minutos",
+      "seconds": "Segundos",
+      "autoplayVideo": "Reproduzir vídeo automaticamente",
+      "startMuted": "Iniciar sem som",
+      "uploadVideo": "Enviar Vídeo",
+      "youtubeVideo": "Vídeo do YouTube",
+      "videoFile": "Arquivo de Vídeo",
+      "youtubeUrl": "URL do YouTube",
+      "youtubeUrlPlaceholder": "https://youtube.com/watch?v=...",
+      "pdfDocumentName": "Nome do documento PDF",
+      "pdfDocumentFile": "Arquivo de documento PDF",
+      "provideName": "Por favor, forneça um nome para sua atividade",
+      "provideFile": "Por favor, forneça um arquivo para sua atividade",
+      "providePdfName": "Por favor, forneça um nome para sua atividade de documento PDF",
+      "providePdf": "Por favor, forneça um documento PDF para sua atividade",
+      "assignmentTitle": "Título da Tarefa",
+      "assignmentDescription": "Descrição da Tarefa",
+      "assignmentDueDate": "Data de Entrega",
+      "assignmentGradingType": "Tipo de Avaliação",
+      "provideAssignmentName": "Por favor, forneça um nome para sua tarefa",
+      "provideAssignmentDescription": "Por favor, forneça uma descrição para sua tarefa",
+      "provideAssignmentDueDate": "Por favor, forneça uma data de entrega para sua tarefa",
+      "provideAssignmentGradingType": "Por favor, forneça um tipo de avaliação para sua tarefa",
+      "gradingTypes": {
+        "alphabet": "Alfabético",
+        "numeric": "Numérico",
+        "percentage": "Porcentagem"
+      },
+      "creatingAssignment": "Criando tarefa..."
+    },
+    "ai": {
+      "askAI": "Perguntar à IA",
+      "ai": "IA",
+      "experimental": "Experimental",
+      "askAboutLecture": "Pergunte à IA Sobre Esta Aula",
+      "hello": "Olá",
+      "howCanWeHelp": "como podemos ajudar hoje ?",
+      "somethingWrong": "Algo deu errado",
+      "predefinedQuestions": {
+        "about": "Sobre o que é esta Atividade ?",
+        "flashcards": "Gerar flashcards sobre esta Atividade",
+        "examples": "Explicar esta Atividade em exemplos práticos"
+      }
+    },
     "success": {
       "created": "Atividade criada com sucesso",
       "deleted": "Atividade excluída com sucesso",
       "nameUpdated": "Nome da atividade atualizado com sucesso",
       "updated": "A atividade foi atualizada com sucesso",
-      "fileUploaded": "Arquivo enviado com sucesso"
+      "fileUploaded": "Arquivo enviado com sucesso",
+      "assignmentCreated": "Tarefa criada com sucesso"
     },
     "errors": {
-      "updateName": "Falha ao atualizar o nome da atividade"
+      "updateName": "Falha ao atualizar o nome da atividade",
+      "assignmentCreationFailed": "Falha ao criar tarefa"
     },
     "confirmations": {
       "deleteTitle": "Excluir '{name}'?",
@@ -284,6 +391,7 @@
   },
   "assignments": {
     "title": "Tarefas",
+    "assignment": "Tarefa",
     "editAssignment": "Editar Tarefa",
     "deleteAssignment": "Excluir Tarefa",
     "submissions": "Submissões",
@@ -295,12 +403,19 @@
     "setFinalGrade": "Definir nota final",
     "rejectAssignment": "Rejeitar Tarefa",
     "reject": "Rejeitar",
+    "dueDate": "Data de Entrega",
+    "assignmentDescription": "Descrição da Tarefa",
     "status": {
       "sent": "Enviado",
       "late": "Atrasado",
       "submitted": "Submetido",
       "graded": "Avaliado",
       "submission": "Submissão"
+    },
+    "student": {
+      "task": "Tarefa",
+      "hint": "Dica",
+      "referenceDocument": "Documento de Referência"
     },
     "tasks": {
       "quiz": {

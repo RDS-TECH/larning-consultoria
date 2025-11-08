@@ -266,15 +266,122 @@
     "deletingActivity": "Deleting activity...",
     "markAsDone": "Mark Activity as Done for User",
     "allowedFormats": "Allowed formats: pdf, docx, mp4, jpg, jpeg, png, pptx, zip",
+    "breadcrumbs": {
+      "courses": "Courses"
+    },
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "noPrevious": "No previous activity",
+      "noNext": "No next activity",
+      "current": "Current",
+      "of": "of"
+    },
+    "chapterDropdown": {
+      "viewAllActivities": "View all activities",
+      "chapters": "Chapters",
+      "courseContent": "Course Content"
+    },
+    "types": {
+      "video": "Video",
+      "document": "Document",
+      "page": "Page",
+      "assignment": "Assignment",
+      "learningMaterial": "Learning Material",
+      "dynamicPage": "Dynamic Page",
+      "assignments": "Assignments"
+    },
+    "courseEnd": {
+      "congratulations": "Congratulations!",
+      "successfullyCompleted": "You've successfully completed",
+      "dedication": "Your dedication and hard work have paid off. You've mastered all the content in this course.",
+      "certificate": "Your Certificate",
+      "downloadCertificate": "Download Certificate PDF",
+      "verifyCertificate": "Verify Certificate",
+      "loadingCertificate": "Loading your certificate...",
+      "noCertificate": "No certificate is available for this course. Contact your instructor for more information.",
+      "backToCourse": "Back to Course",
+      "keepGoing": "Keep Going!",
+      "makingProgress": "You're making great progress in",
+      "courseProgress": "Course Progress",
+      "progress": "Progress",
+      "activitiesCompleted": "of {total} activities completed",
+      "doingGreat": "You're doing great! Complete the remaining activities to unlock your course completion certificate.",
+      "continueLearning": "Continue Learning"
+    },
+    "secondaryBar": {
+      "course": "Course"
+    },
+    "creation": {
+      "modalTitle": "Create Activity",
+      "modalDescription": "Select the type of activity you want to create",
+      "dynamicPage": "Dynamic Page",
+      "video": "Video",
+      "document": "Document",
+      "assignments": "Assignments",
+      "activityName": "Activity Name",
+      "activityNamePlaceholder": "Enter activity name...",
+      "activityDescription": "Activity description",
+      "activityDescriptionPlaceholder": "Enter activity description...",
+      "createActivityButton": "Create Activity",
+      "videoSettings": "Video Settings",
+      "startTime": "Start Time",
+      "endTime": "End Time (optional)",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "autoplayVideo": "Autoplay video",
+      "startMuted": "Start muted",
+      "uploadVideo": "Upload Video",
+      "youtubeVideo": "YouTube Video",
+      "videoFile": "Video File",
+      "youtubeUrl": "YouTube URL",
+      "youtubeUrlPlaceholder": "https://youtube.com/watch?v=...",
+      "pdfDocumentName": "PDF Document name",
+      "pdfDocumentFile": "PDF Document file",
+      "provideName": "Please provide a name for your activity",
+      "provideFile": "Please provide a file for your activity",
+      "providePdfName": "Please provide a name for your PDF Document activity",
+      "providePdf": "Please provide a PDF Document for your activity",
+      "assignmentTitle": "Assignment Title",
+      "assignmentDescription": "Assignment Description",
+      "assignmentDueDate": "Due Date",
+      "assignmentGradingType": "Grading Type",
+      "provideAssignmentName": "Please provide a name for your assignment",
+      "provideAssignmentDescription": "Please provide a description for your assignment",
+      "provideAssignmentDueDate": "Please provide a due date for your assignment",
+      "provideAssignmentGradingType": "Please provide a grading type for your assignment",
+      "gradingTypes": {
+        "alphabet": "Alphabet",
+        "numeric": "Numeric",
+        "percentage": "Percentage"
+      },
+      "creatingAssignment": "Creating assignment..."
+    },
+    "ai": {
+      "askAI": "Ask AI",
+      "ai": "AI",
+      "experimental": "Experimental",
+      "askAboutLecture": "Ask AI About this Lecture",
+      "hello": "Hello",
+      "howCanWeHelp": "how can we help today ?",
+      "somethingWrong": "Something wrong happened",
+      "predefinedQuestions": {
+        "about": "What is this Activity about ?",
+        "flashcards": "Generate flashcards about this Activity",
+        "examples": "Explain this Activity in practical examples"
+      }
+    },
     "success": {
       "created": "Activity created successfully",
       "deleted": "Activity deleted successfully",
       "nameUpdated": "Activity name updated successfully",
       "updated": "Activity has been updated successfully",
-      "fileUploaded": "File uploaded successfully"
+      "fileUploaded": "File uploaded successfully",
+      "assignmentCreated": "Assignment created successfully"
     },
     "errors": {
-      "updateName": "Failed to update activity name"
+      "updateName": "Failed to update activity name",
+      "assignmentCreationFailed": "Failed to create assignment"
     },
     "confirmations": {
       "deleteTitle": "Delete '{name}'?",
@@ -284,6 +391,7 @@
   },
   "assignments": {
     "title": "Assignments",
+    "assignment": "Assignment",
     "editAssignment": "Edit Assignment",
     "deleteAssignment": "Delete Assignment",
     "submissions": "Submissions",
@@ -295,12 +403,19 @@
     "setFinalGrade": "Set final grade",
     "rejectAssignment": "Reject Assignment",
     "reject": "Reject",
+    "dueDate": "Due Date",
+    "assignmentDescription": "Assignment Description",
     "status": {
       "sent": "Sent",
       "late": "Late",
       "submitted": "Submitted",
       "graded": "Graded",
       "submission": "Submission"
+    },
+    "student": {
+      "task": "Task",
+      "hint": "Hint",
+      "referenceDocument": "Reference Document"
     },
     "tasks": {
       "quiz": {
