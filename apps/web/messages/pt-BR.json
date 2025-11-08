@@ -2464,7 +2464,27 @@
         "submit": "Enviar Tarefa",
         "submitted": "Enviado",
         "dueDate": "Data de Vencimento",
-        "overdue": "Atrasado"
+        "overdue": "Atrasado",
+        "types": {
+          "quiz": "Questionário",
+          "fileSubmission": "Envio de Arquivo",
+          "form": "Formulário"
+        },
+        "badges": {
+          "teacherView": "Visão do Professor",
+          "points": "{count} pontos"
+        },
+        "messages": {
+          "dontForgetToSave": "Não se esqueça de salvar seu progresso"
+        },
+        "buttons": {
+          "save": "Salvar",
+          "saveProgress": "Salvar seu progresso",
+          "grade": "Avaliar"
+        },
+        "grading": {
+          "currentPoints": "Pontos atuais: {points}"
+        }
       },
       "document": {
         "loadingDocument": "Carregando documento...",
@@ -2480,7 +2500,27 @@
         "tableOfContents": "Índice",
         "aiToolkit": "Kit de Ferramentas IA",
         "generating": "Gerando...",
-        "tryAgain": "Tentar Novamente"
+        "tryAgain": "Tentar Novamente",
+        "ai": {
+          "buttons": {
+            "explain": "Explicar",
+            "summarize": "Resumir",
+            "translate": "Traduzir",
+            "examples": "Exemplos"
+          },
+          "tooltips": {
+            "explain": "Explicar uma palavra ou frase com IA",
+            "summarize": "Resumir um parágrafo longo ou texto com IA",
+            "translate": "Traduzir para diferentes idiomas com IA",
+            "examples": "Dar exemplos para entender melhor com IA"
+          },
+          "prompts": {
+            "explain": "Explique esta parte do curso \"{selection}\" mantendo em mente o contexto do curso.",
+            "summarize": "Resuma isto \"{selection}\" com o contexto do curso em mente.",
+            "translate": "Traduza \"{selection}\" para outro idioma.",
+            "examples": "Dê exemplos para entender \"{selection}\" melhor, se possível dê contexto no curso."
+          }
+        }
       }
     },
     "placeholder": {

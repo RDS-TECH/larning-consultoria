@@ -2464,7 +2464,27 @@
         "submit": "Submit Assignment",
         "submitted": "Submitted",
         "dueDate": "Due Date",
-        "overdue": "Overdue"
+        "overdue": "Overdue",
+        "types": {
+          "quiz": "Quiz",
+          "fileSubmission": "File Submission",
+          "form": "Form"
+        },
+        "badges": {
+          "teacherView": "Teacher view",
+          "points": "{count} points"
+        },
+        "messages": {
+          "dontForgetToSave": "Don't forget to save your progress"
+        },
+        "buttons": {
+          "save": "Save",
+          "saveProgress": "Save your progress",
+          "grade": "Grade"
+        },
+        "grading": {
+          "currentPoints": "Current points: {points}"
+        }
       },
       "document": {
         "loadingDocument": "Loading document...",
@@ -2480,7 +2500,27 @@
         "tableOfContents": "Table of Contents",
         "aiToolkit": "AI Toolkit",
         "generating": "Generating...",
-        "tryAgain": "Try Again"
+        "tryAgain": "Try Again",
+        "ai": {
+          "buttons": {
+            "explain": "Explain",
+            "summarize": "Summarize",
+            "translate": "Translate",
+            "examples": "Examples"
+          },
+          "tooltips": {
+            "explain": "Explain a word or a sentence with AI",
+            "summarize": "Summarize a long paragraph or text with AI",
+            "translate": "Translate to different languages with AI",
+            "examples": "Give examples to understand better with AI"
+          },
+          "prompts": {
+            "explain": "Explain this part of the course \"{selection}\" keep this course context in mind.",
+            "summarize": "Summarize this \"{selection}\" with the course context in mind.",
+            "translate": "Translate \"{selection}\" to another language.",
+            "examples": "Give examples to understand \"{selection}\" better, if possible give context in the course."
+          }
+        }
       }
     },
     "placeholder": {

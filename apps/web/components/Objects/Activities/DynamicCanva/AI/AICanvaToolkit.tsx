@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { Editor } from '@tiptap/core'
@@ -16,6 +17,7 @@ import {
 } from '@services/ai/ai'
 import useGetAIFeatures from '../../../../Hooks/useGetAIFeatures'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
+import { useTranslations } from 'next-intl'
 
 type AICanvaToolkitProps = {
   editor: Editor
@@ -153,22 +155,22 @@ function AICanvaToolkit(props: AICanvaToolkitProps) {
           <AIActionButton
             editor={props.editor}
             activity={props.activity}
-            label="Explain"
+            action="explain"
           />
           <AIActionButton
             editor={props.editor}
             activity={props.activity}
-            label="Summarize"
+            action="summarize"
           />
           <AIActionButton
             editor={props.editor}
             activity={props.activity}
-            label="Translate"
+            action="translate"
           />
           <AIActionButton
             editor={props.editor}
             activity={props.activity}
-            label="Examples"
+            action="examples"
           />
         </div>
       </div>
@@ -181,17 +183,18 @@ function AICanvaToolkit(props: AICanvaToolkitProps) {
 
 function AIActionButton(props: {
   editor: Editor
-  label: string
+  action: 'explain' | 'summarize' | 'translate' | 'examples'
   activity: any
 }) {
+  const t = useTranslations('activities.canva.ai')
   const session = useLHSession() as any
   const access_token = session?.data?.tokens?.access_token;
   const dispatchAIChatBot = useAIChatBotDispatch() as any
   const aiChatBotState = useAIChatBot() as AIChatBotStateTypes
 
-  async function handleAction(label: string) {
+  async function handleAction(action: string) {
     const selection = getTipTapEditorSelectedText()
-    const prompt = getPrompt(label, selection)
+    const prompt = getPrompt(action, selection)
     dispatchAIChatBot({ type: 'setIsModalOpen' })
     await sendMessage(prompt)
   }
@@ -204,15 +207,15 @@ function AIActionButton(props: {
     return text
   }
 
-  const getPrompt = (label: string, selection: string) => {
-    if (label === 'Explain') {
-      return `Explain this part of the course "${selection}" keep this course context in mind.`
-    } else if (label === 'Summarize') {
-      return `Summarize this "${selection}" with the course context in mind.`
-    } else if (label === 'Translate') {
-      return `Translate "${selection}" to another language.`
+  const getPrompt = (action: string, selection: string) => {
+    if (action === 'explain') {
+      return t('prompts.explain', { selection })
+    } else if (action === 'summarize') {
+      return t('prompts.summarize', { selection })
+    } else if (action === 'translate') {
+      return t('prompts.translate', { selection })
     } else {
-      return `Give examples to understand "${selection}" better, if possible give context in the course.`
+      return t('prompts.examples', { selection })
     }
   }
 
@@ -284,28 +287,23 @@ function AIActionButton(props: {
     }
   }
 
-  const tooltipLabel =
-    props.label === 'Explain'
-      ? 'Explain a word or a sentence with AI'
-      : props.label === 'Summarize'
-        ? 'Summarize a long paragraph or text with AI'
-        : props.label === 'Translate'
-          ? 'Translate to different languages with AI'
-          : 'Give examples to understand better with AI'
+  const tooltipLabel = t(`tooltips.${props.action}`)
+  const buttonLabel = t(`buttons.${props.action}`)
+
   return (
     <div className="flex space-x-2">
       <ToolTip sideOffset={10} slateBlack content={tooltipLabel}>
         <button
-          onClick={() => handleAction(props.label)}
+          onClick={() => handleAction(props.action)}
           className="flex space-x-1.5 items-center bg-white/10 px-2 py-0.5 rounded-md outline-1 outline-neutral-200/20 text-sm font-semibold text-white/70 hover:bg-white/20 hover:outline-neutral-200/40 delay-75 ease-linear transition-all"
         >
-          {props.label === 'Explain' && <BookOpen size={16} />}
-          {props.label === 'Summarize' && <FormInput size={16} />}
-          {props.label === 'Translate' && <Languages size={16} />}
-          {props.label === 'Examples' && (
+          {props.action === 'explain' && <BookOpen size={16} />}
+          {props.action === 'summarize' && <FormInput size={16} />}
+          {props.action === 'translate' && <Languages size={16} />}
+          {props.action === 'examples' && (
             <div className="text-white/50">Ex</div>
           )}
-          <div>{props.label}</div>
+          <div>{buttonLabel}</div>
         </button>
       </ToolTip>
     </div>
