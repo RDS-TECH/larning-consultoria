@@ -1,3 +1,4 @@
+'use client'
 import styled from 'styled-components'
 import {
   FontBoldIcon,
@@ -14,6 +15,7 @@ import {
   ContainerIcon,
   ChevronDownIcon,
 } from '@radix-ui/react-icons'
+import { useTranslations } from 'next-intl'
 import {
   AlertCircle,
   AlertTriangle,
@@ -40,6 +42,7 @@ import React from 'react'
 import LinkInputTooltip from './LinkInputTooltip'
 
 export const ToolbarButtons = ({ editor, props }: any) => {
+  const t = useTranslations('editor.toolbar')
   const [showTableMenu, setShowTableMenu] = React.useState(false)
   const [showListMenu, setShowListMenu] = React.useState(false)
   const [showLinkInput, setShowLinkInput] = React.useState(false)
@@ -52,27 +55,27 @@ export const ToolbarButtons = ({ editor, props }: any) => {
 
   const tableOptions = [
     {
-      label: 'Insert new table (3×3)',
+      label: t('insertNewTable'),
       icon: <TableIcon />,
       action: () => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
     },
     {
-      label: 'Add row below',
+      label: t('addRowBelow'),
       icon: <RowsIcon />,
       action: () => editor.chain().focus().addRowAfter().run()
     },
     {
-      label: 'Add column right',
+      label: t('addColumnRight'),
       icon: <ColumnsIcon />,
       action: () => editor.chain().focus().addColumnAfter().run()
     },
     {
-      label: 'Delete current row',
+      label: t('deleteCurrentRow'),
       icon: <SectionIcon />,
       action: () => editor.chain().focus().deleteRow().run()
     },
     {
-      label: 'Delete current column',
+      label: t('deleteCurrentColumn'),
       icon: <ContainerIcon />,
       action: () => editor.chain().focus().deleteColumn().run()
     }
@@ -80,7 +83,7 @@ export const ToolbarButtons = ({ editor, props }: any) => {
 
   const listOptions = [
     {
-      label: 'Bullet List',
+      label: t('bulletList'),
       icon: <List size={15} />,
       action: () => {
         if (editor.isActive('bulletList')) {
@@ -92,7 +95,7 @@ export const ToolbarButtons = ({ editor, props }: any) => {
       }
     },
     {
-      label: 'Ordered List',
+      label: t('orderedList'),
       icon: <ListOrdered size={15} />,
       action: () => {
         if (editor.isActive('orderedList')) {
@@ -148,30 +151,30 @@ export const ToolbarButtons = ({ editor, props }: any) => {
 
   return (
     <ToolButtonsWrapper>
-      <ToolBtn onClick={() => editor.chain().focus().undo().run()} aria-label="Undo last action">
+      <ToolBtn onClick={() => editor.chain().focus().undo().run()} aria-label={t('undo')}>
         <ArrowLeftIcon />
       </ToolBtn>
-      <ToolBtn onClick={() => editor.chain().focus().redo().run()} aria-label="Redo last action">
+      <ToolBtn onClick={() => editor.chain().focus().redo().run()} aria-label={t('redo')}>
         <ArrowRightIcon />
       </ToolBtn>
       <ToolBtn
         onClick={() => editor.chain().focus().toggleBold().run()}
         className={editor.isActive('bold') ? 'is-active' : ''}
-        aria-label="Toggle bold formatting"
+        aria-label={t('bold')}
       >
         <FontBoldIcon />
       </ToolBtn>
       <ToolBtn
         onClick={() => editor.chain().focus().toggleItalic().run()}
         className={editor.isActive('italic') ? 'is-active' : ''}
-        aria-label="Toggle italic formatting"
+        aria-label={t('italic')}
       >
         <FontItalicIcon />
       </ToolBtn>
       <ToolBtn
         onClick={() => editor.chain().focus().toggleStrike().run()}
         className={editor.isActive('strike') ? 'is-active' : ''}
-        aria-label="Toggle strikethrough formatting"
+        aria-label={t('strikethrough')}
       >
         <StrikethroughIcon />
       </ToolBtn>
@@ -179,7 +182,7 @@ export const ToolbarButtons = ({ editor, props }: any) => {
         <ToolBtn
           onClick={() => setShowListMenu(!showListMenu)}
           className={showListMenu || editor.isActive('bulletList') || editor.isActive('orderedList') ? 'is-active' : ''}
-          aria-label="Insert list"
+          aria-label={t('list')}
         >
           <ListBulletIcon />
           <ChevronDownIcon />
@@ -220,19 +223,19 @@ export const ToolbarButtons = ({ editor, props }: any) => {
           }
         }}
       >
-        <option value="0">Paragraph</option>
-        <option value="1">Heading 1</option>
-        <option value="2">Heading 2</option>
-        <option value="3">Heading 3</option>
-        <option value="4">Heading 4</option>
-        <option value="5">Heading 5</option>
-        <option value="6">Heading 6</option>
+        <option value="0">{t('paragraph')}</option>
+        <option value="1">{t('heading1')}</option>
+        <option value="2">{t('heading2')}</option>
+        <option value="3">{t('heading3')}</option>
+        <option value="4">{t('heading4')}</option>
+        <option value="5">{t('heading5')}</option>
+        <option value="6">{t('heading6')}</option>
       </ToolSelect>
       <TableMenuWrapper>
         <ToolBtn
           onClick={() => setShowTableMenu(!showTableMenu)}
           className={showTableMenu ? 'is-active' : ''}
-          aria-label="Insert table"
+          aria-label={t('table')}
         >
           <TableIcon width={18} />
           <ChevronDownIcon  />
@@ -257,31 +260,31 @@ export const ToolbarButtons = ({ editor, props }: any) => {
       <DividerVerticalIcon
         style={{ marginTop: 'auto', marginBottom: 'auto', color: 'grey' }}
       />
-      <ToolTip content={'Info Callout'}>
+      <ToolTip content={t('infoCallout')}>
         <ToolBtn
           onClick={() => editor.chain().focus().toggleNode('calloutInfo').run()}
-          aria-label="Insert info callout"
+          aria-label={t('infoCallout')}
         >
           <AlertCircle size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Warning Callout'}>
+      <ToolTip content={t('warningCallout')}>
         <ToolBtn
           onClick={() =>
             editor.chain().focus().toggleNode('calloutWarning').run()
           }
-          aria-label="Insert warning callout"
+          aria-label={t('warningCallout')}
         >
           <AlertTriangle size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Link'}>
+      <ToolTip content={t('link')}>
         <div style={{ position: 'relative' }}>
           <ToolBtn
             ref={linkButtonRef}
             onClick={handleLinkClick}
             className={editor.isActive('link') ? 'is-active' : ''}
-            aria-label="Insert or edit link"
+            aria-label={t('link')}
           >
             <Link2 size={15} />
           </ToolBtn>
@@ -294,7 +297,7 @@ export const ToolbarButtons = ({ editor, props }: any) => {
           )}
         </div>
       </ToolTip>
-      <ToolTip content={'Image'}>
+      <ToolTip content={t('image')}>
         <ToolBtn
           onClick={() =>
             editor
@@ -305,12 +308,12 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               })
               .run()
           }
-          aria-label="Insert image"
+          aria-label={t('image')}
         >
           <ImagePlus size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Video'}>
+      <ToolTip content={t('video')}>
         <ToolBtn
           onClick={() =>
             editor
@@ -321,17 +324,17 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               })
               .run()
           }
-          aria-label="Insert video"
+          aria-label={t('video')}
         >
           <Video size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'YouTube video'}>
-        <ToolBtn onClick={() => editor.chain().focus().insertContent({ type: 'blockEmbed' }).run()} aria-label="Insert YouTube video">
+      <ToolTip content={t('youtube')}>
+        <ToolBtn onClick={() => editor.chain().focus().insertContent({ type: 'blockEmbed' }).run()} aria-label={t('youtube')}>
           <SiYoutube size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Math Equation (LaTeX)'}>
+      <ToolTip content={t('mathEquation')}>
         <ToolBtn
           onClick={() =>
             editor
@@ -342,12 +345,12 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               })
               .run()
           }
-          aria-label="Insert math equation (LaTeX)"
+          aria-label={t('mathEquation')}
         >
           <Sigma size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'PDF Document'}>
+      <ToolTip content={t('pdf')}>
         <ToolBtn
           onClick={() =>
             editor
@@ -358,12 +361,12 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               })
               .run()
           }
-          aria-label="Insert PDF document"
+          aria-label={t('pdf')}
         >
           <FileText size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Interactive Quiz'}>
+      <ToolTip content={t('quiz')}>
         <ToolBtn
           onClick={() =>
             editor
@@ -374,29 +377,29 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               })
               .run()
           }
-          aria-label="Insert interactive quiz"
+          aria-label={t('quiz')}
         >
           <BadgeHelp size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Code Block'}>
+      <ToolTip content={t('codeBlock')}>
         <ToolBtn
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
           className={editor.isActive('codeBlock') ? 'is-active' : ''}
-          aria-label="Insert code block"
+          aria-label={t('codeBlock')}
         >
           <Code size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'External Object (Embed)'}>
+      <ToolTip content={t('embed')}>
         <ToolBtn
           onClick={() => editor.chain().focus().insertContent({ type: 'blockEmbed' }).run()}
-          aria-label="Insert external object or embed"
+          aria-label={t('embed')}
         >
           <Cuboid size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Badges'}>
+      <ToolTip content={t('badges')}>
         <ToolBtn
           onClick={() => editor.chain().focus().insertContent({
             type: 'badge',
@@ -407,12 +410,12 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               }
             ]
           }).run()}
-          aria-label="Insert badge"
+          aria-label={t('badges')}
         >
           <Tags size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Button'}>
+      <ToolTip content={t('button')}>
         <ToolBtn
           onClick={() => editor.chain().focus().insertContent({
             type: 'button',
@@ -423,32 +426,32 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               }
             ]
           }).run()}
-          aria-label="Insert button"
+          aria-label={t('button')}
         >
           <MousePointerClick size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'User'}>
+      <ToolTip content={t('user')}>
         <ToolBtn
           onClick={() => editor.chain().focus().insertContent({ type: 'blockUser' }).run()}
-          aria-label="Insert user reference"
+          aria-label={t('user')}
         >
           <User size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Web Preview'}>
+      <ToolTip content={t('webPreview')}>
         <ToolBtn
           onClick={() =>
             editor.chain().focus().insertContent({
               type: 'blockWebPreview',
             }).run()
           }
-          aria-label="Insert web preview"
+          aria-label={t('webPreview')}
         >
           <Globe size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Flipcard'}>
+      <ToolTip content={t('flipcard')}>
         <ToolBtn
           onClick={() =>
             editor.chain().focus().insertContent({
@@ -462,12 +465,12 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               }
             }).run()
           }
-          aria-label="Insert flipcard"
+          aria-label={t('flipcard')}
         >
           <RotateCw size={15} />
         </ToolBtn>
       </ToolTip>
-      <ToolTip content={'Interactive Scenarios'}>
+      <ToolTip content={t('interactiveScenarios')}>
         <ToolBtn
           onClick={() =>
             editor.chain().focus().insertContent({
@@ -507,7 +510,7 @@ export const ToolbarButtons = ({ editor, props }: any) => {
               }
             }).run()
           }
-          aria-label="Insert interactive scenarios"
+          aria-label={t('interactiveScenarios')}
         >
           <GitBranch size={15} />
         </ToolBtn>
