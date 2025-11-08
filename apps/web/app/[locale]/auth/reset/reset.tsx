@@ -16,36 +16,11 @@ import { useOrg } from '@components/Contexts/OrgContext'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useFormik } from 'formik'
 import { resetPassword } from '@services/auth/auth'
-
-const validate = (values: any) => {
-    const errors: any = {}
-
-    if (!values.email) {
-        errors.email = 'Required'
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-        errors.email = 'Invalid email address'
-    }
-
-    if (!values.new_password) {
-        errors.new_password = 'Required'
-    }
-
-    if (!values.confirm_password) {
-        errors.confirm_password = 'Required'
-    }
-
-    if (values.new_password !== values.confirm_password) {
-        errors.confirm_password = 'Passwords do not match'
-    }
-
-    if (!values.reset_code) {
-        errors.reset_code = 'Required'
-    }
-    return errors
-}
+import { useTranslations } from 'next-intl'
 
 function ResetPasswordClient() {
     const org = useOrg() as any;
+    const t = useTranslations('auth.reset')
     const [isSubmitting, setIsSubmitting] = React.useState(false)
     const searchParams = useSearchParams()
     const reset_code = searchParams.get('resetCode') || ''
@@ -53,6 +28,33 @@ function ResetPasswordClient() {
     const router = useRouter()
     const [error, setError] = React.useState('')
     const [message, setMessage] = React.useState('')
+
+    const validate = (values: any) => {
+        const errors: any = {}
+
+        if (!values.email) {
+            errors.email = t('validation.required')
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+            errors.email = t('validation.invalidEmail')
+        }
+
+        if (!values.new_password) {
+            errors.new_password = t('validation.passwordRequired')
+        }
+
+        if (!values.confirm_password) {
+            errors.confirm_password = t('validation.confirmPasswordRequired')
+        }
+
+        if (values.new_password !== values.confirm_password) {
+            errors.confirm_password = t('validation.passwordsMismatch')
+        }
+
+        if (!values.reset_code) {
+            errors.reset_code = t('validation.resetCodeRequired')
+        }
+        return errors
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -67,7 +69,7 @@ function ResetPasswordClient() {
             setIsSubmitting(true)
             let res = await resetPassword(values.email, values.new_password, org?.id, values.reset_code)
             if (res.status == 200) {
-                setMessage(res.data + ', please login')
+                setMessage(res.data + t('loginPrompt'))
                 setIsSubmitting(false)
             } else {
                 setError(res.data.detail)
@@ -127,9 +129,9 @@ function ResetPasswordClient() {
             </div>
             <div className="left-login-part bg-white flex flex-row">
                 <div className="login-form m-auto w-72">
-                    <h1 className="text-2xl font-bold mb-4">Reset Password</h1>
+                    <h1 className="text-2xl font-bold mb-4">{t('title')}</h1>
                     <p className="text-sm mb-4">
-                        Enter your email and reset code to reset your password
+                        {t('description')}
                     </p>
 
                     {error && (
@@ -145,14 +147,14 @@ function ResetPasswordClient() {
                                 <div className="font-bold text-sm">{message}</div>
                             </div>
                             <Link href={getUriWithoutOrg('/login?orgslug=' + org.slug)} className="text-center text-sm text-blue-600 hover:text-blue-800">
-                                Please login again with your new password
+                                {t('loginAgainPrompt')}
                             </Link>
                         </div>
                     )}
                     <FormLayout onSubmit={formik.handleSubmit}>
                         <FormField name="email">
                             <FormLabelAndMessage
-                                label="Email"
+                                label={t('email')}
                                 message={formik.errors.email}
                             />
                             <Form.Control asChild>
@@ -166,7 +168,7 @@ function ResetPasswordClient() {
 
                         <FormField name="reset_code">
                             <FormLabelAndMessage
-                                label="Reset Code"
+                                label={t('resetCode')}
                                 message={formik.errors.reset_code}
                             />
                             <Form.Control asChild>
@@ -180,7 +182,7 @@ function ResetPasswordClient() {
 
                         <FormField name="new_password">
                             <FormLabelAndMessage
-                                label="New Password"
+                                label={t('newPassword')}
                                 message={formik.errors.new_password}
                             />
                             <Form.Control asChild>
@@ -194,7 +196,7 @@ function ResetPasswordClient() {
 
                         <FormField name="confirm_password">
                             <FormLabelAndMessage
-                                label="Confirm Password"
+                                label={t('confirmPassword')}
                                 message={formik.errors.confirm_password}
                             />
                             <Form.Control asChild>
@@ -210,7 +212,7 @@ function ResetPasswordClient() {
                         <div className="flex  py-4">
                             <Form.Submit asChild>
                                 <button className="w-full bg-black text-white font-bold text-center p-2 rounded-md shadow-md hover:cursor-pointer">
-                                    {isSubmitting ? 'Loading...' : 'Change Password'}
+                                    {isSubmitting ? t('loading') : t('changePasswordButton')}
                                 </button>
                             </Form.Submit>
                         </div>

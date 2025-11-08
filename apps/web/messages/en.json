@@ -74,6 +74,26 @@
       "sendResetLink": "Send Reset Link",
       "loading": "Loading...",
       "emailSent": ", please check your email"
+    },
+    "reset": {
+      "title": "Reset Password",
+      "description": "Enter your email and reset code to reset your password",
+      "email": "Email",
+      "resetCode": "Reset Code",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "changePasswordButton": "Change Password",
+      "loading": "Loading...",
+      "loginPrompt": ", please login",
+      "loginAgainPrompt": "Please login again with your new password",
+      "validation": {
+        "required": "Required",
+        "invalidEmail": "Invalid email address",
+        "passwordRequired": "Required",
+        "confirmPasswordRequired": "Required",
+        "passwordsMismatch": "Passwords do not match",
+        "resetCodeRequired": "Required"
+      }
     }
   },
   "common": {

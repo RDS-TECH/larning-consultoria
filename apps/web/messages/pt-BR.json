@@ -74,6 +74,26 @@
       "sendResetLink": "Enviar Link de Redefinição",
       "loading": "Carregando...",
       "emailSent": ", por favor verifique seu e-mail"
+    },
+    "reset": {
+      "title": "Redefinir Senha",
+      "description": "Digite seu email e código de redefinição para alterar sua senha",
+      "email": "Email",
+      "resetCode": "Código de Redefinição",
+      "newPassword": "Nova Senha",
+      "confirmPassword": "Confirmar Senha",
+      "changePasswordButton": "Alterar Senha",
+      "loading": "Carregando...",
+      "loginPrompt": ", faça login novamente",
+      "loginAgainPrompt": "Por favor, faça login novamente com sua nova senha",
+      "validation": {
+        "required": "Campo obrigatório",
+        "invalidEmail": "Email inválido",
+        "passwordRequired": "Campo obrigatório",
+        "confirmPasswordRequired": "Campo obrigatório",
+        "passwordsMismatch": "As senhas não coincidem",
+        "resetCodeRequired": "Campo obrigatório"
+      }
     }
   },
   "common": {
