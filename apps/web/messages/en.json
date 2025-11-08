@@ -356,6 +356,18 @@
       "removed": "Removed user from org",
       "removeError": "Error removing user"
     },
+    "rolesUpdate": {
+      "rolesLabel": "Roles",
+      "pleaseChooseRole": "Please choose a role for the user",
+      "loadingRoles": "Loading roles...",
+      "selectRole": "Select a role",
+      "updateUserRole": "Update user role",
+      "toast": {
+        "updating": "Updating role...",
+        "updated": "Updated role",
+        "updateError": "Error while updating role"
+      }
+    },
     "profile": {
       "editProfile": "Edit Profile",
       "yourUsername": "Your username",

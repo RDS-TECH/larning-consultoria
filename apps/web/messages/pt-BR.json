@@ -356,6 +356,18 @@
       "removed": "Usuário removido da organização",
       "removeError": "Erro ao remover usuário"
     },
+    "rolesUpdate": {
+      "rolesLabel": "Funções",
+      "pleaseChooseRole": "Por favor, escolha uma função para o usuário",
+      "loadingRoles": "Carregando funções...",
+      "selectRole": "Selecione uma função",
+      "updateUserRole": "Atualizar função do usuário",
+      "toast": {
+        "updating": "Atualizando função...",
+        "updated": "Função atualizada",
+        "updateError": "Erro ao atualizar função"
+      }
+    },
     "profile": {
       "editProfile": "Editar Perfil",
       "yourUsername": "Seu nome de usuário",
