@@ -628,6 +628,62 @@
         "deleting": "Excluindo...",
         "deleted": "Grupo de usuários excluído",
         "deleteError": "Erro ao excluir grupo de usuários"
+      },
+      "addUserGroup": {
+        "fields": {
+          "name": "Nome",
+          "description": "Descrição"
+        },
+        "buttons": {
+          "create": "Criar um Grupo de Usuários",
+          "loading": "Carregando..."
+        },
+        "validation": {
+          "nameRequired": "Nome é Obrigatório"
+        },
+        "toast": {
+          "creating": "Criando...",
+          "created": "Novo grupo de usuários criado",
+          "createError": "Não foi possível criar novo grupo de usuários"
+        }
+      },
+      "editUserGroup": {
+        "fields": {
+          "name": "Nome",
+          "description": "Descrição"
+        },
+        "buttons": {
+          "save": "Salvar Grupo de Usuários",
+          "loading": "Carregando..."
+        },
+        "validation": {
+          "nameRequired": "Nome é Obrigatório"
+        },
+        "toast": {
+          "saved": "Grupo de usuários salvo com sucesso",
+          "saveError": "Erro ao salvar Grupo de Usuários, por favor tente novamente mais tarde."
+        }
+      },
+      "manageUsers": {
+        "table": {
+          "user": "Usuário",
+          "linked": "Vinculado",
+          "actions": "Ações"
+        },
+        "status": {
+          "linked": "Vinculado",
+          "notLinked": "Não vinculado"
+        },
+        "buttons": {
+          "link": "Vincular",
+          "unlink": "Desvincular"
+        },
+        "toast": {
+          "userLinked": "Usuário vinculado com sucesso",
+          "userUnlinked": "Usuário desvinculado com sucesso",
+          "linkError": "Erro {status}: {detail}",
+          "unlinkError": "Erro {status}: {detail}"
+        }
       }
     },
     "invites": {

@@ -628,6 +628,62 @@
         "deleting": "Deleting...",
         "deleted": "Deleted usergroup",
         "deleteError": "Error deleting usergroup"
+      },
+      "addUserGroup": {
+        "fields": {
+          "name": "Name",
+          "description": "Description"
+        },
+        "buttons": {
+          "create": "Create a UserGroup",
+          "loading": "Loading..."
+        },
+        "validation": {
+          "nameRequired": "Name is Required"
+        },
+        "toast": {
+          "creating": "Creating...",
+          "created": "Created new usergroup",
+          "createError": "Couldn't create new usergroup"
+        }
+      },
+      "editUserGroup": {
+        "fields": {
+          "name": "Name",
+          "description": "Description"
+        },
+        "buttons": {
+          "save": "Save UserGroup",
+          "loading": "Loading..."
+        },
+        "validation": {
+          "nameRequired": "Name is Required"
+        },
+        "toast": {
+          "saved": "UserGroup saved successfully",
+          "saveError": "Error saving UserGroup, please retry later."
+        }
+      },
+      "manageUsers": {
+        "table": {
+          "user": "User",
+          "linked": "Linked",
+          "actions": "Actions"
+        },
+        "status": {
+          "linked": "Linked",
+          "notLinked": "Not linked"
+        },
+        "buttons": {
+          "link": "Link",
+          "unlink": "Unlink"
+        },
+        "toast": {
+          "userLinked": "User linked successfully",
+          "userUnlinked": "User unlinked successfully",
+          "linkError": "Error {status}: {detail}",
+          "unlinkError": "Error {status}: {detail}"
+        }
       }
     },
     "invites": {
