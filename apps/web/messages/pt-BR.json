@@ -825,6 +825,8 @@
         "loomTitle": "Adicionar Vídeo do Loom",
         "loomDescription": "Cole a URL do seu vídeo do Loom",
         "addVideo": "Adicionar Vídeo",
+        "youtube": "YouTube",
+        "loom": "Loom",
         "placeholders": {
           "youtubeUrl": "https://youtube.com/watch?v=...",
           "loomUrl": "https://www.loom.com/share/..."
