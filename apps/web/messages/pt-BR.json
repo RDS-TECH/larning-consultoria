@@ -371,21 +371,50 @@
     },
     "roles": {
       "title": "Funções",
+      "manageRolesTitle": "Gerenciar Funções e Permissões",
+      "rolesDescription": "As funções definem o que os usuários podem fazer dentro da sua organização. Crie funções personalizadas com permissões específicas para diferentes tipos de usuários.",
       "createRole": "Criar uma Função",
+      "createRoleDescription": "Criar uma nova função com permissões específicas",
       "editRole": "Editar Função",
       "deleteRole": "Excluir Função",
       "updateRole": "Atualizar Função",
       "roleHierarchy": "Hierarquia de Funções",
       "editPermissions": "Editar as permissões e detalhes da função",
-      "rolesDescription": "As funções definem o que os usuários podem fazer dentro da sua organização. Crie funções personalizadas com permissões específicas para diferentes tipos de usuários.",
+      "noPermissions": "Sem permissões",
+      "permissionsCount": "{count} permissões",
+      "systemWide": "Todo o sistema",
+      "noDescription": "Sem descrição",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "cannotEdit": "Não pode editar",
+      "cannotDelete": "Não pode excluir",
+      "cannotModifySystem": "Funções do sistema não podem ser modificadas",
       "confirmDeleteTitle": "Excluir Função?",
       "confirmDeleteMessage": "Esta ação não pode ser desfeita. Todos os usuários com esta função perderão suas permissões. Tem certeza de que deseja excluir esta função?",
-      "errorDeleting": "Erro ao excluir função"
+      "table": {
+        "roleName": "Nome da Função",
+        "role": "Função",
+        "description": "Descrição",
+        "permissions": "Permissões",
+        "actions": "Ações"
+      },
+      "toast": {
+        "deleting": "Excluindo...",
+        "deleted": "Função excluída",
+        "deleteError": "Erro ao excluir função"
+      }
     },
     "userGroups": {
       "title": "Grupos de Usuários",
+      "manageTitle": "Gerenciar Grupos de Usuários e Usuários",
+      "description": "Grupos de Usuários são uma forma de agrupar usuários para gerenciar seu acesso aos recursos (Cursos) em sua organização.",
       "createUserGroup": "Criar um Grupo de Usuários",
+      "editUserGroup": "Editar Grupo de Usuários",
       "noUserGroups": "Nenhum Grupo de Usuários disponível",
+      "manageUsers": "Gerenciar Usuários",
+      "manageUsersTitle": "Gerenciar Usuários do Grupo",
+      "manageUsersDescription": "Gerenciar os usuários neste Grupo de Usuários",
+      "edit": "Editar",
       "confirmDeleteTitle": "Excluir Grupo de Usuários?",
       "confirmDeleteMessage": "O acesso a todos os recursos será removido para todos os usuários neste Grupo. Tem certeza de que deseja excluir este Grupo de Usuários?",
       "unlinkUserGroup": "Desvincular Grupo de Usuários?",
@@ -394,7 +423,17 @@
       "userUnlinked": "Usuário desvinculado com sucesso",
       "successUnlinked": "Desvinculado com sucesso do grupo de usuários",
       "errorUnlinking": "Ocorreu um erro ao desvincular o grupo de usuários",
-      "errorDeleting": "Erro ao excluir grupo de usuários"
+      "table": {
+        "userGroup": "Grupo de Usuários",
+        "description": "Descrição",
+        "manageUsers": "Gerenciar Usuários",
+        "actions": "Ações"
+      },
+      "toast": {
+        "deleting": "Excluindo...",
+        "deleted": "Grupo de usuários excluído",
+        "deleteError": "Erro ao excluir grupo de usuários"
+      }
     },
     "invites": {
       "generateCode": "Gerar Código de Convite",

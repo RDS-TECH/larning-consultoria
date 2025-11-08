@@ -371,21 +371,50 @@
     },
     "roles": {
       "title": "Roles",
+      "manageRolesTitle": "Manage Roles & Permissions",
+      "rolesDescription": "Roles define what users can do within your organization. Create custom roles with specific permissions for different user types.",
       "createRole": "Create a Role",
+      "createRoleDescription": "Create a new role with specific permissions",
       "editRole": "Edit Role",
       "deleteRole": "Delete Role",
       "updateRole": "Update Role",
       "roleHierarchy": "Role Hierarchy",
       "editPermissions": "Edit the permissions and details of the role",
-      "rolesDescription": "Roles define what users can do within your organization. Create custom roles with specific permissions for different types of users.",
+      "noPermissions": "No permissions",
+      "permissionsCount": "{count} permissions",
+      "systemWide": "System-wide",
+      "noDescription": "No description",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cannotEdit": "Cannot edit",
+      "cannotDelete": "Cannot delete",
+      "cannotModifySystem": "System roles cannot be modified",
       "confirmDeleteTitle": "Delete Role?",
       "confirmDeleteMessage": "This action cannot be undone. All users with this role will lose their permissions. Are you sure you want to delete this role?",
-      "errorDeleting": "Error deleting role"
+      "table": {
+        "roleName": "Role Name",
+        "role": "Role",
+        "description": "Description",
+        "permissions": "Permissions",
+        "actions": "Actions"
+      },
+      "toast": {
+        "deleting": "Deleting...",
+        "deleted": "Deleted role",
+        "deleteError": "Error deleting role"
+      }
     },
     "userGroups": {
       "title": "User Groups",
+      "manageTitle": "Manage UserGroups & Users",
+      "description": "UserGroups are a way to group users together to manage their access to the resources (Courses) in your organization.",
       "createUserGroup": "Create a User Group",
+      "editUserGroup": "Edit User Group",
       "noUserGroups": "No User Groups available",
+      "manageUsers": "Manage Users",
+      "manageUsersTitle": "Manage UserGroup Users",
+      "manageUsersDescription": "Manage the users in this UserGroup",
+      "edit": "Edit",
       "confirmDeleteTitle": "Delete User Group?",
       "confirmDeleteMessage": "Access to all resources will be removed for all users in this Group. Are you sure you want to delete this User Group?",
       "unlinkUserGroup": "Unlink User Group?",
@@ -394,7 +423,17 @@
       "userUnlinked": "User unlinked successfully",
       "successUnlinked": "Successfully unlinked from user group",
       "errorUnlinking": "An error occurred while unlinking the user group",
-      "errorDeleting": "Error deleting user group"
+      "table": {
+        "userGroup": "UserGroup",
+        "description": "Description",
+        "manageUsers": "Manage Users",
+        "actions": "Actions"
+      },
+      "toast": {
+        "deleting": "Deleting...",
+        "deleted": "Deleted usergroup",
+        "deleteError": "Error deleting usergroup"
+      }
     },
     "invites": {
       "generateCode": "Generate Invite Code",
