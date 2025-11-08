@@ -11,7 +11,8 @@ export const getAPIUrl = () => {
     console.error('NEXT_PUBLIC_LEARNHOUSE_API_URL is not defined. Please check your environment variables and redeploy.')
     return ''
   }
-  return LEARNHOUSE_API_URL
+  // Garantir que a URL termine com /
+  return LEARNHOUSE_API_URL.endsWith('/') ? LEARNHOUSE_API_URL : `${LEARNHOUSE_API_URL}/`
 }
 
 export const getBackendUrl = () => {
