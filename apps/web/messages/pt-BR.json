@@ -1219,6 +1219,12 @@
   },
   "editor": {
     "title": "Editor",
+    "save": "Salvar",
+    "preview": "Visualizar",
+    "desktopOnly": "Apenas Desktop",
+    "desktopOnlyDescription": "O editor só é acessível a partir de um dispositivo desktop.",
+    "pleaseSwitchToDesktop": "Por favor, mude para um desktop para visualizar.",
+    "aiEditor": "Editor de IA",
     "toolbar": {
       "undo": "Desfazer última ação",
       "redo": "Refazer última ação",
@@ -1226,29 +1232,47 @@
       "italic": "Alternar formatação em itálico",
       "strikethrough": "Alternar texto tachado",
       "list": "Inserir lista",
+      "bulletList": "Lista com Marcadores",
+      "orderedList": "Lista Ordenada",
+      "paragraph": "Parágrafo",
+      "heading1": "Título 1",
+      "heading2": "Título 2",
+      "heading3": "Título 3",
+      "heading4": "Título 4",
+      "heading5": "Título 5",
+      "heading6": "Título 6",
       "table": "Inserir tabela",
-      "infoCallout": "Inserir balão de informação",
-      "warningCallout": "Inserir balão de aviso",
-      "link": "Inserir ou editar link",
-      "image": "Inserir imagem",
-      "video": "Inserir vídeo",
-      "youtube": "Inserir vídeo do YouTube",
-      "mathEquation": "Inserir equação matemática (LaTeX)",
-      "pdf": "Inserir documento PDF",
-      "quiz": "Inserir quiz interativo",
-      "codeBlock": "Inserir bloco de código",
-      "embed": "Inserir objeto externo ou incorporado",
-      "badge": "Inserir emblema",
-      "button": "Inserir botão",
-      "userReference": "Inserir referência de usuário"
+      "insertNewTable": "Inserir nova tabela (3×3)",
+      "addRowBelow": "Adicionar linha abaixo",
+      "addColumnRight": "Adicionar coluna à direita",
+      "deleteCurrentRow": "Excluir linha atual",
+      "deleteCurrentColumn": "Excluir coluna atual",
+      "infoCallout": "Balão de Informação",
+      "warningCallout": "Balão de Aviso",
+      "link": "Link",
+      "image": "Imagem",
+      "video": "Vídeo",
+      "youtube": "Vídeo do YouTube",
+      "mathEquation": "Equação Matemática (LaTeX)",
+      "pdf": "Documento PDF",
+      "quiz": "Quiz Interativo",
+      "codeBlock": "Bloco de Código",
+      "embed": "Objeto Externo (Incorporação)",
+      "badges": "Emblemas",
+      "button": "Botão",
+      "user": "Usuário",
+      "webPreview": "Visualização Web",
+      "flipcard": "Cartão Rotativo",
+      "interactiveScenarios": "Cenários Interativos"
     },
     "placeholders": {
       "enterContent": "Digite seu conteúdo aqui...",
-      "enterQuestion": "Digite sua pergunta...",
-      "enterAnswer": "Digite sua resposta...",
+      "enterQuestion": "Sua Pergunta",
+      "enterAnswer": "Resposta",
       "mathEquation": "Inserir uma Equação Matemática (LaTeX)",
       "websiteURL": "Digite a URL do site...",
-      "embedCode": "Cole o código de incorporação (iframe, script de incorporação, etc.)"
+      "embedCode": "Cole o código de incorporação (iframe, script de incorporação, etc.)",
+      "enterUrl": "Digite a URL"
     },
     "actions": {
       "editURL": "Editar URL",
@@ -1265,20 +1289,51 @@
     "alignment": {
       "left": "Alinhar à esquerda",
       "center": "Centralizar",
-      "right": "Alinhar à direita"
+      "right": "Alinhar à direita",
+      "align": "Alinhar"
     },
     "size": {
-      "small": "Tamanho Pequeno",
-      "medium": "Tamanho Médio",
-      "large": "Tamanho Grande"
+      "small": "Pequeno",
+      "medium": "Médio",
+      "large": "Grande",
+      "full": "Largura Total",
+      "videoSize": "Tamanho do Vídeo"
+    },
+    "blocks": {
+      "videoBlock": "Bloco de Vídeo",
+      "imageBlock": "Bloco de Imagem",
+      "pdfBlock": "Bloco de PDF",
+      "mathEquation": "Equação Matemática",
+      "quiz": "Quiz"
+    },
+    "upload": {
+      "dropOrClick": "Solte seu vídeo aqui ou clique para procurar",
+      "dropImageOrClick": "Solte sua imagem aqui ou clique para procurar",
+      "dropPdfOrClick": "Solte seu PDF aqui ou clique para procurar",
+      "supportsMp4Webm": "Suporta formatos MP4 e WebM",
+      "supportsImageFormats": "Suporta formatos JPG, PNG, WebP, GIF",
+      "supportsPdf": "Suporta formato PDF",
+      "uploadingVideo": "Enviando vídeo...",
+      "uploadingImage": "Enviando imagem...",
+      "uploadingPdf": "Enviando PDF...",
+      "failedToUpload": "Falha ao enviar. Por favor, tente novamente.",
+      "uploadSupportedFormat": "Por favor, envie um formato suportado"
     },
     "quiz": {
+      "quiz": "Quiz",
       "yourQuestion": "Sua Pergunta",
       "answer": "Resposta",
       "resetAnswers": "Redefinir respostas",
       "deleteAnswer": "Excluir resposta",
       "deleteOption": "Excluir opção",
-      "addResponseOption": "Adicionar opção de resposta"
+      "addResponseOption": "Adicionar opção de resposta",
+      "addQuestion": "Adicionar Pergunta",
+      "addAnswer": "Adicionar Resposta",
+      "submit": "Enviar",
+      "allAnswersCorrect": "Todas as respostas estão corretas!",
+      "someAnswersIncorrect": "Algumas respostas estão incorretas!",
+      "markAsCorrect": "Marcar como correto",
+      "markAsIncorrect": "Marcar como incorreto"
     },
     "scenarios": {
       "editScenarios": "Editar Cenários",
@@ -1290,12 +1345,98 @@
       "backSide": "Lado Traseiro (Resposta)",
       "previewFlip": "Visualizar Virada"
     },
+    "mathEquation": {
+      "templates": "Modelos",
+      "symbols": "Símbolos",
+      "help": "Ajuda",
+      "selectTemplateToInsert": "Selecione um modelo para inserir",
+      "clickSymbolToInsert": "Clique em um símbolo para inserir",
+      "latexQuickReference": "Referência Rápida LaTeX Math",
+      "fractions": "Frações",
+      "exponents": "Expoentes",
+      "subscripts": "Subscritos",
+      "squareRoot": "Raiz quadrada",
+      "summation": "Somatório",
+      "integral": "Integral",
+      "viewCompleteReference": "Ver referência completa",
+      "pleaseReferTo": "Por favor, consulte este",
+      "guide": "guia",
+      "forSupportedFunctions": "para funções TeX suportadas",
+      "templates": {
+        "fraction": "Fração",
+        "squareRoot": "Raiz Quadrada",
+        "summation": "Somatório",
+        "integral": "Integral",
+        "limit": "Limite",
+        "matrix2x2": "Matriz 2×2",
+        "binomial": "Binomial",
+        "quadraticFormula": "Fórmula Quadrática",
+        "vector": "Vetor",
+        "systemOfEquations": "Sistema de Equações"
+      },
+      "descriptions": {
+        "fraction": "Fração simples",
+        "squareRoot": "Raiz quadrada",
+        "summation": "Soma com limites",
+        "integral": "Integral definida",
+        "limit": "Expressão de limite",
+        "matrix2x2": "Matriz 2×2 com parênteses",
+        "binomial": "Coeficiente binomial",
+        "quadraticFormula": "Solução para equação quadrática",
+        "vector": "Vetor 3D",
+        "systemOfEquations": "Sistema de equações lineares"
+      }
+    },
+    "webPreview": {
+      "editWebPreviewCard": "Editar Card de Visualização Web",
+      "updateWebsitePreview": "Atualize a visualização do site, botão e opções de exibição.",
+      "websiteUrl": "URL do Site",
+      "enterWebsiteUrl": "Digite a URL do site...",
+      "buttonOptions": "Opções de Botão",
+      "showButton": "Mostrar botão",
+      "openInPopup": "Abrir em popup no aplicativo (pode não funcionar em todos os sites)",
+      "buttonLabel": "Rótulo do botão",
+      "alignment": "Alinhamento",
+      "visitSite": "Visitar Site",
+      "expandPdf": "Expandir PDF",
+      "downloadPdf": "Baixar PDF",
+      "expandVideo": "Expandir vídeo",
+      "downloadVideo": "Baixar vídeo",
+      "expandImage": "Expandir imagem",
+      "unableToGetMetadata": "Não foi possível obter metadados deste site. O card de visualização pode aparecer incompleto.",
+      "editUrl": "Editar URL",
+      "deleteCard": "Excluir Card"
+    },
+    "link": {
+      "enterUrl": "Digite a URL"
+    },
     "embed": {
       "title": "Visualização de Site Incorporado",
       "noPreview": "Nenhum arquivo disponível para visualização."
     },
     "color": {
       "changeColor": "Mudar Cor"
+    },
+    "ai": {
+      "aiEditor": "Editor de IA",
+      "preAlpha": "PRÉ-ALPHA",
+      "writer": "Escritor",
+      "continueWriting": "Continuar Escrevendo",
+      "makeLonger": "Aumentar",
+      "translate": "Traduzir",
+      "writeAbout": "Escrever sobre...",
+      "placeCursorToContinue": "Coloque seu cursor no final de uma frase para continuar escrevendo",
+      "selectTextToMakeLonger": "Selecione o texto para aumentar",
+      "translateSelectedTextTo": "Traduzir texto selecionado para",
+      "askAI": "Perguntar à IA",
+      "thinking": "Pensando...",
+      "somethingWrongHappened": "Algo deu errado"
+    },
+    "toast": {
+      "saving": "Salvando...",
+      "activitySaved": "Atividade salva!",
+      "errorSaving": "Erro ao salvar atividade",
+      "couldNotSave": "Não foi possível salvar"
     }
   },
   "profile": {

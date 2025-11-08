@@ -1219,6 +1219,12 @@
   },
   "editor": {
     "title": "Editor",
+    "save": "Save",
+    "preview": "Preview",
+    "desktopOnly": "Desktop Only",
+    "desktopOnlyDescription": "The editor is only accessible from a desktop device.",
+    "pleaseSwitchToDesktop": "Please switch to a desktop to view.",
+    "aiEditor": "AI Editor",
     "toolbar": {
       "undo": "Undo last action",
       "redo": "Redo last action",
@@ -1226,29 +1232,47 @@
       "italic": "Toggle italic formatting",
       "strikethrough": "Toggle strikethrough text",
       "list": "Insert list",
+      "bulletList": "Bullet List",
+      "orderedList": "Ordered List",
+      "paragraph": "Paragraph",
+      "heading1": "Heading 1",
+      "heading2": "Heading 2",
+      "heading3": "Heading 3",
+      "heading4": "Heading 4",
+      "heading5": "Heading 5",
+      "heading6": "Heading 6",
       "table": "Insert table",
-      "infoCallout": "Insert info callout",
-      "warningCallout": "Insert warning callout",
-      "link": "Insert or edit link",
-      "image": "Insert image",
-      "video": "Insert video",
-      "youtube": "Insert YouTube video",
-      "mathEquation": "Insert math equation (LaTeX)",
-      "pdf": "Insert PDF document",
-      "quiz": "Insert interactive quiz",
-      "codeBlock": "Insert code block",
-      "embed": "Insert external or embedded object",
-      "badge": "Insert badge",
-      "button": "Insert button",
-      "userReference": "Insert user reference"
+      "insertNewTable": "Insert new table (3×3)",
+      "addRowBelow": "Add row below",
+      "addColumnRight": "Add column right",
+      "deleteCurrentRow": "Delete current row",
+      "deleteCurrentColumn": "Delete current column",
+      "infoCallout": "Info Callout",
+      "warningCallout": "Warning Callout",
+      "link": "Link",
+      "image": "Image",
+      "video": "Video",
+      "youtube": "YouTube video",
+      "mathEquation": "Math Equation (LaTeX)",
+      "pdf": "PDF Document",
+      "quiz": "Interactive Quiz",
+      "codeBlock": "Code Block",
+      "embed": "External Object (Embed)",
+      "badges": "Badges",
+      "button": "Button",
+      "user": "User",
+      "webPreview": "Web Preview",
+      "flipcard": "Flipcard",
+      "interactiveScenarios": "Interactive Scenarios"
     },
     "placeholders": {
       "enterContent": "Enter your content here...",
-      "enterQuestion": "Enter your question...",
-      "enterAnswer": "Enter your answer...",
+      "enterQuestion": "Your Question",
+      "enterAnswer": "Answer",
       "mathEquation": "Insert a Math Equation (LaTeX)",
       "websiteURL": "Enter website URL...",
-      "embedCode": "Paste embed code (iframe, embed script, etc.)"
+      "embedCode": "Paste embed code (iframe, embed script, etc.)",
+      "enterUrl": "Enter URL"
     },
     "actions": {
       "editURL": "Edit URL",
@@ -1264,21 +1288,52 @@
     },
     "alignment": {
       "left": "Align left",
-      "center": "Center",
-      "right": "Align right"
+      "center": "Center align",
+      "right": "Align right",
+      "align": "Align"
     },
     "size": {
-      "small": "Small Size",
-      "medium": "Medium Size",
-      "large": "Large Size"
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "full": "Full Width",
+      "videoSize": "Video Size"
+    },
+    "blocks": {
+      "videoBlock": "Video Block",
+      "imageBlock": "Image Block",
+      "pdfBlock": "PDF Block",
+      "mathEquation": "Math Equation",
+      "quiz": "Quiz"
+    },
+    "upload": {
+      "dropOrClick": "Drop your video here or click to browse",
+      "dropImageOrClick": "Drop your image here or click to browse",
+      "dropPdfOrClick": "Drop your PDF here or click to browse",
+      "supportsMp4Webm": "Supports MP4 and WebM formats",
+      "supportsImageFormats": "Supports JPG, PNG, WebP, GIF formats",
+      "supportsPdf": "Supports PDF format",
+      "uploadingVideo": "Uploading video...",
+      "uploadingImage": "Uploading image...",
+      "uploadingPdf": "Uploading PDF...",
+      "failedToUpload": "Failed to upload. Please try again.",
+      "uploadSupportedFormat": "Please upload a supported format"
     },
     "quiz": {
+      "quiz": "Quiz",
       "yourQuestion": "Your Question",
       "answer": "Answer",
       "resetAnswers": "Reset answers",
       "deleteAnswer": "Delete answer",
       "deleteOption": "Delete option",
-      "addResponseOption": "Add response option"
+      "addResponseOption": "Add response option",
+      "addQuestion": "Add Question",
+      "addAnswer": "Add Answer",
+      "submit": "Submit",
+      "allAnswersCorrect": "All answers are correct!",
+      "someAnswersIncorrect": "Some answers are incorrect!",
+      "markAsCorrect": "Mark as correct",
+      "markAsIncorrect": "Mark as incorrect"
     },
     "scenarios": {
       "editScenarios": "Edit Scenarios",
@@ -1290,12 +1345,98 @@
       "backSide": "Back Side (Answer)",
       "previewFlip": "Preview Flip"
     },
+    "mathEquation": {
+      "templates": "Templates",
+      "symbols": "Symbols",
+      "help": "Help",
+      "selectTemplateToInsert": "Select a template to insert",
+      "clickSymbolToInsert": "Click a symbol to insert",
+      "latexQuickReference": "LaTeX Math Quick Reference",
+      "fractions": "Fractions",
+      "exponents": "Exponents",
+      "subscripts": "Subscripts",
+      "squareRoot": "Square root",
+      "summation": "Summation",
+      "integral": "Integral",
+      "viewCompleteReference": "View complete reference",
+      "pleaseReferTo": "Please refer to this",
+      "guide": "guide",
+      "forSupportedFunctions": "for supported TeX functions",
+      "templates": {
+        "fraction": "Fraction",
+        "squareRoot": "Square Root",
+        "summation": "Summation",
+        "integral": "Integral",
+        "limit": "Limit",
+        "matrix2x2": "Matrix 2×2",
+        "binomial": "Binomial",
+        "quadraticFormula": "Quadratic Formula",
+        "vector": "Vector",
+        "systemOfEquations": "System of Equations"
+      },
+      "descriptions": {
+        "fraction": "Simple fraction",
+        "squareRoot": "Square root",
+        "summation": "Sum with limits",
+        "integral": "Definite integral",
+        "limit": "Limit expression",
+        "matrix2x2": "2×2 matrix with parentheses",
+        "binomial": "Binomial coefficient",
+        "quadraticFormula": "Solution to quadratic equation",
+        "vector": "3D vector",
+        "systemOfEquations": "System of linear equations"
+      }
+    },
+    "webPreview": {
+      "editWebPreviewCard": "Edit Web Preview Card",
+      "updateWebsitePreview": "Update the website preview, button, and display options.",
+      "websiteUrl": "Website URL",
+      "enterWebsiteUrl": "Enter website URL...",
+      "buttonOptions": "Button Options",
+      "showButton": "Show button",
+      "openInPopup": "Open in-app popup (might not work on all websites)",
+      "buttonLabel": "Button label",
+      "alignment": "Alignment",
+      "visitSite": "Visit Site",
+      "expandPdf": "Expand PDF",
+      "downloadPdf": "Download PDF",
+      "expandVideo": "Expand video",
+      "downloadVideo": "Download video",
+      "expandImage": "Expand image",
+      "unableToGetMetadata": "Unable to get metadata from this website. The preview card may appear incomplete.",
+      "editUrl": "Edit URL",
+      "deleteCard": "Delete Card"
+    },
+    "link": {
+      "enterUrl": "Enter URL"
+    },
     "embed": {
       "title": "Embedded Site Preview",
       "noPreview": "No file available for preview."
     },
     "color": {
       "changeColor": "Change Color"
+    },
+    "ai": {
+      "aiEditor": "AI Editor",
+      "preAlpha": "PRE-ALPHA",
+      "writer": "Writer",
+      "continueWriting": "ContinueWriting",
+      "makeLonger": "MakeLonger",
+      "translate": "Translate",
+      "writeAbout": "Write about...",
+      "placeCursorToContinue": "Place your cursor at the end of a sentence to continue writing",
+      "selectTextToMakeLonger": "Select text to make longer",
+      "translateSelectedTextTo": "Translate selected text to",
+      "askAI": "Ask AI",
+      "thinking": "Thinking...",
+      "somethingWrongHappened": "Something wrong happened"
+    },
+    "toast": {
+      "saving": "Saving...",
+      "activitySaved": "Activity saved!",
+      "errorSaving": "Error saving activity",
+      "couldNotSave": "Could not save"
     }
   },
   "profile": {
