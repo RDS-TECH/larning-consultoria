@@ -369,6 +369,9 @@
         "about": "Sobre o que é esta Atividade ?",
         "flashcards": "Gerar flashcards sobre esta Atividade",
         "examples": "Explicar esta Atividade em exemplos práticos"
+      },
+      "tooltips": {
+        "ex": "Ex"
       }
     },
     "success": {

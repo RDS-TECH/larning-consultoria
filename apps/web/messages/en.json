@@ -369,6 +369,9 @@
         "about": "What is this Activity about ?",
         "flashcards": "Generate flashcards about this Activity",
         "examples": "Explain this Activity in practical examples"
+      },
+      "tooltips": {
+        "ex": "Ex"
       }
     },
     "success": {
