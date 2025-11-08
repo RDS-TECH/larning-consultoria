@@ -14,38 +14,40 @@ import Link from 'next/link'
 import { signup } from '@services/auth/auth'
 import { useOrg } from '@components/Contexts/OrgContext'
 import { signIn } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 
-const validate = (values: any) => {
+const validate = (values: any, t: any) => {
   const errors: any = {}
 
   if (!values.email) {
-    errors.email = 'Required'
+    errors.email = t('validation.required')
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
+    errors.email = t('validation.invalidEmail')
   }
 
   if (!values.password) {
-    errors.password = 'Required'
+    errors.password = t('validation.required')
   } else if (values.password.length < 8) {
-    errors.password = 'Password must be at least 8 characters'
+    errors.password = t('validation.passwordMinLength')
   }
 
   if (!values.username) {
-    errors.username = 'Required'
+    errors.username = t('validation.required')
   }
 
   if (!values.username || values.username.length < 4) {
-    errors.username = 'Username must be at least 4 characters'
+    errors.username = t('validation.usernameMinLength')
   }
 
   if (!values.bio) {
-    errors.bio = 'Required'
+    errors.bio = t('validation.required')
   }
 
   return errors
 }
 
 function OpenSignUpComponent() {
+  const t = useTranslations('auth.signup.openSignup')
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const org = useOrg() as any
   const router = useRouter()
@@ -62,7 +64,7 @@ function OpenSignUpComponent() {
       first_name: '',
       last_name: '',
     },
-    validate,
+    validate: (values) => validate(values, t),
     enableReinitialize: true,
     onSubmit: async (values) => {
       setError('')
@@ -72,7 +74,7 @@ function OpenSignUpComponent() {
       let message = await res.json()
       if (res.status == 200) {
         //router.push(`/login`);
-        setMessage('Your account was successfully created')
+        setMessage(t('successMessage'))
         setIsSubmitting(false)
       } else if (
         res.status == 401 ||
@@ -83,7 +85,7 @@ function OpenSignUpComponent() {
         setError(message.detail)
         setIsSubmitting(false)
       } else {
-        setError('Something went wrong')
+        setError(t('errorGeneric'))
         setIsSubmitting(false)
       }
     },
@@ -107,13 +109,13 @@ function OpenSignUpComponent() {
           </div>
           <hr className="border-green-900/20 800 w-40 border" />
           <Link className="flex space-x-2 items-center" href={'/login'}>
-            <User size={14} /> <div>Login </div>
+            <User size={14} /> <div>{t('loginLink')}</div>
           </Link>
         </div>
       )}
       <FormLayout onSubmit={formik.handleSubmit}>
         <FormField name="email">
-          <FormLabelAndMessage label="Email" message={formik.errors.email} />
+          <FormLabelAndMessage label={t('email')} message={formik.errors.email} />
           <Form.Control asChild>
             <Input
               onChange={formik.handleChange}
@@ -126,7 +128,7 @@ function OpenSignUpComponent() {
         {/* for password  */}
         <FormField name="password">
           <FormLabelAndMessage
-            label="Password"
+            label={t('password')}
             message={formik.errors.password}
           />
 
@@ -142,7 +144,7 @@ function OpenSignUpComponent() {
         {/* for username  */}
         <FormField name="username">
           <FormLabelAndMessage
-            label="Username"
+            label={t('username')}
             message={formik.errors.username}
           />
 
@@ -158,7 +160,7 @@ function OpenSignUpComponent() {
 
         {/* for bio  */}
         <FormField name="bio">
-          <FormLabelAndMessage label="Bio" message={formik.errors.bio} />
+          <FormLabelAndMessage label={t('bio')} message={formik.errors.bio} />
 
           <Form.Control asChild>
             <Textarea
@@ -172,7 +174,7 @@ function OpenSignUpComponent() {
         <div className="flex  py-4">
           <Form.Submit asChild>
             <button className="w-full bg-black text-white font-bold text-center p-2 rounded-md shadow-md hover:cursor-pointer">
-              {isSubmitting ? 'Loading...' : 'Create an account'}
+              {isSubmitting ? t('loading') : t('createButton')}
             </button>
           </Form.Submit>
         </div>
@@ -181,7 +183,7 @@ function OpenSignUpComponent() {
         <div className='flex h-0.5 rounded-2xl bg-slate-100 mt-5 mb-5 mx-10'></div>
         <button onClick={() => signIn('google')} className="flex justify-center py-3 text-md w-full bg-white text-slate-600 space-x-3 font-semibold text-center p-2 rounded-md shadow-sm hover:cursor-pointer">
           <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="" />
-          <span>Sign in with Google</span>
+          <span>{t('signInWithGoogle')}</span>
         </button>
       </div>
     </div>

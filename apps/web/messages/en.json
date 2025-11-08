@@ -19,7 +19,24 @@
     },
     "signup": {
       "title": "Create account",
-      "openSignup": "Open Signup",
+      "openSignup": {
+        "validation": {
+          "required": "Required",
+          "invalidEmail": "Invalid email address",
+          "passwordMinLength": "Password must be at least 8 characters",
+          "usernameMinLength": "Username must be at least 4 characters"
+        },
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "bio": "Bio",
+        "createButton": "Create an account",
+        "loading": "Loading...",
+        "successMessage": "Your account was successfully created",
+        "errorGeneric": "Something went wrong",
+        "loginLink": "Login",
+        "signInWithGoogle": "Sign in with Google"
+      },
       "inviteOnly": "Invite Only",
       "invitedToJoin": "You've been invited to join",
       "hi": "Hi",
@@ -29,7 +46,25 @@
       "enterInviteCode": "Please enter an invite code",
       "submit": "Submit",
       "inviteValid": "Invite code is valid, you'll be redirected to the signup page in a few seconds",
-      "inviteInvalid": "Invite code is invalid"
+      "inviteInvalid": "Invite code is invalid",
+      "inviteOnlySignup": {
+        "validation": {
+          "required": "Required",
+          "invalidEmail": "Invalid email address",
+          "passwordMinLength": "Password must be at least 8 characters",
+          "usernameMinLength": "Username must be at least 4 characters"
+        },
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "bio": "Bio",
+        "createButton": "Create an account & Join",
+        "loading": "Loading...",
+        "successMessage": "Your account was successfully created",
+        "errorGeneric": "Something went wrong",
+        "loginLink": "Login to your account",
+        "signInWithGoogle": "Sign in with Google"
+      }
     },
     "forgot": {
       "title": "Forgot password",
@@ -174,1547 +209,6 @@
       "organizationSettings": "Organization settings",
       "userAccountSettings": "User account settings",
       "goToDashboardHome": "Go to dashboard home"
-    }
-  },
-  "courses": {
-    "title": "Courses",
-    "myCourses": "My Courses",
-    "myCoursesDescription": "Courses you have purchased or subscribed to",
-    "createCourse": "Create Course",
-    "editCourse": "Edit Course",
-    "deleteCourse": "Delete Course",
-    "courseEditor": "Course Editor",
-    "courseName": "Course Name",
-    "courseDescription": "Course Description",
-    "noCourses": "No courses available",
-    "noAssignments": "No assignments available for this course, create course assignments from the course editor",
-    "linkCourseToProduct": "Link Course to Product",
-    "linkCourseToUserGroup": "Link Course to User Group",
-    "courseLinkedSuccess": "Course linked successfully",
-    "courseUnlinkedSuccess": "Course unlinked successfully",
-    "noCoursesLinked": "No courses linked yet",
-    "discoverNextLearning": "Discover Your Next Learning Journey",
-    "sections": "Sections",
-    "editContent": "Edit Content",
-    "courseProgress": "Course Progress",
-    "purchaseCourse": "Purchase Course",
-    "startCourse": "Start Course",
-    "leaveCourse": "Leave Course",
-    "successfullyStarted": "Course started successfully",
-    "successfullyLeft": "You have successfully left the course",
-    "publishCourse": "Publish",
-    "unpublishCourse": "Unpublish",
-    "updates": {
-      "title": "Updates",
-      "addUpdate": "Add New Course Update",
-      "whatsNew": "What's new in this update?",
-      "shareDetails": "Share the details of your update...",
-      "noUpdates": "No updates yet",
-      "deleteUpdate": "Delete Update",
-      "newUpdate": "New Update",
-      "addSuccess": "Update added successfully",
-      "deleteSuccess": "Update deleted successfully",
-      "addFailed": "Failed to add update",
-      "deleteFailed": "Failed to delete update"
-    },
-    "access": {
-      "accessDenied": "You do not have permission to access this course.",
-      "accessRestricted": "Access Restricted",
-      "publicCourse": "Are you sure you want this course to be publicly available on the internet?",
-      "privateCourse": "Are you sure you want this course to be accessible only to logged-in users?"
-    },
-    "contributors": {
-      "openToContributors": "Open to Contributors",
-      "closeToContributors": "Close to Contributors",
-      "addContributors": "Add Contributors",
-      "searchContributors": "Search users by name or username to add as contributors...",
-      "applyToContribute": "Apply to Contribute",
-      "applicationSubmitted": "Your application to contribute has been submitted successfully",
-      "applicationFailed": "Failed to submit your application. Please try again later.",
-      "contributorsAdded": "Contributor(s) added successfully",
-      "contributorsAddFailed": "Failed to add contributors",
-      "contributorsRemoved": "Contributors removed successfully",
-      "contributorsRemoveFailed": "Failed to remove contributors",
-      "cannotModifyCreator": "Cannot modify the role or status of a creator",
-      "removeThisContributor": "Remove this contributor",
-      "removeFailed": "Failed to remove this contributor"
-    },
-    "confirmations": {
-      "deleteTitle": "Delete '{name}'?",
-      "deleteMessage": "Are you sure you want to delete this course?",
-      "deleteButton": "Delete Course",
-      "deleteSuccess": "Course deleted successfully",
-      "deleteFailed": "Failed to delete course",
-      "openToContributorsMessage": "Are you sure you want to open this course to contributors?",
-      "closeToContributorsMessage": "Are you sure you want to close this course to contributors?"
-    }
-  },
-  "chapters": {
-    "title": "Chapter",
-    "createChapter": "Create chapter",
-    "addChapter": "Add Chapter",
-    "chapterName": "Chapter Name",
-    "deleteChapter": "Delete Chapter",
-    "addNewChapter": "Add a new chapter to the course",
-    "confirmations": {
-      "deleteTitle": "Delete '{name}'?",
-      "deleteMessage": "Are you sure you want to delete this chapter?",
-      "deleteButton": "Delete Chapter"
-    }
-  },
-  "activities": {
-    "title": "Activity",
-    "createActivity": "Create Activity",
-    "activityName": "Activity Name",
-    "deleteActivity": "Delete Activity",
-    "creatingActivity": "Creating activity...",
-    "uploadingFile": "Uploading file and creating activity...",
-    "deletingActivity": "Deleting activity...",
-    "markAsDone": "Mark Activity as Done for User",
-    "allowedFormats": "Allowed formats: pdf, docx, mp4, jpg, jpeg, png, pptx, zip",
-    "breadcrumbs": {
-      "courses": "Courses"
-    },
-    "navigation": {
-      "previous": "Previous",
-      "next": "Next",
-      "noPrevious": "No previous activity",
-      "noNext": "No next activity",
-      "current": "Current",
-      "of": "of"
-    },
-    "chapterDropdown": {
-      "viewAllActivities": "View all activities",
-      "chapters": "Chapters",
-      "courseContent": "Course Content"
-    },
-    "types": {
-      "video": "Video",
-      "document": "Document",
-      "page": "Page",
-      "assignment": "Assignment",
-      "learningMaterial": "Learning Material",
-      "dynamicPage": "Dynamic Page",
-      "assignments": "Assignments"
-    },
-    "courseEnd": {
-      "congratulations": "Congratulations!",
-      "successfullyCompleted": "You've successfully completed",
-      "dedication": "Your dedication and hard work have paid off. You've mastered all the content in this course.",
-      "certificate": "Your Certificate",
-      "downloadCertificate": "Download Certificate PDF",
-      "verifyCertificate": "Verify Certificate",
-      "loadingCertificate": "Loading your certificate...",
-      "noCertificate": "No certificate is available for this course. Contact your instructor for more information.",
-      "backToCourse": "Back to Course",
-      "keepGoing": "Keep Going!",
-      "makingProgress": "You're making great progress in",
-      "courseProgress": "Course Progress",
-      "progress": "Progress",
-      "activitiesCompleted": "of {total} activities completed",
-      "doingGreat": "You're doing great! Complete the remaining activities to unlock your course completion certificate.",
-      "continueLearning": "Continue Learning"
-    },
-    "secondaryBar": {
-      "course": "Course"
-    },
-    "creation": {
-      "modalTitle": "Create Activity",
-      "modalDescription": "Select the type of activity you want to create",
-      "dynamicPage": "Dynamic Page",
-      "video": "Video",
-      "document": "Document",
-      "assignments": "Assignments",
-      "activityName": "Activity Name",
-      "activityNamePlaceholder": "Enter activity name...",
-      "activityDescription": "Activity description",
-      "activityDescriptionPlaceholder": "Enter activity description...",
-      "createActivityButton": "Create Activity",
-      "videoSettings": "Video Settings",
-      "startTime": "Start Time",
-      "endTime": "End Time (optional)",
-      "minutes": "Minutes",
-      "seconds": "Seconds",
-      "autoplayVideo": "Autoplay video",
-      "startMuted": "Start muted",
-      "uploadVideo": "Upload Video",
-      "youtubeVideo": "YouTube Video",
-      "videoFile": "Video File",
-      "youtubeUrl": "YouTube URL",
-      "youtubeUrlPlaceholder": "https://youtube.com/watch?v=...",
-      "pdfDocumentName": "PDF Document name",
-      "pdfDocumentFile": "PDF Document file",
-      "provideName": "Please provide a name for your activity",
-      "provideFile": "Please provide a file for your activity",
-      "providePdfName": "Please provide a name for your PDF Document activity",
-      "providePdf": "Please provide a PDF Document for your activity",
-      "assignmentTitle": "Assignment Title",
-      "assignmentDescription": "Assignment Description",
-      "assignmentDueDate": "Due Date",
-      "assignmentGradingType": "Grading Type",
-      "provideAssignmentName": "Please provide a name for your assignment",
-      "provideAssignmentDescription": "Please provide a description for your assignment",
-      "provideAssignmentDueDate": "Please provide a due date for your assignment",
-      "provideAssignmentGradingType": "Please provide a grading type for your assignment",
-      "gradingTypes": {
-        "alphabet": "Alphabet",
-        "numeric": "Numeric",
-        "percentage": "Percentage"
-      },
-      "creatingAssignment": "Creating assignment..."
-    },
-    "ai": {
-      "askAI": "Ask AI",
-      "ai": "AI",
-      "experimental": "Experimental",
-      "askAboutLecture": "Ask AI About this Lecture",
-      "hello": "Hello",
-      "howCanWeHelp": "how can we help today ?",
-      "somethingWrong": "Something wrong happened",
-      "predefinedQuestions": {
-        "about": "What is this Activity about ?",
-        "flashcards": "Generate flashcards about this Activity",
-        "examples": "Explain this Activity in practical examples"
-      },
-      "tooltips": {
-        "ex": "Ex"
-      }
-    },
-    "success": {
-      "created": "Activity created successfully",
-      "deleted": "Activity deleted successfully",
-      "nameUpdated": "Activity name updated successfully",
-      "updated": "Activity has been updated successfully",
-      "fileUploaded": "File uploaded successfully",
-      "assignmentCreated": "Assignment created successfully"
-    },
-    "errors": {
-      "updateName": "Failed to update activity name",
-      "assignmentCreationFailed": "Failed to create assignment"
-    },
-    "confirmations": {
-      "deleteTitle": "Delete '{name}'?",
-      "deleteMessage": "Are you sure you want to delete this activity?",
-      "deleteButton": "Delete Activity"
-    }
-  },
-  "assignments": {
-    "title": "Assignments",
-    "assignment": "Assignment",
-    "editAssignment": "Edit Assignment",
-    "deleteAssignment": "Delete Assignment",
-    "submissions": "Submissions",
-    "general": "General",
-    "content": "Content",
-    "tasks": "Tasks",
-    "noAssignments": "No assignments available",
-    "updating": "Updating assignment...",
-    "setFinalGrade": "Set final grade",
-    "rejectAssignment": "Reject Assignment",
-    "reject": "Reject",
-    "dueDate": "Due Date",
-    "assignmentDescription": "Assignment Description",
-    "status": {
-      "sent": "Sent",
-      "late": "Late",
-      "submitted": "Submitted",
-      "graded": "Graded",
-      "submission": "Submission"
-    },
-    "student": {
-      "task": "Task",
-      "hint": "Hint",
-      "referenceDocument": "Reference Document"
-    },
-    "tasks": {
-      "quiz": {
-        "title": "Quiz",
-        "description": "Multiple choice questions and answers"
-      },
-      "fileSubmission": {
-        "title": "File submission",
-        "description": "Students can submit files for this assignment"
-      },
-      "form": {
-        "title": "Form",
-        "description": "Fill-in forms for students"
-      },
-      "task": "Task",
-      "hint": "Hint",
-      "referenceDocument": "Reference Document",
-      "deleteTask": "Delete Task"
-    },
-    "success": {
-      "updated": "Assignment updated successfully"
-    },
-    "errors": {
-      "update": "An error occurred while updating the assignment",
-      "failed": "Failed to update assignment"
-    }
-  },
-  "users": {
-    "title": "Users",
-    "activeUsers": "Active users",
-    "activeUsersDescription": "Manage your organization users, assign roles and permissions",
-    "manageUsers": "Manage Group Users",
-    "addUser": "Add User",
-    "removeUser": "Remove User",
-    "noUsers": "No users found",
-    "noUserSelected": "No user selected",
-    "searchUsers": "Search users by name or username",
-    "table": {
-      "user": "User",
-      "role": "Role",
-      "actions": "Actions"
-    },
-    "updateRoles": "Update Roles",
-    "updateRole": "Update Role",
-    "updateRoleDescription": "Update @{username}'s role",
-    "editRole": "Edit Role",
-    "removeUserButton": "Remove User",
-    "removeUserConfirm": "Are you sure you want remove this user from the organization?",
-    "deleteUserTitle": "Delete {username}?",
-    "removeFromOrganization": "Remove from organization",
-    "toast": {
-      "removing": "Removing...",
-      "removed": "Removed user from org",
-      "removeError": "Error removing user"
-    },
-    "rolesUpdate": {
-      "rolesLabel": "Roles",
-      "pleaseChooseRole": "Please choose a role for the user",
-      "loadingRoles": "Loading roles...",
-      "selectRole": "Select a role",
-      "updateUserRole": "Update user role",
-      "toast": {
-        "updating": "Updating role...",
-        "updated": "Updated role",
-        "updateError": "Error while updating role"
-      }
-    },
-    "profile": {
-      "editProfile": "Edit Profile",
-      "yourUsername": "Your username",
-      "yourFirstName": "Your first name",
-      "yourLastName": "Your last name",
-      "yourEmail": "Your email address",
-      "bio": "Biography",
-      "tellUsAbout": "Tell us about yourself",
-      "savingProfile": "Saving profile...",
-      "profileUpdated": "Profile Updated Successfully",
-      "profileUpdateFailed": "Failed to update profile",
-      "loadFailed": "Failed to load profile data"
-    },
-    "roles": {
-      "title": "Roles",
-      "manageRolesTitle": "Manage Roles & Permissions",
-      "rolesDescription": "Roles define what users can do within your organization. Create custom roles with specific permissions for different user types.",
-      "createRole": "Create a Role",
-      "createRoleDescription": "Create a new role with specific permissions",
-      "editRole": "Edit Role",
-      "deleteRole": "Delete Role",
-      "updateRole": "Update Role",
-      "roleHierarchy": "Role Hierarchy",
-      "editPermissions": "Edit the permissions and details of the role",
-      "noPermissions": "No permissions",
-      "permissionsCount": "{count} permissions",
-      "systemWide": "System-wide",
-      "noDescription": "No description",
-      "edit": "Edit",
-      "delete": "Delete",
-      "cannotEdit": "Cannot edit",
-      "cannotDelete": "Cannot delete",
-      "cannotModifySystem": "System roles cannot be modified",
-      "confirmDeleteTitle": "Delete Role?",
-      "confirmDeleteMessage": "This action cannot be undone. All users with this role will lose their permissions. Are you sure you want to delete this role?",
-      "table": {
-        "roleName": "Role Name",
-        "role": "Role",
-        "description": "Description",
-        "permissions": "Permissions",
-        "actions": "Actions"
-      },
-      "toast": {
-        "deleting": "Deleting...",
-        "deleted": "Deleted role",
-        "deleteError": "Error deleting role"
-      },
-      "addRole": {
-        "fields": {
-          "roleName": "Role Name",
-          "roleNamePlaceholder": "e.g., Course Manager",
-          "description": "Description",
-          "descriptionPlaceholder": "Describe what this role can do..."
-        },
-        "sections": {
-          "predefinedRights": "Predefined Rights",
-          "permissions": "Permissions"
-        },
-        "predefinedRoles": {
-          "Admin": {
-            "name": "Admin",
-            "description": "Full platform control with all permissions"
-          },
-          "CourseManager": {
-            "name": "Course Manager",
-            "description": "Can manage courses, chapters, and activities"
-          },
-          "Instructor": {
-            "name": "Instructor",
-            "description": "Can create and manage their own courses"
-          },
-          "Viewer": {
-            "name": "Viewer",
-            "description": "Read-only access to courses and content"
-          },
-          "ContentCreator": {
-            "name": "Content Creator",
-            "description": "Can create and edit content but not manage users"
-          },
-          "UserManager": {
-            "name": "User Manager",
-            "description": "Can manage users and user groups"
-          },
-          "Moderator": {
-            "name": "Moderator",
-            "description": "Can moderate content and manage activities"
-          },
-          "Analyst": {
-            "name": "Analyst",
-            "description": "Read-only access with analytics capabilities"
-          },
-          "Guest": {
-            "name": "Guest",
-            "description": "Limited access for external users"
-          }
-        },
-        "permissionSections": {
-          "courses": "Courses",
-          "users": "Users",
-          "userGroups": "User Groups",
-          "collections": "Collections",
-          "organizations": "Organizations",
-          "courseChapters": "Course Chapters",
-          "activities": "Activities",
-          "roles": "Roles",
-          "dashboard": "Dashboard"
-        },
-        "permissionActions": {
-          "create": "Create",
-          "read": "Read",
-          "readOwn": "Read Own",
-          "update": "Update",
-          "updateOwn": "Update Own",
-          "delete": "Delete",
-          "deleteOwn": "Delete Own",
-          "access": "Access"
-        },
-        "buttons": {
-          "selectAll": "Select All",
-          "deselectAll": "Deselect All",
-          "select": "Select",
-          "deselect": "Deselect",
-          "cancel": "Cancel",
-          "createRole": "Create Role",
-          "creating": "Creating..."
-        },
-        "validation": {
-          "required": "Required",
-          "nameMinLength": "Name must be at least 2 characters",
-          "descriptionMinLength": "Description must be at least 10 characters"
-        },
-        "toast": {
-          "creating": "Creating...",
-          "created": "Created new role",
-          "createError": "Couldn't create new role"
-        }
-      },
-      "editRole": {
-        "fields": {
-          "roleName": "Role Name",
-          "roleNamePlaceholder": "e.g., Course Manager",
-          "description": "Description",
-          "descriptionPlaceholder": "Describe what this role can do..."
-        },
-        "sections": {
-          "predefinedRights": "Predefined Rights",
-          "permissions": "Permissions"
-        },
-        "predefinedRoles": {
-          "Admin": {
-            "name": "Admin",
-            "description": "Full platform control with all permissions"
-          },
-          "CourseManager": {
-            "name": "Course Manager",
-            "description": "Can manage courses, chapters, and activities"
-          },
-          "Instructor": {
-            "name": "Instructor",
-            "description": "Can create and manage their own courses"
-          },
-          "Viewer": {
-            "name": "Viewer",
-            "description": "Read-only access to courses and content"
-          },
-          "ContentCreator": {
-            "name": "Content Creator",
-            "description": "Can create and edit content but not manage users"
-          },
-          "UserManager": {
-            "name": "User Manager",
-            "description": "Can manage users and user groups"
-          },
-          "Moderator": {
-            "name": "Moderator",
-            "description": "Can moderate content and manage activities"
-          },
-          "Analyst": {
-            "name": "Analyst",
-            "description": "Read-only access with analytics capabilities"
-          },
-          "Guest": {
-            "name": "Guest",
-            "description": "Limited access for external users"
-          }
-        },
-        "permissionSections": {
-          "courses": "Courses",
-          "users": "Users",
-          "userGroups": "User Groups",
-          "collections": "Collections",
-          "organizations": "Organizations",
-          "courseChapters": "Course Chapters",
-          "activities": "Activities",
-          "roles": "Roles",
-          "dashboard": "Dashboard"
-        },
-        "permissionActions": {
-          "create": "Create",
-          "read": "Read",
-          "readOwn": "Read Own",
-          "update": "Update",
-          "updateOwn": "Update Own",
-          "delete": "Delete",
-          "deleteOwn": "Delete Own",
-          "access": "Access"
-        },
-        "buttons": {
-          "selectAll": "Select All",
-          "deselectAll": "Deselect All",
-          "select": "Select",
-          "deselect": "Deselect",
-          "cancel": "Cancel",
-          "updateRole": "Update Role",
-          "updating": "Updating..."
-        },
-        "validation": {
-          "required": "Required",
-          "nameMinLength": "Name must be at least 2 characters",
-          "descriptionMinLength": "Description must be at least 10 characters"
-        },
-        "toast": {
-          "updating": "Updating...",
-          "updated": "Updated role",
-          "updateError": "Couldn't update role"
-        }
-      }
-    },
-    "userGroups": {
-      "title": "User Groups",
-      "manageTitle": "Manage UserGroups & Users",
-      "description": "UserGroups are a way to group users together to manage their access to the resources (Courses) in your organization.",
-      "createUserGroup": "Create a User Group",
-      "createUserGroupDescription": "Create a new UserGroup to manage users",
-      "editUserGroup": "Edit User Group",
-      "deleteUserGroup": "Delete User Group",
-      "noUserGroups": "No User Groups available",
-      "manageUsers": "Manage Users",
-      "manageUsersTitle": "Manage UserGroup Users",
-      "manageUsersDescription": "Manage the users in this UserGroup",
-      "edit": "Edit",
-      "delete": "Delete",
-      "confirmDeleteTitle": "Delete User Group?",
-      "confirmDeleteMessage": "Access to all resources will be removed for all users in this Group. Are you sure you want to delete this User Group?",
-      "unlinkUserGroup": "Unlink User Group?",
-      "unlinkMessage": "Users in this Group will no longer have access to this course",
-      "userLinked": "User linked successfully",
-      "userUnlinked": "User unlinked successfully",
-      "successUnlinked": "Successfully unlinked from user group",
-      "errorUnlinking": "An error occurred while unlinking the user group",
-      "table": {
-        "userGroup": "UserGroup",
-        "description": "Description",
-        "manageUsers": "Manage Users",
-        "actions": "Actions"
-      },
-      "toast": {
-        "deleting": "Deleting...",
-        "deleted": "Deleted usergroup",
-        "deleteError": "Error deleting usergroup"
-      },
-      "addUserGroup": {
-        "fields": {
-          "name": "Name",
-          "description": "Description"
-        },
-        "buttons": {
-          "create": "Create a UserGroup",
-          "loading": "Loading..."
-        },
-        "validation": {
-          "nameRequired": "Name is Required"
-        },
-        "toast": {
-          "creating": "Creating...",
-          "created": "Created new usergroup",
-          "createError": "Couldn't create new usergroup"
-        }
-      },
-      "editUserGroup": {
-        "fields": {
-          "name": "Name",
-          "description": "Description"
-        },
-        "buttons": {
-          "save": "Save UserGroup",
-          "loading": "Loading..."
-        },
-        "validation": {
-          "nameRequired": "Name is Required"
-        },
-        "toast": {
-          "saved": "UserGroup saved successfully",
-          "saveError": "Error saving UserGroup, please retry later."
-        }
-      },
-      "manageUsers": {
-        "table": {
-          "user": "User",
-          "linked": "Linked",
-          "actions": "Actions"
-        },
-        "status": {
-          "linked": "Linked",
-          "notLinked": "Not linked"
-        },
-        "buttons": {
-          "link": "Link",
-          "unlink": "Unlink"
-        },
-        "toast": {
-          "userLinked": "User linked successfully",
-          "userUnlinked": "User unlinked successfully",
-          "linkError": "Error {status}: {detail}",
-          "unlinkError": "Error {status}: {detail}"
-        }
-      }
-    },
-    "invites": {
-      "generateCode": "Generate Invite Code",
-      "confirmDeleteTitle": "Delete code?",
-      "confirmDeleteMessage": "Are you sure you want to remove this invite code?",
-      "errorSending": "Error sending invite"
-    },
-    "organization": {
-      "removeFromOrg": "Remove from organization",
-      "confirmRemoveTitle": "Delete '{username}'?",
-      "confirmRemoveMessage": "Are you sure you want to remove this user from the organization?",
-      "errorRemoving": "Error removing user"
-    }
-  },
-  "organization": {
-    "title": "Organization",
-    "settings": "Settings",
-    "general": "General",
-    "yourOrganization": "Your Organization",
-    "orgLabel": "Organization Label",
-    "showcaseInExplore": "Showcase in LearnHouse Explore",
-    "uploadLogo": "Upload Logo",
-    "uploadThumbnail": "Upload Thumbnail",
-    "logoURL": "Logo URL",
-    "thumbnailURL": "Thumbnail URL",
-    "logoURLPlaceholder": "URL for organization logo",
-    "name": "Organization Name",
-    "briefDescription": "Brief description of your organization",
-    "detailedDescription": "Detailed description of your organization",
-    "additionalDetails": "Additional Details",
-    "socialLinks": {
-      "facebook": "Facebook profile URL",
-      "twitter": "Twitter profile URL",
-      "instagram": "Instagram profile URL",
-      "youtube": "YouTube channel URL"
-    },
-    "signup": {
-      "changeToOpen": "Change to open?",
-      "changeToClosed": "Change to closed?",
-      "openMessage": "Are you sure you want to change the signup mechanism to open? This will allow users to join your organization freely.",
-      "closedMessage": "Are you sure you want to change the signup mechanism to closed? This will allow users to join your organization only by invitation.",
-      "errorChanging": "Error changing join method"
-    },
-    "updating": "Updating organization...",
-    "uploadingLogo": "Uploading logo...",
-    "uploadingThumbnail": "Uploading thumbnail...",
-    "orgUpdated": "Organization Updated",
-    "logoUpdated": "Logo Updated",
-    "thumbnailUpdated": "Thumbnail Updated",
-    "updateFailed": "Failed to update organization",
-    "logoUploadFailed": "Failed to upload logo",
-    "thumbnailUploadFailed": "Failed to upload thumbnail",
-    "orgIdNotFound": "Organization ID not found",
-    "selectOrgLabel": "Select organization label",
-    "ownership": {
-      "title": "Course Ownership Types"
-    },
-    "edit": {
-      "general": {
-        "title": "Organization Settings",
-        "subtitle": "Manage your organization's profile and settings",
-        "organizationName": "Organization Name",
-        "charactersLeft": "{count} characters left",
-        "shortDescription": "Short Description",
-        "organizationLabel": "Organization Label",
-        "aboutOrganization": "About Organization",
-        "showcaseTitle": "Showcase in LearnHouse Explore",
-        "showcaseDescription": "Share your organization's courses and content with the LearnHouse community. Enable this to help learners discover your valuable educational resources.",
-        "exploreLabel": "EXPLORE",
-        "placeholders": {
-          "organizationName": "Organization Name",
-          "briefDescription": "Brief description of your organization",
-          "detailedDescription": "Detailed description of your organization"
-        },
-        "labels": {
-          "languages": "🌐 Languages",
-          "business": "💰 Business",
-          "ecommerce": "🛍 E-commerce",
-          "gaming": "🎮 Gaming",
-          "music": "🎸 Music",
-          "sports": "⚽ Sports",
-          "cars": "🚗 Cars",
-          "sales_marketing": "🚀 Sales & Marketing",
-          "tech": "💻 Tech",
-          "photo_video": "📸 Photo & Video",
-          "pets": "🐕 Pets",
-          "personal_development": "📚 Personal Development",
-          "real_estate": "🏠 Real Estate",
-          "beauty_fashion": "👠 Beauty & Fashion",
-          "travel": "✈️ Travel",
-          "productivity": "⏳ Productivity",
-          "health_fitness": "🍎 Health & Fitness",
-          "finance": "📈 Finance",
-          "arts_crafts": "🎨 Arts & Crafts",
-          "education": "📚 Education",
-          "stem": "🔬 STEM",
-          "humanities": "📖 Humanities",
-          "professional_skills": "💼 Professional Skills",
-          "digital_skills": "💻 Digital Skills",
-          "creative_arts": "🎨 Creative Arts",
-          "social_sciences": "🌍 Social Sciences",
-          "test_prep": "✍️ Test Preparation",
-          "vocational": "🔧 Vocational Training",
-          "early_education": "🎯 Early Education"
-        },
-        "validation": {
-          "nameRequired": "Name is required",
-          "nameTooLong": "Organization name must be 60 characters or less",
-          "descriptionRequired": "Short description is required",
-          "descriptionTooLong": "Short description must be 100 characters or less",
-          "aboutTooLong": "About text must be 400 characters or less",
-          "labelRequired": "Organization label is required"
-        },
-        "toast": {
-          "updating": "Updating organization...",
-          "updated": "Organization Updated",
-          "updateFailed": "Failed to update organization"
-        }
-      },
-      "images": {
-        "title": "Images & Previews",
-        "subtitle": "Manage your organization's logo, thumbnail, and preview images",
-        "tabs": {
-          "logo": "Logo",
-          "thumbnail": "Thumbnail",
-          "previews": "Previews"
-        },
-        "uploadNewLogo": "Upload New Logo",
-        "uploadNewThumbnail": "Upload New Thumbnail",
-        "addPreview": "Add Preview",
-        "acceptsFormats": "Accepts PNG, JPG (max 5MB)",
-        "recommendedSize": "Recommended size: 200x100 pixels",
-        "dragToReorder": "Drag to reorder • Maximum 4 previews • Supports images & videos",
-        "uploadImages": "Upload Images",
-        "uploadImagesDescription": "PNG, JPG (max 5MB)",
-        "youtubeTitle": "Add YouTube Video",
-        "youtubeDescription": "Paste your YouTube video URL",
-        "loomTitle": "Add Loom Video",
-        "loomDescription": "Paste your Loom video URL",
-        "addVideo": "Add Video",
-        "youtube": "YouTube",
-        "loom": "Loom",
-        "placeholders": {
-          "youtubeUrl": "https://youtube.com/watch?v=...",
-          "loomUrl": "https://www.loom.com/share/..."
-        },
-        "toast": {
-          "uploadingLogo": "Uploading logo...",
-          "logoUpdated": "Logo Updated",
-          "logoUploadFailed": "Failed to upload logo",
-          "uploadingThumbnail": "Uploading thumbnail...",
-          "thumbnailUpdated": "Thumbnail Updated",
-          "thumbnailUploadFailed": "Failed to upload thumbnail",
-          "uploadingPreviews": "Uploading {count} preview{plural}...",
-          "previewsAdded": "{count} preview{plural} added",
-          "uploadPreviewsFailed": "Failed to upload previews",
-          "canOnlyUpload": "You can only upload {count} more preview{plural}",
-          "removingPreview": "Removing preview...",
-          "previewRemoved": "Preview removed",
-          "previewRemoveFailed": "Failed to remove preview",
-          "addingVideo": "Adding video preview...",
-          "videoAdded": "Video preview added",
-          "videoAddFailed": "Failed to add video preview",
-          "invalidUrl": "Invalid {service} URL",
-          "videoAlreadyAdded": "This video has already been added",
-          "updatingOrder": "Updating preview order...",
-          "orderUpdated": "Preview order updated",
-          "orderUpdateFailed": "Failed to update preview order"
-        }
-      },
-      "landing": {
-        "title": "Landing Page",
-        "subtitle": "Customize your organization's landing page",
-        "beta": "BETA",
-        "enabledLabel": "Landing Page Enabled",
-        "sections": "Sections",
-        "addSection": "Add Section",
-        "selectToEdit": "Select a section to edit or add a new one",
-        "sectionTypes": {
-          "hero": {
-            "label": "Hero",
-            "description": "Add a hero section with heading and call-to-action"
-          },
-          "textAndImage": {
-            "label": "Text & Image",
-            "description": "Add a section with text and an image"
-          },
-          "logos": {
-            "label": "Logos",
-            "description": "Add a section to showcase logos"
-          },
-          "people": {
-            "label": "People",
-            "description": "Add a section to highlight team members"
-          },
-          "featuredCourses": {
-            "label": "Courses",
-            "description": "Add a section to showcase selected courses"
-          }
-        },
-        "editor": {
-          "sectionTitle": "Section Title",
-          "placeholders": {
-            "sectionTitle": "Enter section title",
-            "headingText": "Enter heading text",
-            "subheadingText": "Enter subheading text",
-            "imageUrl": "Image URL",
-            "altText": "Alt text",
-            "buttonText": "Button text",
-            "buttonLink": "Button link",
-            "logoUrl": "Logo URL",
-            "personName": "Person's name",
-            "username": "@username",
-            "imageUrl": "Image URL",
-            "description": "Description or role"
-          },
-          "hero": {
-            "title": "Hero Section",
-            "tabs": {
-              "content": "Content",
-              "background": "Background",
-              "buttons": "Buttons",
-              "illustration": "Illustration"
-            },
-            "heading": "Heading",
-            "headingColor": "Heading Color",
-            "subheading": "Subheading",
-            "subheadingColor": "Subheading Color",
-            "backgroundType": "Background Type",
-            "backgroundColor": "Background Color",
-            "backgroundImage": "Background Image",
-            "uploadImage": "Upload Image",
-            "addButton": "Add Button",
-            "buttonText": "Button Text & Colors",
-            "buttonLink": "Button Link",
-            "illustrationImage": "Illustration Image",
-            "position": "Position",
-            "size": "Size",
-            "removeIllustration": "Remove Illustration",
-            "backgroundTypes": {
-              "solid": "Solid Color",
-              "gradient": "Gradient",
-              "image": "Image"
-            },
-            "gradientType": "Gradient Type",
-            "gradientPreset": "Gradient Preset",
-            "gradientDirection": "Gradient Direction",
-            "startColor": "Start Color",
-            "endColor": "End Color",
-            "presetGradients": "Preset Gradients",
-            "customGradient": "Custom Gradient",
-            "positions": {
-              "left": "Left",
-              "right": "Right"
-            },
-            "sizes": {
-              "small": "Small",
-              "medium": "Medium",
-              "large": "Large"
-            },
-            "directions": {
-              "topRight": "↗️ Top Right",
-              "top": "⬆️ Top",
-              "topLeft": "↖️ Top Left",
-              "left": "⬅️ Left",
-              "bottomLeft": "↙️ Bottom Left",
-              "bottom": "⬇️ Bottom",
-              "bottomRight": "↘️ Bottom Right",
-              "right": "➡️ Right"
-            }
-          },
-          "textAndImage": {
-            "title": "Text & Image Section",
-            "content": "Content",
-            "imagePosition": "Image Position",
-            "image": "Image",
-            "uploadNewImage": "Upload New Image"
-          },
-          "logos": {
-            "title": "Logos Section",
-            "logos": "Logos",
-            "uploadLogo": "Upload Logo",
-            "addLogo": "Add Logo"
-          },
-          "people": {
-            "title": "People Section",
-            "people": "People",
-            "name": "Name",
-            "username": "Username",
-            "image": "Image",
-            "description": "Description",
-            "uploadAvatar": "Upload Avatar",
-            "addPerson": "Add Person"
-          },
-          "courses": {
-            "title": "Courses Section",
-            "selectCourses": "Select Courses",
-            "loadingCourses": "Loading courses...",
-            "selected": "Selected",
-            "select": "Select"
-          }
-        },
-        "toast": {
-          "saving": "Saving...",
-          "saved": "Landing page saved successfully",
-          "saveFailed": "Error saving landing page",
-          "orgIdNotFound": "Organization ID not found",
-          "uploadSuccess": "Image uploaded successfully",
-          "uploadFailed": "Failed to upload image"
-        }
-      },
-      "other": {
-        "title": "Scripts",
-        "subtitle": "Add custom JavaScript scripts to your organization",
-        "safetyWarning": "For your organization's safety, please ensure you trust and understand any scripts before adding them. Scripts can interact with your organization's pages.",
-        "addScript": "Add Script",
-        "noScriptsYet": "No scripts added yet",
-        "addFirstScript": "Add your first script to get started",
-        "scriptName": "Script Name",
-        "scriptContent": "Script Content",
-        "placeholders": {
-          "scriptName": "Enter script name",
-          "scriptContent": "Enter JavaScript code"
-        },
-        "cancel": "Cancel",
-        "saveScript": "Save Script",
-        "validation": {
-          "nameRequired": "Script name is required",
-          "contentRequired": "Script content is required"
-        },
-        "toast": {
-          "updating": "Updating organization...",
-          "saved": "Script saved successfully",
-          "saveFailed": "Failed to save script",
-          "deleting": "Deleting script...",
-          "deleted": "Script deleted successfully",
-          "deleteFailed": "Failed to delete script"
-        }
-      },
-      "socials": {
-        "title": "Social Links",
-        "subtitle": "Manage your organization's social media presence",
-        "socialLinks": "Social Links",
-        "customLinks": "Custom Links",
-        "customLinksDescription": "Add up to 3 custom links that will appear on your organization's profile",
-        "addLink": "Add Link",
-        "placeholders": {
-          "twitterUrl": "Twitter profile URL",
-          "facebookUrl": "Facebook profile URL",
-          "instagramUrl": "Instagram profile URL",
-          "youtubeUrl": "YouTube channel URL",
-          "linkLabel": "Label",
-          "linkUrl": "URL"
-        },
-        "toast": {
-          "updating": "Updating organization...",
-          "updated": "Organization Updated",
-          "updateFailed": "Failed to update organization"
-        }
-      }
-    }
-  },
-  "payments": {
-    "title": "Payments",
-    "configuration": "Payment Configuration",
-    "notAvailable": "Payments Not Available",
-    "notAvailableMessage": "The payments feature is not enabled for this organization.",
-    "contactAdmin": "Contact your administrator to enable payments.",
-    "customers": "Customers",
-    "viewCustomers": "View and manage your customer information",
-    "noCustomerData": "No customer data available",
-    "products": {
-      "title": "Products",
-      "createProduct": "Create New Product",
-      "editProduct": "Edit Product",
-      "archiveProduct": "Archive Product",
-      "addProduct": "Add a new product to your organization",
-      "noProducts": "No products available. Create a new product to get started.",
-      "productName": "Product Name",
-      "productDescription": "Product Description",
-      "productBenefits": "Product Benefits",
-      "price": "Price",
-      "currency": "Currency",
-      "linkedCourses": "Linked Courses",
-      "confirmArchiveMessage": "Are you sure you want to archive this product?",
-      "createSuccess": "Product created successfully",
-      "createError": "An error occurred while creating the product",
-      "updateSuccess": "Product updated successfully",
-      "updateFailed": "Failed to update product",
-      "archiveSuccess": "Product archived successfully",
-      "linkSuccess": "Course linked successfully",
-      "linkFailed": "Failed to link course",
-      "unlinkSuccess": "Course unlinked successfully",
-      "unlinkFailed": "Failed to unlink course",
-      "loadFailed": "Failed to load linked courses"
-    },
-    "stripe": {
-      "title": "Stripe Configuration",
-      "edit": "Edit Stripe Configuration",
-      "editDescription": "Edit your stripe configuration",
-      "accountId": "Stripe Account ID",
-      "enable": "Enable Stripe",
-      "removeConnection": "Remove Connection",
-      "confirmRemoveMessage": "Are you sure you want to remove the Stripe connection? This action cannot be undone.",
-      "enableSuccess": "Stripe enabled successfully",
-      "enableFailed": "Failed to enable Stripe",
-      "onboardingFailed": "Failed to start Stripe onboarding",
-      "configUpdated": "Configuration updated successfully",
-      "configUpdateFailed": "Failed to update configuration",
-      "configLoadFailed": "Failed to load existing configuration",
-      "deleteSuccess": "Stripe configuration deleted successfully",
-      "deleteFailed": "Failed to delete Stripe configuration"
-    }
-  },
-  "editor": {
-    "title": "Editor",
-    "save": "Save",
-    "preview": "Preview",
-    "desktopOnly": "Desktop Only",
-    "desktopOnlyDescription": "The editor is only accessible from a desktop device.",
-    "pleaseSwitchToDesktop": "Please switch to a desktop to view.",
-    "aiEditor": "AI Editor",
-    "toolbar": {
-      "undo": "Undo last action",
-      "redo": "Redo last action",
-      "bold": "Toggle bold formatting",
-      "italic": "Toggle italic formatting",
-      "strikethrough": "Toggle strikethrough text",
-      "list": "Insert list",
-      "bulletList": "Bullet List",
-      "orderedList": "Ordered List",
-      "paragraph": "Paragraph",
-      "heading1": "Heading 1",
-      "heading2": "Heading 2",
-      "heading3": "Heading 3",
-      "heading4": "Heading 4",
-      "heading5": "Heading 5",
-      "heading6": "Heading 6",
-      "table": "Insert table",
-      "insertNewTable": "Insert new table (3×3)",
-      "addRowBelow": "Add row below",
-      "addColumnRight": "Add column right",
-      "deleteCurrentRow": "Delete current row",
-      "deleteCurrentColumn": "Delete current column",
-      "infoCallout": "Info Callout",
-      "warningCallout": "Warning Callout",
-      "link": "Link",
-      "image": "Image",
-      "video": "Video",
-      "youtube": "YouTube video",
-      "mathEquation": "Math Equation (LaTeX)",
-      "pdf": "PDF Document",
-      "quiz": "Interactive Quiz",
-      "codeBlock": "Code Block",
-      "embed": "External Object (Embed)",
-      "badges": "Badges",
-      "button": "Button",
-      "user": "User",
-      "webPreview": "Web Preview",
-      "flipcard": "Flipcard",
-      "interactiveScenarios": "Interactive Scenarios"
-    },
-    "placeholders": {
-      "enterContent": "Enter your content here...",
-      "enterQuestion": "Your Question",
-      "enterAnswer": "Answer",
-      "mathEquation": "Insert a Math Equation (LaTeX)",
-      "websiteURL": "Enter website URL...",
-      "embedCode": "Paste embed code (iframe, embed script, etc.)",
-      "enterUrl": "Enter URL"
-    },
-    "actions": {
-      "editURL": "Edit URL",
-      "editEmbed": "Edit embed",
-      "removeEmbed": "Remove embed",
-      "deleteCard": "Delete card",
-      "expandImage": "Expand image",
-      "downloadImage": "Download image",
-      "downloadVideo": "Download video",
-      "expandVideo": "Expand video",
-      "downloadPDF": "Download PDF",
-      "expandPDF": "Expand PDF"
-    },
-    "alignment": {
-      "left": "Align left",
-      "center": "Center align",
-      "right": "Align right",
-      "align": "Align"
-    },
-    "size": {
-      "small": "Small",
-      "medium": "Medium",
-      "large": "Large",
-      "full": "Full Width",
-      "videoSize": "Video Size"
-    },
-    "blocks": {
-      "videoBlock": "Video Block",
-      "imageBlock": "Image Block",
-      "pdfBlock": "PDF Block",
-      "mathEquation": "Math Equation",
-      "quiz": "Quiz"
-    },
-    "upload": {
-      "dropOrClick": "Drop your video here or click to browse",
-      "dropImageOrClick": "Drop your image here or click to browse",
-      "dropPdfOrClick": "Drop your PDF here or click to browse",
-      "supportsMp4Webm": "Supports MP4 and WebM formats",
-      "supportsImageFormats": "Supports JPG, PNG, WebP, GIF formats",
-      "supportsPdf": "Supports PDF format",
-      "uploadingVideo": "Uploading video...",
-      "uploadingImage": "Uploading image...",
-      "uploadingPdf": "Uploading PDF...",
-      "failedToUpload": "Failed to upload. Please try again.",
-      "uploadSupportedFormat": "Please upload a supported format"
-    },
-    "quiz": {
-      "quiz": "Quiz",
-      "yourQuestion": "Your Question",
-      "answer": "Answer",
-      "resetAnswers": "Reset answers",
-      "deleteAnswer": "Delete answer",
-      "deleteOption": "Delete option",
-      "addResponseOption": "Add response option",
-      "addQuestion": "Add Question",
-      "addAnswer": "Add Answer",
-      "submit": "Submit",
-      "allAnswersCorrect": "All answers are correct!",
-      "someAnswersIncorrect": "Some answers are incorrect!",
-      "markAsCorrect": "Mark as correct",
-      "markAsIncorrect": "Mark as incorrect"
-    },
-    "scenarios": {
-      "editScenarios": "Edit Scenarios",
-      "clickToEdit": "Click \"Edit Scenarios\" to configure your branching interactive story",
-      "resetScenario": "Reset scenario",
-      "setAsStarting": "Set as starting scenario",
-      "deleteScenario": "Delete scenario",
-      "scenarioPreview": "Scenario Preview",
-      "backSide": "Back Side (Answer)",
-      "previewFlip": "Preview Flip"
-    },
-    "mathEquation": {
-      "templates": "Templates",
-      "symbols": "Symbols",
-      "help": "Help",
-      "selectTemplateToInsert": "Select a template to insert",
-      "clickSymbolToInsert": "Click a symbol to insert",
-      "latexQuickReference": "LaTeX Math Quick Reference",
-      "fractions": "Fractions",
-      "exponents": "Exponents",
-      "subscripts": "Subscripts",
-      "squareRoot": "Square root",
-      "summation": "Summation",
-      "integral": "Integral",
-      "viewCompleteReference": "View complete reference",
-      "pleaseReferTo": "Please refer to this",
-      "guide": "guide",
-      "forSupportedFunctions": "for supported TeX functions",
-      "templates": {
-        "fraction": "Fraction",
-        "squareRoot": "Square Root",
-        "summation": "Summation",
-        "integral": "Integral",
-        "limit": "Limit",
-        "matrix2x2": "Matrix 2×2",
-        "binomial": "Binomial",
-        "quadraticFormula": "Quadratic Formula",
-        "vector": "Vector",
-        "systemOfEquations": "System of Equations"
-      },
-      "descriptions": {
-        "fraction": "Simple fraction",
-        "squareRoot": "Square root",
-        "summation": "Sum with limits",
-        "integral": "Definite integral",
-        "limit": "Limit expression",
-        "matrix2x2": "2×2 matrix with parentheses",
-        "binomial": "Binomial coefficient",
-        "quadraticFormula": "Solution to quadratic equation",
-        "vector": "3D vector",
-        "systemOfEquations": "System of linear equations"
-      }
-    },
-    "webPreview": {
-      "editWebPreviewCard": "Edit Web Preview Card",
-      "updateWebsitePreview": "Update the website preview, button, and display options.",
-      "websiteUrl": "Website URL",
-      "enterWebsiteUrl": "Enter website URL...",
-      "buttonOptions": "Button Options",
-      "showButton": "Show button",
-      "openInPopup": "Open in-app popup (might not work on all websites)",
-      "buttonLabel": "Button label",
-      "alignment": "Alignment",
-      "visitSite": "Visit Site",
-      "expandPdf": "Expand PDF",
-      "downloadPdf": "Download PDF",
-      "expandVideo": "Expand video",
-      "downloadVideo": "Download video",
-      "expandImage": "Expand image",
-      "unableToGetMetadata": "Unable to get metadata from this website. The preview card may appear incomplete.",
-      "editUrl": "Edit URL",
-      "deleteCard": "Delete Card"
-    },
-    "link": {
-      "enterUrl": "Enter URL"
-    },
-    "embed": {
-      "title": "Embedded Site Preview",
-      "noPreview": "No file available for preview."
-    },
-    "color": {
-      "changeColor": "Change Color"
-    },
-    "ai": {
-      "aiEditor": "AI Editor",
-      "preAlpha": "PRE-ALPHA",
-      "writer": "Writer",
-      "continueWriting": "ContinueWriting",
-      "makeLonger": "MakeLonger",
-      "translate": "Translate",
-      "writeAbout": "Write about...",
-      "placeCursorToContinue": "Place your cursor at the end of a sentence to continue writing",
-      "selectTextToMakeLonger": "Select text to make longer",
-      "translateSelectedTextTo": "Translate selected text to",
-      "askAI": "Ask AI",
-      "thinking": "Thinking...",
-      "somethingWrongHappened": "Something wrong happened"
-    },
-    "toast": {
-      "saving": "Saving...",
-      "activitySaved": "Activity saved!",
-      "errorSaving": "Error saving activity",
-      "couldNotSave": "Could not save"
-    }
-  },
-  "profile": {
-    "title": "Profile",
-    "editPage": "Edit Page",
-    "about": "About",
-    "noBiography": "No biography provided",
-    "builder": {
-      "sections": {
-        "heading": "Heading",
-        "subheading": "Subheading",
-        "text": "Text",
-        "images": "Images",
-        "links": "Links",
-        "skills": "Skills",
-        "experience": "Experience",
-        "education": "Education",
-        "affiliations": "Affiliations",
-        "learningItems": "Learning Items"
-      },
-      "addSection": "Add Section",
-      "addHeading": "Add a heading",
-      "addSubheading": "Add a subheading",
-      "addText": "Add formatted text content",
-      "addImages": "Add a collection of images",
-      "addLinks": "Add social or professional links",
-      "addSkills": "Add skills",
-      "addExperience": "Add work or project experience",
-      "addEducation": "Add educational background",
-      "addAffiliations": "Add organizational affiliations",
-      "addLearningItems": "Add learning items",
-      "placeholders": {
-        "sectionTitle": "Enter section title",
-        "heading": "Enter heading text",
-        "subheading": "Enter subheading text",
-        "text": "Type to add...",
-        "imageURL": "Image URL",
-        "imageCaption": "Image caption",
-        "linkTitle": "Link title",
-        "linkURL": "URL",
-        "skillName": "Skill name",
-        "position": "Position or role",
-        "organization": "Company or organization",
-        "description": "Description or role",
-        "additionalDetails": "Additional details about your education",
-        "institution": "School or university",
-        "degree": "Degree type",
-        "major": "Major or concentration",
-        "personName": "Person's name",
-        "learningItem": "Enter learning item..."
-      },
-      "background": {
-        "title": "Background",
-        "type": "Background Type",
-        "color": "Background Color",
-        "image": "Background Image",
-        "selectType": "Select background type",
-        "selectGradientDirection": "Select gradient direction",
-        "selectGradientPreset": "Select gradient preset",
-        "selectGradientType": "Select gradient type",
-        "selectImagePosition": "Select image position"
-      },
-      "savingPage": "Saving landing page...",
-      "pageUpdated": "Landing page saved successfully",
-      "errorSaving": "Error saving landing page"
-    }
-  },
-  "certifications": {
-    "title": "Certifications",
-    "noCertification": "No Certification Configured",
-    "descriptionPlaceholder": "Describe what this certification represents and its value...",
-    "namePlaceholder": "e.g., Advanced JavaScript Certification",
-    "issuerPlaceholder": "e.g., Dr. Jane Smith",
-    "selectVisibility": "Select visibility",
-    "createSuccess": "Certification created successfully",
-    "createFailed": "Failed to create certification",
-    "removeSuccess": "Certification removed successfully",
-    "removeFailed": "Failed to remove certification"
-  },
-  "collections": {
-    "title": "Collections",
-    "deleteCollection": "Delete Collection",
-    "confirmDelete": "Delete '{name}'?",
-    "confirmDeleteMessage": "Are you sure you want to delete this collection?"
-  },
-  "scripts": {
-    "title": "Scripts",
-    "addScripts": "Add custom JavaScript scripts to your organization",
-    "noScripts": "No scripts added yet",
-    "addFirstScript": "Add your first script to get started",
-    "enterScriptName": "Enter script name",
-    "enterJSCode": "Enter JavaScript code",
-    "deletingScript": "Deleting script...",
-    "deleteSuccess": "Script deleted successfully",
-    "deleteFailed": "Failed to delete script",
-    "saveSuccess": "Script saved successfully",
-    "saveFailed": "Failed to save script"
-  },
-  "media": {
-    "uploadImage": "Upload Image",
-    "chooseFromUnsplash": "Choose an image from Unsplash",
-    "searchImages": "Search images...",
-    "uploadSuccess": "Image uploaded successfully",
-    "uploadFailed": "Failed to upload image",
-    "uploadingFile": "Uploading file and creating activity...",
-    "addVideoPreview": "Add Preview",
-    "addingVideoPreview": "Adding video preview...",
-    "videoPreviewAdded": "Video preview added",
-    "videoAlreadyAdded": "This video has already been added",
-    "failedToAddVideo": "Failed to add video preview",
-    "addYouTubeVideo": "Add YouTube video",
-    "addLoomVideo": "Add Loom video",
-    "removingPreview": "Removing preview...",
-    "previewRemoved": "Preview removed",
-    "previewRemoveFailed": "Failed to remove preview",
-    "updatingPreviewOrder": "Updating preview order...",
-    "previewOrderUpdated": "Preview order updated",
-    "previewOrderUpdateFailed": "Failed to update preview order",
-    "uploadPreviewsFailed": "Failed to upload previews",
-    "changeReferenceFile": "Change Reference File",
-    "uploadVideo": "Upload Video",
-    "pdfDocument": "PDF Document",
-    "imageViewer": "Image Viewer",
-    "videoPlayer": "Video Player"
-  },
-  "ai": {
-    "askAboutLecture": "Ask AI About this Lecture",
-    "askAI": "Ask AI"
-  },
-  "rights": {
-    "title": "Authorizations and Rights Guide",
-    "guide": "Rights Guide"
-  },
-  "success": {
-    "generic": "Operation completed successfully",
-    "updateSuccess": "Update successful",
-    "deleteSuccess": "Deletion successful",
-    "createSuccess": "Creation successful",
-    "uploadSuccess": "Upload successful"
-  },
-  "errors": {
-    "generic": "An error occurred",
-    "updateFailed": "Update failed",
-    "deleteFailed": "Deletion failed",
-    "createFailed": "Creation failed",
-    "uploadFailed": "Upload failed",
-    "loadFailed": "Failed to load data",
-    "networkError": "Network error. Please check your connection.",
-    "unauthorized": "You are not authorized to perform this action.",
-    "notFound": "Resource not found"
-  },
-  "confirmations": {
-    "areYouSure": "Are you sure?",
-    "cannotBeUndone": "This action cannot be undone.",
-    "confirmDelete": "Confirm Deletion",
-    "confirmAction": "Confirm Action"
-  },
-  "navigation": {
-    "breadcrumbs": {
-      "home": "Home",
-      "dashboard": "Dashboard",
-      "courses": "Courses",
-      "users": "Users",
-      "settings": "Settings"
-    }
-  },
-  "forms": {
-    "validation": {
-      "required": "This field is required",
-      "email": "Please enter a valid email address",
-      "url": "Please enter a valid URL",
-      "minLength": "Must be at least {min} characters",
-      "maxLength": "Must be at most {max} characters",
-      "passwordMatch": "Passwords must match"
-    },
-    "labels": {
-      "selectLevel": "Select level",
-      "selectPosition": "Select position",
-      "selectSize": "Select size",
-      "selectIcon": "Select icon",
-      "showButton": "Show button",
-      "buttonLabel": "Button label",
-      "buttonText": "Button text",
-      "buttonLink": "Button link",
-      "categoryOptional": "Category (optional)"
-    },
-    "placeholders": {
-      "enterToAdd": "Type to add...",
-      "enterLabel": "Enter label (e.g., Title, Location)",
-      "enterDetail": "Enter detail text",
-      "enterSectionContent": "Enter section content",
-      "websiteURL": "Enter website URL...",
-      "languages": "Japanese, Arabic, German, etc."
-    }
-  },
-  "instructors": {
-    "updateRoleFailed": "Failed to update instructor role",
-    "removeFailed": "Failed to remove instructor"
-  },
-  "contributors": {
-    "updateSuccess": "Contributor updated successfully",
-    "updateFailed": "Failed to update contributor",
-    "removeSuccess": "Contributor removed successfully",
-    "removeFailed": "An error occurred while removing the contributor"
-  },
-  "webPreview": {
-    "editCard": "Edit Web Preview Card",
-    "openInPopup": "Open popup in app (may not work on all websites)"
-  },
-  "install": {
-    "pageTitle": "Install LearnHouse",
-    "pageDescription": "Install Learnhouse on your server",
-    "getStarted": {
-      "stepName": "Get started",
-      "title": "Start a new installation",
-      "startButton": "Start",
-      "alreadyStarted": "You already started an installation",
-      "continueButton": "Continue"
-    },
-    "orgCreation": {
-      "stepName": "Organization Creation",
-      "name": "Name",
-      "description": "Description",
-      "slug": "Slug",
-      "email": "Email",
-      "createButton": "Create Organization",
-      "success": "Organization Created Successfully",
-      "validation": {
-        "nameRequired": "Required",
-        "descriptionRequired": "Required",
-        "slugRequired": "Required",
-        "emailRequired": "Required",
-        "invalidEmail": "Invalid email address"
-      }
-    },
-    "accountCreation": {
-      "stepName": "Account Creation",
-      "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
-      "username": "Username",
-      "createButton": "Create Admin Account",
-      "validation": {
-        "emailRequired": "Required",
-        "invalidEmail": "Invalid email address",
-        "passwordRequired": "Required",
-        "passwordMinLength": "Password must be at least 8 characters",
-        "confirmPasswordRequired": "Required",
-        "passwordsMustMatch": "Passwords must match",
-        "usernameRequired": "Required",
-        "usernameMinLength": "Username must be at least 3 characters"
-      }
-    },
-    "defaultElements": {
-      "stepName": "Default Elements",
-      "title": "Install Default Elements",
-      "installButton": "Install"
-    },
-    "sampleData": {
-      "stepName": "Sample Data",
-      "title": "Install Sample data on your organization",
-      "startButton": "Start"
-    },
-    "finish": {
-      "stepName": "Finish",
-      "title": "Installation Complete",
-      "nextButton": "Next Step"
-    },
-    "disableInstallMode": {
-      "stepName": "Disabling Installation Mode",
-      "message": "You have reached the end of the Installation process, please don't forget to disable installation mode.",
-      "docsLink": "LearnHouse Docs"
     }
   },
   "courses": {
@@ -1890,16 +384,46 @@
           "specialization": "Specialization"
         },
         "patterns": {
-          "royal": { "name": "Royal", "description": "Ornate with crown motifs" },
-          "tech": { "name": "Tech", "description": "Circuit-inspired patterns" },
-          "nature": { "name": "Nature", "description": "Organic leaf patterns" },
-          "geometric": { "name": "Geometric", "description": "Abstract shapes & lines" },
-          "vintage": { "name": "Vintage", "description": "Art deco styling" },
-          "waves": { "name": "Waves", "description": "Flowing water patterns" },
-          "minimal": { "name": "Minimal", "description": "Clean and simple" },
-          "professional": { "name": "Professional", "description": "Business-ready design" },
-          "academic": { "name": "Academic", "description": "Traditional university style" },
-          "modern": { "name": "Modern", "description": "Contemporary clean lines" }
+          "royal": {
+            "name": "Royal",
+            "description": "Ornate with crown motifs"
+          },
+          "tech": {
+            "name": "Tech",
+            "description": "Circuit-inspired patterns"
+          },
+          "nature": {
+            "name": "Nature",
+            "description": "Organic leaf patterns"
+          },
+          "geometric": {
+            "name": "Geometric",
+            "description": "Abstract shapes & lines"
+          },
+          "vintage": {
+            "name": "Vintage",
+            "description": "Art deco styling"
+          },
+          "waves": {
+            "name": "Waves",
+            "description": "Flowing water patterns"
+          },
+          "minimal": {
+            "name": "Minimal",
+            "description": "Clean and simple"
+          },
+          "professional": {
+            "name": "Professional",
+            "description": "Business-ready design"
+          },
+          "academic": {
+            "name": "Academic",
+            "description": "Traditional university style"
+          },
+          "modern": {
+            "name": "Modern",
+            "description": "Contemporary clean lines"
+          }
         },
         "noCertification": {
           "title": "No Certification Configured",
@@ -2289,7 +813,7 @@
               },
               "education": {
                 "label": "Education",
-                "description": "Add educational background",
+                "description": "Description",
                 "title": "Education",
                 "sectionTitle": "Section Title",
                 "sectionTitlePlaceholder": "Enter section title",
@@ -2303,13 +827,12 @@
                 "startDate": "Start Date",
                 "endDate": "End Date",
                 "current": "Current",
-                "description": "Description",
                 "descriptionPlaceholder": "Additional details about your education",
                 "addEducation": "Add Education"
               },
               "affiliation": {
                 "label": "Affiliation",
-                "description": "Add organizational affiliations",
+                "description": "Description",
                 "title": "Affiliation",
                 "sectionTitle": "Section Title",
                 "sectionTitlePlaceholder": "Enter section title",
@@ -2318,7 +841,6 @@
                 "namePlaceholder": "Name of the organization",
                 "logoUrl": "Logo URL",
                 "logoUrlPlaceholder": "URL to the organization's logo",
-                "description": "Description",
                 "descriptionPlaceholder": "Description of the organization",
                 "addAffiliation": "Add Affiliation"
               },
@@ -2532,6 +1054,1468 @@
     "placeholder": {
       "adminOnly": "This content is only visible to administrators",
       "createContent": "Create content to get started"
+    }
+  },
+  "chapters": {
+    "title": "Chapter",
+    "createChapter": "Create chapter",
+    "addChapter": "Add Chapter",
+    "chapterName": "Chapter Name",
+    "deleteChapter": "Delete Chapter",
+    "addNewChapter": "Add a new chapter to the course",
+    "confirmations": {
+      "deleteTitle": "Delete '{name}'?",
+      "deleteMessage": "Are you sure you want to delete this chapter?",
+      "deleteButton": "Delete Chapter"
+    }
+  },
+  "activities": {
+    "title": "Activity",
+    "createActivity": "Create Activity",
+    "activityName": "Activity Name",
+    "deleteActivity": "Delete Activity",
+    "creatingActivity": "Creating activity...",
+    "uploadingFile": "Uploading file and creating activity...",
+    "deletingActivity": "Deleting activity...",
+    "markAsDone": "Mark Activity as Done for User",
+    "allowedFormats": "Allowed formats: pdf, docx, mp4, jpg, jpeg, png, pptx, zip",
+    "breadcrumbs": {
+      "courses": "Courses"
+    },
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "noPrevious": "No previous activity",
+      "noNext": "No next activity",
+      "current": "Current",
+      "of": "of"
+    },
+    "chapterDropdown": {
+      "viewAllActivities": "View all activities",
+      "chapters": "Chapters",
+      "courseContent": "Course Content"
+    },
+    "types": {
+      "video": "Video",
+      "document": "Document",
+      "page": "Page",
+      "assignment": "Assignment",
+      "learningMaterial": "Learning Material",
+      "dynamicPage": "Dynamic Page",
+      "assignments": "Assignments"
+    },
+    "courseEnd": {
+      "congratulations": "Congratulations!",
+      "successfullyCompleted": "You've successfully completed",
+      "dedication": "Your dedication and hard work have paid off. You've mastered all the content in this course.",
+      "certificate": "Your Certificate",
+      "downloadCertificate": "Download Certificate PDF",
+      "verifyCertificate": "Verify Certificate",
+      "loadingCertificate": "Loading your certificate...",
+      "noCertificate": "No certificate is available for this course. Contact your instructor for more information.",
+      "backToCourse": "Back to Course",
+      "keepGoing": "Keep Going!",
+      "makingProgress": "You're making great progress in",
+      "courseProgress": "Course Progress",
+      "progress": "Progress",
+      "activitiesCompleted": "of {total} activities completed",
+      "doingGreat": "You're doing great! Complete the remaining activities to unlock your course completion certificate.",
+      "continueLearning": "Continue Learning"
+    },
+    "secondaryBar": {
+      "course": "Course"
+    },
+    "creation": {
+      "modalTitle": "Create Activity",
+      "modalDescription": "Select the type of activity you want to create",
+      "dynamicPage": "Dynamic Page",
+      "video": "Video",
+      "document": "Document",
+      "assignments": "Assignments",
+      "activityName": "Activity Name",
+      "activityNamePlaceholder": "Enter activity name...",
+      "activityDescription": "Activity description",
+      "activityDescriptionPlaceholder": "Enter activity description...",
+      "createActivityButton": "Create Activity",
+      "videoSettings": "Video Settings",
+      "startTime": "Start Time",
+      "endTime": "End Time (optional)",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "autoplayVideo": "Autoplay video",
+      "startMuted": "Start muted",
+      "uploadVideo": "Upload Video",
+      "youtubeVideo": "YouTube Video",
+      "videoFile": "Video File",
+      "youtubeUrl": "YouTube URL",
+      "youtubeUrlPlaceholder": "https://youtube.com/watch?v=...",
+      "pdfDocumentName": "PDF Document name",
+      "pdfDocumentFile": "PDF Document file",
+      "provideName": "Please provide a name for your activity",
+      "provideFile": "Please provide a file for your activity",
+      "providePdfName": "Please provide a name for your PDF Document activity",
+      "providePdf": "Please provide a PDF Document for your activity",
+      "assignmentTitle": "Assignment Title",
+      "assignmentDescription": "Assignment Description",
+      "assignmentDueDate": "Due Date",
+      "assignmentGradingType": "Grading Type",
+      "provideAssignmentName": "Please provide a name for your assignment",
+      "provideAssignmentDescription": "Please provide a description for your assignment",
+      "provideAssignmentDueDate": "Please provide a due date for your assignment",
+      "provideAssignmentGradingType": "Please provide a grading type for your assignment",
+      "gradingTypes": {
+        "alphabet": "Alphabet",
+        "numeric": "Numeric",
+        "percentage": "Percentage"
+      },
+      "creatingAssignment": "Creating assignment..."
+    },
+    "ai": {
+      "askAI": "Ask AI",
+      "ai": "AI",
+      "experimental": "Experimental",
+      "askAboutLecture": "Ask AI About this Lecture",
+      "hello": "Hello",
+      "howCanWeHelp": "how can we help today ?",
+      "somethingWrong": "Something wrong happened",
+      "predefinedQuestions": {
+        "about": "What is this Activity about ?",
+        "flashcards": "Generate flashcards about this Activity",
+        "examples": "Explain this Activity in practical examples"
+      },
+      "tooltips": {
+        "ex": "Ex"
+      }
+    },
+    "success": {
+      "created": "Activity created successfully",
+      "deleted": "Activity deleted successfully",
+      "nameUpdated": "Activity name updated successfully",
+      "updated": "Activity has been updated successfully",
+      "fileUploaded": "File uploaded successfully",
+      "assignmentCreated": "Assignment created successfully"
+    },
+    "errors": {
+      "updateName": "Failed to update activity name",
+      "assignmentCreationFailed": "Failed to create assignment"
+    },
+    "confirmations": {
+      "deleteTitle": "Delete '{name}'?",
+      "deleteMessage": "Are you sure you want to delete this activity?",
+      "deleteButton": "Delete Activity"
+    }
+  },
+  "assignments": {
+    "title": "Assignments",
+    "assignment": "Assignment",
+    "editAssignment": "Edit Assignment",
+    "deleteAssignment": "Delete Assignment",
+    "submissions": "Submissions",
+    "general": "General",
+    "content": "Content",
+    "tasks": {
+      "quiz": {
+        "title": "Quiz",
+        "description": "Multiple choice questions and answers"
+      },
+      "fileSubmission": {
+        "title": "File submission",
+        "description": "Students can submit files for this assignment"
+      },
+      "form": {
+        "title": "Form",
+        "description": "Fill-in forms for students"
+      },
+      "task": "Task",
+      "hint": "Hint",
+      "referenceDocument": "Reference Document",
+      "deleteTask": "Delete Task"
+    },
+    "noAssignments": "No assignments available",
+    "updating": "Updating assignment...",
+    "setFinalGrade": "Set final grade",
+    "rejectAssignment": "Reject Assignment",
+    "reject": "Reject",
+    "dueDate": "Due Date",
+    "assignmentDescription": "Assignment Description",
+    "status": {
+      "sent": "Sent",
+      "late": "Late",
+      "submitted": "Submitted",
+      "graded": "Graded",
+      "submission": "Submission"
+    },
+    "student": {
+      "task": "Task",
+      "hint": "Hint",
+      "referenceDocument": "Reference Document"
+    },
+    "success": {
+      "updated": "Assignment updated successfully"
+    },
+    "errors": {
+      "update": "An error occurred while updating the assignment",
+      "failed": "Failed to update assignment"
+    }
+  },
+  "users": {
+    "title": "Users",
+    "activeUsers": "Active users",
+    "activeUsersDescription": "Manage your organization users, assign roles and permissions",
+    "manageUsers": "Manage Group Users",
+    "addUser": "Add User",
+    "removeUser": "Remove User",
+    "noUsers": "No users found",
+    "noUserSelected": "No user selected",
+    "searchUsers": "Search users by name or username",
+    "table": {
+      "user": "User",
+      "role": "Role",
+      "actions": "Actions"
+    },
+    "updateRoles": "Update Roles",
+    "updateRole": "Update Role",
+    "updateRoleDescription": "Update @{username}'s role",
+    "editRole": "Edit Role",
+    "removeUserButton": "Remove User",
+    "removeUserConfirm": "Are you sure you want remove this user from the organization?",
+    "deleteUserTitle": "Delete {username}?",
+    "removeFromOrganization": "Remove from organization",
+    "toast": {
+      "removing": "Removing...",
+      "removed": "Removed user from org",
+      "removeError": "Error removing user"
+    },
+    "rolesUpdate": {
+      "rolesLabel": "Roles",
+      "pleaseChooseRole": "Please choose a role for the user",
+      "loadingRoles": "Loading roles...",
+      "selectRole": "Select a role",
+      "updateUserRole": "Update user role",
+      "toast": {
+        "updating": "Updating role...",
+        "updated": "Updated role",
+        "updateError": "Error while updating role"
+      }
+    },
+    "profile": {
+      "editProfile": "Edit Profile",
+      "yourUsername": "Your username",
+      "yourFirstName": "Your first name",
+      "yourLastName": "Your last name",
+      "yourEmail": "Your email address",
+      "bio": "Biography",
+      "tellUsAbout": "Tell us about yourself",
+      "savingProfile": "Saving profile...",
+      "profileUpdated": "Profile Updated Successfully",
+      "profileUpdateFailed": "Failed to update profile",
+      "loadFailed": "Failed to load profile data"
+    },
+    "roles": {
+      "title": "Roles",
+      "manageRolesTitle": "Manage Roles & Permissions",
+      "rolesDescription": "Roles define what users can do within your organization. Create custom roles with specific permissions for different user types.",
+      "createRole": "Create a Role",
+      "createRoleDescription": "Create a new role with specific permissions",
+      "editRole": {
+        "fields": {
+          "roleName": "Role Name",
+          "roleNamePlaceholder": "e.g., Course Manager",
+          "description": "Description",
+          "descriptionPlaceholder": "Describe what this role can do..."
+        },
+        "sections": {
+          "predefinedRights": "Predefined Rights",
+          "permissions": "Permissions"
+        },
+        "predefinedRoles": {
+          "Admin": {
+            "name": "Admin",
+            "description": "Full platform control with all permissions"
+          },
+          "CourseManager": {
+            "name": "Course Manager",
+            "description": "Can manage courses, chapters, and activities"
+          },
+          "Instructor": {
+            "name": "Instructor",
+            "description": "Can create and manage their own courses"
+          },
+          "Viewer": {
+            "name": "Viewer",
+            "description": "Read-only access to courses and content"
+          },
+          "ContentCreator": {
+            "name": "Content Creator",
+            "description": "Can create and edit content but not manage users"
+          },
+          "UserManager": {
+            "name": "User Manager",
+            "description": "Can manage users and user groups"
+          },
+          "Moderator": {
+            "name": "Moderator",
+            "description": "Can moderate content and manage activities"
+          },
+          "Analyst": {
+            "name": "Analyst",
+            "description": "Read-only access with analytics capabilities"
+          },
+          "Guest": {
+            "name": "Guest",
+            "description": "Limited access for external users"
+          }
+        },
+        "permissionSections": {
+          "courses": "Courses",
+          "users": "Users",
+          "userGroups": "User Groups",
+          "collections": "Collections",
+          "organizations": "Organizations",
+          "courseChapters": "Course Chapters",
+          "activities": "Activities",
+          "roles": "Roles",
+          "dashboard": "Dashboard"
+        },
+        "permissionActions": {
+          "create": "Create",
+          "read": "Read",
+          "readOwn": "Read Own",
+          "update": "Update",
+          "updateOwn": "Update Own",
+          "delete": "Delete",
+          "deleteOwn": "Delete Own",
+          "access": "Access"
+        },
+        "buttons": {
+          "selectAll": "Select All",
+          "deselectAll": "Deselect All",
+          "select": "Select",
+          "deselect": "Deselect",
+          "cancel": "Cancel",
+          "updateRole": "Update Role",
+          "updating": "Updating..."
+        },
+        "validation": {
+          "required": "Required",
+          "nameMinLength": "Name must be at least 2 characters",
+          "descriptionMinLength": "Description must be at least 10 characters"
+        },
+        "toast": {
+          "updating": "Updating...",
+          "updated": "Updated role",
+          "updateError": "Couldn't update role"
+        }
+      },
+      "deleteRole": "Delete Role",
+      "updateRole": "Update Role",
+      "roleHierarchy": "Role Hierarchy",
+      "editPermissions": "Edit the permissions and details of the role",
+      "noPermissions": "No permissions",
+      "permissionsCount": "{count} permissions",
+      "systemWide": "System-wide",
+      "noDescription": "No description",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cannotEdit": "Cannot edit",
+      "cannotDelete": "Cannot delete",
+      "cannotModifySystem": "System roles cannot be modified",
+      "confirmDeleteTitle": "Delete Role?",
+      "confirmDeleteMessage": "This action cannot be undone. All users with this role will lose their permissions. Are you sure you want to delete this role?",
+      "table": {
+        "roleName": "Role Name",
+        "role": "Role",
+        "description": "Description",
+        "permissions": "Permissions",
+        "actions": "Actions"
+      },
+      "toast": {
+        "deleting": "Deleting...",
+        "deleted": "Deleted role",
+        "deleteError": "Error deleting role"
+      },
+      "addRole": {
+        "fields": {
+          "roleName": "Role Name",
+          "roleNamePlaceholder": "e.g., Course Manager",
+          "description": "Description",
+          "descriptionPlaceholder": "Describe what this role can do..."
+        },
+        "sections": {
+          "predefinedRights": "Predefined Rights",
+          "permissions": "Permissions"
+        },
+        "predefinedRoles": {
+          "Admin": {
+            "name": "Admin",
+            "description": "Full platform control with all permissions"
+          },
+          "CourseManager": {
+            "name": "Course Manager",
+            "description": "Can manage courses, chapters, and activities"
+          },
+          "Instructor": {
+            "name": "Instructor",
+            "description": "Can create and manage their own courses"
+          },
+          "Viewer": {
+            "name": "Viewer",
+            "description": "Read-only access to courses and content"
+          },
+          "ContentCreator": {
+            "name": "Content Creator",
+            "description": "Can create and edit content but not manage users"
+          },
+          "UserManager": {
+            "name": "User Manager",
+            "description": "Can manage users and user groups"
+          },
+          "Moderator": {
+            "name": "Moderator",
+            "description": "Can moderate content and manage activities"
+          },
+          "Analyst": {
+            "name": "Analyst",
+            "description": "Read-only access with analytics capabilities"
+          },
+          "Guest": {
+            "name": "Guest",
+            "description": "Limited access for external users"
+          }
+        },
+        "permissionSections": {
+          "courses": "Courses",
+          "users": "Users",
+          "userGroups": "User Groups",
+          "collections": "Collections",
+          "organizations": "Organizations",
+          "courseChapters": "Course Chapters",
+          "activities": "Activities",
+          "roles": "Roles",
+          "dashboard": "Dashboard"
+        },
+        "permissionActions": {
+          "create": "Create",
+          "read": "Read",
+          "readOwn": "Read Own",
+          "update": "Update",
+          "updateOwn": "Update Own",
+          "delete": "Delete",
+          "deleteOwn": "Delete Own",
+          "access": "Access"
+        },
+        "buttons": {
+          "selectAll": "Select All",
+          "deselectAll": "Deselect All",
+          "select": "Select",
+          "deselect": "Deselect",
+          "cancel": "Cancel",
+          "createRole": "Create Role",
+          "creating": "Creating..."
+        },
+        "validation": {
+          "required": "Required",
+          "nameMinLength": "Name must be at least 2 characters",
+          "descriptionMinLength": "Description must be at least 10 characters"
+        },
+        "toast": {
+          "creating": "Creating...",
+          "created": "Created new role",
+          "createError": "Couldn't create new role"
+        }
+      }
+    },
+    "userGroups": {
+      "title": "User Groups",
+      "manageTitle": "Manage UserGroups & Users",
+      "description": "UserGroups are a way to group users together to manage their access to the resources (Courses) in your organization.",
+      "createUserGroup": "Create a User Group",
+      "createUserGroupDescription": "Create a new UserGroup to manage users",
+      "editUserGroup": {
+        "fields": {
+          "name": "Name",
+          "description": "Description"
+        },
+        "buttons": {
+          "save": "Save UserGroup",
+          "loading": "Loading..."
+        },
+        "validation": {
+          "nameRequired": "Name is Required"
+        },
+        "toast": {
+          "saved": "UserGroup saved successfully",
+          "saveError": "Error saving UserGroup, please retry later."
+        }
+      },
+      "deleteUserGroup": "Delete User Group",
+      "noUserGroups": "No User Groups available",
+      "manageUsers": {
+        "table": {
+          "user": "User",
+          "linked": "Linked",
+          "actions": "Actions"
+        },
+        "status": {
+          "linked": "Linked",
+          "notLinked": "Not linked"
+        },
+        "buttons": {
+          "link": "Link",
+          "unlink": "Unlink"
+        },
+        "toast": {
+          "userLinked": "User linked successfully",
+          "userUnlinked": "User unlinked successfully",
+          "linkError": "Error {status}: {detail}",
+          "unlinkError": "Error {status}: {detail}"
+        }
+      },
+      "manageUsersTitle": "Manage UserGroup Users",
+      "manageUsersDescription": "Manage the users in this UserGroup",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDeleteTitle": "Delete User Group?",
+      "confirmDeleteMessage": "Access to all resources will be removed for all users in this Group. Are you sure you want to delete this User Group?",
+      "unlinkUserGroup": "Unlink User Group?",
+      "unlinkMessage": "Users in this Group will no longer have access to this course",
+      "userLinked": "User linked successfully",
+      "userUnlinked": "User unlinked successfully",
+      "successUnlinked": "Successfully unlinked from user group",
+      "errorUnlinking": "An error occurred while unlinking the user group",
+      "table": {
+        "userGroup": "UserGroup",
+        "description": "Description",
+        "manageUsers": "Manage Users",
+        "actions": "Actions"
+      },
+      "toast": {
+        "deleting": "Deleting...",
+        "deleted": "Deleted usergroup",
+        "deleteError": "Error deleting usergroup"
+      },
+      "addUserGroup": {
+        "fields": {
+          "name": "Name",
+          "description": "Description"
+        },
+        "buttons": {
+          "create": "Create a UserGroup",
+          "loading": "Loading..."
+        },
+        "validation": {
+          "nameRequired": "Name is Required"
+        },
+        "toast": {
+          "creating": "Creating...",
+          "created": "Created new usergroup",
+          "createError": "Couldn't create new usergroup"
+        }
+      }
+    },
+    "invites": {
+      "generateCode": "Generate Invite Code",
+      "confirmDeleteTitle": "Delete code?",
+      "confirmDeleteMessage": "Are you sure you want to remove this invite code?",
+      "errorSending": "Error sending invite"
+    },
+    "organization": {
+      "removeFromOrg": "Remove from organization",
+      "confirmRemoveTitle": "Delete '{username}'?",
+      "confirmRemoveMessage": "Are you sure you want to remove this user from the organization?",
+      "errorRemoving": "Error removing user"
+    }
+  },
+  "organization": {
+    "title": "Organization",
+    "settings": "Settings",
+    "general": "General",
+    "yourOrganization": "Your Organization",
+    "orgLabel": "Organization Label",
+    "showcaseInExplore": "Showcase in LearnHouse Explore",
+    "uploadLogo": "Upload Logo",
+    "uploadThumbnail": "Upload Thumbnail",
+    "logoURL": "Logo URL",
+    "thumbnailURL": "Thumbnail URL",
+    "logoURLPlaceholder": "URL for organization logo",
+    "name": "Organization Name",
+    "briefDescription": "Brief description of your organization",
+    "detailedDescription": "Detailed description of your organization",
+    "additionalDetails": "Additional Details",
+    "socialLinks": {
+      "facebook": "Facebook profile URL",
+      "twitter": "Twitter profile URL",
+      "instagram": "Instagram profile URL",
+      "youtube": "YouTube channel URL"
+    },
+    "signup": {
+      "changeToOpen": "Change to open?",
+      "changeToClosed": "Change to closed?",
+      "openMessage": "Are you sure you want to change the signup mechanism to open? This will allow users to join your organization freely.",
+      "closedMessage": "Are you sure you want to change the signup mechanism to closed? This will allow users to join your organization only by invitation.",
+      "errorChanging": "Error changing join method"
+    },
+    "updating": "Updating organization...",
+    "uploadingLogo": "Uploading logo...",
+    "uploadingThumbnail": "Uploading thumbnail...",
+    "orgUpdated": "Organization Updated",
+    "logoUpdated": "Logo Updated",
+    "thumbnailUpdated": "Thumbnail Updated",
+    "updateFailed": "Failed to update organization",
+    "logoUploadFailed": "Failed to upload logo",
+    "thumbnailUploadFailed": "Failed to upload thumbnail",
+    "orgIdNotFound": "Organization ID not found",
+    "selectOrgLabel": "Select organization label",
+    "ownership": {
+      "title": "Course Ownership Types"
+    },
+    "edit": {
+      "general": {
+        "title": "Organization Settings",
+        "subtitle": "Manage your organization's profile and settings",
+        "organizationName": "Organization Name",
+        "charactersLeft": "{count} characters left",
+        "shortDescription": "Short Description",
+        "organizationLabel": "Organization Label",
+        "aboutOrganization": "About Organization",
+        "showcaseTitle": "Showcase in LearnHouse Explore",
+        "showcaseDescription": "Share your organization's courses and content with the LearnHouse community. Enable this to help learners discover your valuable educational resources.",
+        "exploreLabel": "EXPLORE",
+        "placeholders": {
+          "organizationName": "Organization Name",
+          "briefDescription": "Brief description of your organization",
+          "detailedDescription": "Detailed description of your organization"
+        },
+        "labels": {
+          "languages": "🌐 Languages",
+          "business": "💰 Business",
+          "ecommerce": "🛍 E-commerce",
+          "gaming": "🎮 Gaming",
+          "music": "🎸 Music",
+          "sports": "⚽ Sports",
+          "cars": "🚗 Cars",
+          "sales_marketing": "🚀 Sales & Marketing",
+          "tech": "💻 Tech",
+          "photo_video": "📸 Photo & Video",
+          "pets": "🐕 Pets",
+          "personal_development": "📚 Personal Development",
+          "real_estate": "🏠 Real Estate",
+          "beauty_fashion": "👠 Beauty & Fashion",
+          "travel": "✈️ Travel",
+          "productivity": "⏳ Productivity",
+          "health_fitness": "🍎 Health & Fitness",
+          "finance": "📈 Finance",
+          "arts_crafts": "🎨 Arts & Crafts",
+          "education": "📚 Education",
+          "stem": "🔬 STEM",
+          "humanities": "📖 Humanities",
+          "professional_skills": "💼 Professional Skills",
+          "digital_skills": "💻 Digital Skills",
+          "creative_arts": "🎨 Creative Arts",
+          "social_sciences": "🌍 Social Sciences",
+          "test_prep": "✍️ Test Preparation",
+          "vocational": "🔧 Vocational Training",
+          "early_education": "🎯 Early Education"
+        },
+        "validation": {
+          "nameRequired": "Name is required",
+          "nameTooLong": "Organization name must be 60 characters or less",
+          "descriptionRequired": "Short description is required",
+          "descriptionTooLong": "Short description must be 100 characters or less",
+          "aboutTooLong": "About text must be 400 characters or less",
+          "labelRequired": "Organization label is required"
+        },
+        "toast": {
+          "updating": "Updating organization...",
+          "updated": "Organization Updated",
+          "updateFailed": "Failed to update organization"
+        }
+      },
+      "images": {
+        "title": "Images & Previews",
+        "subtitle": "Manage your organization's logo, thumbnail, and preview images",
+        "tabs": {
+          "logo": "Logo",
+          "thumbnail": "Thumbnail",
+          "previews": "Previews"
+        },
+        "uploadNewLogo": "Upload New Logo",
+        "uploadNewThumbnail": "Upload New Thumbnail",
+        "addPreview": "Add Preview",
+        "acceptsFormats": "Accepts PNG, JPG (max 5MB)",
+        "recommendedSize": "Recommended size: 200x100 pixels",
+        "dragToReorder": "Drag to reorder • Maximum 4 previews • Supports images & videos",
+        "uploadImages": "Upload Images",
+        "uploadImagesDescription": "PNG, JPG (max 5MB)",
+        "youtubeTitle": "Add YouTube Video",
+        "youtubeDescription": "Paste your YouTube video URL",
+        "loomTitle": "Add Loom Video",
+        "loomDescription": "Paste your Loom video URL",
+        "addVideo": "Add Video",
+        "youtube": "YouTube",
+        "loom": "Loom",
+        "placeholders": {
+          "youtubeUrl": "https://youtube.com/watch?v=...",
+          "loomUrl": "https://www.loom.com/share/..."
+        },
+        "toast": {
+          "uploadingLogo": "Uploading logo...",
+          "logoUpdated": "Logo Updated",
+          "logoUploadFailed": "Failed to upload logo",
+          "uploadingThumbnail": "Uploading thumbnail...",
+          "thumbnailUpdated": "Thumbnail Updated",
+          "thumbnailUploadFailed": "Failed to upload thumbnail",
+          "uploadingPreviews": "Uploading {count} preview{plural}...",
+          "previewsAdded": "{count} preview{plural} added",
+          "uploadPreviewsFailed": "Failed to upload previews",
+          "canOnlyUpload": "You can only upload {count} more preview{plural}",
+          "removingPreview": "Removing preview...",
+          "previewRemoved": "Preview removed",
+          "previewRemoveFailed": "Failed to remove preview",
+          "addingVideo": "Adding video preview...",
+          "videoAdded": "Video preview added",
+          "videoAddFailed": "Failed to add video preview",
+          "invalidUrl": "Invalid {service} URL",
+          "videoAlreadyAdded": "This video has already been added",
+          "updatingOrder": "Updating preview order...",
+          "orderUpdated": "Preview order updated",
+          "orderUpdateFailed": "Failed to update preview order"
+        }
+      },
+      "landing": {
+        "title": "Landing Page",
+        "subtitle": "Customize your organization's landing page",
+        "beta": "BETA",
+        "enabledLabel": "Landing Page Enabled",
+        "sections": "Sections",
+        "addSection": "Add Section",
+        "selectToEdit": "Select a section to edit or add a new one",
+        "sectionTypes": {
+          "hero": {
+            "label": "Hero",
+            "description": "Add a hero section with heading and call-to-action"
+          },
+          "textAndImage": {
+            "label": "Text & Image",
+            "description": "Add a section with text and an image"
+          },
+          "logos": {
+            "label": "Logos",
+            "description": "Add a section to showcase logos"
+          },
+          "people": {
+            "label": "People",
+            "description": "Add a section to highlight team members"
+          },
+          "featuredCourses": {
+            "label": "Courses",
+            "description": "Add a section to showcase selected courses"
+          }
+        },
+        "editor": {
+          "sectionTitle": "Section Title",
+          "placeholders": {
+            "sectionTitle": "Enter section title",
+            "headingText": "Enter heading text",
+            "subheadingText": "Enter subheading text",
+            "imageUrl": "Image URL",
+            "altText": "Alt text",
+            "buttonText": "Button text",
+            "buttonLink": "Button link",
+            "logoUrl": "Logo URL",
+            "personName": "Person's name",
+            "username": "@username",
+            "description": "Description or role"
+          },
+          "hero": {
+            "title": "Hero Section",
+            "tabs": {
+              "content": "Content",
+              "background": "Background",
+              "buttons": "Buttons",
+              "illustration": "Illustration"
+            },
+            "heading": "Heading",
+            "headingColor": "Heading Color",
+            "subheading": "Subheading",
+            "subheadingColor": "Subheading Color",
+            "backgroundType": "Background Type",
+            "backgroundColor": "Background Color",
+            "backgroundImage": "Background Image",
+            "uploadImage": "Upload Image",
+            "addButton": "Add Button",
+            "buttonText": "Button Text & Colors",
+            "buttonLink": "Button Link",
+            "illustrationImage": "Illustration Image",
+            "position": "Position",
+            "size": "Size",
+            "removeIllustration": "Remove Illustration",
+            "backgroundTypes": {
+              "solid": "Solid Color",
+              "gradient": "Gradient",
+              "image": "Image"
+            },
+            "gradientType": "Gradient Type",
+            "gradientPreset": "Gradient Preset",
+            "gradientDirection": "Gradient Direction",
+            "startColor": "Start Color",
+            "endColor": "End Color",
+            "presetGradients": "Preset Gradients",
+            "customGradient": "Custom Gradient",
+            "positions": {
+              "left": "Left",
+              "right": "Right"
+            },
+            "sizes": {
+              "small": "Small",
+              "medium": "Medium",
+              "large": "Large"
+            },
+            "directions": {
+              "topRight": "↗️ Top Right",
+              "top": "⬆️ Top",
+              "topLeft": "↖️ Top Left",
+              "left": "⬅️ Left",
+              "bottomLeft": "↙️ Bottom Left",
+              "bottom": "⬇️ Bottom",
+              "bottomRight": "↘️ Bottom Right",
+              "right": "➡️ Right"
+            }
+          },
+          "textAndImage": {
+            "title": "Text & Image Section",
+            "content": "Content",
+            "imagePosition": "Image Position",
+            "image": "Image",
+            "uploadNewImage": "Upload New Image"
+          },
+          "logos": {
+            "title": "Logos Section",
+            "logos": "Logos",
+            "uploadLogo": "Upload Logo",
+            "addLogo": "Add Logo"
+          },
+          "people": {
+            "title": "People Section",
+            "people": "People",
+            "name": "Name",
+            "username": "Username",
+            "image": "Image",
+            "description": "Description",
+            "uploadAvatar": "Upload Avatar",
+            "addPerson": "Add Person"
+          },
+          "courses": {
+            "title": "Courses Section",
+            "selectCourses": "Select Courses",
+            "loadingCourses": "Loading courses...",
+            "selected": "Selected",
+            "select": "Select"
+          }
+        },
+        "toast": {
+          "saving": "Saving...",
+          "saved": "Landing page saved successfully",
+          "saveFailed": "Error saving landing page",
+          "orgIdNotFound": "Organization ID not found",
+          "uploadSuccess": "Image uploaded successfully",
+          "uploadFailed": "Failed to upload image"
+        }
+      },
+      "other": {
+        "title": "Scripts",
+        "subtitle": "Add custom JavaScript scripts to your organization",
+        "safetyWarning": "For your organization's safety, please ensure you trust and understand any scripts before adding them. Scripts can interact with your organization's pages.",
+        "addScript": "Add Script",
+        "noScriptsYet": "No scripts added yet",
+        "addFirstScript": "Add your first script to get started",
+        "scriptName": "Script Name",
+        "scriptContent": "Script Content",
+        "placeholders": {
+          "scriptName": "Enter script name",
+          "scriptContent": "Enter JavaScript code"
+        },
+        "cancel": "Cancel",
+        "saveScript": "Save Script",
+        "validation": {
+          "nameRequired": "Script name is required",
+          "contentRequired": "Script content is required"
+        },
+        "toast": {
+          "updating": "Updating organization...",
+          "saved": "Script saved successfully",
+          "saveFailed": "Failed to save script",
+          "deleting": "Deleting script...",
+          "deleted": "Script deleted successfully",
+          "deleteFailed": "Failed to delete script"
+        }
+      },
+      "socials": {
+        "title": "Social Links",
+        "subtitle": "Manage your organization's social media presence",
+        "socialLinks": "Social Links",
+        "customLinks": "Custom Links",
+        "customLinksDescription": "Add up to 3 custom links that will appear on your organization's profile",
+        "addLink": "Add Link",
+        "placeholders": {
+          "twitterUrl": "Twitter profile URL",
+          "facebookUrl": "Facebook profile URL",
+          "instagramUrl": "Instagram profile URL",
+          "youtubeUrl": "YouTube channel URL",
+          "linkLabel": "Label",
+          "linkUrl": "URL"
+        },
+        "toast": {
+          "updating": "Updating organization...",
+          "updated": "Organization Updated",
+          "updateFailed": "Failed to update organization"
+        }
+      }
+    }
+  },
+  "payments": {
+    "title": "Payments",
+    "configuration": "Payment Configuration",
+    "notAvailable": "Payments Not Available",
+    "notAvailableMessage": "The payments feature is not enabled for this organization.",
+    "contactAdmin": "Contact your administrator to enable payments.",
+    "customers": "Customers",
+    "viewCustomers": "View and manage your customer information",
+    "noCustomerData": "No customer data available",
+    "products": {
+      "title": "Products",
+      "createProduct": "Create New Product",
+      "editProduct": "Edit Product",
+      "archiveProduct": "Archive Product",
+      "addProduct": "Add a new product to your organization",
+      "noProducts": "No products available. Create a new product to get started.",
+      "productName": "Product Name",
+      "productDescription": "Product Description",
+      "productBenefits": "Product Benefits",
+      "price": "Price",
+      "currency": "Currency",
+      "linkedCourses": "Linked Courses",
+      "confirmArchiveMessage": "Are you sure you want to archive this product?",
+      "createSuccess": "Product created successfully",
+      "createError": "An error occurred while creating the product",
+      "updateSuccess": "Product updated successfully",
+      "updateFailed": "Failed to update product",
+      "archiveSuccess": "Product archived successfully",
+      "linkSuccess": "Course linked successfully",
+      "linkFailed": "Failed to link course",
+      "unlinkSuccess": "Course unlinked successfully",
+      "unlinkFailed": "Failed to unlink course",
+      "loadFailed": "Failed to load linked courses"
+    },
+    "stripe": {
+      "title": "Stripe Configuration",
+      "edit": "Edit Stripe Configuration",
+      "editDescription": "Edit your stripe configuration",
+      "accountId": "Stripe Account ID",
+      "enable": "Enable Stripe",
+      "removeConnection": "Remove Connection",
+      "confirmRemoveMessage": "Are you sure you want to remove the Stripe connection? This action cannot be undone.",
+      "enableSuccess": "Stripe enabled successfully",
+      "enableFailed": "Failed to enable Stripe",
+      "onboardingFailed": "Failed to start Stripe onboarding",
+      "configUpdated": "Configuration updated successfully",
+      "configUpdateFailed": "Failed to update configuration",
+      "configLoadFailed": "Failed to load existing configuration",
+      "deleteSuccess": "Stripe configuration deleted successfully",
+      "deleteFailed": "Failed to delete Stripe configuration"
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "save": "Save",
+    "preview": "Preview",
+    "desktopOnly": "Desktop Only",
+    "desktopOnlyDescription": "The editor is only accessible from a desktop device.",
+    "pleaseSwitchToDesktop": "Please switch to a desktop to view.",
+    "aiEditor": "AI Editor",
+    "toolbar": {
+      "undo": "Undo last action",
+      "redo": "Redo last action",
+      "bold": "Toggle bold formatting",
+      "italic": "Toggle italic formatting",
+      "strikethrough": "Toggle strikethrough text",
+      "list": "Insert list",
+      "bulletList": "Bullet List",
+      "orderedList": "Ordered List",
+      "paragraph": "Paragraph",
+      "heading1": "Heading 1",
+      "heading2": "Heading 2",
+      "heading3": "Heading 3",
+      "heading4": "Heading 4",
+      "heading5": "Heading 5",
+      "heading6": "Heading 6",
+      "table": "Insert table",
+      "insertNewTable": "Insert new table (3×3)",
+      "addRowBelow": "Add row below",
+      "addColumnRight": "Add column right",
+      "deleteCurrentRow": "Delete current row",
+      "deleteCurrentColumn": "Delete current column",
+      "infoCallout": "Info Callout",
+      "warningCallout": "Warning Callout",
+      "link": "Link",
+      "image": "Image",
+      "video": "Video",
+      "youtube": "YouTube video",
+      "mathEquation": "Math Equation (LaTeX)",
+      "pdf": "PDF Document",
+      "quiz": "Interactive Quiz",
+      "codeBlock": "Code Block",
+      "embed": "External Object (Embed)",
+      "badges": "Badges",
+      "button": "Button",
+      "user": "User",
+      "webPreview": "Web Preview",
+      "flipcard": "Flipcard",
+      "interactiveScenarios": "Interactive Scenarios"
+    },
+    "placeholders": {
+      "enterContent": "Enter your content here...",
+      "enterQuestion": "Your Question",
+      "enterAnswer": "Answer",
+      "mathEquation": "Insert a Math Equation (LaTeX)",
+      "websiteURL": "Enter website URL...",
+      "embedCode": "Paste embed code (iframe, embed script, etc.)",
+      "enterUrl": "Enter URL"
+    },
+    "actions": {
+      "editURL": "Edit URL",
+      "editEmbed": "Edit embed",
+      "removeEmbed": "Remove embed",
+      "deleteCard": "Delete card",
+      "expandImage": "Expand image",
+      "downloadImage": "Download image",
+      "downloadVideo": "Download video",
+      "expandVideo": "Expand video",
+      "downloadPDF": "Download PDF",
+      "expandPDF": "Expand PDF"
+    },
+    "alignment": {
+      "left": "Align left",
+      "center": "Center align",
+      "right": "Align right",
+      "align": "Align"
+    },
+    "size": {
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "full": "Full Width",
+      "videoSize": "Video Size"
+    },
+    "blocks": {
+      "videoBlock": "Video Block",
+      "imageBlock": "Image Block",
+      "pdfBlock": "PDF Block",
+      "mathEquation": "Math Equation",
+      "quiz": "Quiz"
+    },
+    "upload": {
+      "dropOrClick": "Drop your video here or click to browse",
+      "dropImageOrClick": "Drop your image here or click to browse",
+      "dropPdfOrClick": "Drop your PDF here or click to browse",
+      "supportsMp4Webm": "Supports MP4 and WebM formats",
+      "supportsImageFormats": "Supports JPG, PNG, WebP, GIF formats",
+      "supportsPdf": "Supports PDF format",
+      "uploadingVideo": "Uploading video...",
+      "uploadingImage": "Uploading image...",
+      "uploadingPdf": "Uploading PDF...",
+      "failedToUpload": "Failed to upload. Please try again.",
+      "uploadSupportedFormat": "Please upload a supported format"
+    },
+    "quiz": {
+      "quiz": "Quiz",
+      "yourQuestion": "Your Question",
+      "answer": "Answer",
+      "resetAnswers": "Reset answers",
+      "deleteAnswer": "Delete answer",
+      "deleteOption": "Delete option",
+      "addResponseOption": "Add response option",
+      "addQuestion": "Add Question",
+      "addAnswer": "Add Answer",
+      "submit": "Submit",
+      "allAnswersCorrect": "All answers are correct!",
+      "someAnswersIncorrect": "Some answers are incorrect!",
+      "markAsCorrect": "Mark as correct",
+      "markAsIncorrect": "Mark as incorrect"
+    },
+    "scenarios": {
+      "editScenarios": "Edit Scenarios",
+      "clickToEdit": "Click \"Edit Scenarios\" to configure your branching interactive story",
+      "resetScenario": "Reset scenario",
+      "setAsStarting": "Set as starting scenario",
+      "deleteScenario": "Delete scenario",
+      "scenarioPreview": "Scenario Preview",
+      "backSide": "Back Side (Answer)",
+      "previewFlip": "Preview Flip"
+    },
+    "mathEquation": {
+      "templates": {
+        "fraction": "Fraction",
+        "squareRoot": "Square Root",
+        "summation": "Summation",
+        "integral": "Integral",
+        "limit": "Limit",
+        "matrix2x2": "Matrix 2×2",
+        "binomial": "Binomial",
+        "quadraticFormula": "Quadratic Formula",
+        "vector": "Vector",
+        "systemOfEquations": "System of Equations"
+      },
+      "symbols": "Symbols",
+      "help": "Help",
+      "selectTemplateToInsert": "Select a template to insert",
+      "clickSymbolToInsert": "Click a symbol to insert",
+      "latexQuickReference": "LaTeX Math Quick Reference",
+      "fractions": "Fractions",
+      "exponents": "Exponents",
+      "subscripts": "Subscripts",
+      "squareRoot": "Square root",
+      "summation": "Summation",
+      "integral": "Integral",
+      "viewCompleteReference": "View complete reference",
+      "pleaseReferTo": "Please refer to this",
+      "guide": "guide",
+      "forSupportedFunctions": "for supported TeX functions",
+      "descriptions": {
+        "fraction": "Simple fraction",
+        "squareRoot": "Square root",
+        "summation": "Sum with limits",
+        "integral": "Definite integral",
+        "limit": "Limit expression",
+        "matrix2x2": "2×2 matrix with parentheses",
+        "binomial": "Binomial coefficient",
+        "quadraticFormula": "Solution to quadratic equation",
+        "vector": "3D vector",
+        "systemOfEquations": "System of linear equations"
+      }
+    },
+    "webPreview": {
+      "editWebPreviewCard": "Edit Web Preview Card",
+      "updateWebsitePreview": "Update the website preview, button, and display options.",
+      "websiteUrl": "Website URL",
+      "enterWebsiteUrl": "Enter website URL...",
+      "buttonOptions": "Button Options",
+      "showButton": "Show button",
+      "openInPopup": "Open in-app popup (might not work on all websites)",
+      "buttonLabel": "Button label",
+      "alignment": "Alignment",
+      "visitSite": "Visit Site",
+      "expandPdf": "Expand PDF",
+      "downloadPdf": "Download PDF",
+      "expandVideo": "Expand video",
+      "downloadVideo": "Download video",
+      "expandImage": "Expand image",
+      "unableToGetMetadata": "Unable to get metadata from this website. The preview card may appear incomplete.",
+      "editUrl": "Edit URL",
+      "deleteCard": "Delete Card"
+    },
+    "link": {
+      "enterUrl": "Enter URL"
+    },
+    "embed": {
+      "title": "Embedded Site Preview",
+      "noPreview": "No file available for preview."
+    },
+    "color": {
+      "changeColor": "Change Color"
+    },
+    "ai": {
+      "aiEditor": "AI Editor",
+      "preAlpha": "PRE-ALPHA",
+      "writer": "Writer",
+      "continueWriting": "ContinueWriting",
+      "makeLonger": "MakeLonger",
+      "translate": "Translate",
+      "writeAbout": "Write about...",
+      "placeCursorToContinue": "Place your cursor at the end of a sentence to continue writing",
+      "selectTextToMakeLonger": "Select text to make longer",
+      "translateSelectedTextTo": "Translate selected text to",
+      "askAI": "Ask AI",
+      "thinking": "Thinking...",
+      "somethingWrongHappened": "Something wrong happened"
+    },
+    "toast": {
+      "saving": "Saving...",
+      "activitySaved": "Activity saved!",
+      "errorSaving": "Error saving activity",
+      "couldNotSave": "Could not save"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "editPage": "Edit Page",
+    "about": "About",
+    "noBiography": "No biography provided",
+    "builder": {
+      "sections": {
+        "heading": "Heading",
+        "subheading": "Subheading",
+        "text": "Text",
+        "images": "Images",
+        "links": "Links",
+        "skills": "Skills",
+        "experience": "Experience",
+        "education": "Education",
+        "affiliations": "Affiliations",
+        "learningItems": "Learning Items"
+      },
+      "addSection": "Add Section",
+      "addHeading": "Add a heading",
+      "addSubheading": "Add a subheading",
+      "addText": "Add formatted text content",
+      "addImages": "Add a collection of images",
+      "addLinks": "Add social or professional links",
+      "addSkills": "Add skills",
+      "addExperience": "Add work or project experience",
+      "addEducation": "Add educational background",
+      "addAffiliations": "Add organizational affiliations",
+      "addLearningItems": "Add learning items",
+      "placeholders": {
+        "sectionTitle": "Enter section title",
+        "heading": "Enter heading text",
+        "subheading": "Enter subheading text",
+        "text": "Type to add...",
+        "imageURL": "Image URL",
+        "imageCaption": "Image caption",
+        "linkTitle": "Link title",
+        "linkURL": "URL",
+        "skillName": "Skill name",
+        "position": "Position or role",
+        "organization": "Company or organization",
+        "description": "Description or role",
+        "additionalDetails": "Additional details about your education",
+        "institution": "School or university",
+        "degree": "Degree type",
+        "major": "Major or concentration",
+        "personName": "Person's name",
+        "learningItem": "Enter learning item..."
+      },
+      "background": {
+        "title": "Background",
+        "type": "Background Type",
+        "color": "Background Color",
+        "image": "Background Image",
+        "selectType": "Select background type",
+        "selectGradientDirection": "Select gradient direction",
+        "selectGradientPreset": "Select gradient preset",
+        "selectGradientType": "Select gradient type",
+        "selectImagePosition": "Select image position"
+      },
+      "savingPage": "Saving landing page...",
+      "pageUpdated": "Landing page saved successfully",
+      "errorSaving": "Error saving landing page"
+    }
+  },
+  "certifications": {
+    "title": "Certifications",
+    "noCertification": "No Certification Configured",
+    "descriptionPlaceholder": "Describe what this certification represents and its value...",
+    "namePlaceholder": "e.g., Advanced JavaScript Certification",
+    "issuerPlaceholder": "e.g., Dr. Jane Smith",
+    "selectVisibility": "Select visibility",
+    "createSuccess": "Certification created successfully",
+    "createFailed": "Failed to create certification",
+    "removeSuccess": "Certification removed successfully",
+    "removeFailed": "Failed to remove certification"
+  },
+  "collections": {
+    "title": "Collections",
+    "deleteCollection": "Delete Collection",
+    "confirmDelete": "Delete '{name}'?",
+    "confirmDeleteMessage": "Are you sure you want to delete this collection?"
+  },
+  "scripts": {
+    "title": "Scripts",
+    "addScripts": "Add custom JavaScript scripts to your organization",
+    "noScripts": "No scripts added yet",
+    "addFirstScript": "Add your first script to get started",
+    "enterScriptName": "Enter script name",
+    "enterJSCode": "Enter JavaScript code",
+    "deletingScript": "Deleting script...",
+    "deleteSuccess": "Script deleted successfully",
+    "deleteFailed": "Failed to delete script",
+    "saveSuccess": "Script saved successfully",
+    "saveFailed": "Failed to save script"
+  },
+  "media": {
+    "uploadImage": "Upload Image",
+    "chooseFromUnsplash": "Choose an image from Unsplash",
+    "searchImages": "Search images...",
+    "uploadSuccess": "Image uploaded successfully",
+    "uploadFailed": "Failed to upload image",
+    "uploadingFile": "Uploading file and creating activity...",
+    "addVideoPreview": "Add Preview",
+    "addingVideoPreview": "Adding video preview...",
+    "videoPreviewAdded": "Video preview added",
+    "videoAlreadyAdded": "This video has already been added",
+    "failedToAddVideo": "Failed to add video preview",
+    "addYouTubeVideo": "Add YouTube video",
+    "addLoomVideo": "Add Loom video",
+    "removingPreview": "Removing preview...",
+    "previewRemoved": "Preview removed",
+    "previewRemoveFailed": "Failed to remove preview",
+    "updatingPreviewOrder": "Updating preview order...",
+    "previewOrderUpdated": "Preview order updated",
+    "previewOrderUpdateFailed": "Failed to update preview order",
+    "uploadPreviewsFailed": "Failed to upload previews",
+    "changeReferenceFile": "Change Reference File",
+    "uploadVideo": "Upload Video",
+    "pdfDocument": "PDF Document",
+    "imageViewer": "Image Viewer",
+    "videoPlayer": "Video Player"
+  },
+  "ai": {
+    "askAboutLecture": "Ask AI About this Lecture",
+    "askAI": "Ask AI"
+  },
+  "rights": {
+    "title": "Authorizations and Rights Guide",
+    "guide": "Rights Guide"
+  },
+  "success": {
+    "generic": "Operation completed successfully",
+    "updateSuccess": "Update successful",
+    "deleteSuccess": "Deletion successful",
+    "createSuccess": "Creation successful",
+    "uploadSuccess": "Upload successful"
+  },
+  "errors": {
+    "generic": "An error occurred",
+    "updateFailed": "Update failed",
+    "deleteFailed": "Deletion failed",
+    "createFailed": "Creation failed",
+    "uploadFailed": "Upload failed",
+    "loadFailed": "Failed to load data",
+    "networkError": "Network error. Please check your connection.",
+    "unauthorized": "You are not authorized to perform this action.",
+    "notFound": "Resource not found"
+  },
+  "confirmations": {
+    "areYouSure": "Are you sure?",
+    "cannotBeUndone": "This action cannot be undone.",
+    "confirmDelete": "Confirm Deletion",
+    "confirmAction": "Confirm Action"
+  },
+  "navigation": {
+    "breadcrumbs": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "courses": "Courses",
+      "users": "Users",
+      "settings": "Settings"
+    }
+  },
+  "forms": {
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email address",
+      "url": "Please enter a valid URL",
+      "minLength": "Must be at least {min} characters",
+      "maxLength": "Must be at most {max} characters",
+      "passwordMatch": "Passwords must match"
+    },
+    "labels": {
+      "selectLevel": "Select level",
+      "selectPosition": "Select position",
+      "selectSize": "Select size",
+      "selectIcon": "Select icon",
+      "showButton": "Show button",
+      "buttonLabel": "Button label",
+      "buttonText": "Button text",
+      "buttonLink": "Button link",
+      "categoryOptional": "Category (optional)"
+    },
+    "placeholders": {
+      "enterToAdd": "Type to add...",
+      "enterLabel": "Enter label (e.g., Title, Location)",
+      "enterDetail": "Enter detail text",
+      "enterSectionContent": "Enter section content",
+      "websiteURL": "Enter website URL...",
+      "languages": "Japanese, Arabic, German, etc."
+    }
+  },
+  "instructors": {
+    "updateRoleFailed": "Failed to update instructor role",
+    "removeFailed": "Failed to remove instructor"
+  },
+  "contributors": {
+    "updateSuccess": "Contributor updated successfully",
+    "updateFailed": "Failed to update contributor",
+    "removeSuccess": "Contributor removed successfully",
+    "removeFailed": "An error occurred while removing the contributor"
+  },
+  "webPreview": {
+    "editCard": "Edit Web Preview Card",
+    "openInPopup": "Open popup in app (may not work on all websites)"
+  },
+  "install": {
+    "pageTitle": "Install LearnHouse",
+    "pageDescription": "Install Learnhouse on your server",
+    "getStarted": {
+      "stepName": "Get started",
+      "title": "Start a new installation",
+      "startButton": "Start",
+      "alreadyStarted": "You already started an installation",
+      "continueButton": "Continue"
+    },
+    "orgCreation": {
+      "stepName": "Organization Creation",
+      "name": "Name",
+      "description": "Description",
+      "slug": "Slug",
+      "email": "Email",
+      "createButton": "Create Organization",
+      "success": "Organization Created Successfully",
+      "validation": {
+        "nameRequired": "Required",
+        "descriptionRequired": "Required",
+        "slugRequired": "Required",
+        "emailRequired": "Required",
+        "invalidEmail": "Invalid email address"
+      }
+    },
+    "accountCreation": {
+      "stepName": "Account Creation",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "username": "Username",
+      "createButton": "Create Admin Account",
+      "validation": {
+        "emailRequired": "Required",
+        "invalidEmail": "Invalid email address",
+        "passwordRequired": "Required",
+        "passwordMinLength": "Password must be at least 8 characters",
+        "confirmPasswordRequired": "Required",
+        "passwordsMustMatch": "Passwords must match",
+        "usernameRequired": "Required",
+        "usernameMinLength": "Username must be at least 3 characters"
+      }
+    },
+    "defaultElements": {
+      "stepName": "Default Elements",
+      "title": "Install Default Elements",
+      "installButton": "Install"
+    },
+    "sampleData": {
+      "stepName": "Sample Data",
+      "title": "Install Sample data on your organization",
+      "startButton": "Start"
+    },
+    "finish": {
+      "stepName": "Finish",
+      "title": "Installation Complete",
+      "nextButton": "Next Step"
+    },
+    "disableInstallMode": {
+      "stepName": "Disabling Installation Mode",
+      "message": "You have reached the end of the Installation process, please don't forget to disable installation mode.",
+      "docsLink": "LearnHouse Docs"
     }
   }
 }

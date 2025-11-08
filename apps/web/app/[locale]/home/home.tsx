@@ -13,7 +13,7 @@ import useSWR from 'swr';
 import { useTranslations } from 'next-intl';
 
 function HomeClient() {
-  const t = useTranslations('home.welcome');
+  const t = useTranslations('dashboard.home.welcome');
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
   const { data: orgs } = useSWR(`${getAPIUrl()}orgs/user/page/1/limit/10`, (url) => swrFetcher(url, access_token))
