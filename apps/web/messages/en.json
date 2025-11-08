@@ -1977,6 +1977,515 @@
           "removeFailed": "Failed to remove contributors"
         }
       }
+    },
+    "dashboard": {
+      "misc": {
+        "breadcrumbs": {
+          "courses": "Courses",
+          "assignments": "Assignments",
+          "accountSettings": "Account Settings",
+          "orgUsers": "Organization users",
+          "orgSettings": "Organization Settings",
+          "payments": "Payments"
+        },
+        "courseOverview": {
+          "course": "Course",
+          "rightsGuide": "Rights Guide"
+        },
+        "saveState": {
+          "unsavedChanges": "Unsaved changes",
+          "saving": "Saving...",
+          "saved": "Saved",
+          "save": "Save"
+        }
+      },
+      "payments": {
+        "configuration": {
+          "title": "Payments Configuration",
+          "description": "Manage your organization payments configuration",
+          "aboutStripe": "About the Stripe Integration",
+          "features": {
+            "acceptPayments": "Accept payments for courses and subscriptions",
+            "recurringBilling": "Manage recurring billing and subscriptions",
+            "multipleCurrencies": "Handle multiple currencies and payment methods",
+            "paymentAnalytics": "Access detailed payment analytics"
+          },
+          "learnMore": "Learn more about Stripe",
+          "connected": "Connected",
+          "notConnected": "Not Connected",
+          "linkedAccount": "Linked Account",
+          "accountNotConfigured": "Account ID not configured",
+          "connectWithStripe": "Connect with Stripe",
+          "removeConnection": "Remove Connection",
+          "removeConfirmTitle": "Remove Stripe Connection",
+          "removeConfirmMessage": "Are you sure you want to remove the Stripe connection? This action cannot be undone.",
+          "enableStripe": "Enable Stripe",
+          "connectingToStripe": "Connecting to Stripe...",
+          "editConfig": "Edit Stripe Configuration",
+          "editConfigDescription": "Edit your stripe configuration",
+          "stripeAccountId": "Stripe Account ID",
+          "toast": {
+            "enabledSuccess": "Stripe enabled successfully",
+            "enabledFailed": "Failed to enable Stripe",
+            "deletedSuccess": "Stripe configuration deleted successfully",
+            "deletedFailed": "Failed to delete Stripe configuration",
+            "onboardingFailed": "Failed to start Stripe onboarding",
+            "updateSuccess": "Configuration updated successfully",
+            "updateFailed": "Failed to update configuration",
+            "loadFailed": "Failed to load existing configuration"
+          }
+        },
+        "customers": {
+          "title": "Customers",
+          "description": "View and manage your customer information",
+          "noCustomers": "No customers found",
+          "table": {
+            "user": "User",
+            "product": "Product",
+            "type": "Type",
+            "amount": "Amount",
+            "status": "Status",
+            "purchaseDate": "Purchase Date"
+          },
+          "types": {
+            "subscription": "Subscription",
+            "oneTime": "One-time"
+          },
+          "loading": "Error loading customers",
+          "noData": "No customer data available"
+        },
+        "products": {
+          "createTitle": "Create New Product",
+          "createDescription": "Add a new product to your organization",
+          "title": "Products",
+          "oneTimePayment": "One-time payment",
+          "archiveProduct": "Archive Product",
+          "archiveConfirm": "Are you sure you want to archive this product?",
+          "showMore": "Show more",
+          "showLess": "Show less",
+          "benefits": "Benefits",
+          "price": "Price",
+          "noProducts": "No products available. Create a new product to get started.",
+          "createNew": "Create New Product",
+          "edit": {
+            "productName": "Product Name",
+            "description": "Description",
+            "productType": "Product Type",
+            "priceType": "Price Type",
+            "price": "Price",
+            "minimumAmount": "Minimum Amount",
+            "currency": "Currency",
+            "benefits": "Benefits",
+            "types": {
+              "oneTime": "One Time",
+              "subscription": "Subscription"
+            },
+            "priceTypes": {
+              "fixed": "Fixed Price",
+              "customerChoice": "Customer Choice"
+            },
+            "placeholders": {
+              "productName": "Product Name",
+              "description": "Product Description",
+              "price": "Price",
+              "minimumAmount": "Minimum Amount",
+              "benefits": "Product Benefits"
+            }
+          },
+          "create": {
+            "creating": "Creating...",
+            "createProduct": "Create Product"
+          },
+          "link": {
+            "linkedCourses": "Linked Courses",
+            "linkCourse": "Link Course",
+            "alreadyLinked": "Already Linked",
+            "noCoursesLinked": "No courses linked yet",
+            "noCoursesFound": "No courses found",
+            "toast": {
+              "linkedSuccess": "Course linked successfully",
+              "linkedFailed": "Failed to link course",
+              "unlinkedSuccess": "Course unlinked successfully",
+              "unlinkedFailed": "Failed to unlink course",
+              "fetchFailed": "Failed to fetch linked courses"
+            }
+          },
+          "validation": {
+            "nameRequired": "Name is required",
+            "descriptionRequired": "Description is required",
+            "amountPositive": "Amount must be positive",
+            "amountGreaterThanZero": "Amount must be greater than zero",
+            "amountRequired": "Amount is required",
+            "currencyRequired": "Currency is required",
+            "productTypeRequired": "Product type is required",
+            "priceTypeRequired": "Price type is required"
+          },
+          "toast": {
+            "archivedSuccess": "Product archived successfully",
+            "archivedFailed": "Failed to archive product",
+            "createdSuccess": "Product created successfully",
+            "createdFailed": "Failed to create product",
+            "createError": "An error occurred while creating the product",
+            "updatedSuccess": "Product updated successfully",
+            "updatedFailed": "Failed to update product"
+          }
+        },
+        "unconfigured": {
+          "title": "Payments Not Configured",
+          "description": "To use payment features, you need to configure a payment provider first."
+        }
+      },
+      "userAccount": {
+        "general": {
+          "title": "Account Settings",
+          "description": "Manage your personal information and preferences",
+          "email": "Email",
+          "emailPlaceholder": "Your email address",
+          "emailChangeWarning": "You will be logged out after changing your email",
+          "username": "Username",
+          "usernamePlaceholder": "Your username",
+          "firstName": "First Name",
+          "firstNamePlaceholder": "Your first name",
+          "lastName": "Last Name",
+          "lastNamePlaceholder": "Your last name",
+          "bio": "Bio",
+          "bioPlaceholder": "Tell us about yourself",
+          "bioCharactersLeft": "{count} characters left",
+          "additionalDetails": "Additional Details",
+          "clearAll": "Clear All",
+          "addDetail": "Add Detail",
+          "addGeneral": "Add General",
+          "addAcademic": "Add Academic",
+          "addProfessional": "Add Professional",
+          "detailLabel": "Enter label (e.g., Title, Location)",
+          "remove": "Remove",
+          "icon": "Icon",
+          "text": "Text",
+          "textPlaceholder": "Enter detail text",
+          "profilePicture": "Profile Picture",
+          "changeAvatar": "Change Avatar",
+          "recommendedSize": "Recommended size 100x100",
+          "uploading": "Uploading",
+          "avatarUpdated": "Avatar Updated",
+          "validation": {
+            "emailInvalid": "Invalid email",
+            "emailRequired": "Email is required",
+            "usernameRequired": "Username is required",
+            "firstNameRequired": "First name is required",
+            "lastNameRequired": "Last name is required",
+            "bioMaxLength": "Bio must be 400 characters or less"
+          },
+          "toast": {
+            "updating": "Updating profile...",
+            "updateSuccess": "Profile Updated Successfully",
+            "updateFailed": "Failed to update profile",
+            "emailChangeNotice": "Please login again with your new email",
+            "loadFailed": "Failed to load user data"
+          }
+        },
+        "password": {
+          "title": "Change Password",
+          "description": "Update your password to keep your account secure",
+          "currentPassword": "Current Password",
+          "newPassword": "New Password",
+          "changeWarning": "You will be logged out after changing your password",
+          "updatePassword": "Update Password",
+          "validation": {
+            "currentPasswordRequired": "Current password is required",
+            "newPasswordRequired": "New password is required",
+            "passwordMinLength": "Password must be at least 8 characters"
+          },
+          "toast": {
+            "updating": "Updating password...",
+            "updateSuccess": "Password updated successfully",
+            "updateFailed": "Failed to update password",
+            "loginAgain": "Please login again with your new password",
+            "tryAgain": "Failed to update password. Please try again."
+          }
+        },
+        "profile": {
+          "builder": {
+            "title": "Profile Builder",
+            "beta": "BETA",
+            "description": "Customize your professional profile",
+            "sections": "Sections",
+            "addSection": "Add Section",
+            "selectSection": "Select a section to edit or add a new one",
+            "sectionTypes": {
+              "imageGallery": {
+                "label": "Image Gallery",
+                "description": "Add a collection of images",
+                "title": "Image Gallery",
+                "sectionTitle": "Section Title",
+                "sectionTitlePlaceholder": "Enter section title",
+                "images": "Images",
+                "imageUrl": "Image URL",
+                "imageUrlPlaceholder": "Enter image URL",
+                "caption": "Caption",
+                "captionPlaceholder": "Image caption",
+                "addImage": "Add Image"
+              },
+              "text": {
+                "label": "Text",
+                "description": "Add formatted text content",
+                "title": "Text Content",
+                "sectionTitle": "Section Title",
+                "sectionTitlePlaceholder": "Enter section title",
+                "content": "Content",
+                "contentPlaceholder": "Enter your content here..."
+              },
+              "links": {
+                "label": "Links",
+                "description": "Add social or professional links",
+                "title": "Links",
+                "sectionTitle": "Section Title",
+                "sectionTitlePlaceholder": "Enter section title",
+                "links": "Links",
+                "linkTitle": "Link title",
+                "url": "URL",
+                "addLink": "Add Link"
+              },
+              "skills": {
+                "label": "Skills",
+                "description": "Showcase your skills and expertise",
+                "title": "Skills",
+                "sectionTitle": "Section Title",
+                "sectionTitlePlaceholder": "Enter section title",
+                "skills": "Skills",
+                "skillName": "Skill name",
+                "selectLevel": "Select level",
+                "category": "Category (optional)",
+                "addSkill": "Add Skill",
+                "levels": {
+                  "beginner": "Beginner",
+                  "intermediate": "Intermediate",
+                  "advanced": "Advanced",
+                  "expert": "Expert"
+                }
+              },
+              "experience": {
+                "label": "Experience",
+                "description": "Add work or project experience",
+                "title": "Experience",
+                "sectionTitle": "Section Title",
+                "sectionTitlePlaceholder": "Enter section title",
+                "experienceItems": "Experience Items",
+                "title_field": "Title",
+                "titlePlaceholder": "Position or role",
+                "organization": "Organization",
+                "organizationPlaceholder": "Company or organization",
+                "startDate": "Start Date",
+                "endDate": "End Date",
+                "current": "Current",
+                "description_field": "Description",
+                "descriptionPlaceholder": "Describe your role and achievements",
+                "addExperience": "Add Experience"
+              },
+              "education": {
+                "label": "Education",
+                "description": "Add educational background",
+                "title": "Education",
+                "sectionTitle": "Section Title",
+                "sectionTitlePlaceholder": "Enter section title",
+                "educationItems": "Education Items",
+                "institution": "Institution",
+                "institutionPlaceholder": "School or university",
+                "degree": "Degree",
+                "degreePlaceholder": "Degree type",
+                "field": "Field of Study",
+                "fieldPlaceholder": "Major or concentration",
+                "startDate": "Start Date",
+                "endDate": "End Date",
+                "current": "Current",
+                "description": "Description",
+                "descriptionPlaceholder": "Additional details about your education",
+                "addEducation": "Add Education"
+              },
+              "affiliation": {
+                "label": "Affiliation",
+                "description": "Add organizational affiliations",
+                "title": "Affiliation",
+                "sectionTitle": "Section Title",
+                "sectionTitlePlaceholder": "Enter section title",
+                "affiliations": "Affiliations",
+                "name": "Name",
+                "namePlaceholder": "Name of the organization",
+                "logoUrl": "Logo URL",
+                "logoUrlPlaceholder": "URL to the organization's logo",
+                "description": "Description",
+                "descriptionPlaceholder": "Description of the organization",
+                "addAffiliation": "Add Affiliation"
+              },
+              "courses": {
+                "label": "Courses",
+                "description": "Display authored courses",
+                "title": "Courses",
+                "sectionTitle": "Section Title",
+                "sectionTitlePlaceholder": "Enter section title",
+                "autoDisplay": "Your authored courses will be automatically displayed in this section."
+              }
+            },
+            "toast": {
+              "saving": "Saving profile...",
+              "saveSuccess": "Profile updated successfully",
+              "saveFailed": "Error updating profile",
+              "loadFailed": "Failed to load profile data"
+            }
+          }
+        }
+      },
+      "users": {
+        "access": {
+          "joinMethod": {
+            "title": "Join method",
+            "description": "Choose how users can join your organization",
+            "open": {
+              "title": "Open",
+              "description": "Users can join freely from the signup page",
+              "confirmTitle": "Change to open?",
+              "confirmMessage": "Are you sure you want to change the signup mechanism to open? This will allow users to join your organization freely.",
+              "confirmButton": "Change to open"
+            },
+            "closed": {
+              "title": "Closed",
+              "description": "Users can join only by invitation",
+              "confirmTitle": "Change to closed?",
+              "confirmMessage": "Are you sure you want to change the signup mechanism to closed? This will allow users to join your organization only by invitation.",
+              "confirmButton": "Change to closed"
+            },
+            "active": "Active"
+          },
+          "inviteCodes": {
+            "title": "Invite codes",
+            "description": "Invite codes can be copied and used to join your organization",
+            "table": {
+              "code": "Code",
+              "signupLink": "Signup link",
+              "type": "Type",
+              "expirationDate": "Expiration date",
+              "actions": "Actions"
+            },
+            "types": {
+              "usergroup": "Linked to a UserGroup",
+              "normal": "Normal"
+            },
+            "deleteCode": "Delete code",
+            "deleteConfirmTitle": "Delete code?",
+            "deleteConfirmMessage": "Are you sure you want remove this invite code?",
+            "generateCode": "Generate invite code",
+            "generateTitle": "Generate Invite Code",
+            "generateDescription": "Generate a new invite code for your organization"
+          },
+          "toast": {
+            "deleting": "Deleting...",
+            "deleteSuccess": "Deleted invite code",
+            "deleteFailed": "Error deleting",
+            "changingMethod": "Changing join method...",
+            "changeSuccess": "Changed join method to {method}",
+            "changeFailed": "Error changing join method"
+          }
+        },
+        "add": {
+          "title": "Invite users to your Organization",
+          "description": "Send invite via email, separated by comma",
+          "placeholder": "Example: spike.spiegel@bepop.space, michael.scott@dundermifflin.com",
+          "inviteCode": "Invite Code",
+          "inviteCodeTooltip": "Use one of the invite codes that you generated from the signup access page",
+          "sendInvites": "Send invites via email",
+          "invitedUsers": {
+            "title": "Invited Users",
+            "description": "Users who have been invited to join your organization",
+            "table": {
+              "email": "Email",
+              "signupStatus": "Signup Status",
+              "emailSent": "Email sent"
+            },
+            "status": {
+              "pending": "Pending",
+              "signed": "Signed",
+              "sent": "Sent",
+              "no": "No"
+            }
+          },
+          "toast": {
+            "sending": "Sending invite...",
+            "sendSuccess": "Invite sent",
+            "sendFailed": "Error sending invite"
+          }
+        }
+      }
+    },
+    "public": {
+      "landing": {
+        "collections": "Collections",
+        "courses": "Courses",
+        "noCollections": "No collections yet",
+        "noCourses": "No courses yet",
+        "createCollections": "Create collections to group courses together",
+        "createCourses": "Create courses to add content"
+      },
+      "course": {
+        "actions": {
+          "startCourse": "Start Course",
+          "continueCourse": "Continue Course",
+          "enrollNow": "Enroll Now",
+          "learnMore": "Learn More",
+          "freeCourse": "Free Course",
+          "paidCourse": "Paid Course",
+          "paidDisclaimer": "This is a paid course. Please purchase to access the content.",
+          "purchaseRequired": "Purchase Required",
+          "selectPaymentMethod": "Select Payment Method",
+          "processing": "Processing...",
+          "purchaseSuccess": "Purchase successful!",
+          "purchaseFailed": "Purchase failed"
+        },
+        "authors": {
+          "courseAuthors": "Course Authors",
+          "author": "Author",
+          "contributor": "Contributor"
+        },
+        "progress": {
+          "yourProgress": "Your Progress",
+          "completed": "Completed",
+          "inProgress": "In Progress",
+          "notStarted": "Not Started"
+        },
+        "updates": {
+          "courseUpdates": "Course Updates",
+          "noUpdates": "No updates yet",
+          "lastUpdate": "Last update"
+        }
+      }
+    },
+    "activities": {
+      "assignment": {
+        "title": "Assignment",
+        "description": "Complete the assignment",
+        "submit": "Submit Assignment",
+        "submitted": "Submitted",
+        "dueDate": "Due Date",
+        "overdue": "Overdue"
+      },
+      "document": {
+        "loadingDocument": "Loading document...",
+        "downloadDocument": "Download Document",
+        "viewFullscreen": "View Fullscreen"
+      },
+      "video": {
+        "loadingVideo": "Loading video...",
+        "playVideo": "Play Video",
+        "pauseVideo": "Pause Video"
+      },
+      "canva": {
+        "tableOfContents": "Table of Contents",
+        "aiToolkit": "AI Toolkit",
+        "generating": "Generating...",
+        "tryAgain": "Try Again"
+      }
+    },
+    "placeholder": {
+      "adminOnly": "This content is only visible to administrators",
+      "createContent": "Create content to get started"
     }
   }
 }

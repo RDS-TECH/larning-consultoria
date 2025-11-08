@@ -1977,6 +1977,515 @@
           "removeFailed": "Falha ao remover contribuidores"
         }
       }
+    },
+    "dashboard": {
+      "misc": {
+        "breadcrumbs": {
+          "courses": "Cursos",
+          "assignments": "Tarefas",
+          "accountSettings": "Configurações da Conta",
+          "orgUsers": "Usuários da organização",
+          "orgSettings": "Configurações da Organização",
+          "payments": "Pagamentos"
+        },
+        "courseOverview": {
+          "course": "Curso",
+          "rightsGuide": "Guia de Direitos"
+        },
+        "saveState": {
+          "unsavedChanges": "Alterações não salvas",
+          "saving": "Salvando...",
+          "saved": "Salvo",
+          "save": "Salvar"
+        }
+      },
+      "payments": {
+        "configuration": {
+          "title": "Configuração de Pagamentos",
+          "description": "Gerencie a configuração de pagamentos da sua organização",
+          "aboutStripe": "Sobre a Integração Stripe",
+          "features": {
+            "acceptPayments": "Aceite pagamentos de cursos e assinaturas",
+            "recurringBilling": "Gerencie cobranças recorrentes e assinaturas",
+            "multipleCurrencies": "Lide com múltiplas moedas e métodos de pagamento",
+            "paymentAnalytics": "Acesse análises detalhadas de pagamentos"
+          },
+          "learnMore": "Saiba mais sobre o Stripe",
+          "connected": "Conectado",
+          "notConnected": "Não Conectado",
+          "linkedAccount": "Conta Vinculada",
+          "accountNotConfigured": "ID da conta não configurado",
+          "connectWithStripe": "Conectar com Stripe",
+          "removeConnection": "Remover Conexão",
+          "removeConfirmTitle": "Remover Conexão Stripe",
+          "removeConfirmMessage": "Tem certeza de que deseja remover a conexão Stripe? Esta ação não pode ser desfeita.",
+          "enableStripe": "Ativar Stripe",
+          "connectingToStripe": "Conectando ao Stripe...",
+          "editConfig": "Editar Configuração do Stripe",
+          "editConfigDescription": "Edite sua configuração do stripe",
+          "stripeAccountId": "ID da Conta Stripe",
+          "toast": {
+            "enabledSuccess": "Stripe ativado com sucesso",
+            "enabledFailed": "Falha ao ativar o Stripe",
+            "deletedSuccess": "Configuração do Stripe excluída com sucesso",
+            "deletedFailed": "Falha ao excluir a configuração do Stripe",
+            "onboardingFailed": "Falha ao iniciar integração do Stripe",
+            "updateSuccess": "Configuração atualizada com sucesso",
+            "updateFailed": "Falha ao atualizar configuração",
+            "loadFailed": "Falha ao carregar configuração existente"
+          }
+        },
+        "customers": {
+          "title": "Clientes",
+          "description": "Visualize e gerencie as informações dos seus clientes",
+          "noCustomers": "Nenhum cliente encontrado",
+          "table": {
+            "user": "Usuário",
+            "product": "Produto",
+            "type": "Tipo",
+            "amount": "Valor",
+            "status": "Status",
+            "purchaseDate": "Data da Compra"
+          },
+          "types": {
+            "subscription": "Assinatura",
+            "oneTime": "Pagamento único"
+          },
+          "loading": "Erro ao carregar clientes",
+          "noData": "Nenhum dado de cliente disponível"
+        },
+        "products": {
+          "createTitle": "Criar Novo Produto",
+          "createDescription": "Adicione um novo produto à sua organização",
+          "title": "Produtos",
+          "oneTimePayment": "Pagamento único",
+          "archiveProduct": "Arquivar Produto",
+          "archiveConfirm": "Tem certeza de que deseja arquivar este produto?",
+          "showMore": "Mostrar mais",
+          "showLess": "Mostrar menos",
+          "benefits": "Benefícios",
+          "price": "Preço",
+          "noProducts": "Nenhum produto disponível. Crie um novo produto para começar.",
+          "createNew": "Criar Novo Produto",
+          "edit": {
+            "productName": "Nome do Produto",
+            "description": "Descrição",
+            "productType": "Tipo de Produto",
+            "priceType": "Tipo de Preço",
+            "price": "Preço",
+            "minimumAmount": "Valor Mínimo",
+            "currency": "Moeda",
+            "benefits": "Benefícios",
+            "types": {
+              "oneTime": "Pagamento Único",
+              "subscription": "Assinatura"
+            },
+            "priceTypes": {
+              "fixed": "Preço Fixo",
+              "customerChoice": "Escolha do Cliente"
+            },
+            "placeholders": {
+              "productName": "Nome do Produto",
+              "description": "Descrição do Produto",
+              "price": "Preço",
+              "minimumAmount": "Valor Mínimo",
+              "benefits": "Benefícios do Produto"
+            }
+          },
+          "create": {
+            "creating": "Criando...",
+            "createProduct": "Criar Produto"
+          },
+          "link": {
+            "linkedCourses": "Cursos Vinculados",
+            "linkCourse": "Vincular Curso",
+            "alreadyLinked": "Já Vinculado",
+            "noCoursesLinked": "Nenhum curso vinculado ainda",
+            "noCoursesFound": "Nenhum curso encontrado",
+            "toast": {
+              "linkedSuccess": "Curso vinculado com sucesso",
+              "linkedFailed": "Falha ao vincular curso",
+              "unlinkedSuccess": "Curso desvinculado com sucesso",
+              "unlinkedFailed": "Falha ao desvincular curso",
+              "fetchFailed": "Falha ao buscar cursos vinculados"
+            }
+          },
+          "validation": {
+            "nameRequired": "Nome é obrigatório",
+            "descriptionRequired": "Descrição é obrigatória",
+            "amountPositive": "O valor deve ser positivo",
+            "amountGreaterThanZero": "O valor deve ser maior que zero",
+            "amountRequired": "Valor é obrigatório",
+            "currencyRequired": "Moeda é obrigatória",
+            "productTypeRequired": "Tipo de produto é obrigatório",
+            "priceTypeRequired": "Tipo de preço é obrigatório"
+          },
+          "toast": {
+            "archivedSuccess": "Produto arquivado com sucesso",
+            "archivedFailed": "Falha ao arquivar produto",
+            "createdSuccess": "Produto criado com sucesso",
+            "createdFailed": "Falha ao criar produto",
+            "createError": "Ocorreu um erro ao criar o produto",
+            "updatedSuccess": "Produto atualizado com sucesso",
+            "updatedFailed": "Falha ao atualizar produto"
+          }
+        },
+        "unconfigured": {
+          "title": "Pagamentos Não Configurados",
+          "description": "Para usar recursos de pagamento, você precisa configurar um provedor de pagamento primeiro."
+        }
+      },
+      "userAccount": {
+        "general": {
+          "title": "Configurações da Conta",
+          "description": "Gerencie suas informações pessoais e preferências",
+          "email": "Email",
+          "emailPlaceholder": "Seu endereço de email",
+          "emailChangeWarning": "Você será desconectado após alterar seu email",
+          "username": "Nome de usuário",
+          "usernamePlaceholder": "Seu nome de usuário",
+          "firstName": "Primeiro Nome",
+          "firstNamePlaceholder": "Seu primeiro nome",
+          "lastName": "Sobrenome",
+          "lastNamePlaceholder": "Seu sobrenome",
+          "bio": "Bio",
+          "bioPlaceholder": "Conte-nos sobre você",
+          "bioCharactersLeft": "{count} caracteres restantes",
+          "additionalDetails": "Detalhes Adicionais",
+          "clearAll": "Limpar Tudo",
+          "addDetail": "Adicionar Detalhe",
+          "addGeneral": "Adicionar Geral",
+          "addAcademic": "Adicionar Acadêmico",
+          "addProfessional": "Adicionar Profissional",
+          "detailLabel": "Digite o rótulo (ex: Título, Localização)",
+          "remove": "Remover",
+          "icon": "Ícone",
+          "text": "Texto",
+          "textPlaceholder": "Digite o texto do detalhe",
+          "profilePicture": "Foto de Perfil",
+          "changeAvatar": "Alterar Avatar",
+          "recommendedSize": "Tamanho recomendado 100x100",
+          "uploading": "Enviando",
+          "avatarUpdated": "Avatar Atualizado",
+          "validation": {
+            "emailInvalid": "Email inválido",
+            "emailRequired": "Email é obrigatório",
+            "usernameRequired": "Nome de usuário é obrigatório",
+            "firstNameRequired": "Primeiro nome é obrigatório",
+            "lastNameRequired": "Sobrenome é obrigatório",
+            "bioMaxLength": "Bio deve ter no máximo 400 caracteres"
+          },
+          "toast": {
+            "updating": "Atualizando perfil...",
+            "updateSuccess": "Perfil Atualizado com Sucesso",
+            "updateFailed": "Falha ao atualizar perfil",
+            "emailChangeNotice": "Por favor, faça login novamente com seu novo email",
+            "loadFailed": "Falha ao carregar dados do usuário"
+          }
+        },
+        "password": {
+          "title": "Alterar Senha",
+          "description": "Atualize sua senha para manter sua conta segura",
+          "currentPassword": "Senha Atual",
+          "newPassword": "Nova Senha",
+          "changeWarning": "Você será desconectado após alterar sua senha",
+          "updatePassword": "Atualizar Senha",
+          "validation": {
+            "currentPasswordRequired": "Senha atual é obrigatória",
+            "newPasswordRequired": "Nova senha é obrigatória",
+            "passwordMinLength": "A senha deve ter pelo menos 8 caracteres"
+          },
+          "toast": {
+            "updating": "Atualizando senha...",
+            "updateSuccess": "Senha atualizada com sucesso",
+            "updateFailed": "Falha ao atualizar senha",
+            "loginAgain": "Por favor, faça login novamente com sua nova senha",
+            "tryAgain": "Falha ao atualizar senha. Por favor, tente novamente."
+          }
+        },
+        "profile": {
+          "builder": {
+            "title": "Construtor de Perfil",
+            "beta": "BETA",
+            "description": "Personalize seu perfil profissional",
+            "sections": "Seções",
+            "addSection": "Adicionar Seção",
+            "selectSection": "Selecione uma seção para editar ou adicione uma nova",
+            "sectionTypes": {
+              "imageGallery": {
+                "label": "Galeria de Imagens",
+                "description": "Adicione uma coleção de imagens",
+                "title": "Galeria de Imagens",
+                "sectionTitle": "Título da Seção",
+                "sectionTitlePlaceholder": "Digite o título da seção",
+                "images": "Imagens",
+                "imageUrl": "URL da Imagem",
+                "imageUrlPlaceholder": "Digite a URL da imagem",
+                "caption": "Legenda",
+                "captionPlaceholder": "Legenda da imagem",
+                "addImage": "Adicionar Imagem"
+              },
+              "text": {
+                "label": "Texto",
+                "description": "Adicione conteúdo de texto formatado",
+                "title": "Conteúdo de Texto",
+                "sectionTitle": "Título da Seção",
+                "sectionTitlePlaceholder": "Digite o título da seção",
+                "content": "Conteúdo",
+                "contentPlaceholder": "Digite seu conteúdo aqui..."
+              },
+              "links": {
+                "label": "Links",
+                "description": "Adicione links sociais ou profissionais",
+                "title": "Links",
+                "sectionTitle": "Título da Seção",
+                "sectionTitlePlaceholder": "Digite o título da seção",
+                "links": "Links",
+                "linkTitle": "Título do link",
+                "url": "URL",
+                "addLink": "Adicionar Link"
+              },
+              "skills": {
+                "label": "Habilidades",
+                "description": "Mostre suas habilidades e experiência",
+                "title": "Habilidades",
+                "sectionTitle": "Título da Seção",
+                "sectionTitlePlaceholder": "Digite o título da seção",
+                "skills": "Habilidades",
+                "skillName": "Nome da habilidade",
+                "selectLevel": "Selecione o nível",
+                "category": "Categoria (opcional)",
+                "addSkill": "Adicionar Habilidade",
+                "levels": {
+                  "beginner": "Iniciante",
+                  "intermediate": "Intermediário",
+                  "advanced": "Avançado",
+                  "expert": "Especialista"
+                }
+              },
+              "experience": {
+                "label": "Experiência",
+                "description": "Adicione experiência profissional ou de projeto",
+                "title": "Experiência",
+                "sectionTitle": "Título da Seção",
+                "sectionTitlePlaceholder": "Digite o título da seção",
+                "experienceItems": "Itens de Experiência",
+                "title_field": "Título",
+                "titlePlaceholder": "Cargo ou função",
+                "organization": "Organização",
+                "organizationPlaceholder": "Empresa ou organização",
+                "startDate": "Data de Início",
+                "endDate": "Data de Término",
+                "current": "Atual",
+                "description_field": "Descrição",
+                "descriptionPlaceholder": "Descreva sua função e conquistas",
+                "addExperience": "Adicionar Experiência"
+              },
+              "education": {
+                "label": "Educação",
+                "description": "Adicione formação acadêmica",
+                "title": "Educação",
+                "sectionTitle": "Título da Seção",
+                "sectionTitlePlaceholder": "Digite o título da seção",
+                "educationItems": "Itens de Educação",
+                "institution": "Instituição",
+                "institutionPlaceholder": "Escola ou universidade",
+                "degree": "Grau",
+                "degreePlaceholder": "Tipo de grau",
+                "field": "Área de Estudo",
+                "fieldPlaceholder": "Curso ou concentração",
+                "startDate": "Data de Início",
+                "endDate": "Data de Término",
+                "current": "Atual",
+                "description": "Descrição",
+                "descriptionPlaceholder": "Detalhes adicionais sobre sua educação",
+                "addEducation": "Adicionar Educação"
+              },
+              "affiliation": {
+                "label": "Afiliação",
+                "description": "Adicione afiliações organizacionais",
+                "title": "Afiliação",
+                "sectionTitle": "Título da Seção",
+                "sectionTitlePlaceholder": "Digite o título da seção",
+                "affiliations": "Afiliações",
+                "name": "Nome",
+                "namePlaceholder": "Nome da organização",
+                "logoUrl": "URL do Logo",
+                "logoUrlPlaceholder": "URL para o logo da organização",
+                "description": "Descrição",
+                "descriptionPlaceholder": "Descrição da organização",
+                "addAffiliation": "Adicionar Afiliação"
+              },
+              "courses": {
+                "label": "Cursos",
+                "description": "Exiba cursos de autoria",
+                "title": "Cursos",
+                "sectionTitle": "Título da Seção",
+                "sectionTitlePlaceholder": "Digite o título da seção",
+                "autoDisplay": "Seus cursos de autoria serão exibidos automaticamente nesta seção."
+              }
+            },
+            "toast": {
+              "saving": "Salvando perfil...",
+              "saveSuccess": "Perfil atualizado com sucesso",
+              "saveFailed": "Erro ao atualizar perfil",
+              "loadFailed": "Falha ao carregar dados do perfil"
+            }
+          }
+        }
+      },
+      "users": {
+        "access": {
+          "joinMethod": {
+            "title": "Método de entrada",
+            "description": "Escolha como os usuários podem entrar na sua organização",
+            "open": {
+              "title": "Aberto",
+              "description": "Os usuários podem entrar livremente pela página de cadastro",
+              "confirmTitle": "Alterar para aberto?",
+              "confirmMessage": "Tem certeza de que deseja alterar o mecanismo de cadastro para aberto? Isso permitirá que os usuários entrem na sua organização livremente.",
+              "confirmButton": "Alterar para aberto"
+            },
+            "closed": {
+              "title": "Fechado",
+              "description": "Os usuários só podem entrar por convite",
+              "confirmTitle": "Alterar para fechado?",
+              "confirmMessage": "Tem certeza de que deseja alterar o mecanismo de cadastro para fechado? Isso permitirá que os usuários entrem na sua organização apenas por convite.",
+              "confirmButton": "Alterar para fechado"
+            },
+            "active": "Ativo"
+          },
+          "inviteCodes": {
+            "title": "Códigos de convite",
+            "description": "Códigos de convite podem ser copiados e usados para entrar na sua organização",
+            "table": {
+              "code": "Código",
+              "signupLink": "Link de cadastro",
+              "type": "Tipo",
+              "expirationDate": "Data de expiração",
+              "actions": "Ações"
+            },
+            "types": {
+              "usergroup": "Vinculado a um Grupo de Usuários",
+              "normal": "Normal"
+            },
+            "deleteCode": "Excluir código",
+            "deleteConfirmTitle": "Excluir código?",
+            "deleteConfirmMessage": "Tem certeza de que deseja remover este código de convite?",
+            "generateCode": "Gerar código de convite",
+            "generateTitle": "Gerar Código de Convite",
+            "generateDescription": "Gere um novo código de convite para sua organização"
+          },
+          "toast": {
+            "deleting": "Excluindo...",
+            "deleteSuccess": "Código de convite excluído",
+            "deleteFailed": "Erro ao excluir",
+            "changingMethod": "Alterando método de entrada...",
+            "changeSuccess": "Método de entrada alterado para {method}",
+            "changeFailed": "Erro ao alterar método de entrada"
+          }
+        },
+        "add": {
+          "title": "Convide usuários para sua Organização",
+          "description": "Envie convite por email, separado por vírgula",
+          "placeholder": "Exemplo: spike.spiegel@bepop.space, michael.scott@dundermifflin.com",
+          "inviteCode": "Código de Convite",
+          "inviteCodeTooltip": "Use um dos códigos de convite que você gerou na página de acesso de cadastro",
+          "sendInvites": "Enviar convites por email",
+          "invitedUsers": {
+            "title": "Usuários Convidados",
+            "description": "Usuários que foram convidados para entrar na sua organização",
+            "table": {
+              "email": "Email",
+              "signupStatus": "Status do Cadastro",
+              "emailSent": "Email enviado"
+            },
+            "status": {
+              "pending": "Pendente",
+              "signed": "Cadastrado",
+              "sent": "Enviado",
+              "no": "Não"
+            }
+          },
+          "toast": {
+            "sending": "Enviando convite...",
+            "sendSuccess": "Convite enviado",
+            "sendFailed": "Erro ao enviar convite"
+          }
+        }
+      }
+    },
+    "public": {
+      "landing": {
+        "collections": "Coleções",
+        "courses": "Cursos",
+        "noCollections": "Nenhuma coleção ainda",
+        "noCourses": "Nenhum curso ainda",
+        "createCollections": "Crie coleções para agrupar cursos",
+        "createCourses": "Crie cursos para adicionar conteúdo"
+      },
+      "course": {
+        "actions": {
+          "startCourse": "Iniciar Curso",
+          "continueCourse": "Continuar Curso",
+          "enrollNow": "Inscrever-se Agora",
+          "learnMore": "Saiba Mais",
+          "freeCourse": "Curso Gratuito",
+          "paidCourse": "Curso Pago",
+          "paidDisclaimer": "Este é um curso pago. Por favor, compre para acessar o conteúdo.",
+          "purchaseRequired": "Compra Necessária",
+          "selectPaymentMethod": "Selecione o Método de Pagamento",
+          "processing": "Processando...",
+          "purchaseSuccess": "Compra realizada com sucesso!",
+          "purchaseFailed": "Falha na compra"
+        },
+        "authors": {
+          "courseAuthors": "Autores do Curso",
+          "author": "Autor",
+          "contributor": "Contribuidor"
+        },
+        "progress": {
+          "yourProgress": "Seu Progresso",
+          "completed": "Concluído",
+          "inProgress": "Em Andamento",
+          "notStarted": "Não Iniciado"
+        },
+        "updates": {
+          "courseUpdates": "Atualizações do Curso",
+          "noUpdates": "Nenhuma atualização ainda",
+          "lastUpdate": "Última atualização"
+        }
+      }
+    },
+    "activities": {
+      "assignment": {
+        "title": "Tarefa",
+        "description": "Complete a tarefa",
+        "submit": "Enviar Tarefa",
+        "submitted": "Enviado",
+        "dueDate": "Data de Vencimento",
+        "overdue": "Atrasado"
+      },
+      "document": {
+        "loadingDocument": "Carregando documento...",
+        "downloadDocument": "Baixar Documento",
+        "viewFullscreen": "Ver em Tela Cheia"
+      },
+      "video": {
+        "loadingVideo": "Carregando vídeo...",
+        "playVideo": "Reproduzir Vídeo",
+        "pauseVideo": "Pausar Vídeo"
+      },
+      "canva": {
+        "tableOfContents": "Índice",
+        "aiToolkit": "Kit de Ferramentas IA",
+        "generating": "Gerando...",
+        "tryAgain": "Tentar Novamente"
+      }
+    },
+    "placeholder": {
+      "adminOnly": "Este conteúdo é visível apenas para administradores",
+      "createContent": "Crie conteúdo para começar"
     }
   }
 }
