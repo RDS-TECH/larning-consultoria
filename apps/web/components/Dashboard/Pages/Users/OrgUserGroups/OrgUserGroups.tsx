@@ -13,8 +13,13 @@ import { Pencil, SquareUserRound, Users, X } from 'lucide-react'
 import React from 'react'
 import toast from 'react-hot-toast'
 import useSWR, { mutate } from 'swr'
+import { useTranslations } from 'next-intl'
 
 function OrgUserGroups() {
+    const t = useTranslations('users.userGroups');
+    const tToast = useTranslations('users.userGroups.toast');
+    const tTable = useTranslations('users.userGroups.table');
+
     const org = useOrg() as any
     const session = useLHSession() as any
     const access_token = session?.data?.tokens?.access_token;
@@ -29,14 +34,14 @@ function OrgUserGroups() {
     )
 
     const deleteUserGroupUI = async (usergroup_id: any) => {
-        const toastId = toast.loading("Deleting...");
+        const toastId = toast.loading(tToast('deleting'));
         const res = await deleteUserGroup(usergroup_id, access_token)
         if (res.status == 200) {
             mutate(`${getAPIUrl()}usergroups/org/${org.id}`)
-            toast.success("Deleted usergroup", {id:toastId})
+            toast.success(tToast('deleted'), {id:toastId})
         }
         else {
-            toast.error('Error deleting usergroup', {id:toastId})
+            toast.error(tToast('deleteError'), {id:toastId})
         }
 
     }
@@ -51,20 +56,20 @@ function OrgUserGroups() {
             <div className="h-6"></div>
             <div className="ml-10 mr-10 mx-auto bg-white rounded-xl shadow-xs px-4 py-4">
                 <div className="flex flex-col bg-gray-50 -space-y-1  px-5 py-3 rounded-md mb-3 ">
-                    <h1 className="font-bold text-xl text-gray-800">Manage UserGroups & Users</h1>
+                    <h1 className="font-bold text-xl text-gray-800">{t('manageTitle')}</h1>
                     <h2 className="text-gray-500 text-sm">
                         {' '}
-                        UserGroups are a way to group users together to manage their access to the resources (Courses) in your organization.{' '}
+                        {t('description')}{' '}
                     </h2>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="table-auto w-full text-left whitespace-nowrap rounded-md overflow-hidden">
                         <thead className="bg-gray-100 text-gray-500 rounded-xl uppercase">
                             <tr className="font-bolder text-sm">
-                                <th className="py-3 px-4">UserGroup</th>
-                                <th className="py-3 px-4">Description</th>
-                                <th className="py-3 px-4">Manage Users</th>
-                                <th className="py-3 px-4">Actions</th>
+                                <th className="py-3 px-4">{tTable('userGroup')}</th>
+                                <th className="py-3 px-4">{tTable('description')}</th>
+                                <th className="py-3 px-4">{tTable('manageUsers')}</th>
+                                <th className="py-3 px-4">{tTable('actions')}</th>
                             </tr>
                         </thead>
                         <>
@@ -89,14 +94,14 @@ function OrgUserGroups() {
                                                         usergroup_id={usergroup.id}
                                                     />
                                                 }
-                                                dialogTitle="Manage UserGroup Users"
+                                                dialogTitle={t('manageUsersTitle')}
                                                 dialogDescription={
-                                                    'Manage the users in this UserGroup'
+                                                    t('manageUsersDescription')
                                                 }
                                                 dialogTrigger={
                                                     <button className="flex space-x-2 hover:cursor-pointer p-1 px-3 bg-yellow-700 rounded-md font-bold items-center text-sm text-yellow-100">
                                                         <Users className="w-4 h-4" />
-                                                        <span> Manage Users</span>
+                                                        <span>{t('manageUsers')}</span>
                                                     </button>
                                                 }
                                             />
@@ -107,7 +112,7 @@ function OrgUserGroups() {
                                             dialogTrigger={
                                                 <button className="flex space-x-2 hover:cursor-pointer p-1 px-3 bg-sky-700 rounded-md font-bold items-center text-sm text-sky-100">
                                                     <Pencil className="size-4" />
-                                                    <span>Edit</span>
+                                                    <span>{t('edit')}</span>
                                                 </button>
                                             }
                                             minHeight='sm'
@@ -120,13 +125,13 @@ function OrgUserGroups() {
                                             }
                                             />
                                             <ConfirmationModal
-                                                confirmationButtonText="Delete UserGroup"
-                                                confirmationMessage="Access to all resources will be removed for all users in this UserGroup. Are you sure you want to delete this UserGroup ?"
-                                                dialogTitle={'Delete UserGroup ?'}
+                                                confirmationButtonText={t('deleteUserGroup')}
+                                                confirmationMessage={t('confirmDeleteMessage')}
+                                                dialogTitle={t('confirmDeleteTitle')}
                                                 dialogTrigger={
                                                     <button className="flex space-x-2 hover:cursor-pointer p-1 px-3 bg-rose-700 rounded-md font-bold items-center text-sm text-rose-100">
                                                         <X className="w-4 h-4" />
-                                                        <span>Delete</span>
+                                                        <span>{t('delete')}</span>
                                                     </button>
                                                 }
                                                 functionToExecute={() => {
@@ -155,16 +160,16 @@ function OrgUserGroups() {
                                 setCreateUserGroupModal={setCreateUserGroupModal}
                             />
                         }
-                        dialogTitle="Create a UserGroup"
+                        dialogTitle={t('createUserGroup')}
                         dialogDescription={
-                            'Create a new UserGroup to manage users'
+                            t('createUserGroupDescription')
                         }
                         dialogTrigger={
                             <button
                                 className=" flex space-x-2 hover:cursor-pointer p-1 px-3 bg-green-700 rounded-md font-bold items-center text-sm text-green-100"
                             >
                                 <SquareUserRound className="w-4 h-4" />
-                                <span>Create a UserGroup</span>
+                                <span>{t('createUserGroup')}</span>
                             </button>
                         }
                     />
