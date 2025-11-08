@@ -1,12 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './i18n';
+import { routing } from './i18n/routing';
 
-export default createMiddleware({
-  locales,
-  defaultLocale,
-  localePrefix: 'never', // URLs sem locale visível - completamente transparente
-  localeDetection: true // Detecta idioma via Accept-Language header e cookies
-});
+export default createMiddleware(routing);
 
 export const config = {
   // Match apenas caminhos internacionalizados

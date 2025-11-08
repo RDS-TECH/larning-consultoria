@@ -1,20 +1,17 @@
 import { getRequestConfig } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { routing } from './i18n/routing';
 
-// Lista de idiomas suportados
-export const locales = ['pt-BR', 'en'] as const;
-export const defaultLocale = 'pt-BR' as const;
+export default getRequestConfig(async ({ requestLocale }) => {
+  // Obtém o locale requisitado (pode ser do cookie, Accept-Language, etc)
+  let locale = await requestLocale;
 
-// Type helper para locales
-export type Locale = (typeof locales)[number];
-
-export default getRequestConfig(async ({ locale }) => {
-  // Validar que o locale recebido é válido
-  if (!locales.includes(locale as Locale)) {
-    notFound();
+  // Valida se o locale é suportado, senão usa o padrão
+  if (!locale || !routing.locales.includes(locale as any)) {
+    locale = routing.defaultLocale;
   }
 
   return {
+    locale,
     messages: (await import(`./messages/${locale}.json`)).default,
     // Configurações opcionais
     timeZone: 'America/Sao_Paulo',
