@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
@@ -11,6 +13,7 @@ import { removeCourse, startCourse } from '@services/courses/activity'
 import { revalidateTags } from '@services/utils/ts/requests'
 import UserAvatar from '../../UserAvatar'
 import { getUserAvatarMediaDirectory } from '@services/media/media'
+import { useTranslations } from 'next-intl'
 
 interface Author {
   user: {
@@ -57,9 +60,10 @@ interface CourseActionsMobileProps {
 
 // Component for displaying multiple authors
 const MultipleAuthors = ({ authors }: { authors: Author[] }) => {
+  const t = useTranslations('public.course.authors')
   const displayedAvatars = authors.slice(0, 3)
   const remainingCount = Math.max(0, authors.length - 3)
-  
+
   // Avatar size for mobile
   const avatarSize = 36
   const borderSize = "border-2"
@@ -83,14 +87,14 @@ const MultipleAuthors = ({ authors }: { authors: Author[] }) => {
           </div>
         ))}
         {remainingCount > 0 && (
-          <div 
+          <div
             className="relative"
             style={{ zIndex: 0 }}
           >
-            <div 
+            <div
               className="flex items-center justify-center bg-neutral-100 text-neutral-600 font-medium rounded-full border-2 border-white shadow-sm"
-              style={{ 
-                width: `${avatarSize}px`, 
+              style={{
+                width: `${avatarSize}px`,
                 height: `${avatarSize}px`,
                 fontSize: '12px'
               }}
@@ -100,15 +104,15 @@ const MultipleAuthors = ({ authors }: { authors: Author[] }) => {
           </div>
         )}
       </div>
-      
+
       <div className="flex flex-col">
         <span className="text-xs text-neutral-400 font-medium">
-          {authors.length > 1 ? 'Authors' : 'Author'}
+          {authors.length > 1 ? t('authors') : t('author')}
         </span>
         {authors.length === 1 ? (
           <span className="text-sm font-semibold text-neutral-800">
-            {authors[0].user.first_name && authors[0].user.last_name 
-              ? `${authors[0].user.first_name} ${authors[0].user.last_name}` 
+            {authors[0].user.first_name && authors[0].user.last_name
+              ? `${authors[0].user.first_name} ${authors[0].user.last_name}`
               : `@${authors[0].user.username}`}
           </span>
         ) : (
@@ -116,7 +120,7 @@ const MultipleAuthors = ({ authors }: { authors: Author[] }) => {
             {authors[0].user.first_name && authors[0].user.last_name
               ? `${authors[0].user.first_name} ${authors[0].user.last_name}`
               : `@${authors[0].user.username}`}
-            {authors.length > 1 && ` & ${authors.length - 1} more`}
+            {authors.length > 1 && ` ${t('andMore', { count: authors.length - 1 })}`}
           </span>
         )}
       </div>
@@ -125,6 +129,7 @@ const MultipleAuthors = ({ authors }: { authors: Author[] }) => {
 }
 
 const CourseActionsMobile = ({ courseuuid, orgslug, course, trailData }: CourseActionsMobileProps) => {
+  const t = useTranslations('public.course.actions')
   const router = useRouter()
   const session = useLHSession() as any
   const [linkedProducts, setLinkedProducts] = useState<any[]>([])
@@ -250,14 +255,14 @@ const CourseActionsMobile = ({ courseuuid, orgslug, course, trailData }: CourseA
               <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-green-800 text-sm font-semibold">You Own This Course</span>
+                  <span className="text-green-800 text-sm font-semibold">{t('paid.ownCourse')}</span>
                 </div>
               </div>
             ) : (
               <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
                 <div className="flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 text-amber-800" />
-                  <span className="text-amber-800 text-sm font-semibold">Paid Course</span>
+                  <span className="text-amber-800 text-sm font-semibold">{t('paid.paidCourse')}</span>
                 </div>
               </div>
             )}
@@ -277,12 +282,12 @@ const CourseActionsMobile = ({ courseuuid, orgslug, course, trailData }: CourseA
                 ) : isStarted ? (
                   <>
                     <LogOut className="w-4 h-4" />
-                    Leave Course
+                    {t('buttons.leaveCourse')}
                   </>
                 ) : (
                   <>
                     <LogIn className="w-4 h-4" />
-                    Start Course
+                    {t('buttons.startCourse')}
                   </>
                 )}
               </button>
@@ -292,8 +297,8 @@ const CourseActionsMobile = ({ courseuuid, orgslug, course, trailData }: CourseA
                   isDialogOpen={isModalOpen}
                   onOpenChange={setIsModalOpen}
                   dialogContent={<CoursePaidOptions course={course} />}
-                  dialogTitle="Purchase Course"
-                  dialogDescription="Select a payment option to access this course"
+                  dialogTitle={t('paid.purchaseCourse')}
+                  dialogDescription={t('paid.purchaseDescription')}
                   minWidth="sm"
                 />
                 <button
@@ -306,7 +311,7 @@ const CourseActionsMobile = ({ courseuuid, orgslug, course, trailData }: CourseA
                   ) : (
                     <>
                       <ShoppingCart className="w-4 h-4" />
-                      Purchase Course
+                      {t('paid.purchaseCourse')}
                     </>
                   )}
                 </button>
@@ -328,17 +333,17 @@ const CourseActionsMobile = ({ courseuuid, orgslug, course, trailData }: CourseA
             ) : !session.data?.user ? (
               <>
                 <LogIn className="w-4 h-4" />
-                Sign In
+                {t('buttons.signIn')}
               </>
             ) : isStarted ? (
               <>
                 <LogOut className="w-4 h-4" />
-                Leave Course
+                {t('buttons.leaveCourse')}
               </>
             ) : (
               <>
                 <LogIn className="w-4 h-4" />
-                Start Course
+                {t('buttons.startCourse')}
               </>
             )}
           </button>
