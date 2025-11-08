@@ -148,7 +148,13 @@
         "title": "Account Settings",
         "description": "Configure your personal settings, passwords and email"
       },
-      "learnhouseUniversity": "LearnHouse University"
+      "learnhouseUniversity": "LearnHouse University",
+      "welcome": {
+        "greeting": "Hello,",
+        "yourOrganizations": "Your Organizations",
+        "noOrganizationMessage": "It seems you're not part of an organization yet, join one to be able to see it here",
+        "signOut": "Sign out"
+      }
     },
     "menu": {
       "home": "Home",

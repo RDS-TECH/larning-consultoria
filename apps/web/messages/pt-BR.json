@@ -148,7 +148,13 @@
         "title": "Configurações da Conta",
         "description": "Configure suas definições pessoais, senhas e e-mail"
       },
-      "learnhouseUniversity": "LearnHouse University"
+      "learnhouseUniversity": "LearnHouse University",
+      "welcome": {
+        "greeting": "Olá,",
+        "yourOrganizations": "Suas Organizações",
+        "noOrganizationMessage": "Parece que você ainda não faz parte de uma organização, participe de uma para vê-la aqui",
+        "signOut": "Sair"
+      }
     },
     "menu": {
       "home": "Início",
