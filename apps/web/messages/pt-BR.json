@@ -414,6 +414,186 @@
         "deleting": "Excluindo...",
         "deleted": "Função excluída",
         "deleteError": "Erro ao excluir função"
+      },
+      "addRole": {
+        "fields": {
+          "roleName": "Nome da Função",
+          "roleNamePlaceholder": "ex., Gerente de Cursos",
+          "description": "Descrição",
+          "descriptionPlaceholder": "Descreva o que esta função pode fazer..."
+        },
+        "sections": {
+          "predefinedRights": "Permissões Predefinidas",
+          "permissions": "Permissões"
+        },
+        "predefinedRoles": {
+          "Admin": {
+            "name": "Administrador",
+            "description": "Controle total da plataforma com todas as permissões"
+          },
+          "CourseManager": {
+            "name": "Gerente de Cursos",
+            "description": "Pode gerenciar cursos, capítulos e atividades"
+          },
+          "Instructor": {
+            "name": "Instrutor",
+            "description": "Pode criar e gerenciar seus próprios cursos"
+          },
+          "Viewer": {
+            "name": "Visualizador",
+            "description": "Acesso somente leitura a cursos e conteúdo"
+          },
+          "ContentCreator": {
+            "name": "Criador de Conteúdo",
+            "description": "Pode criar e editar conteúdo mas não gerenciar usuários"
+          },
+          "UserManager": {
+            "name": "Gerente de Usuários",
+            "description": "Pode gerenciar usuários e grupos de usuários"
+          },
+          "Moderator": {
+            "name": "Moderador",
+            "description": "Pode moderar conteúdo e gerenciar atividades"
+          },
+          "Analyst": {
+            "name": "Analista",
+            "description": "Acesso somente leitura com capacidades de análise"
+          },
+          "Guest": {
+            "name": "Convidado",
+            "description": "Acesso limitado para usuários externos"
+          }
+        },
+        "permissionSections": {
+          "courses": "Cursos",
+          "users": "Usuários",
+          "userGroups": "Grupos de Usuários",
+          "collections": "Coleções",
+          "organizations": "Organizações",
+          "courseChapters": "Capítulos de Curso",
+          "activities": "Atividades",
+          "roles": "Funções",
+          "dashboard": "Painel"
+        },
+        "permissionActions": {
+          "create": "Criar",
+          "read": "Ler",
+          "readOwn": "Ler Próprio",
+          "update": "Atualizar",
+          "updateOwn": "Atualizar Próprio",
+          "delete": "Excluir",
+          "deleteOwn": "Excluir Próprio",
+          "access": "Acessar"
+        },
+        "buttons": {
+          "selectAll": "Selecionar Todos",
+          "deselectAll": "Desmarcar Todos",
+          "select": "Selecionar",
+          "deselect": "Desmarcar",
+          "cancel": "Cancelar",
+          "createRole": "Criar Função",
+          "creating": "Criando..."
+        },
+        "validation": {
+          "required": "Obrigatório",
+          "nameMinLength": "O nome deve ter pelo menos 2 caracteres",
+          "descriptionMinLength": "A descrição deve ter pelo menos 10 caracteres"
+        },
+        "toast": {
+          "creating": "Criando...",
+          "created": "Nova função criada",
+          "createError": "Não foi possível criar nova função"
+        }
+      },
+      "editRole": {
+        "fields": {
+          "roleName": "Nome da Função",
+          "roleNamePlaceholder": "ex., Gerente de Cursos",
+          "description": "Descrição",
+          "descriptionPlaceholder": "Descreva o que esta função pode fazer..."
+        },
+        "sections": {
+          "predefinedRights": "Permissões Predefinidas",
+          "permissions": "Permissões"
+        },
+        "predefinedRoles": {
+          "Admin": {
+            "name": "Administrador",
+            "description": "Controle total da plataforma com todas as permissões"
+          },
+          "CourseManager": {
+            "name": "Gerente de Cursos",
+            "description": "Pode gerenciar cursos, capítulos e atividades"
+          },
+          "Instructor": {
+            "name": "Instrutor",
+            "description": "Pode criar e gerenciar seus próprios cursos"
+          },
+          "Viewer": {
+            "name": "Visualizador",
+            "description": "Acesso somente leitura a cursos e conteúdo"
+          },
+          "ContentCreator": {
+            "name": "Criador de Conteúdo",
+            "description": "Pode criar e editar conteúdo mas não gerenciar usuários"
+          },
+          "UserManager": {
+            "name": "Gerente de Usuários",
+            "description": "Pode gerenciar usuários e grupos de usuários"
+          },
+          "Moderator": {
+            "name": "Moderador",
+            "description": "Pode moderar conteúdo e gerenciar atividades"
+          },
+          "Analyst": {
+            "name": "Analista",
+            "description": "Acesso somente leitura com capacidades de análise"
+          },
+          "Guest": {
+            "name": "Convidado",
+            "description": "Acesso limitado para usuários externos"
+          }
+        },
+        "permissionSections": {
+          "courses": "Cursos",
+          "users": "Usuários",
+          "userGroups": "Grupos de Usuários",
+          "collections": "Coleções",
+          "organizations": "Organizações",
+          "courseChapters": "Capítulos de Curso",
+          "activities": "Atividades",
+          "roles": "Funções",
+          "dashboard": "Painel"
+        },
+        "permissionActions": {
+          "create": "Criar",
+          "read": "Ler",
+          "readOwn": "Ler Próprio",
+          "update": "Atualizar",
+          "updateOwn": "Atualizar Próprio",
+          "delete": "Excluir",
+          "deleteOwn": "Excluir Próprio",
+          "access": "Acessar"
+        },
+        "buttons": {
+          "selectAll": "Selecionar Todos",
+          "deselectAll": "Desmarcar Todos",
+          "select": "Selecionar",
+          "deselect": "Desmarcar",
+          "cancel": "Cancelar",
+          "updateRole": "Atualizar Função",
+          "updating": "Atualizando..."
+        },
+        "validation": {
+          "required": "Obrigatório",
+          "nameMinLength": "O nome deve ter pelo menos 2 caracteres",
+          "descriptionMinLength": "A descrição deve ter pelo menos 10 caracteres"
+        },
+        "toast": {
+          "updating": "Atualizando...",
+          "updated": "Função atualizada",
+          "updateError": "Não foi possível atualizar função"
+        }
       }
     },
     "userGroups": {

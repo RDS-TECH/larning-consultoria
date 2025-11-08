@@ -414,6 +414,186 @@
         "deleting": "Deleting...",
         "deleted": "Deleted role",
         "deleteError": "Error deleting role"
+      },
+      "addRole": {
+        "fields": {
+          "roleName": "Role Name",
+          "roleNamePlaceholder": "e.g., Course Manager",
+          "description": "Description",
+          "descriptionPlaceholder": "Describe what this role can do..."
+        },
+        "sections": {
+          "predefinedRights": "Predefined Rights",
+          "permissions": "Permissions"
+        },
+        "predefinedRoles": {
+          "Admin": {
+            "name": "Admin",
+            "description": "Full platform control with all permissions"
+          },
+          "CourseManager": {
+            "name": "Course Manager",
+            "description": "Can manage courses, chapters, and activities"
+          },
+          "Instructor": {
+            "name": "Instructor",
+            "description": "Can create and manage their own courses"
+          },
+          "Viewer": {
+            "name": "Viewer",
+            "description": "Read-only access to courses and content"
+          },
+          "ContentCreator": {
+            "name": "Content Creator",
+            "description": "Can create and edit content but not manage users"
+          },
+          "UserManager": {
+            "name": "User Manager",
+            "description": "Can manage users and user groups"
+          },
+          "Moderator": {
+            "name": "Moderator",
+            "description": "Can moderate content and manage activities"
+          },
+          "Analyst": {
+            "name": "Analyst",
+            "description": "Read-only access with analytics capabilities"
+          },
+          "Guest": {
+            "name": "Guest",
+            "description": "Limited access for external users"
+          }
+        },
+        "permissionSections": {
+          "courses": "Courses",
+          "users": "Users",
+          "userGroups": "User Groups",
+          "collections": "Collections",
+          "organizations": "Organizations",
+          "courseChapters": "Course Chapters",
+          "activities": "Activities",
+          "roles": "Roles",
+          "dashboard": "Dashboard"
+        },
+        "permissionActions": {
+          "create": "Create",
+          "read": "Read",
+          "readOwn": "Read Own",
+          "update": "Update",
+          "updateOwn": "Update Own",
+          "delete": "Delete",
+          "deleteOwn": "Delete Own",
+          "access": "Access"
+        },
+        "buttons": {
+          "selectAll": "Select All",
+          "deselectAll": "Deselect All",
+          "select": "Select",
+          "deselect": "Deselect",
+          "cancel": "Cancel",
+          "createRole": "Create Role",
+          "creating": "Creating..."
+        },
+        "validation": {
+          "required": "Required",
+          "nameMinLength": "Name must be at least 2 characters",
+          "descriptionMinLength": "Description must be at least 10 characters"
+        },
+        "toast": {
+          "creating": "Creating...",
+          "created": "Created new role",
+          "createError": "Couldn't create new role"
+        }
+      },
+      "editRole": {
+        "fields": {
+          "roleName": "Role Name",
+          "roleNamePlaceholder": "e.g., Course Manager",
+          "description": "Description",
+          "descriptionPlaceholder": "Describe what this role can do..."
+        },
+        "sections": {
+          "predefinedRights": "Predefined Rights",
+          "permissions": "Permissions"
+        },
+        "predefinedRoles": {
+          "Admin": {
+            "name": "Admin",
+            "description": "Full platform control with all permissions"
+          },
+          "CourseManager": {
+            "name": "Course Manager",
+            "description": "Can manage courses, chapters, and activities"
+          },
+          "Instructor": {
+            "name": "Instructor",
+            "description": "Can create and manage their own courses"
+          },
+          "Viewer": {
+            "name": "Viewer",
+            "description": "Read-only access to courses and content"
+          },
+          "ContentCreator": {
+            "name": "Content Creator",
+            "description": "Can create and edit content but not manage users"
+          },
+          "UserManager": {
+            "name": "User Manager",
+            "description": "Can manage users and user groups"
+          },
+          "Moderator": {
+            "name": "Moderator",
+            "description": "Can moderate content and manage activities"
+          },
+          "Analyst": {
+            "name": "Analyst",
+            "description": "Read-only access with analytics capabilities"
+          },
+          "Guest": {
+            "name": "Guest",
+            "description": "Limited access for external users"
+          }
+        },
+        "permissionSections": {
+          "courses": "Courses",
+          "users": "Users",
+          "userGroups": "User Groups",
+          "collections": "Collections",
+          "organizations": "Organizations",
+          "courseChapters": "Course Chapters",
+          "activities": "Activities",
+          "roles": "Roles",
+          "dashboard": "Dashboard"
+        },
+        "permissionActions": {
+          "create": "Create",
+          "read": "Read",
+          "readOwn": "Read Own",
+          "update": "Update",
+          "updateOwn": "Update Own",
+          "delete": "Delete",
+          "deleteOwn": "Delete Own",
+          "access": "Access"
+        },
+        "buttons": {
+          "selectAll": "Select All",
+          "deselectAll": "Deselect All",
+          "select": "Select",
+          "deselect": "Deselect",
+          "cancel": "Cancel",
+          "updateRole": "Update Role",
+          "updating": "Updating..."
+        },
+        "validation": {
+          "required": "Required",
+          "nameMinLength": "Name must be at least 2 characters",
+          "descriptionMinLength": "Description must be at least 10 characters"
+        },
+        "toast": {
+          "updating": "Updating...",
+          "updated": "Updated role",
+          "updateError": "Couldn't update role"
+        }
       }
     },
     "userGroups": {
