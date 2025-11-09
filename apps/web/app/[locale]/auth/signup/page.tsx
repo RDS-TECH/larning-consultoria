@@ -10,26 +10,49 @@ type MetadataProps = {
 }
 
 export async function generateMetadata(
-  params
-    : MetadataProps): Promise<Metadata> {
+  params: MetadataProps
+): Promise<Metadata> {
   const orgslug = (await params.searchParams).orgslug
-  // Get Org context information
-  const org = await getOrganizationContextInfo(orgslug, {
-    revalidate: 0,
-    tags: ['organizations'],
-  })
 
-  return {
-    title: 'Sign up' + ` — ${org.name}`,
+  // Get Org context information only if orgslug is provided
+  if (!orgslug) {
+    return {
+      title: 'Sign up',
+    }
+  }
+
+  try {
+    const org = await getOrganizationContextInfo(orgslug, {
+      revalidate: 0,
+      tags: ['organizations'],
+    })
+
+    return {
+      title: 'Sign up' + ` — ${org.name}`,
+    }
+  } catch (error) {
+    return {
+      title: 'Sign up',
+    }
   }
 }
 
 const SignUp = async (params: any) => {
   const orgslug = (await params.searchParams).orgslug
-  const org = await getOrganizationContextInfo(orgslug, {
-    revalidate: 0,
-    tags: ['organizations'],
-  })
+
+  // Try to get org info if orgslug is provided
+  let org = null
+  if (orgslug) {
+    try {
+      org = await getOrganizationContextInfo(orgslug, {
+        revalidate: 0,
+        tags: ['organizations'],
+      })
+    } catch (error) {
+      // If org not found, org will be null and SignUpClient will handle it
+      console.error('Failed to fetch organization info:', error)
+    }
+  }
 
   return (
     <>
