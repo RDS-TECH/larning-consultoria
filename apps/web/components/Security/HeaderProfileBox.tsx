@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu"
 import { signOut } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 
 interface RoleInfo {
   name: string;
@@ -36,6 +37,7 @@ export const HeaderProfileBox = () => {
   const session = useLHSession() as any
   const { isAdmin, loading, userRoles, rights } = useAdminStatus()
   const org = useOrg() as any
+  const t = useTranslations('navbar.auth')
 
   useEffect(() => { }
     , [session])
@@ -140,10 +142,10 @@ export const HeaderProfileBox = () => {
           <ul className="flex space-x-3 items-center">
             <li>
               <Link
-                href={{ pathname: getUriWithoutOrg('/login'), query: org ? { orgslug: org.slug } : null }} >Login</Link>
+                href={{ pathname: getUriWithoutOrg('/login'), query: org ? { orgslug: org.slug } : null }} >{t('login')}</Link>
             </li>
             <li className="bg-black rounded-lg shadow-md p-2 px-3 text-white">
-              <Link href={{ pathname: getUriWithoutOrg('/signup'), query: org ? { orgslug: org.slug } : null }}>Sign up</Link>
+              <Link href={{ pathname: getUriWithoutOrg('/signup'), query: org ? { orgslug: org.slug } : null }}>{t('signup')}</Link>
             </li>
           </ul>
         </UnidentifiedArea>
