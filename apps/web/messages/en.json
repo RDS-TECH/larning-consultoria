@@ -1073,7 +1073,8 @@
     },
     "placeholder": {
       "adminOnly": "This content is only visible to administrators",
-      "createContent": "Create content to get started"
+      "createContent": "Create content to get started",
+      "noContent": "No content available"
     }
   },
   "chapters": {

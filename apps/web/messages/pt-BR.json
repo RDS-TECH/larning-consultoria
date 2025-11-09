@@ -1073,7 +1073,8 @@
     },
     "placeholder": {
       "adminOnly": "Este conteúdo é visível apenas para administradores",
-      "createContent": "Crie conteúdo para começar"
+      "createContent": "Crie conteúdo para começar",
+      "noContent": "Sem conteúdo disponível"
     }
   },
   "chapters": {
