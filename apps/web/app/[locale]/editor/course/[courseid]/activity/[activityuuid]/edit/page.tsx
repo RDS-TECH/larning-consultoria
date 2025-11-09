@@ -6,7 +6,7 @@ import { getActivityWithAuthHeader } from '@services/courses/activities'
 import { getOrganizationContextInfoWithId } from '@services/organizations/orgs'
 import EditorOptionsProvider from '@components/Contexts/Editor/EditorContext'
 import AIEditorProvider from '@components/Contexts/AI/AIEditorContext'
-import { nextAuthOptions } from 'app/auth/options'
+import { nextAuthOptions } from '../../../../../../auth/options'
 import { getServerSession } from 'next-auth'
 import EditorWrapper from '@components/Objects/Editor/EditorWrapper'
 

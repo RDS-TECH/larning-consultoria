@@ -4,7 +4,7 @@ import { getCourseMetadata } from '@services/courses/courses'
 import { getOrganizationContextInfo } from '@services/organizations/orgs'
 import { Metadata } from 'next'
 import { getCourseThumbnailMediaDirectory } from '@services/media/media'
-import { nextAuthOptions } from 'app/auth/options'
+import { nextAuthOptions } from '../../../../../auth/options'
 import { getServerSession } from 'next-auth'
 
 type MetadataProps = {
