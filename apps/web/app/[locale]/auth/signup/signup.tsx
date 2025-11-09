@@ -18,6 +18,7 @@ import Toast from '@components/Objects/StyledElements/Toast/Toast'
 import toast from 'react-hot-toast'
 import { BarLoader } from 'react-spinners'
 import { joinOrg } from '@services/organizations/orgs'
+import { LanguageSwitcher } from '@/components/ui/language-switcher'
 import { useTranslations } from 'next-intl'
 
 interface SignUpClientProps {
@@ -52,7 +53,7 @@ function SignUpClient(props: SignUpClientProps) {
             'linear-gradient(041.61deg, #202020 7.15%, #000000 90.96%)',
         }}
       >
-        <div className="login-topbar m-10">
+        <div className="login-topbar m-10 flex justify-between items-center">
           <Link prefetch href={getUriWithOrg(props.org.slug, '/')}>
             <Image
               quality={100}
@@ -62,6 +63,7 @@ function SignUpClient(props: SignUpClientProps) {
               alt=""
             />
           </Link>
+          <LanguageSwitcher />
         </div>
         <div className="ml-10 h-3/4 flex flex-row text-white">
           <div className="m-auto flex space-x-4 items-center flex-wrap">
