@@ -68,7 +68,7 @@ const LoginClient = (props: LoginClientProps) => {
         redirect: false,
         email: values.email,
         password: values.password,
-        callbackUrl: '/redirect_from_auth'
+        callbackUrl: '/home'
       });
       if (res && res.error) {
         setError(t('errors.wrongCredentials'));
@@ -77,7 +77,7 @@ const LoginClient = (props: LoginClientProps) => {
         await signIn('credentials', {
           email: values.email,
           password: values.password,
-          callbackUrl: '/redirect_from_auth'
+          callbackUrl: '/home'
         });
       }
     },
@@ -194,7 +194,7 @@ const LoginClient = (props: LoginClientProps) => {
               <UserRoundPlus size={17} />
               <span>{t('signUp')}</span>
             </Link>
-            <button onClick={() => signIn('google', { callbackUrl: '/redirect_from_auth' })} className="flex justify-center py-3 text-md w-full bg-white text-slate-600 space-x-3 font-semibold text-center p-2 rounded-md shadow-sm hover:cursor-pointer">
+            <button onClick={() => signIn('google', { callbackUrl: '/home' })} className="flex justify-center py-3 text-md w-full bg-white text-slate-600 space-x-3 font-semibold text-center p-2 rounded-md shadow-sm hover:cursor-pointer">
               <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="" />
               <span>{t('signInWithGoogle')}</span>
             </button>

@@ -19,10 +19,10 @@ export default function NotFound() {
         <h1 className="text-8xl leading-7 font-bold text-black drop-shadow-md">
           404!
         </h1>
-        <p className='text-lg pt-8 text-black tracking-tight font-medium leading-normal'>
+        <div className='text-lg pt-8 text-black tracking-tight font-medium leading-normal'>
           We are very sorry for the inconvenience. It looks like you're trying to
-          <div>access a page that has been deleted or never existed before</div>
-        </p>
+          access a page that has been deleted or never existed before
+        </div>
       </div>
       <div className='pt-8 flex flex-col items-center'>
         <button className="flex w-fit h-[50px] text-xl space-x-2 bg-black px-6 py-2 text-md rounded-lg font-bold text-white items-center shadow-md">
