@@ -1,7 +1,16 @@
 import { redirect } from 'next/navigation'
+import { getServerSession } from 'next-auth'
+import { nextAuthOptions } from './auth/options'
 
-export default function RootPage() {
-  // Redireciona para login com orgslug padrão
+export default async function RootPage() {
+  const session = await getServerSession(nextAuthOptions)
   const defaultOrg = process.env.NEXT_PUBLIC_LEARNHOUSE_DEFAULT_ORG || 'default'
-  redirect(`/auth/login?orgslug=${defaultOrg}`)
+
+  // Se o usuário está autenticado, redireciona para /home
+  if (session) {
+    redirect('/home')
+  }
+
+  // Se não está autenticado, redireciona para a landing page pública
+  redirect(`/orgs/${defaultOrg}`)
 }
