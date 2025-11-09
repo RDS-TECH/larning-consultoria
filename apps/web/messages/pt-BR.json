@@ -1072,6 +1072,39 @@
       }
     }
   },
+  "navbar": {
+    "menu": {
+      "courses": "Cursos",
+      "collections": "Coleções",
+      "progress": "Progresso"
+    },
+    "auth": {
+      "login": "Entrar",
+      "signup": "Cadastrar"
+    },
+    "search": {
+      "placeholder": "Pesquisar cursos, usuários, coleções...",
+      "emptyState": {
+        "title": "Descubra Sua Próxima Jornada de Aprendizado",
+        "description": "Comece a digitar para pesquisar através do conteúdo disponível"
+      },
+      "suggestions": {
+        "title": "Sugestões de pesquisa"
+      },
+      "quickResults": {
+        "title": "Resultados Rápidos",
+        "courses": "Cursos",
+        "collections": "Coleções",
+        "users": "Usuários"
+      },
+      "labels": {
+        "course": "Curso",
+        "collection": "Coleção",
+        "user": "Usuário"
+      },
+      "viewAll": "Ver todos os resultados"
+    }
+  },
   "placeholder": {
     "adminOnly": "Este conteúdo é visível apenas para administradores",
     "createContent": "Crie conteúdo para começar",

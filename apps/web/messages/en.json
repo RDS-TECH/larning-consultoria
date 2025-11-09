@@ -1072,6 +1072,39 @@
       }
     }
   },
+  "navbar": {
+    "menu": {
+      "courses": "Courses",
+      "collections": "Collections",
+      "progress": "Progress"
+    },
+    "auth": {
+      "login": "Login",
+      "signup": "Sign up"
+    },
+    "search": {
+      "placeholder": "Search courses, users, collections...",
+      "emptyState": {
+        "title": "Discover Your Next Learning Journey",
+        "description": "Start typing to search through available content"
+      },
+      "suggestions": {
+        "title": "Search suggestions"
+      },
+      "quickResults": {
+        "title": "Quick Results",
+        "courses": "Courses",
+        "collections": "Collections",
+        "users": "Users"
+      },
+      "labels": {
+        "course": "Course",
+        "collection": "Collection",
+        "user": "User"
+      },
+      "viewAll": "View all results"
+    }
+  },
   "placeholder": {
     "adminOnly": "This content is only visible to administrators",
     "createContent": "Create content to get started",
