@@ -28,6 +28,11 @@ export const isMultiOrgModeEnabled = () =>
   process.env.NEXT_PUBLIC_LEARNHOUSE_MULTI_ORG?.toLowerCase() === 'true' ? true : false
 
 export const getUriWithOrg = (orgslug: string, path: string) => {
+  // Em desenvolvimento local (localhost), usar URL relativa para preservar a porta
+  if (LEARNHOUSE_DOMAIN === 'localhost') {
+    return path
+  }
+
   const multi_org = isMultiOrgModeEnabled()
   if (multi_org) {
     return `${LEARNHOUSE_HTTP_PROTOCOL}${orgslug}.${LEARNHOUSE_DOMAIN}${path}`
@@ -36,6 +41,11 @@ export const getUriWithOrg = (orgslug: string, path: string) => {
 }
 
 export const getUriWithoutOrg = (path: string) => {
+  // Em desenvolvimento local (localhost), usar URL relativa para preservar a porta
+  if (LEARNHOUSE_DOMAIN === 'localhost') {
+    return path
+  }
+
   const multi_org = isMultiOrgModeEnabled()
   if (multi_org) {
     return `${LEARNHOUSE_HTTP_PROTOCOL}${LEARNHOUSE_DOMAIN}${path}`
