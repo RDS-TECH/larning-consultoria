@@ -7,6 +7,6 @@ export const routing = defineRouting({
   // Idioma padrão quando nenhum locale corresponder
   defaultLocale: 'pt-BR',
 
-  // URLs completamente transparentes - sem prefixo de locale visível
-  localePrefix: 'never'
+  // Mostrar locale apenas quando não for o padrão
+  localePrefix: 'as-needed'
 });

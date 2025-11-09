@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
-import { nextAuthOptions } from './auth/options'
+import { nextAuthOptions } from '@/app/[locale]/auth/options'
 
 export default async function RootPage() {
   const session = await getServerSession(nextAuthOptions)
