@@ -963,48 +963,6 @@
         }
       }
     },
-    "public": {
-      "landing": {
-        "collections": "Collections",
-        "courses": "Courses",
-        "noCollections": "No collections yet",
-        "noCourses": "No courses yet",
-        "createCollections": "Create collections to group courses together",
-        "createCourses": "Create courses to add content"
-      },
-      "course": {
-        "actions": {
-          "startCourse": "Start Course",
-          "continueCourse": "Continue Course",
-          "enrollNow": "Enroll Now",
-          "learnMore": "Learn More",
-          "freeCourse": "Free Course",
-          "paidCourse": "Paid Course",
-          "paidDisclaimer": "This is a paid course. Please purchase to access the content.",
-          "purchaseRequired": "Purchase Required",
-          "selectPaymentMethod": "Select Payment Method",
-          "processing": "Processing...",
-          "purchaseSuccess": "Purchase successful!",
-          "purchaseFailed": "Purchase failed"
-        },
-        "authors": {
-          "courseAuthors": "Course Authors",
-          "author": "Author",
-          "contributor": "Contributor"
-        },
-        "progress": {
-          "yourProgress": "Your Progress",
-          "completed": "Completed",
-          "inProgress": "In Progress",
-          "notStarted": "Not Started"
-        },
-        "updates": {
-          "courseUpdates": "Course Updates",
-          "noUpdates": "No updates yet",
-          "lastUpdate": "Last update"
-        }
-      }
-    },
     "activities": {
       "assignment": {
         "title": "Assignment",
@@ -1070,12 +1028,54 @@
           }
         }
       }
-    },
-    "placeholder": {
-      "adminOnly": "This content is only visible to administrators",
-      "createContent": "Create content to get started",
-      "noContent": "No content available"
     }
+  },
+  "public": {
+    "landing": {
+      "collections": "Collections",
+      "courses": "Courses",
+      "noCollections": "No collections yet",
+      "noCourses": "No courses yet",
+      "createCollections": "Create collections to group courses together",
+      "createCourses": "Create courses to add content"
+    },
+    "course": {
+      "actions": {
+        "startCourse": "Start Course",
+        "continueCourse": "Continue Course",
+        "enrollNow": "Enroll Now",
+        "learnMore": "Learn More",
+        "freeCourse": "Free Course",
+        "paidCourse": "Paid Course",
+        "paidDisclaimer": "This is a paid course. Please purchase to access the content.",
+        "purchaseRequired": "Purchase Required",
+        "selectPaymentMethod": "Select Payment Method",
+        "processing": "Processing...",
+        "purchaseSuccess": "Purchase successful!",
+        "purchaseFailed": "Purchase failed"
+      },
+      "authors": {
+        "courseAuthors": "Course Authors",
+        "author": "Author",
+        "contributor": "Contributor"
+      },
+      "progress": {
+        "yourProgress": "Your Progress",
+        "completed": "Completed",
+        "inProgress": "In Progress",
+        "notStarted": "Not Started"
+      },
+      "updates": {
+        "courseUpdates": "Course Updates",
+        "noUpdates": "No updates yet",
+        "lastUpdate": "Last update"
+      }
+    }
+  },
+  "placeholder": {
+    "adminOnly": "This content is only visible to administrators",
+    "createContent": "Create content to get started",
+    "noContent": "No content available"
   },
   "chapters": {
     "title": "Chapter",

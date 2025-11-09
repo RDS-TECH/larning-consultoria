@@ -963,48 +963,6 @@
         }
       }
     },
-    "public": {
-      "landing": {
-        "collections": "Coleções",
-        "courses": "Cursos",
-        "noCollections": "Nenhuma coleção ainda",
-        "noCourses": "Nenhum curso ainda",
-        "createCollections": "Crie coleções para agrupar cursos",
-        "createCourses": "Crie cursos para adicionar conteúdo"
-      },
-      "course": {
-        "actions": {
-          "startCourse": "Iniciar Curso",
-          "continueCourse": "Continuar Curso",
-          "enrollNow": "Inscrever-se Agora",
-          "learnMore": "Saiba Mais",
-          "freeCourse": "Curso Gratuito",
-          "paidCourse": "Curso Pago",
-          "paidDisclaimer": "Este é um curso pago. Por favor, compre para acessar o conteúdo.",
-          "purchaseRequired": "Compra Necessária",
-          "selectPaymentMethod": "Selecione o Método de Pagamento",
-          "processing": "Processando...",
-          "purchaseSuccess": "Compra realizada com sucesso!",
-          "purchaseFailed": "Falha na compra"
-        },
-        "authors": {
-          "courseAuthors": "Autores do Curso",
-          "author": "Autor",
-          "contributor": "Contribuidor"
-        },
-        "progress": {
-          "yourProgress": "Seu Progresso",
-          "completed": "Concluído",
-          "inProgress": "Em Andamento",
-          "notStarted": "Não Iniciado"
-        },
-        "updates": {
-          "courseUpdates": "Atualizações do Curso",
-          "noUpdates": "Nenhuma atualização ainda",
-          "lastUpdate": "Última atualização"
-        }
-      }
-    },
     "activities": {
       "assignment": {
         "title": "Tarefa",
@@ -1070,12 +1028,54 @@
           }
         }
       }
-    },
-    "placeholder": {
-      "adminOnly": "Este conteúdo é visível apenas para administradores",
-      "createContent": "Crie conteúdo para começar",
-      "noContent": "Sem conteúdo disponível"
     }
+  },
+  "public": {
+    "landing": {
+      "collections": "Coleções",
+      "courses": "Cursos",
+      "noCollections": "Nenhuma coleção ainda",
+      "noCourses": "Nenhum curso ainda",
+      "createCollections": "Crie coleções para agrupar cursos",
+      "createCourses": "Crie cursos para adicionar conteúdo"
+    },
+    "course": {
+      "actions": {
+        "startCourse": "Iniciar Curso",
+        "continueCourse": "Continuar Curso",
+        "enrollNow": "Inscrever-se Agora",
+        "learnMore": "Saiba Mais",
+        "freeCourse": "Curso Gratuito",
+        "paidCourse": "Curso Pago",
+        "paidDisclaimer": "Este é um curso pago. Por favor, compre para acessar o conteúdo.",
+        "purchaseRequired": "Compra Necessária",
+        "selectPaymentMethod": "Selecione o Método de Pagamento",
+        "processing": "Processando...",
+        "purchaseSuccess": "Compra realizada com sucesso!",
+        "purchaseFailed": "Falha na compra"
+      },
+      "authors": {
+        "courseAuthors": "Autores do Curso",
+        "author": "Autor",
+        "contributor": "Contribuidor"
+      },
+      "progress": {
+        "yourProgress": "Seu Progresso",
+        "completed": "Concluído",
+        "inProgress": "Em Andamento",
+        "notStarted": "Não Iniciado"
+      },
+      "updates": {
+        "courseUpdates": "Atualizações do Curso",
+        "noUpdates": "Nenhuma atualização ainda",
+        "lastUpdate": "Última atualização"
+      }
+    }
+  },
+  "placeholder": {
+    "adminOnly": "Este conteúdo é visível apenas para administradores",
+    "createContent": "Crie conteúdo para começar",
+    "noContent": "Sem conteúdo disponível"
   },
   "chapters": {
     "title": "Capítulo",
