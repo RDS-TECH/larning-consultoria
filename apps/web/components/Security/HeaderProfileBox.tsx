@@ -142,10 +142,10 @@ export const HeaderProfileBox = () => {
           <ul className="flex space-x-3 items-center">
             <li>
               <Link
-                href={{ pathname: getUriWithoutOrg('/login'), query: org ? { orgslug: org.slug } : null }} >{t('login')}</Link>
+                href={{ pathname: getUriWithoutOrg('/auth/login'), query: org ? { orgslug: org.slug } : null }} >{t('login')}</Link>
             </li>
             <li className="bg-black rounded-lg shadow-md p-2 px-3 text-white">
-              <Link href={{ pathname: getUriWithoutOrg('/signup'), query: org ? { orgslug: org.slug } : null }}>{t('signup')}</Link>
+              <Link href={{ pathname: getUriWithoutOrg('/auth/signup'), query: org ? { orgslug: org.slug } : null }}>{t('signup')}</Link>
             </li>
           </ul>
         </UnidentifiedArea>
