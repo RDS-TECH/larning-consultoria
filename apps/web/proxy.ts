@@ -3,8 +3,8 @@ import { routing } from './i18n/routing';
 
 export default createMiddleware({
   ...routing,
-  // Sempre usar 'pt-BR' se não houver locale específico
-  localeDetection: true,
+  // Desabilita detecção automática para sempre usar pt-BR como padrão
+  localeDetection: false,
 });
 
 export const config = {
