@@ -33,8 +33,13 @@ export function LanguageSwitcher() {
       ? pathnameWithoutLocale
       : `/${newLocale}${pathnameWithoutLocale}`
 
-    // Navigate to new path
-    router.push(newPath)
+    // Preserve query params
+    if (typeof window !== 'undefined') {
+      const queryString = window.location.search
+      router.push(newPath + queryString)
+    } else {
+      router.push(newPath)
+    }
   }
 
   return (

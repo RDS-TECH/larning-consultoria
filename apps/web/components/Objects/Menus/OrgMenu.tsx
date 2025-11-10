@@ -9,6 +9,7 @@ import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { useOrg } from '@components/Contexts/OrgContext'
 import { SearchBar } from '@components/Objects/Search/SearchBar'
 import { usePathname } from 'next/navigation'
+import { LanguageSwitcher } from '@/components/ui/language-switcher'
 
 export const OrgMenu = (props: any) => {
   const orgslug = props.orgslug
@@ -99,7 +100,8 @@ export const OrgMenu = (props: any) => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <div className="hidden md:flex">
+            <div className="hidden md:flex items-center space-x-3">
+              <LanguageSwitcher />
               <HeaderProfileBox />
             </div>
             <button
@@ -132,7 +134,8 @@ export const OrgMenu = (props: any) => {
           <div className='py-4'>
             <MenuLinks orgslug={orgslug} />
           </div>
-          <div className="border-t border-gray-200">
+          <div className="border-t border-gray-200 pt-4 flex flex-col items-center space-y-3">
+            <LanguageSwitcher />
             <HeaderProfileBox />
           </div>
         </div>
