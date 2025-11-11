@@ -592,21 +592,7 @@
         "changeToUsersConfirm": "Tem certeza que deseja que este curso seja acessível apenas para usuários logados?",
         "changeToUsersTitle": "Mudar para Apenas Usuários?",
         "removeUserGroupConfirm": "Usuários deste Grupo de Usuários não terão mais acesso a este curso",
-        "linkUserGroupDescription": "Escolha um Grupo de Usuários para vincular a este curso. Usuários deste Grupo de Usuários terão acesso a este curso.",
-        "title": "Acesso ao curso",
-        "description": "Escolha se você deseja que seu curso seja publicamente disponível na internet ou acessível apenas para usuários logados",
-        "public": "Público",
-        "publicDescription": "O curso é publicamente disponível na internet, é indexado por motores de busca e pode ser acessado por qualquer pessoa",
-        "usersOnly": "Apenas Usuários",
-        "usersOnlyDescription": "O curso é acessível apenas para usuários logados, além disso você pode escolher quais Grupos de Usuários podem acessar este curso",
-        "active": "Ativo",
-        "userGroups": "Grupos de Usuários",
-        "userGroupsDescription": "Você pode escolher dar acesso a este curso apenas a grupos específicos de usuários vinculando-o a um Grupo de Usuários",
-        "name": "Nome",
-        "actions": "Ações",
-        "deleteLink": "Excluir vínculo",
-        "unlinkUserGroup": "Desvincular Grupo de Usuários?",
-        "linkToUserGroup": "Vincular a um Grupo de Usuários"
+        "linkUserGroupDescription": "Escolha um Grupo de Usuários para vincular a este curso. Usuários deste Grupo de Usuários terão acesso a este curso."
       },
       "structure": {
         "createChapterTitle": "Criar capítulo",
@@ -1343,40 +1329,23 @@
         "selectPaymentMethod": "Selecione o Método de Pagamento",
         "processing": "Processando...",
         "purchaseSuccess": "Compra realizada com sucesso!",
-        "purchaseFailed": "Falha na compra",
-        "progress": {
-          "readyToBegin": "Pronto para começar",
-          "activities": "atividades",
-          "startJourney": "Iniciar sua jornada"
-        },
-        "buttons": {
-          "startCourseAriaLabel": "Iniciar curso"
-        }
+        "purchaseFailed": "Falha na compra"
       },
       "authors": {
         "courseAuthors": "Autores do Curso",
         "author": "Autor",
-        "contributor": "Contribuidor",
-        "authorsAndUpdates": "Autores e Atualizações"
+        "contributor": "Contribuidor"
       },
       "progress": {
         "yourProgress": "Seu Progresso",
         "completed": "Concluído",
         "inProgress": "Em Andamento",
-        "notStarted": "Não Iniciado",
-        "title": "Seu Progresso",
-        "description": "Acompanhe seu progresso no curso"
+        "notStarted": "Não Iniciado"
       },
       "updates": {
         "courseUpdates": "Atualizações do Curso",
         "noUpdates": "Nenhuma atualização ainda",
-        "lastUpdate": "Última atualização",
-        "title": "Atualizações",
-        "empty": {
-          "noUpdates": "Nenhuma atualização",
-          "description": "Este curso não possui atualizações ainda."
-        },
-        "newUpdate": "Nova Atualização"
+        "lastUpdate": "Última atualização"
       }
     }
   },

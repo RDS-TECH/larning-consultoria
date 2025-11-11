@@ -83,7 +83,7 @@ function CourseOverviewPage(props: { params: Promise<CourseOverviewParams> }) {
   useEffect(() => {
     if (!rightsLoading && !hasAccessToCurrentPage && visibleTabs.length > 0) {
       const firstAvailableTab = visibleTabs[0]
-      router.replace(getUriWithOrg(params.orgslug, '') + firstAvailableTab.href)
+      router.replace(firstAvailableTab.href)
     }
   }, [rightsLoading, hasAccessToCurrentPage, visibleTabs, router, params.orgslug])
 
@@ -147,7 +147,7 @@ function CourseOverviewPage(props: { params: Promise<CourseOverviewParams> }) {
               return (
                 <Link
                   key={tab.key}
-                  href={getUriWithOrg(params.orgslug, '') + tab.href}
+                  href={tab.href}
                 >
                   <div
                     className={`flex space-x-4 py-2 w-fit text-center border-black transition-all ease-linear ${

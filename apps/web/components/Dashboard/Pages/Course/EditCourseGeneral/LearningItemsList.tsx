@@ -31,6 +31,7 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
   const inputRefs = useRef<Record<string, HTMLInputElement | null>>({});
   const linkInputFieldRefs = useRef<Record<string, HTMLInputElement | null>>({});
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isInternalUpdate = useRef(false);
 
   // Add a new empty item
   const addItem = () => {
@@ -40,33 +41,44 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
       emoji: '📝',
     };
     const newItems = [...items, newItem];
+    isInternalUpdate.current = true;
     setItems(newItems);
     onChange(JSON.stringify(newItems));
-    
+
     // Focus the newly added item after render
     setTimeout(() => {
       if (inputRefs.current[newItem.id]) {
         inputRefs.current[newItem.id]?.focus();
         setFocusedItemId(newItem.id);
       }
-      
+
       // Scroll to the bottom when a new item is added
       if (scrollContainerRef.current && newItems.length > 5) {
         scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
       }
+      isInternalUpdate.current = false;
     }, 0);
   };
 
-  // Initialize on first mount
+  // Initialize on first mount and sync from parent ONLY when change is external
   useEffect(() => {
-    if (initializedRef.current) return;
+    // Skip if this is an internal update
+    if (isInternalUpdate.current) {
+      return;
+    }
 
     try {
       if (value) {
         const parsedItems = JSON.parse(value);
         if (Array.isArray(parsedItems)) {
-          setItems(parsedItems);
-          initializedRef.current = true;
+          // Only update if items actually differ
+          const currentJson = JSON.stringify(items);
+          const newJson = JSON.stringify(parsedItems);
+
+          if (currentJson !== newJson) {
+            setItems(parsedItems);
+            initializedRef.current = true;
+          }
           return;
         }
       }
@@ -74,34 +86,17 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
       console.error('Error parsing learning items:', e);
     }
 
-    // If no valid value, initialize with empty item
-    const newItem: LearningItem = {
-      id: Date.now().toString(),
-      text: '',
-      emoji: '📝',
-    };
-    setItems([newItem]);
-    onChange(JSON.stringify([newItem]));
-    initializedRef.current = true;
-  }, []); // Empty deps - runs only on mount
-
-  // Sync from parent when value changes (after initialization)
-  useEffect(() => {
-    if (!initializedRef.current) return;
-    if (!value) return;
-
-    try {
-      const parsedItems = JSON.parse(value);
-      if (Array.isArray(parsedItems)) {
-        setItems(prevItems => {
-          const isDifferent = JSON.stringify(prevItems) !== JSON.stringify(parsedItems);
-          return isDifferent ? parsedItems : prevItems;
-        });
-      }
-    } catch (e) {
-      console.error('Error parsing learning items:', e);
+    // If no valid value and not initialized, initialize with empty item
+    if (!initializedRef.current) {
+      const newItem: LearningItem = {
+        id: Date.now().toString(),
+        text: '',
+        emoji: '📝',
+      };
+      setItems([newItem]);
+      initializedRef.current = true;
     }
-  }, [value]); // Only depends on value, NOT onChange
+  }, [value]); // Only depends on value
 
   // Restore focus after re-render if an item was focused
   useEffect(() => {
@@ -153,8 +148,13 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
 
   // Update the parent component with the new JSON string when items change
   const updateItems = (newItems: LearningItem[]) => {
+    isInternalUpdate.current = true;
     setItems(newItems);
     onChange(JSON.stringify(newItems));
+    // Reset flag after a brief delay to allow the update to propagate
+    setTimeout(() => {
+      isInternalUpdate.current = false;
+    }, 100);
   };
 
   // Remove an item
@@ -174,18 +174,20 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
 
   // Update item emoji
   const updateItemEmoji = (id: string, emoji: string) => {
-    updateItems(
-      items.map(item => (item.id === id ? { ...item, emoji } : item))
-    );
+    isInternalUpdate.current = true;
+    const newItems = items.map(item => (item.id === id ? { ...item, emoji } : item));
+    setItems(newItems);
+    onChange(JSON.stringify(newItems));
     setShowEmojiPicker(null);
-    
+
     // Restore focus to the text input after emoji selection
     setTimeout(() => {
       if (inputRefs.current[id]) {
         inputRefs.current[id]?.focus();
         setFocusedItemId(id);
       }
-    }, 0);
+      isInternalUpdate.current = false;
+    }, 100);
   };
 
   // Update item link

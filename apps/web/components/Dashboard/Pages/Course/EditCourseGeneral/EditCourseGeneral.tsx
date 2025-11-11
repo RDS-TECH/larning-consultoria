@@ -8,7 +8,7 @@ import FormLayout, {
 import { useFormik } from 'formik';
 import { AlertTriangle } from 'lucide-react';
 import * as Form from '@radix-ui/react-form';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import ThumbnailUpdate from './ThumbnailUpdate';
 import { useCourse, useCourseDispatch } from '@components/Contexts/CourseContext';
 import FormTagInput from '@components/Objects/StyledElements/Form/TagInput';
@@ -73,9 +73,11 @@ function EditCourseGeneral(props: EditCourseStructureProps) {
   const course = useCourse();
   const dispatchCourse = useCourseDispatch() as any;
   const { isLoading, courseStructure } = course as any;
+  const courseUuidRef = useRef(courseStructure?.course_uuid);
+  const hasTrackedChange = useRef(false);
 
   // Initialize learnings as a JSON array if it's not already
-  const initializeLearnings = (learnings: any) => {
+  const initializeLearnings = useCallback((learnings: any) => {
     if (!learnings) {
       return JSON.stringify([{ id: Date.now().toString(), text: '', emoji: '📝' }]);
     }
@@ -111,10 +113,10 @@ function EditCourseGeneral(props: EditCourseStructureProps) {
       // Default empty array
       return JSON.stringify([{ id: Date.now().toString(), text: '', emoji: '📝' }]);
     }
-  };
+  }, []);
 
-  // Create initial values object
-  const getInitialValues = () => {
+  // Create initial values object - memoize to avoid recreating on every render
+  const getInitialValues = useCallback(() => {
     const thumbnailType = courseStructure?.thumbnail_type || 'image';
     return {
       name: courseStructure?.name || '',
@@ -125,14 +127,19 @@ function EditCourseGeneral(props: EditCourseStructureProps) {
       public: courseStructure?.public || false,
       thumbnail_type: thumbnailType,
     };
-  };
+  }, [courseStructure, initializeLearnings]);
 
   const formik = useFormik({
     initialValues: getInitialValues(),
     validate,
     onSubmit: async values => {
       try {
-        // Add your submission logic here
+        // Update courseStructure with the form values on save
+        const updatedCourse = {
+          ...courseStructure,
+          ...values,
+        };
+        dispatchCourse({ type: 'setCourseStructure', payload: updatedCourse });
         dispatchCourse({ type: 'setIsSaved' });
       } catch (e) {
         setError('Failed to save course structure.');
@@ -141,31 +148,36 @@ function EditCourseGeneral(props: EditCourseStructureProps) {
     enableReinitialize: true,
   }) as any;
 
-  // Reset form when courseStructure changes
+  // Track course UUID changes to detect when a new course is loaded
   useEffect(() => {
-    if (courseStructure && !isLoading) {
+    const currentUuid = courseStructure?.course_uuid;
+    if (currentUuid && currentUuid !== courseUuidRef.current) {
+      courseUuidRef.current = currentUuid;
+      hasTrackedChange.current = false;
+      // Reset form when a different course is loaded
       const newValues = getInitialValues();
       formik.resetForm({ values: newValues });
     }
-  }, [courseStructure, isLoading]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [courseStructure?.course_uuid]);
 
+  // Track if user has made changes (mark as not saved) but DON'T update courseStructure
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && courseStructure && hasTrackedChange.current) {
       const formikValues = formik.values as any;
       const initialValues = formik.initialValues as any;
-      const valuesChanged = Object.keys(formikValues).some(
-        key => formikValues[key] !== initialValues[key]
-      );
+
+      // Deep comparison to check if values actually changed
+      const valuesChanged = JSON.stringify(formikValues) !== JSON.stringify(initialValues);
 
       if (valuesChanged) {
         dispatchCourse({ type: 'setIsNotSaved' });
-        const updatedCourse = {
-          ...courseStructure,
-          ...formikValues,
-        };
-        dispatchCourse({ type: 'setCourseStructure', payload: updatedCourse });
       }
+    } else if (!isLoading && courseStructure) {
+      // After first render, start tracking changes
+      hasTrackedChange.current = true;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formik.values, isLoading]);
 
   if (isLoading || !courseStructure) {
