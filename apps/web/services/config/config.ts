@@ -28,9 +28,10 @@ export const isMultiOrgModeEnabled = () =>
   process.env.NEXT_PUBLIC_LEARNHOUSE_MULTI_ORG?.toLowerCase() === 'true' ? true : false
 
 export const getUriWithOrg = (orgslug: string, path: string) => {
-  // Em desenvolvimento local (localhost), usar URL relativa para preservar a porta
+  // Em desenvolvimento local (localhost), sempre incluir o orgslug na rota
   if (LEARNHOUSE_DOMAIN === 'localhost') {
-    return path
+    // Estrutura: /orgs/{orgslug}{path}
+    return `/orgs/${orgslug}${path}`
   }
 
   const multi_org = isMultiOrgModeEnabled()

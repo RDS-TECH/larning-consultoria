@@ -39,35 +39,35 @@ function CourseOverviewPage(props: { params: Promise<CourseOverviewParams> }) {
       key: 'general',
       label: 'General',
       icon: Info,
-      href: `/dash/courses/course/${params.courseuuid}/general`,
+      href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/general`),
       requiredPermission: 'update' as const
     },
     {
       key: 'content',
       label: 'Content',
       icon: GalleryVerticalEnd,
-      href: `/dash/courses/course/${params.courseuuid}/content`,
+      href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/content`),
       requiredPermission: 'update_content' as const
     },
     {
       key: 'access',
       label: 'Access',
       icon: Globe,
-      href: `/dash/courses/course/${params.courseuuid}/access`,
+      href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/access`),
       requiredPermission: 'manage_access' as const
     },
     {
       key: 'contributors',
       label: 'Contributors',
       icon: UserPen,
-      href: `/dash/courses/course/${params.courseuuid}/contributors`,
+      href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/contributors`),
       requiredPermission: 'manage_contributors' as const
     },
     {
       key: 'certification',
       label: 'Certification',
       icon: Award,
-      href: `/dash/courses/course/${params.courseuuid}/certification`,
+      href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/certification`),
       requiredPermission: 'create_certifications' as const
     }
   ]

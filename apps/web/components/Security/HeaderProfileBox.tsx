@@ -7,7 +7,7 @@ import UserAvatar from '@components/Objects/UserAvatar'
 import useAdminStatus from '@components/Hooks/useAdminStatus'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { useOrg } from '@components/Contexts/OrgContext'
-import { getUriWithoutOrg } from '@services/config/config'
+import { getUriWithoutOrg, getUriWithOrg } from '@services/config/config'
 import Tooltip from '@components/Objects/StyledElements/Tooltip/Tooltip'
 import {
   DropdownMenu,
@@ -205,20 +205,20 @@ export const HeaderProfileBox = () => {
                 <DropdownMenuSeparator />
                 {rights?.dashboard?.action_access && (
                   <DropdownMenuItem asChild>
-                    <Link href="/dash" className="flex items-center space-x-2">
+                    <Link href={getUriWithOrg(org?.slug, '/dash')} className="flex items-center space-x-2">
                       <Shield size={16} />
                       <span>Dashboard</span>
                     </Link>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem asChild>
-                  <Link href="/dash/user-account/settings/general" className="flex items-center space-x-2">
+                  <Link href={getUriWithOrg(org?.slug, '/dash/user-account/settings/general')} className="flex items-center space-x-2">
                     <UserIcon size={16} />
                     <span>User Settings</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/dash/user-account/owned" className="flex items-center space-x-2">
+                  <Link href={getUriWithOrg(org?.slug, '/dash/user-account/owned')} className="flex items-center space-x-2">
                     <Package2 size={16} />
                     <span>My Courses</span>
                   </Link>

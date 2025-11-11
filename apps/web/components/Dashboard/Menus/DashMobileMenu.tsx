@@ -7,6 +7,7 @@ import AdminAuthorization from '@components/Security/AdminAuthorization'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import ToolTip from '@components/Objects/StyledElements/Tooltip/Tooltip'
 import { useTranslations } from 'next-intl'
+import { getUriWithOrg } from '@services/config/config'
 
 function DashMobileMenu() {
   const t = useTranslations('dashboard.menu')
@@ -24,38 +25,38 @@ function DashMobileMenu() {
             </Link>
           </ToolTip>
           <ToolTip content={t('courses')} slateBlack sideOffset={8} side="top">
-            <Link href={`/dash/courses`} className="flex flex-col items-center p-2" aria-label={t('manageCourses')}>
+            <Link href={getUriWithOrg(org?.slug, '/dash/courses')} className="flex flex-col items-center p-2" aria-label={t('manageCourses')}>
               <BookCopy size={20} />
               <span className="text-xs mt-1">{t('courses')}</span>
             </Link>
           </ToolTip>
           <ToolTip content={t('assignments')} slateBlack sideOffset={8} side="top">
-            <Link href={`/dash/assignments`} className="flex flex-col items-center p-2" aria-label={t('manageAssignments')}>
+            <Link href={getUriWithOrg(org?.slug, '/dash/assignments')} className="flex flex-col items-center p-2" aria-label={t('manageAssignments')}>
               <Backpack size={20} />
               <span className="text-xs mt-1">{t('assignments')}</span>
             </Link>
           </ToolTip>
           <ToolTip content={t('payments')} slateBlack sideOffset={8} side="top">
-            <Link href={`/dash/payments/customers`} className="flex flex-col items-center p-2" aria-label={t('managePayments')}>
+            <Link href={getUriWithOrg(org?.slug, '/dash/payments/customers')} className="flex flex-col items-center p-2" aria-label={t('managePayments')}>
               <BadgeDollarSign size={20} />
               <span className="text-xs mt-1">{t('payments')}</span>
             </Link>
           </ToolTip>
           <ToolTip content={t('users')} slateBlack sideOffset={8} side="top">
-            <Link href={`/dash/users/settings/users`} className="flex flex-col items-center p-2" aria-label={t('manageUsers')}>
+            <Link href={getUriWithOrg(org?.slug, '/dash/users/settings/users')} className="flex flex-col items-center p-2" aria-label={t('manageUsers')}>
               <Users size={20} />
               <span className="text-xs mt-1">{t('users')}</span>
             </Link>
           </ToolTip>
           <ToolTip content={t('organization')} slateBlack sideOffset={8} side="top">
-            <Link href={`/dash/org/settings/general`} className="flex flex-col items-center p-2" aria-label={t('organizationSettings')}>
+            <Link href={getUriWithOrg(org?.slug, '/dash/org/settings/general')} className="flex flex-col items-center p-2" aria-label={t('organizationSettings')}>
               <School size={20} />
               <span className="text-xs mt-1">{t('organization')}</span>
             </Link>
           </ToolTip>
         </AdminAuthorization>
         <ToolTip content={t('settings')} slateBlack sideOffset={8} side="top">
-          <Link href={'/dash/user-account/settings/general'} className="flex flex-col items-center p-2" aria-label={t('userAccountSettings')}>
+          <Link href={getUriWithOrg(org?.slug, '/dash/user-account/settings/general')} className="flex flex-col items-center p-2" aria-label={t('userAccountSettings')}>
             <Settings size={20} />
             <span className="text-xs mt-1">{t('settings')}</span>
           </Link>

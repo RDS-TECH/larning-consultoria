@@ -184,6 +184,70 @@
       "pleaseSwitch": "Por favor, mude para um desktop para visualizar e gerenciar"
     }
   },
+  "buttons": {
+    "newCourse": "Novo Curso",
+    "newCollection": "Nova Coleção"
+  },
+  "onboarding": {
+    "trigger": {
+      "label": "Integração"
+    },
+    "buttons": {
+      "next": "Próximo",
+      "end": "Encerrar",
+      "finish": "Concluir Integração"
+    },
+    "steps": {
+      "welcome": {
+        "title": "Ensine o mundo!",
+        "description": "Bem-vindo ao LearnHouse, um LMS projetado para simplicidade, facilidade de uso e desempenho. Conheça a nova forma de criar, compartilhar e interagir com conteúdo educacional."
+      },
+      "courses": {
+        "title": "Criar Cursos",
+        "description": "Os cursos são os principais blocos de construção do LearnHouse, eles sempre contêm Capítulos e os Capítulos contêm Atividades.",
+        "createButton": "Criar Novo Curso"
+      },
+      "activities": {
+        "title": "Atividades",
+        "description": "Atividades são elementos que você pode adicionar aos seus Cursos através de Capítulos, elas podem ser: Páginas Dinâmicas, Vídeos, Documentos, Questionários e mais em breve.",
+        "learnMoreButton": "Saiba mais sobre atividades"
+      },
+      "editor": {
+        "title": "Páginas Dinâmicas e O Editor",
+        "description": "Páginas dinâmicas são páginas com conteúdo dinâmico, como páginas do Notion elas podem conter vários componentes como Questionários, Imagens, Vídeos, Documentos etc.",
+        "learnMoreButton": "Saiba mais sobre Páginas Dinâmicas e O Editor"
+      },
+      "ai": {
+        "title": "Inteligência Artificial",
+        "description": "Ferramentas de pensamento feitas para professores e alunos, com conhecimento contextual pode responder com base em seus cursos e no conteúdo único que você cria no LearnHouse.",
+        "learnMoreButton": "Saiba mais sobre LearnHouse AI"
+      },
+      "usergroups": {
+        "title": "Agrupar alunos e otimizar o acesso",
+        "description": "Com Grupos de Usuários você pode separar alunos por Grupos e dar acesso a Cursos dependendo de suas necessidades.",
+        "createButton": "Criar Grupos de Usuários"
+      },
+      "access": {
+        "title": "Escolha se deseja disponibilizar Cursos na Web ou não",
+        "description": "Você pode escolher tornar seus Cursos descobríveis por mecanismos de busca e acessíveis a usuários não autenticados ou apenas fornecê-los a Usuários autenticados."
+      },
+      "assignments": {
+        "title": "Criar e Avaliar Tarefas",
+        "description": "Envolva os alunos com tarefas, acompanhe seu progresso e forneça feedback através do nosso sistema de avaliação intuitivo.",
+        "createButton": "Criar Tarefa"
+      },
+      "payments": {
+        "title": "Monetize Seu Conteúdo",
+        "description": "Configure planos de pagamento, venda cursos e gerencie assinaturas com nosso sistema de pagamento integrado.",
+        "settingsButton": "Configurações de Pagamento"
+      },
+      "more": {
+        "title": "Ao infinito e além",
+        "description": "Para saber mais sobre o LearnHouse, você é bem-vindo para seguir nossos cursos originais na Universidade LearnHouse.",
+        "universityButton": "Universidade LearnHouse"
+      }
+    }
+  },
   "dashboard": {
     "home": {
       "title": "Painel",
@@ -229,6 +293,26 @@
       "organizationSettings": "Configurações da organização",
       "userAccountSettings": "Configurações da conta de usuário",
       "goToDashboardHome": "Ir para o início do painel"
+    },
+    "misc": {
+      "breadcrumbs": {
+        "courses": "Cursos",
+        "assignments": "Tarefas",
+        "accountSettings": "Configurações da Conta",
+        "orgUsers": "Usuários da organização",
+        "orgSettings": "Configurações da Organização",
+        "payments": "Pagamentos"
+      }
+    },
+    "userAccount": {
+      "settings": {
+        "title": "Configurações da Conta",
+        "tabs": {
+          "general": "Geral",
+          "profile": "Perfil",
+          "security": "Senha"
+        }
+      }
     }
   },
   "courses": {

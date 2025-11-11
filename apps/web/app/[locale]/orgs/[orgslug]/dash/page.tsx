@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import React from 'react'
-import learnhousetextlogo from '../../../../public/learnhouse_logo.png'
 import { BookCopy, School, Settings, University, Users } from 'lucide-react'
 import Link from 'next/link'
 import AdminAuthorization from '@components/Security/AdminAuthorization'
 import { getTranslations } from 'next-intl/server'
+import { getUriWithOrg } from '@services/config/config'
 
-async function DashboardHome() {
+async function DashboardHome({ params }: { params: Promise<{ orgslug: string }> }) {
+  const { orgslug } = await params;
   const t = await getTranslations('dashboard.home');
   return (
     <div className="flex items-center justify-center mx-auto min-h-screen flex-col p-4 sm:mb-0 mb-16">
@@ -14,7 +15,8 @@ async function DashboardHome() {
         <Image
           alt="learnhouse logo"
           width={230}
-          src={learnhousetextlogo}
+          height={100}
+          src="/learnhouse_logo.png"
           className="w-48 sm:w-auto"
         />
       </div>
@@ -22,19 +24,19 @@ async function DashboardHome() {
         <div className="flex flex-col sm:flex-row gap-4 lg:gap-10">
           {/* Card components */}
           <DashboardCard
-            href="/dash/courses"
+            href={getUriWithOrg(orgslug, '/dash/courses')}
             icon={<BookCopy className="mx-auto text-gray-500/100" size={50} />}
             title={t('courses.title')}
             description={t('courses.description')}
           />
           <DashboardCard
-            href="/dash/org/settings/general"
+            href={getUriWithOrg(orgslug, '/dash/org/settings/general')}
             icon={<School className="mx-auto text-gray-500/100" size={50} />}
             title={t('organization.title')}
             description={t('organization.description')}
           />
           <DashboardCard
-            href="/dash/users/settings/users"
+            href={getUriWithOrg(orgslug, '/dash/users/settings/users')}
             icon={<Users className="mx-auto text-gray-500/100" size={50} />}
             title={t('users.title')}
             description={t('users.description')}
@@ -60,7 +62,7 @@ async function DashboardHome() {
         </AdminAuthorization>
 
         <Link
-          href={'/dash/user-account/settings/general'}
+          href={getUriWithOrg(orgslug, '/dash/user-account/settings/general')}
           className="flex bg-white shadow-lg p-4 items-center rounded-lg mx-auto hover:scale-105 transition-all ease-linear cursor-pointer max-w-md"
         >
           <div className="flex flex-col sm:flex-row mx-auto gap-2 sm:gap-3 items-center text-center sm:text-left">

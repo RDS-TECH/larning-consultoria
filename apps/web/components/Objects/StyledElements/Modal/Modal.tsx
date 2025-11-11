@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@components/ui/dialog"
+import { VisuallyHidden } from "@components/ui/visually-hidden"
 import { ButtonBlack } from '../Form/Form'
 import { cn } from "@/lib/utils"
 
@@ -60,11 +61,17 @@ const Modal = (params: ModalParams) => {
         params.customHeight,
         params.customWidth
       )}>
-        {params.dialogTitle && params.dialogDescription && (
+        {params.dialogTitle ? (
           <DialogHeader className="text-center flex flex-col space-y-0.5 w-full">
             <DialogTitle className="text-lg sm:text-xl md:text-2xl">{params.dialogTitle}</DialogTitle>
-            <DialogDescription className="text-sm sm:text-base">{params.dialogDescription}</DialogDescription>
+            {params.dialogDescription && (
+              <DialogDescription className="text-sm sm:text-base">{params.dialogDescription}</DialogDescription>
+            )}
           </DialogHeader>
+        ) : (
+          <VisuallyHidden>
+            <DialogTitle>Dialog</DialogTitle>
+          </VisuallyHidden>
         )}
         <div className="overflow-y-auto max-h-[calc(90vh-120px)] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
           <div className="pr-2">

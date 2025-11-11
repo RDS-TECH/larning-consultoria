@@ -16,10 +16,14 @@ function HomeClient() {
   const t = useTranslations('dashboard.home.welcome');
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
-  const { data: orgs } = useSWR(`${getAPIUrl()}orgs/user/page/1/limit/10`, (url) => swrFetcher(url, access_token))
+  const { data: orgs, error } = useSWR(`${getAPIUrl()}orgs/user/page/1/limit/10`, (url) => swrFetcher(url, access_token))
 
   useEffect(() => {
-  }, [session, orgs])
+    console.log('🔍 DEBUG Session:', session);
+    console.log('🔑 DEBUG Token:', access_token);
+    console.log('🏢 DEBUG Orgs:', orgs);
+    console.log('❌ DEBUG Error:', error);
+  }, [session, orgs, error, access_token])
   return (
     <div className='flex flex-col'>
 

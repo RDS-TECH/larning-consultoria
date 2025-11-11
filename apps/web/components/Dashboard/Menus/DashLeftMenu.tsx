@@ -169,7 +169,7 @@ function DashLeftMenu() {
                 side="right"
               >
                 <Link
-                    href={'/dash/user-account/owned'}
+                    href={getUriWithOrg(org?.slug, '/dash/user-account/owned')}
                     className="py-1"
                 >
                   <Package2
@@ -185,7 +185,7 @@ function DashLeftMenu() {
                 side="right"
               >
                 <Link
-                  href={'/dash/user-account/settings/general'}
+                  href={getUriWithOrg(org?.slug, '/dash/user-account/settings/general')}
                   className="py-1"
                 >
                   <Settings

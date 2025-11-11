@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { getOrganizationContextInfo } from '@services/organizations/orgs'
 import Trail from './trail'
 import { getServerSession } from 'next-auth'
-import { nextAuthOptions } from '../../../auth/options'
+import { nextAuthOptions } from '../../../../auth/options'
 
 type MetadataProps = {
   params: Promise<{ orgslug: string }>

@@ -22,7 +22,7 @@ declare global {
 export const isDevEnv = LEARNHOUSE_TOP_DOMAIN == 'localhost' ? true : false
 
 export const nextAuthOptions = {
-  debug: true,
+  debug: false,
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -55,28 +55,23 @@ export const nextAuthOptions = {
       clientSecret: process.env.LEARNHOUSE_GOOGLE_CLIENT_SECRET || '',
     }),
   ],
+  session: {
+    strategy: 'jwt',
+    maxAge: 24 * 60 * 60, // 24 hours
+  },
   pages: {
     signIn: getUriWithOrg('auth', '/'),
     verifyRequest: getUriWithOrg('auth', '/'),
     error: getUriWithOrg('auth', '/'), // Error code passed in query string as ?error=
   },
-  cookies: {
-    sessionToken: {
-      name: `${!isDevEnv ? '__Secure-' : ''}next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
-        domain: `.${LEARNHOUSE_TOP_DOMAIN}`,
-        secure: !isDevEnv,
-      },
-    },
-  },
   callbacks: {
     async jwt({ token, user, account }: any) {
       // First sign in with Credentials provider
       if (account?.provider == 'credentials' && user) {
+        // Add expiry field if missing (1 hour from now)
+        if (user.tokens && !user.tokens.expiry) {
+          user.tokens.expiry = Date.now() + (60 * 60 * 1000);
+        }
         token.user = user;
       }
 
@@ -88,6 +83,10 @@ export const nextAuthOptions = {
           account.access_token
         );
         let userFromOAuth = await getResponseMetadata(unsanitized_req);
+        // Add expiry field if missing (1 hour from now)
+        if (userFromOAuth.data.tokens && !userFromOAuth.data.tokens.expiry) {
+          userFromOAuth.data.tokens.expiry = Date.now() + (60 * 60 * 1000);
+        }
         token.user = userFromOAuth.data;
       }
 
@@ -95,7 +94,7 @@ export const nextAuthOptions = {
       if (token?.user?.tokens) {
         const tokenExpiry = token.user.tokens.expiry || 0;
         const oneMinute = 1 * 60 * 1000;
-        
+
         if (Date.now() + oneMinute >= tokenExpiry) {
           const RefreshedToken = await getNewAccessTokenUsingRefreshTokenServer(
             token?.user?.tokens?.refresh_token
@@ -113,6 +112,7 @@ export const nextAuthOptions = {
           };
         }
       }
+
       return token;
     },
     async session({ session, token }: any) {
@@ -121,7 +121,7 @@ export const nextAuthOptions = {
         // Cache the session for 1 minute to refresh every minute
         const cacheKey = `user_session_${token.user.tokens.access_token}`;
         let cachedSession = global.sessionCache?.[cacheKey];
-        
+
         if (cachedSession && Date.now() - cachedSession.timestamp < 1 * 60 * 1000) {
           return cachedSession.data;
         }

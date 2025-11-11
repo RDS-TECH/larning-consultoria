@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import { getUriWithOrg } from '@services/config/config';
 import { useOrg } from '@components/Contexts/OrgContext';
 import useAdminStatus from '@components/Hooks/useAdminStatus';
+import { useTranslations } from 'next-intl';
 
 interface OnboardingStep {
   imageSrc: StaticImageData;
@@ -29,6 +30,7 @@ interface OnboardingStep {
 }
 
 const Onboarding: React.FC = () => {
+  const t = useTranslations('onboarding');
   const [currentStep, setCurrentStep] = useState(() => {
     // Initialize with saved step or 0
     const savedStep = localStorage.getItem('onboardingLastStep');
@@ -60,16 +62,16 @@ const Onboarding: React.FC = () => {
   const onboardingData: OnboardingStep[] = [
     {
       imageSrc: OnBoardWelcome,
-      title: 'Teach the world!',
-      description: 'Welcome to LearnHouse, a LMS engineered for simplicity, ease of use and performance, meet the new way to create, share, and engage with educational content.',
+      title: t('steps.welcome.title'),
+      description: t('steps.welcome.description'),
     },
     {
       imageSrc: OnBoardCourses,
-      title: 'Create Courses',
-      description: 'Courses are the main building blocks of LearnHouse, they always contain Chapters and Chapters contain Activities.',
+      title: t('steps.courses.title'),
+      description: t('steps.courses.description'),
       buttons: [
         {
-          label: 'Create New Course',
+          label: t('steps.courses.createButton'),
           action: () => router.push(getUriWithOrg(org?.slug, '/courses?new=true')),
           icon: <Book size={16} />,
         },
@@ -77,11 +79,11 @@ const Onboarding: React.FC = () => {
     },
     {
       imageSrc: OnBoardActivities,
-      title: 'Activities',
-      description: 'Activities are elements you can add to your Courses via Chapters, they can be : Dynamic Pages, Videos, Documents, Quizz and more soon.',
+      title: t('steps.activities.title'),
+      description: t('steps.activities.description'),
       buttons: [
         {
-          label: 'Learn more about activities',
+          label: t('steps.activities.learnMoreButton'),
           action: () => window.open('https://university.learnhouse.io/course/be89716c-9992-44bb-81df-ef3d76e355ba', '_blank'),
           icon: <Info size={16} />,
         },
@@ -89,11 +91,11 @@ const Onboarding: React.FC = () => {
     },
     {
       imageSrc: OnBoardEditor,
-      title: 'Dynamic pages and The Editor',
-      description: 'Dynamic pages are pages with dynamic content, like Notion pages they can contain various components like Quizzes, Images, Videos, Documents etc',
+      title: t('steps.editor.title'),
+      description: t('steps.editor.description'),
       buttons: [
         {
-          label: 'Learn more about Dynamic Pages and The Editor',
+          label: t('steps.editor.learnMoreButton'),
           action: () => window.open('https://university.learnhouse.io/course/be89716c-9992-44bb-81df-ef3d76e355ba', '_blank'),
           icon: <Info size={16} />,
         },
@@ -101,11 +103,11 @@ const Onboarding: React.FC = () => {
     },
     {
       imageSrc: OnBoardAI,
-      title: 'Artificial Intelligence',
-      description: 'Tools for tought made for teachers and students alike, context aware it can reply based on your courses and the unique content you create on LearnHouse',
+      title: t('steps.ai.title'),
+      description: t('steps.ai.description'),
       buttons: [
         {
-          label: 'Learn more about LearnHouse AI',
+          label: t('steps.ai.learnMoreButton'),
           action: () => window.open('https://docs.learnhouse.app/features/ai/students', '_blank'),
           icon: <Sparkle size={16} />,
         },
@@ -113,11 +115,11 @@ const Onboarding: React.FC = () => {
     },
     {
       imageSrc: OnBoardUGs,
-      title: 'Group students and streamline access ',
-      description: 'With UserGroups you can separate students by Groups and give access to Courses depending on their needs',
+      title: t('steps.usergroups.title'),
+      description: t('steps.usergroups.description'),
       buttons: [
         {
-          label: 'Create UserGroups',
+          label: t('steps.usergroups.createButton'),
           action: () => router.push(getUriWithOrg(org?.slug, '/dash/users/settings/usergroups')),
           icon: <SquareUser size={16} />,
         },
@@ -125,19 +127,19 @@ const Onboarding: React.FC = () => {
     },
     {
       imageSrc: OnBoardAccess,
-      title: 'Choose whether to make Courses available on the Web or not ',
-      description: 'You can choose to make your Courses discoverable from search engines and accesible to non authenticated users or to only give it to authenticated Users',
+      title: t('steps.access.title'),
+      description: t('steps.access.description'),
       buttons: [
 
       ],
     },
     {
       imageSrc: OnBoardAssignments,
-      title: 'Create and Grade Assignments',
-      description: 'Engage students with assignments, track their progress, and provide feedback through our intuitive grading system.',
+      title: t('steps.assignments.title'),
+      description: t('steps.assignments.description'),
       buttons: [
         {
-          label: 'Create Assignment',
+          label: t('steps.assignments.createButton'),
           action: () => router.push(getUriWithOrg(org?.slug, '/dash/assignments?new=true')),
           icon: <Book size={16} />,
         },
@@ -145,11 +147,11 @@ const Onboarding: React.FC = () => {
     },
     {
       imageSrc: OnBoardPayments,
-      title: 'Monetize Your Content',
-      description: 'Set up payment plans, sell courses, and manage subscriptions with our integrated payment system.',
+      title: t('steps.payments.title'),
+      description: t('steps.payments.description'),
       buttons: [
         {
-          label: 'Payment Settings',
+          label: t('steps.payments.settingsButton'),
           action: () => router.push(getUriWithOrg(org?.slug, '/dash/payments/customers')),
           icon: <CreditCard size={16} />,
         },
@@ -157,11 +159,11 @@ const Onboarding: React.FC = () => {
     },
     {
       imageSrc: OnBoardMore,
-      title: 'To infinity and beyond',
-      description: "To Learn more about LearnHouse, you're welcome to follow our Original courses on the LearnHouse University",
+      title: t('steps.more.title'),
+      description: t('steps.more.description'),
       buttons: [
         {
-          label: 'LearnHouse University',
+          label: t('steps.more.universityButton'),
           action: () => window.open('https://university.learnhouse.io', '_blank'),
           icon: <Globe size={16} />,
         },
@@ -256,9 +258,9 @@ const Onboarding: React.FC = () => {
           <div className='fixed pb-10 w-full bottom-0 bg-linear-to-t from-1% from-gray-950/25 to-transparent'>
             <div className='bg-gray-950 flex space-x-2 font-bold cursor-pointer hover:bg-gray-900 shadow-md items-center text-gray-200 px-5 py-2 w-fit rounded-full mx-auto'>
               <Sprout size={20} />
-              <p>Onboarding</p>
+              <p>{t('trigger.label')}</p>
               <div className='h-2 w-2 bg-green-500 animate-pulse rounded-full'></div>
-              <div 
+              <div
                 className="ml-2 pl-2 border-l border-gray-700 cursor-pointer"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -294,6 +296,7 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
   onboardingData,
   setIsModalOpen,
 }) => {
+  const t = useTranslations('onboarding');
   const isLastStep = currentStep === onboardingData.length - 1;
 
   return (
@@ -336,7 +339,7 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
               className="inline-flex items-center px-5 space-x-2 cursor-pointer py-1 rounded-full text-gray-600 antialiased font-bold bg-gray-100 hover:bg-gray-200"
               onClick={skipOnboarding}
             >
-              <p>End</p>
+              <p>{t('buttons.end')}</p>
               <Check size={16} />
             </div>
           </div>
@@ -356,7 +359,7 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                 className="inline-flex items-center px-5 space-x-2 cursor-pointer py-1 rounded-full text-gray-200 antialiased font-bold bg-black hover:bg-gray-700 shadow-md whitespace-nowrap"
                 onClick={nextStep}
               >
-                <p>Finish Onboarding</p>
+                <p>{t('buttons.finish')}</p>
                 <Check size={16} />
               </div>
             ) : (
@@ -364,7 +367,7 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({
                 className="inline-flex items-center px-5 space-x-2 cursor-pointer py-1 rounded-full text-gray-200 antialiased font-bold bg-black hover:bg-gray-700 shadow-md whitespace-nowrap"
                 onClick={nextStep}
               >
-                <p>Next</p>
+                <p>{t('buttons.next')}</p>
                 <ArrowRight size={16} />
               </div>
             )}

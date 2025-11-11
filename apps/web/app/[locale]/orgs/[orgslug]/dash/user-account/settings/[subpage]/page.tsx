@@ -9,6 +9,7 @@ import { Info, Lock, LucideIcon, User } from 'lucide-react'
 import BreadCrumbs from '@components/Dashboard/Misc/BreadCrumbs'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import UserProfile from '@components/Dashboard/Pages/UserAccount/UserProfile/UserProfile';
+import { useTranslations } from 'next-intl'
 
 interface User {
   username: string;
@@ -32,35 +33,14 @@ type NavigationItem = {
   component: React.ComponentType
 }
 
-const navigationItems: NavigationItem[] = [
-  {
-    id: 'general',
-    label: 'General',
-    icon: Info,
-    component: UserEditGeneral
-  },
-  {
-    id: 'profile',
-    label: 'Profile',
-    icon: User,
-    component: UserProfile
-  },
-  {
-    id: 'security',
-    label: 'Password',
-    icon: Lock,
-    component: UserEditPassword
-  },
-]
-
-const SettingsNavigation = ({ 
-  items, 
-  currentPage, 
-  orgslug 
-}: { 
+const SettingsNavigation = ({
+  items,
+  currentPage,
+  orgslug
+}: {
   items: NavigationItem[]
   currentPage: string
-  orgslug: string 
+  orgslug: string
 }) => (
   <div className="flex space-x-5 font-black text-sm">
     {items.map((item) => (
@@ -86,6 +66,28 @@ const SettingsNavigation = ({
 function SettingsPage({ params }: { params: Promise<SettingsParams> }) {
   const { subpage, orgslug } = use(params);
   const session = useLHSession() as Session;
+  const t = useTranslations('dashboard.userAccount.settings');
+
+  const navigationItems: NavigationItem[] = [
+    {
+      id: 'general',
+      label: t('tabs.general'),
+      icon: Info,
+      component: UserEditGeneral
+    },
+    {
+      id: 'profile',
+      label: t('tabs.profile'),
+      icon: User,
+      component: UserProfile
+    },
+    {
+      id: 'security',
+      label: t('tabs.security'),
+      icon: Lock,
+      component: UserEditPassword
+    },
+  ]
 
   useEffect(() => {}, [session])
 
@@ -100,7 +102,7 @@ function SettingsPage({ params }: { params: Promise<SettingsParams> }) {
         />
         <div className="my-2 tracking-tighter">
           <div className="w-100 flex justify-between">
-            <div className="pt-3 flex font-bold text-4xl">Account Settings</div>
+            <div className="pt-3 flex font-bold text-4xl">{t('title')}</div>
           </div>
         </div>
         <SettingsNavigation 
