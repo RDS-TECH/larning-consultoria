@@ -10,6 +10,7 @@ import { useLHSession } from '@components/Contexts/LHSessionContext'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import useSWR, { mutate } from 'swr'
+import { useTranslations } from 'next-intl'
 
 type EditCourseAccessProps = {
     orgslug: string
@@ -17,7 +18,7 @@ type EditCourseAccessProps = {
 }
 
 function EditCourseAccess(props: EditCourseAccessProps) {
-import { useTranslations } from 'next-intl'
+    const t = useTranslations('courses.edit.access');
     const session = useLHSession() as any;
     const access_token = session?.data?.tokens?.access_token;
     const course = useCourse() as any;
@@ -40,7 +41,6 @@ import { useTranslations } from 'next-intl'
                 const updatedCourse = {
                     ...courseStructure,
                     public: isClientPublic,
-  const t = useTranslations('courses.edit.access');
                 };
                 dispatchCourse({ type: 'setCourseStructure', payload: updatedCourse });
             }

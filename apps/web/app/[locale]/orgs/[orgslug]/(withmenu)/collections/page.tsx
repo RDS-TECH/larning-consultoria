@@ -12,6 +12,7 @@ import { getServerSession } from 'next-auth'
 import { getOrgCollections } from '@services/courses/collections'
 import { getOrgThumbnailMediaDirectory } from '@services/media/media'
 import ContentPlaceHolderIfUserIsNotAdmin from '@components/Objects/ContentPlaceHolder'
+import { getTranslations } from 'next-intl/server'
 
 type MetadataProps = {
   params: Promise<{ orgslug: string; courseid: string }>
@@ -20,6 +21,8 @@ type MetadataProps = {
 
 export async function generateMetadata(props: MetadataProps): Promise<Metadata> {
   const params = await props.params;
+  const t = await getTranslations('collections')
+
   // Get Org context information
   const org = await getOrganizationContextInfo(params.orgslug, {
     revalidate: 0,
@@ -28,8 +31,8 @@ export async function generateMetadata(props: MetadataProps): Promise<Metadata> 
 
   // SEO
   return {
-    title: `Collections — ${org.name}`,
-    description: `Collections of courses from ${org.name}`,
+    title: `${t('title')} — ${org.name}`,
+    description: `${t('title')} — ${org.name}`,
     robots: {
       index: true,
       follow: true,
@@ -41,8 +44,8 @@ export async function generateMetadata(props: MetadataProps): Promise<Metadata> 
       },
     },
     openGraph: {
-      title: `Collections — ${org.name}`,
-      description: `Collections of courses from ${org.name}`,
+      title: `${t('title')} — ${org.name}`,
+      description: `${t('title')} — ${org.name}`,
       type: 'website',
       images: [
         {
@@ -57,6 +60,7 @@ export async function generateMetadata(props: MetadataProps): Promise<Metadata> 
 }
 
 const CollectionsPage = async (params: any) => {
+  const t = await getTranslations('collections')
   const session = await getServerSession(nextAuthOptions)
   const access_token = session?.tokens?.access_token
   const orgslug = (await params.params).orgslug
@@ -75,7 +79,7 @@ const CollectionsPage = async (params: any) => {
     <GeneralWrapperStyled>
       <div className="flex flex-col space-y-4 mb-8">
         <div className="flex items-center justify-between">
-          <TypeOfContentTitle title="Collections" type="col" />
+          <TypeOfContentTitle title={t('title')} type="col" />
           <AuthenticatedClientElement
             ressourceType="collections"
             action="create"
@@ -128,11 +132,11 @@ const CollectionsPage = async (params: any) => {
                   </svg>
                 </div>
                 <h1 className="text-xl font-bold text-gray-600 mb-2">
-                  No collections yet
+                  {t('emptyState.title')}
                 </h1>
                 <p className="text-md text-gray-400">
                   <ContentPlaceHolderIfUserIsNotAdmin
-                    text="Create a collection to add content"
+                    text={t('emptyState.message')}
                   />
                 </p>
                 <div className="mt-4 flex justify-center">

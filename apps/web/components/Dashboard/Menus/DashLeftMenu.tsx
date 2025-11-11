@@ -54,7 +54,7 @@ function DashLeftMenu() {
         <div className="flex h-20 mt-6">
           <Link
             className="flex flex-col items-center mx-auto space-y-3"
-            href={'/'}
+            href={getUriWithOrg(org?.slug, '/')}
           >
             <ToolTip
               content={t('backToHome')}
@@ -89,7 +89,7 @@ function DashLeftMenu() {
               <Link
                 aria-label={t('home')}
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
-                href={`/dash`}
+                href={getUriWithOrg(org?.slug, '/dash')}
               >
                 <Home size={18} />
               </Link>
@@ -98,7 +98,7 @@ function DashLeftMenu() {
               <Link
                 aria-label={t('courses')}
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
-                href={`/dash/courses`}
+                href={getUriWithOrg(org?.slug, '/dash/courses')}
               >
                 <BookCopy size={18} />
               </Link>
@@ -107,7 +107,7 @@ function DashLeftMenu() {
               <Link
                 aria-label={t('assignments')}
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
-                href={`/dash/assignments`}
+                href={getUriWithOrg(org?.slug, '/dash/assignments')}
               >
                 <Backpack size={18} />
               </Link>
@@ -116,7 +116,7 @@ function DashLeftMenu() {
               <Link
                 aria-label={t('users')}
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
-                href={`/dash/users/settings/users`}
+                href={getUriWithOrg(org?.slug, '/dash/users/settings/users')}
               >
                 <Users size={18} />
               </Link>
@@ -126,7 +126,7 @@ function DashLeftMenu() {
                 <Link
                   aria-label={t('payments')}
                   className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
-                  href={`/dash/payments/customers`}
+                  href={getUriWithOrg(org?.slug, '/dash/payments/customers')}
                 >
                   <BadgeDollarSign size={18} />
                 </Link>
@@ -141,7 +141,7 @@ function DashLeftMenu() {
               <Link
                 aria-label="Organization"
                 className="bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all ease-linear"
-                href={`/dash/org/settings/general`}
+                href={getUriWithOrg(org?.slug, '/dash/org/settings/general')}
               >
                 <School size={18} />
               </Link>

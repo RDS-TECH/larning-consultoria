@@ -4,6 +4,7 @@ import { Backpack, Book, ChevronRight, CreditCard, School, User, Users } from 'l
 import Link from 'next/link'
 import React from 'react'
 import { useTranslations } from 'next-intl'
+import { getUriWithOrg } from '@services/config/config'
 
 type BreadCrumbsProps = {
   type: 'courses' | 'user' | 'users' | 'org' | 'orgusers' | 'assignments' | 'payments'
@@ -23,7 +24,7 @@ function BreadCrumbs(props: BreadCrumbsProps) {
             <div className="flex space-x-2 items-center">
               {' '}
               <Book className="text-gray" size={14}></Book>
-              <Link href="/dash/courses">{t('courses')}</Link>
+              <Link href={getUriWithOrg(org?.slug, '/dash/courses')}>{t('courses')}</Link>
             </div>
           ) : (
             ''
@@ -32,7 +33,7 @@ function BreadCrumbs(props: BreadCrumbsProps) {
             <div className="flex space-x-2 items-center">
               {' '}
               <Backpack className="text-gray" size={14}></Backpack>
-              <Link href="/dash/assignments">{t('assignments')}</Link>
+              <Link href={getUriWithOrg(org?.slug, '/dash/assignments')}>{t('assignments')}</Link>
             </div>
           ) : (
             ''
@@ -41,7 +42,7 @@ function BreadCrumbs(props: BreadCrumbsProps) {
             <div className="flex space-x-2 items-center">
               {' '}
               <User className="text-gray" size={14}></User>
-              <Link href="/dash/user-account/settings/general">
+              <Link href={getUriWithOrg(org?.slug, '/dash/user-account/settings/general')}>
                 {t('accountSettings')}
               </Link>
             </div>
@@ -52,7 +53,7 @@ function BreadCrumbs(props: BreadCrumbsProps) {
             <div className="flex space-x-2 items-center">
               {' '}
               <Users className="text-gray" size={14}></Users>
-              <Link href="/dash/users/settings/users">{t('orgUsers')}</Link>
+              <Link href={getUriWithOrg(org?.slug, '/dash/users/settings/users')}>{t('orgUsers')}</Link>
             </div>
           ) : (
             ''
@@ -62,7 +63,7 @@ function BreadCrumbs(props: BreadCrumbsProps) {
             <div className="flex space-x-2 items-center">
               {' '}
               <School className="text-gray" size={14}></School>
-              <Link href="/dash/users">{t('orgSettings')}</Link>
+              <Link href={getUriWithOrg(org?.slug, '/dash/users')}>{t('orgSettings')}</Link>
             </div>
           ) : (
             ''
@@ -71,7 +72,7 @@ function BreadCrumbs(props: BreadCrumbsProps) {
             <div className="flex space-x-2 items-center">
               {' '}
               <CreditCard className="text-gray" size={14}></CreditCard>
-              <Link href="/dash/payments">{t('payments')}</Link>
+              <Link href={getUriWithOrg(org?.slug, '/dash/payments')}>{t('payments')}</Link>
             </div>
           ) : (
             ''

@@ -4,6 +4,7 @@ import { getOrganizationContextInfo } from '@services/organizations/orgs'
 import Trail from './trail'
 import { getServerSession } from 'next-auth'
 import { nextAuthOptions } from '../../../../auth/options'
+import { getTranslations } from 'next-intl/server'
 
 type MetadataProps = {
   params: Promise<{ orgslug: string }>
@@ -12,6 +13,7 @@ type MetadataProps = {
 
 export async function generateMetadata(props: MetadataProps): Promise<Metadata> {
   const params = await props.params;
+  const t = await getTranslations('trail')
   const session = await getServerSession(nextAuthOptions)
   const access_token = session?.tokens?.access_token
   // Get Org context information
@@ -20,9 +22,8 @@ export async function generateMetadata(props: MetadataProps): Promise<Metadata> 
     tags: ['organizations'],
   }, access_token)
   return {
-    title: 'Trail — ' + org.name,
-    description:
-      'Check your progress using trail and easily navigate through your courses.',
+    title: `${t('pageTitle')} — ${org.name}`,
+    description: t('pageDescription'),
   }
 }
 

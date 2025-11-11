@@ -57,51 +57,51 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
     }, 0);
   };
 
-  // Parse the JSON string to items array when the component mounts or value changes
+  // Initialize on first mount
   useEffect(() => {
+    if (initializedRef.current) return;
+
     try {
       if (value) {
         const parsedItems = JSON.parse(value);
         if (Array.isArray(parsedItems)) {
           setItems(parsedItems);
           initializedRef.current = true;
-        } else if (!initializedRef.current) {
-          // Initialize with one empty item if no valid array and not already initialized
-          const newItem: LearningItem = {
-            id: Date.now().toString(),
-            text: '',
-            emoji: '📝',
-          };
-          setItems([newItem]);
-          onChange(JSON.stringify([newItem]));
-          initializedRef.current = true;
+          return;
         }
-      } else if (!initializedRef.current) {
-        // Initialize with one empty item if no value and not already initialized
-        const newItem: LearningItem = {
-          id: Date.now().toString(),
-          text: '',
-          emoji: '📝',
-        };
-        setItems([newItem]);
-        onChange(JSON.stringify([newItem]));
-        initializedRef.current = true;
       }
     } catch (e) {
       console.error('Error parsing learning items:', e);
-      // Initialize with one empty item on error if not already initialized
-      if (!initializedRef.current) {
-        const newItem: LearningItem = {
-          id: Date.now().toString(),
-          text: '',
-          emoji: '📝',
-        };
-        setItems([newItem]);
-        onChange(JSON.stringify([newItem]));
-        initializedRef.current = true;
-      }
     }
-  }, [value]);
+
+    // If no valid value, initialize with empty item
+    const newItem: LearningItem = {
+      id: Date.now().toString(),
+      text: '',
+      emoji: '📝',
+    };
+    setItems([newItem]);
+    onChange(JSON.stringify([newItem]));
+    initializedRef.current = true;
+  }, []); // Empty deps - runs only on mount
+
+  // Sync from parent when value changes (after initialization)
+  useEffect(() => {
+    if (!initializedRef.current) return;
+    if (!value) return;
+
+    try {
+      const parsedItems = JSON.parse(value);
+      if (Array.isArray(parsedItems)) {
+        setItems(prevItems => {
+          const isDifferent = JSON.stringify(prevItems) !== JSON.stringify(parsedItems);
+          return isDifferent ? parsedItems : prevItems;
+        });
+      }
+    } catch (e) {
+      console.error('Error parsing learning items:', e);
+    }
+  }, [value]); // Only depends on value, NOT onChange
 
   // Restore focus after re-render if an item was focused
   useEffect(() => {

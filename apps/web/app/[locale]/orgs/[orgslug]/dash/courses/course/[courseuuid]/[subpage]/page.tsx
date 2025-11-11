@@ -1,6 +1,6 @@
 'use client'
 import React, { use, useEffect } from 'react';
-import { CourseProvider } from '../../../../../../../../components/Contexts/CourseContext'
+import { CourseProvider } from '@components/Contexts/CourseContext'
 import Link from 'next/link'
 import { CourseOverviewTop } from '@components/Dashboard/Misc/CourseOverviewTop'
 import { motion } from 'framer-motion'

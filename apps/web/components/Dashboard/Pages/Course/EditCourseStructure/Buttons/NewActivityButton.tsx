@@ -16,9 +16,9 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { mutate } from 'swr'
 import toast from 'react-hot-toast'
+import { useTranslations } from 'next-intl'
 
 type NewActivityButtonProps = {
-import { useTranslations } from 'next-intl'
   chapterId: string
   orgslug: string
 }

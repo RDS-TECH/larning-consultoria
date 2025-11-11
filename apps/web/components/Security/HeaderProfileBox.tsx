@@ -207,29 +207,29 @@ export const HeaderProfileBox = () => {
                   <DropdownMenuItem asChild>
                     <Link href={getUriWithOrg(org?.slug, '/dash')} className="flex items-center space-x-2">
                       <Shield size={16} />
-                      <span>Dashboard</span>
+                      <span>{t('dashboard')}</span>
                     </Link>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem asChild>
                   <Link href={getUriWithOrg(org?.slug, '/dash/user-account/settings/general')} className="flex items-center space-x-2">
                     <UserIcon size={16} />
-                    <span>User Settings</span>
+                    <span>{t('userSettings')}</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href={getUriWithOrg(org?.slug, '/dash/user-account/owned')} className="flex items-center space-x-2">
                     <Package2 size={16} />
-                    <span>My Courses</span>
+                    <span>{t('myCourses')}</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem 
+                <DropdownMenuItem
                   onClick={() => signOut({ callbackUrl: '/' })}
                   className="flex items-center space-x-2 text-red-600 focus:text-red-600"
                 >
                   <LogOut size={16} />
-                  <span>Sign Out</span>
+                  <span>{t('signOut')}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

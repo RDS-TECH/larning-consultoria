@@ -302,6 +302,16 @@
         "orgUsers": "Usuários da organização",
         "orgSettings": "Configurações da Organização",
         "payments": "Pagamentos"
+      },
+      "courseOverview": {
+        "course": "Curso",
+        "rightsGuide": "Guia de Direitos"
+      },
+      "saveState": {
+        "unsavedChanges": "Alterações não salvas",
+        "saving": "Salvando...",
+        "saved": "Salvo",
+        "save": "Salvar"
       }
     },
     "userAccount": {
@@ -312,6 +322,135 @@
           "profile": "Perfil",
           "security": "Senha"
         }
+      }
+    },
+    "users": {
+      "settings": {
+        "pageTitle": "Usuários",
+        "mobileOnly": {
+          "title": "Apenas Desktop",
+          "message": "Esta página só é acessível em dispositivos desktop.",
+          "instruction": "Por favor, mude para um desktop para visualizar e gerenciar as configurações de usuários."
+        },
+        "tabs": {
+          "users": "Usuários",
+          "usergroups": "Grupos de Usuários",
+          "roles": "Funções",
+          "signups": "Cadastros & Códigos de Convite",
+          "add": "Convidar Membros"
+        },
+        "subpages": {
+          "users": {
+            "title": "Usuários",
+            "description": "Gerencie os usuários da sua organização, atribua funções e permissões"
+          },
+          "usergroups": {
+            "title": "Grupos de Usuários",
+            "description": "Crie e gerencie grupos de usuários"
+          },
+          "roles": {
+            "title": "Funções",
+            "description": "Crie e gerencie funções com permissões específicas"
+          },
+          "signups": {
+            "title": "Cadastros & Códigos de Convite",
+            "description": "Escolha como novos usuários podem se juntar à sua organização"
+          },
+          "add": {
+            "title": "Convidar Membros",
+            "description": "Convide membros para se juntar à sua organização"
+          }
+        }
+      },
+      "access": {
+        "joinMethod": {
+          "title": "Método de Adesão",
+          "description": "Escolha como novos usuários podem se juntar à sua organização",
+          "active": "Ativo",
+          "open": {
+            "title": "Aberto",
+            "description": "Qualquer pessoa pode se juntar",
+            "confirmButton": "Confirmar",
+            "confirmMessage": "Tem certeza que deseja permitir que qualquer pessoa se junte à sua organização?",
+            "confirmTitle": "Mudar para Aberto?"
+          },
+          "closed": {
+            "title": "Apenas Convite",
+            "description": "Apenas com código de convite",
+            "confirmButton": "Confirmar",
+            "confirmMessage": "Tem certeza que deseja permitir apenas adesão por convite?",
+            "confirmTitle": "Mudar para Apenas Convite?"
+          }
+        },
+        "inviteCodes": {
+          "title": "Códigos de Convite",
+          "description": "Gerencie códigos de convite para sua organização",
+          "generateCode": "Gerar Código",
+          "generateTitle": "Gerar Código de Convite",
+          "generateDescription": "Crie um novo código de convite para sua organização",
+          "deleteCode": "Excluir",
+          "deleteConfirmTitle": "Excluir Código de Convite?",
+          "deleteConfirmMessage": "Tem certeza que deseja excluir este código de convite?",
+          "table": {
+            "code": "Código",
+            "signupLink": "Link de Cadastro",
+            "type": "Tipo",
+            "expirationDate": "Data de Expiração",
+            "actions": "Ações"
+          },
+          "types": {
+            "normal": "Normal",
+            "usergroup": "Grupo de Usuários"
+          }
+        },
+        "toast": {
+          "deleting": "Excluindo...",
+          "deleteSuccess": "Código de convite excluído com sucesso",
+          "deleteFailed": "Falha ao excluir código de convite",
+          "changingMethod": "Alterando método de adesão...",
+          "changeSuccess": "Método de adesão alterado para {method} com sucesso",
+          "changeFailed": "Falha ao alterar método de adesão"
+        }
+      },
+      "add": {
+        "title": "Convidar Usuários",
+        "description": "Adicione usuários à sua organização enviando convites por e-mail",
+        "placeholder": "Digite os e-mails separados por vírgula ou quebra de linha\nexemplo@dominio.com, outro@dominio.com",
+        "inviteCode": "Código de Convite:",
+        "inviteCodeTooltip": "Selecione um código de convite para vincular os usuários convidados",
+        "sendInvites": "Enviar Convites",
+        "invitedUsers": {
+          "title": "Usuários Convidados",
+          "description": "Lista de usuários que foram convidados para a organização",
+          "table": {
+            "email": "E-mail",
+            "signupStatus": "Status do Cadastro",
+            "emailSent": "E-mail Enviado"
+          },
+          "status": {
+            "pending": "Pendente",
+            "signed": "Cadastrado",
+            "sent": "Enviado",
+            "no": "Não"
+          }
+        },
+        "toast": {
+          "sending": "Enviando convites...",
+          "sendSuccess": "Convites enviados com sucesso",
+          "sendFailed": "Falha ao enviar convites"
+        }
+      }
+    },
+    "assignments": {
+      "pageTitle": "Tarefas",
+      "noCourses": "Nenhum curso disponível",
+      "noAssignments": "Nenhuma tarefa disponível para este curso, crie tarefas do curso pelo editor de curso",
+      "labels": {
+        "course": "Curso",
+        "assignment": "Tarefa",
+        "editor": "Editor",
+        "submissions": "Submissões",
+        "courseEditor": "Editor de Curso"
       }
     }
   },
@@ -327,6 +466,60 @@
         "title": "Ainda sem cursos",
         "adminMessage": "Crie um curso para adicionar conteúdo",
         "userMessage": "Ainda não há cursos disponíveis"
+      }
+    },
+    "create": {
+      "title": "Criar Curso",
+      "description": "Criar um novo curso",
+      "fields": {
+        "name": {
+          "label": "Nome do Curso",
+          "error": "Nome do curso é obrigatório"
+        },
+        "description": {
+          "label": "Descrição"
+        },
+        "thumbnail": {
+          "label": "Miniatura do Curso",
+          "uploadImage": "Carregar Imagem",
+          "chooseFromGallery": "Escolher da Galeria"
+        },
+        "learnings": {
+          "label": "Aprendizados do Curso (O que você vai ensinar?)",
+          "placeholder": "Digite para adicionar..."
+        },
+        "tags": {
+          "label": "Tags do Curso",
+          "placeholder": "Digite para adicionar..."
+        },
+        "visibility": {
+          "label": "Visibilidade do Curso",
+          "public": "Público (Disponível para ver na internet)",
+          "private": "Privado (Privado para usuários)",
+          "placeholder": "Selecione a visibilidade"
+        }
+      },
+      "submit": "Criar Curso",
+      "toast": {
+        "creating": "Criando curso...",
+        "success": "Curso criado com sucesso",
+        "failed": "Falha ao criar curso",
+        "unsplashFailed": "Falha ao carregar imagem do Unsplash"
+      }
+    },
+    "thumbnail": {
+      "editContent": "Editar Conteúdo",
+      "settings": "Configurações",
+      "deleteCourse": "Excluir Curso",
+      "deleteConfirmButton": "Excluir Curso",
+      "deleteConfirmMessage": "Tem certeza que deseja excluir este curso?",
+      "deleteConfirmTitle": "Excluir {courseName}?",
+      "startLearning": "Começar a Aprender",
+      "updated": "Atualizado",
+      "toast": {
+        "deleting": "Excluindo curso...",
+        "deleteSuccess": "Curso excluído com sucesso",
+        "deleteFailed": "Falha ao excluir curso"
       }
     },
     "edit": {
@@ -1164,7 +1357,11 @@
     },
     "auth": {
       "login": "Entrar",
-      "signup": "Cadastrar"
+      "signup": "Cadastrar",
+      "dashboard": "Painel",
+      "userSettings": "Configurações do Usuário",
+      "myCourses": "Meus Cursos",
+      "signOut": "Sair"
     },
     "search": {
       "placeholder": "Pesquisar cursos, usuários, coleções...",
@@ -2465,7 +2662,36 @@
     "title": "Coleções",
     "deleteCollection": "Excluir Coleção",
     "confirmDelete": "Excluir '{name}'?",
-    "confirmDeleteMessage": "Tem certeza de que deseja excluir esta coleção?"
+    "confirmDeleteMessage": "Tem certeza de que deseja excluir esta coleção?",
+    "emptyState": {
+      "title": "Ainda sem coleções",
+      "message": "Crie uma coleção para adicionar conteúdo"
+    }
+  },
+  "trail": {
+    "pageTitle": "Trilha",
+    "pageDescription": "Verifique seu progresso usando a trilha e navegue facilmente pelos seus cursos.",
+    "title": "Trilha",
+    "myProgress": "Meu Progresso",
+    "quitAllCourses": "Sair de Todos os Cursos",
+    "quittingCourses": "Saindo dos Cursos ({progress}%)",
+    "confirmQuitAll": "Tem certeza de que deseja sair de todos os cursos? Esta ação não pode ser desfeita e você perderá todo o seu progresso.",
+    "confirmQuitAllTitle": "Sair de Todos os Cursos?",
+    "emptyState": {
+      "title": "Nenhum curso em andamento",
+      "message": "Comece um curso para ver seu progresso aqui"
+    },
+    "certificates": {
+      "title": "Meus Certificados",
+      "loading": "Carregando certificados...",
+      "failedToLoad": "Falha ao carregar certificados",
+      "emptyState": {
+        "title": "Nenhum certificado conquistado ainda",
+        "message": "Complete cursos para ganhar certificados"
+      },
+      "awarded": "Concedido em",
+      "verify": "Verificar"
+    }
   },
   "scripts": {
     "title": "Scripts",

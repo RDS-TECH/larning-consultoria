@@ -59,6 +59,7 @@ function CoursesHome(params: CourseProps) {
               isDialogOpen={newCourseModal}
               onOpenChange={setNewCourseModal}
               minHeight="md"
+              minWidth="lg"
               dialogContent={
                 <CreateCourseModal
                   closeModal={closeNewCourseModal}
@@ -67,11 +68,7 @@ function CoursesHome(params: CourseProps) {
               }
               dialogTitle={t('createCourse')}
               dialogDescription={t('createCourseDescription')}
-              dialogTrigger={
-                <button>
-                  <NewCourseButton />
-                </button>
-              }
+              dialogTrigger={<NewCourseButton />}
             />
           </AuthenticatedClientElement>
         </div>
@@ -120,6 +117,7 @@ function CoursesHome(params: CourseProps) {
                       isDialogOpen={newCourseModal}
                       onOpenChange={setNewCourseModal}
                       minHeight="md"
+                      minWidth="lg"
                       dialogContent={
                         <CreateCourseModal
                           closeModal={closeNewCourseModal}
@@ -128,11 +126,7 @@ function CoursesHome(params: CourseProps) {
                       }
                       dialogTitle={t('createCourse')}
                       dialogDescription={t('createCourseDescription')}
-                      dialogTrigger={
-                        <button>
-                          <NewCourseButton />
-                        </button>
-                      }
+                      dialogTrigger={<NewCourseButton />}
                     />
                   </AuthenticatedClientElement>
                 </div>
