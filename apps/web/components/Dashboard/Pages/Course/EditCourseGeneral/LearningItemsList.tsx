@@ -14,24 +14,75 @@ interface LearningItem {
 }
 
 interface LearningItemsListProps {
-  value: string;
+  initialValue: string;
   onChange: (value: string) => void;
   error?: string;
+  resetKey?: string; // Add a key to force reset when course changes
 }
 
-const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) => {
+const LearningItemsList = ({ initialValue, onChange, error, resetKey }: LearningItemsListProps) => {
   const t = useTranslations('courses.edit.learningItems');
-  const [items, setItems] = useState<LearningItem[]>([]);
+  const [items, setItems] = useState<LearningItem[]>(() => {
+    // Initialize state only once on mount
+    try {
+      if (initialValue) {
+        const parsed = JSON.parse(initialValue);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error('Error parsing initial learning items:', e);
+    }
+    // Default: one empty item
+    return [{
+      id: Date.now().toString(),
+      text: '',
+      emoji: '📝',
+    }];
+  });
+
   const [showEmojiPicker, setShowEmojiPicker] = useState<string | null>(null);
   const [showLinkInput, setShowLinkInput] = useState<string | null>(null);
   const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
   const pickerRef = useRef<HTMLDivElement>(null);
   const linkInputRef = useRef<HTMLDivElement>(null);
-  const initializedRef = useRef(false);
   const inputRefs = useRef<Record<string, HTMLInputElement | null>>({});
   const linkInputFieldRefs = useRef<Record<string, HTMLInputElement | null>>({});
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const isInternalUpdate = useRef(false);
+  const previousResetKey = useRef(resetKey);
+
+  // ONLY reset when resetKey changes (different course loaded)
+  useEffect(() => {
+    if (resetKey && resetKey !== previousResetKey.current) {
+      previousResetKey.current = resetKey;
+
+      try {
+        if (initialValue) {
+          const parsed = JSON.parse(initialValue);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setItems(parsed);
+            return;
+          }
+        }
+      } catch (e) {
+        console.error('Error parsing learning items on reset:', e);
+      }
+
+      // Default: one empty item
+      setItems([{
+        id: Date.now().toString(),
+        text: '',
+        emoji: '📝',
+      }]);
+    }
+  }, [resetKey, initialValue]);
+
+  // Notify parent of changes - but never accept updates back!
+  const notifyChange = (newItems: LearningItem[]) => {
+    setItems(newItems);
+    onChange(JSON.stringify(newItems));
+  };
 
   // Add a new empty item
   const addItem = () => {
@@ -41,9 +92,7 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
       emoji: '📝',
     };
     const newItems = [...items, newItem];
-    isInternalUpdate.current = true;
-    setItems(newItems);
-    onChange(JSON.stringify(newItems));
+    notifyChange(newItems);
 
     // Focus the newly added item after render
     setTimeout(() => {
@@ -56,71 +105,86 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
       if (scrollContainerRef.current && newItems.length > 5) {
         scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
       }
-      isInternalUpdate.current = false;
     }, 0);
   };
 
-  // Initialize on first mount and sync from parent ONLY when change is external
-  useEffect(() => {
-    // Skip if this is an internal update
-    if (isInternalUpdate.current) {
-      return;
+  // Remove an item
+  const removeItem = (id: string) => {
+    if (focusedItemId === id) {
+      setFocusedItemId(null);
     }
+    notifyChange(items.filter(item => item.id !== id));
+  };
 
-    try {
-      if (value) {
-        const parsedItems = JSON.parse(value);
-        if (Array.isArray(parsedItems)) {
-          // Only update if items actually differ
-          const currentJson = JSON.stringify(items);
-          const newJson = JSON.stringify(parsedItems);
+  // Update item text
+  const updateItemText = (id: string, text: string) => {
+    notifyChange(
+      items.map(item => (item.id === id ? { ...item, text } : item))
+    );
+  };
 
-          if (currentJson !== newJson) {
-            setItems(parsedItems);
-            initializedRef.current = true;
-          }
-          return;
-        }
+  // Update item emoji
+  const updateItemEmoji = (id: string, emoji: string) => {
+    const newItems = items.map(item => (item.id === id ? { ...item, emoji } : item));
+    notifyChange(newItems);
+    setShowEmojiPicker(null);
+
+    // Restore focus to the text input after emoji selection
+    setTimeout(() => {
+      if (inputRefs.current[id]) {
+        inputRefs.current[id]?.focus();
+        setFocusedItemId(id);
       }
-    } catch (e) {
-      console.error('Error parsing learning items:', e);
-    }
+    }, 0);
+  };
 
-    // If no valid value and not initialized, initialize with empty item
-    if (!initializedRef.current) {
-      const newItem: LearningItem = {
-        id: Date.now().toString(),
-        text: '',
-        emoji: '📝',
-      };
-      setItems([newItem]);
-      initializedRef.current = true;
-    }
-  }, [value]); // Only depends on value
+  // Update item link
+  const updateItemLink = (id: string, link: string) => {
+    notifyChange(
+      items.map(item => (item.id === id ? { ...item, link } : item))
+    );
+  };
+
+  // Handle emoji selection
+  const handleEmojiSelect = (id: string, emojiData: any) => {
+    updateItemEmoji(id, emojiData.native);
+  };
+
+  // Handle focus on input
+  const handleInputFocus = (id: string) => {
+    setFocusedItemId(id);
+  };
+
+  // Handle blur on input
+  const handleInputBlur = () => {
+    setTimeout(() => {
+      if (!document.activeElement ||
+          !document.activeElement.classList.contains('learning-item-input')) {
+        setFocusedItemId(null);
+      }
+    }, 100);
+  };
 
   // Restore focus after re-render if an item was focused
   useEffect(() => {
     if (focusedItemId) {
       if (showLinkInput === focusedItemId) {
-        // Focus the link input if it's open for the focused item
         if (linkInputFieldRefs.current[focusedItemId]) {
           linkInputFieldRefs.current[focusedItemId]?.focus();
         }
       } else {
-        // Focus the text input
         if (inputRefs.current[focusedItemId]) {
           inputRefs.current[focusedItemId]?.focus();
         }
       }
-      
+
       // Scroll the focused item into view if needed
       if (items.length > 5 && scrollContainerRef.current) {
         const focusedElement = document.getElementById(`learning-item-${focusedItemId}`);
         if (focusedElement) {
           const containerRect = scrollContainerRef.current.getBoundingClientRect();
           const elementRect = focusedElement.getBoundingClientRect();
-          
-          // Check if the element is outside the visible area
+
           if (elementRect.top < containerRect.top || elementRect.bottom > containerRect.bottom) {
             focusedElement.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
           }
@@ -145,80 +209,6 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
-  // Update the parent component with the new JSON string when items change
-  const updateItems = (newItems: LearningItem[]) => {
-    isInternalUpdate.current = true;
-    setItems(newItems);
-    onChange(JSON.stringify(newItems));
-    // Reset flag after a brief delay to allow the update to propagate
-    setTimeout(() => {
-      isInternalUpdate.current = false;
-    }, 100);
-  };
-
-  // Remove an item
-  const removeItem = (id: string) => {
-    if (focusedItemId === id) {
-      setFocusedItemId(null);
-    }
-    updateItems(items.filter(item => item.id !== id));
-  };
-
-  // Update item text
-  const updateItemText = (id: string, text: string) => {
-    updateItems(
-      items.map(item => (item.id === id ? { ...item, text } : item))
-    );
-  };
-
-  // Update item emoji
-  const updateItemEmoji = (id: string, emoji: string) => {
-    isInternalUpdate.current = true;
-    const newItems = items.map(item => (item.id === id ? { ...item, emoji } : item));
-    setItems(newItems);
-    onChange(JSON.stringify(newItems));
-    setShowEmojiPicker(null);
-
-    // Restore focus to the text input after emoji selection
-    setTimeout(() => {
-      if (inputRefs.current[id]) {
-        inputRefs.current[id]?.focus();
-        setFocusedItemId(id);
-      }
-      isInternalUpdate.current = false;
-    }, 100);
-  };
-
-  // Update item link
-  const updateItemLink = (id: string, link: string) => {
-    updateItems(
-      items.map(item => (item.id === id ? { ...item, link } : item))
-    );
-  };
-
-  // Handle emoji selection
-  const handleEmojiSelect = (id: string, emojiData: any) => {
-    updateItemEmoji(id, emojiData.native);
-  };
-
-  // Handle focus on input
-  const handleInputFocus = (id: string) => {
-    setFocusedItemId(id);
-  };
-
-  // Handle blur on input
-  const handleInputBlur = () => {
-    // Don't clear focusedItemId immediately as it might be needed for refocusing
-    // We'll use a small delay to allow other focus events to occur first
-    setTimeout(() => {
-      // Only clear if we're not focusing another input in this component
-      if (!document.activeElement || 
-          !document.activeElement.classList.contains('learning-item-input')) {
-        setFocusedItemId(null);
-      }
-    }, 100);
-  };
 
   // Ref callback for text inputs
   const setInputRef = (id: string) => (el: HTMLInputElement | null) => {
@@ -283,7 +273,6 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
                     setShowLinkInput(showLinkInput === item.id ? null : item.id);
                     setShowEmojiPicker(null);
                     setFocusedItemId(item.id);
-                    // Focus the link input after render
                     setTimeout(() => {
                       if (linkInputFieldRefs.current[item.id]) {
                         linkInputFieldRefs.current[item.id]?.focus();
@@ -352,4 +341,4 @@ const LearningItemsList = ({ value, onChange, error }: LearningItemsListProps) =
   );
 };
 
-export default LearningItemsList; 
+export default LearningItemsList;

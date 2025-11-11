@@ -73,8 +73,6 @@ function EditCourseGeneral(props: EditCourseStructureProps) {
   const course = useCourse();
   const dispatchCourse = useCourseDispatch() as any;
   const { isLoading, courseStructure } = course as any;
-  const courseUuidRef = useRef(courseStructure?.course_uuid);
-  const hasTrackedChange = useRef(false);
 
   // Initialize learnings as a JSON array if it's not already
   const initializeLearnings = useCallback((learnings: any) => {
@@ -145,37 +143,34 @@ function EditCourseGeneral(props: EditCourseStructureProps) {
         setError('Failed to save course structure.');
       }
     },
-    enableReinitialize: true,
+    enableReinitialize: false, // Disable auto-reinitialization to prevent loops
   }) as any;
 
-  // Track course UUID changes to detect when a new course is loaded
+  // Reset form when course UUID changes (different course loaded)
+  const courseUuidRef = useRef(courseStructure?.course_uuid);
+  const initialValuesRef = useRef(JSON.stringify(formik.initialValues));
+
   useEffect(() => {
     const currentUuid = courseStructure?.course_uuid;
     if (currentUuid && currentUuid !== courseUuidRef.current) {
       courseUuidRef.current = currentUuid;
-      hasTrackedChange.current = false;
-      // Reset form when a different course is loaded
-      const newValues = getInitialValues();
-      formik.resetForm({ values: newValues });
+      // Reset form with new course data
+      const newInitialValues = getInitialValues();
+      formik.resetForm({ values: newInitialValues });
+      initialValuesRef.current = JSON.stringify(newInitialValues);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [courseStructure?.course_uuid]);
 
-  // Track if user has made changes (mark as not saved) but DON'T update courseStructure
+  // Mark as not saved when form values change
   useEffect(() => {
-    if (!isLoading && courseStructure && hasTrackedChange.current) {
-      const formikValues = formik.values as any;
-      const initialValues = formik.initialValues as any;
+    if (!isLoading && courseStructure) {
+      const currentValues = JSON.stringify(formik.values);
 
-      // Deep comparison to check if values actually changed
-      const valuesChanged = JSON.stringify(formikValues) !== JSON.stringify(initialValues);
-
-      if (valuesChanged) {
+      // Only mark as not saved if values actually changed from initial
+      if (currentValues !== initialValuesRef.current) {
         dispatchCourse({ type: 'setIsNotSaved' });
       }
-    } else if (!isLoading && courseStructure) {
-      // After first render, start tracking changes
-      hasTrackedChange.current = true;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formik.values, isLoading]);
@@ -244,9 +239,10 @@ function EditCourseGeneral(props: EditCourseStructureProps) {
                 <FormLabelAndMessage label={t('learnings')} message={formik.errors.learnings} />
                 <Form.Control asChild>
                   <LearningItemsList
-                    value={formik.values.learnings}
+                    initialValue={formik.values.learnings}
                     onChange={(value) => formik.setFieldValue('learnings', value)}
                     error={formik.errors.learnings}
+                    resetKey={courseStructure?.course_uuid}
                   />
                 </Form.Control>
               </FormField>

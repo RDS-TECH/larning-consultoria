@@ -4,7 +4,7 @@ import ActivityClient from './activity'
 import { getOrganizationContextInfo } from '@services/organizations/orgs'
 import { Metadata } from 'next'
 import { getServerSession } from 'next-auth'
-import { nextAuthOptions } from '../../../../../../auth/options'
+import { nextAuthOptions } from '../../../../../../../auth/options'
 
 type MetadataProps = {
   params: Promise<{ orgslug: string; courseuuid: string; activityid: string }>

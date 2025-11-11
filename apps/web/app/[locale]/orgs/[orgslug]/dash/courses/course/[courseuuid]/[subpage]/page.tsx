@@ -13,7 +13,8 @@ import EditCourseCertification from '@components/Dashboard/Pages/Course/EditCour
 import { useCourseRights } from '@hooks/useCourseRights'
 import { useRouter } from 'next/navigation'
 import ToolTip from '@components/Objects/StyledElements/Tooltip/Tooltip'
-import { getUriWithOrg } from '@services/config/config';
+import { getUriWithOrg } from '@services/config/config'
+import { useTranslations } from 'next-intl';
 
 export type CourseOverviewParams = {
   orgslug: string
@@ -24,7 +25,8 @@ export type CourseOverviewParams = {
 function CourseOverviewPage(props: { params: Promise<CourseOverviewParams> }) {
   const params = use(props.params);
   const router = useRouter();
-  
+  const t = useTranslations('courses.edit.tabs');
+
   function getEntireCourseUUID(courseuuid: string) {
     // add course_ to uuid
     return `course_${courseuuid}`
@@ -37,35 +39,35 @@ function CourseOverviewPage(props: { params: Promise<CourseOverviewParams> }) {
   const tabs = [
     {
       key: 'general',
-      label: 'General',
+      label: t('general'),
       icon: Info,
       href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/general`),
       requiredPermission: 'update' as const
     },
     {
       key: 'content',
-      label: 'Content',
+      label: t('content'),
       icon: GalleryVerticalEnd,
       href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/content`),
       requiredPermission: 'update_content' as const
     },
     {
       key: 'access',
-      label: 'Access',
+      label: t('access'),
       icon: Globe,
       href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/access`),
       requiredPermission: 'manage_access' as const
     },
     {
       key: 'contributors',
-      label: 'Contributors',
+      label: t('contributors'),
       icon: UserPen,
       href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/contributors`),
       requiredPermission: 'manage_contributors' as const
     },
     {
       key: 'certification',
-      label: 'Certification',
+      label: t('certification'),
       icon: Award,
       href: getUriWithOrg(params.orgslug, `/dash/courses/course/${params.courseuuid}/certification`),
       requiredPermission: 'create_certifications' as const

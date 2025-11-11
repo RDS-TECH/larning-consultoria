@@ -42,7 +42,7 @@ import {
 import { toast } from 'react-hot-toast'
 import { signOut } from 'next-auth/react'
 import { getUriWithoutOrg } from '@services/config/config';
-import { useDebounce } from '@/hooks/useDebounce';
+import { useDebounce } from '@hooks/useDebounce';
 
 const SUPPORTED_FILES = constructAcceptValue(['jpg', 'png', 'webp', 'gif'])
 

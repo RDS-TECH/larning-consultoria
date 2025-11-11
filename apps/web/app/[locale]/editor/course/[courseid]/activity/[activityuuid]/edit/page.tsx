@@ -16,9 +16,15 @@ type MetadataProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
+type Session = {
+  tokens?: {
+    access_token?: string
+  }
+}
+
 export async function generateMetadata(props: MetadataProps): Promise<Metadata> {
   const params = await props.params;
-  const session = await getServerSession(nextAuthOptions)
+  const session = await getServerSession(nextAuthOptions as any) as Session
   const access_token = session?.tokens?.access_token
   // Get Org context information
   const course_meta = await getCourseMetadata(
@@ -34,7 +40,7 @@ export async function generateMetadata(props: MetadataProps): Promise<Metadata> 
 }
 
 const EditActivity = async (params: any) => {
-  const session = await getServerSession(nextAuthOptions)
+  const session = await getServerSession(nextAuthOptions as any) as Session
   const access_token = session?.tokens?.access_token
   const activityuuid = (await params.params).activityuuid
   const courseid = (await params.params).courseid
@@ -52,7 +58,7 @@ const EditActivity = async (params: any) => {
   const org = await getOrganizationContextInfoWithId(courseInfo.org_id, {
     revalidate: 180,
     tags: ['organizations'],
-  }, access_token)
+  }, access_token as string)
 
   return (
     <EditorOptionsProvider options={{ isEditable: true }}>

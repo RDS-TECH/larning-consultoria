@@ -11,10 +11,16 @@ type MetadataProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
+type Session = {
+  tokens?: {
+    access_token?: string
+  }
+}
+
 export async function generateMetadata(props: MetadataProps): Promise<Metadata> {
   const params = await props.params;
   const t = await getTranslations('trail')
-  const session = await getServerSession(nextAuthOptions)
+  const session = await getServerSession(nextAuthOptions as any) as Session
   const access_token = session?.tokens?.access_token
   // Get Org context information
   const org = await getOrganizationContextInfo(params.orgslug, {

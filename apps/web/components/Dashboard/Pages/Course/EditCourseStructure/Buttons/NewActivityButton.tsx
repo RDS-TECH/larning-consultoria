@@ -24,12 +24,12 @@ type NewActivityButtonProps = {
 }
 
 function NewActivityButton(props: NewActivityButtonProps) {
+  const t = useTranslations('courses.edit.structure');
   const [newActivityModal, setNewActivityModal] = React.useState(false)
   const router = useRouter()
   const course = useCourse() as any
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
-  const t = useTranslations('courses.edit.structure');
   const withUnpublishedActivities = course ? course.withUnpublishedActivities : false
 
   const openNewActivityModal = async (chapterId: any) => {
@@ -125,7 +125,7 @@ function NewActivityButton(props: NewActivityButtonProps) {
       >
         <Layers size={17} />
         <div className="text-sm font-bold ml-2">
-          Add Activity
+          {t('addActivity')}
         </div>
       </div>
     </div>

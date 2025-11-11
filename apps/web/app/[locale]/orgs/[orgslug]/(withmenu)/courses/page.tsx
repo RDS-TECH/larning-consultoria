@@ -12,6 +12,12 @@ type MetadataProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
+type Session = {
+  tokens?: {
+    access_token?: string
+  }
+}
+
 export async function generateMetadata(props: MetadataProps): Promise<Metadata> {
   const params = await props.params;
   // Get Org context information
@@ -57,7 +63,7 @@ const CoursesPage = async (params: any) => {
     revalidate: 1800,
     tags: ['organizations'],
   })
-  const session = await getServerSession(nextAuthOptions)
+  const session = await getServerSession(nextAuthOptions as any) as Session
   const access_token = session?.tokens?.access_token
 
   const courses = await getOrgCourses(

@@ -630,7 +630,13 @@
           "activityUpdated": "A atividade foi atualizada com sucesso",
           "activityNameUpdated": "Nome da atividade atualizado com sucesso",
           "activityNameUpdateFailed": "Falha ao atualizar nome da atividade"
-        }
+        },
+        "chapterName": "Nome do capítulo",
+        "chapterDescription": "Descrição do capítulo",
+        "createChapterButton": "Criar Capítulo",
+        "chapterNameRequired": "Por favor, forneça um nome para o capítulo",
+        "chapterDescriptionRequired": "Por favor, forneça uma descrição para o capítulo",
+        "addActivity": "Adicionar Atividade"
       },
       "unsplash": {
         "dialogTitle": "Escolha uma imagem do Unsplash",
@@ -817,6 +823,13 @@
           "removeSuccess": "Removido(s) {count} contribuidor(es) com sucesso",
           "removeFailed": "Falha ao remover contribuidores"
         }
+      },
+      "tabs": {
+        "general": "Geral",
+        "content": "Conteúdo",
+        "access": "Acesso",
+        "contributors": "Contribuidores",
+        "certification": "Certificação"
       }
     },
     "dashboard": {
@@ -1569,6 +1582,14 @@
       "deleteTitle": "Excluir '{name}'?",
       "deleteMessage": "Tem certeza de que deseja excluir esta atividade?",
       "deleteButton": "Excluir Atividade"
+    },
+    "page": {
+      "notPublished": "Esta atividade ainda não foi publicada",
+      "createdOn": "Criado em",
+      "lastUpdated": "Última atualização",
+      "markAsComplete": "Marcar como concluída",
+      "marking": "Marcando...",
+      "submitForGrading": "Enviar para avaliação"
     }
   },
   "assignments": {

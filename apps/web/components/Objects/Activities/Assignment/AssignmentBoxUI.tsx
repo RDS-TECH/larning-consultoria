@@ -104,7 +104,7 @@ function AssignmentBoxUI({ type, view, currentPoints, maxPoints, saveFC, submitF
                     {view === 'grading' &&
                         <div
                             className='flex flex-wrap sm:flex-nowrap w-full sm:w-auto px-0.5 py-0.5 cursor-pointer rounded-md gap-2 sm:space-x-2 items-center bg-linear-to-bl hover:outline-offset-4 active:outline-offset-1 linear transition-all outline-offset-2 outline-dashed outline-orange-500/60'>
-                            <p className='font-semibold px-2 text-xs text-orange-700'>{t('grading.currentPoints', { points: currentPoints })}</p>
+                            <p className='font-semibold px-2 text-xs text-orange-700'>{t('grading.currentPoints', { points: currentPoints || 0 })}</p>
                             <div
                                 onClick={() => gradeFC && gradeFC()}
                                 className='bg-linear-to-bl text-orange-700 bg-orange-300/20 hover:bg-orange-300/10 items-center flex rounded-md px-2 py-1 space-x-2 ml-auto'>
@@ -118,7 +118,7 @@ function AssignmentBoxUI({ type, view, currentPoints, maxPoints, saveFC, submitF
                     {view === 'custom-grading' && maxPoints &&
                         <div
                             className='flex flex-wrap sm:flex-nowrap w-full sm:w-auto px-0.5 py-0.5 cursor-pointer rounded-md gap-2 sm:space-x-2 items-center bg-linear-to-bl hover:outline-offset-4 active:outline-offset-1 linear transition-all outline-offset-2 outline-dashed outline-orange-500/60'>
-                            <p className='font-semibold px-2 text-xs text-orange-700 w-full sm:w-auto'>{t('grading.currentPoints', { points: currentPoints })}</p>
+                            <p className='font-semibold px-2 text-xs text-orange-700 w-full sm:w-auto'>{t('grading.currentPoints', { points: currentPoints || 0 })}</p>
                             <div className='flex items-center gap-2 w-full sm:w-auto'>
                                 <input
                                     onChange={(e) => setCustomGrade(parseInt(e.target.value))}

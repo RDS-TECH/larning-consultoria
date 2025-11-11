@@ -29,7 +29,7 @@ import {
 import { Button } from "@/components/ui/button"
 import UserAvatar from '@components/Objects/UserAvatar'
 import { Input } from '@/components/ui/input'
-import { useDebounce } from '@/hooks/useDebounce'
+import { useDebounce } from '@hooks/useDebounce'
 import { getUserAvatarMediaDirectory } from '@services/media/media'
 
 type EditCourseContributorsProps = {

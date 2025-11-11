@@ -21,7 +21,7 @@ import { swrFetcher } from '@services/utils/ts/requests'
 import ConfirmationModal from '@components/Objects/StyledElements/ConfirmationModal/ConfirmationModal'
 import { useMediaQuery } from 'usehooks-ts'
 import PaidCourseActivityDisclaimer from '@components/Objects/Courses/CourseActions/PaidCourseActivityDisclaimer'
-import { useContributorStatus } from '../../../../../../../../hooks/useContributorStatus'
+import { useContributorStatus } from '@hooks/useContributorStatus'
 import ToolTip from '@components/Objects/StyledElements/Tooltip/Tooltip'
 import ActivityChapterDropdown from '@components/Pages/Activity/ActivityChapterDropdown'
 import FixedActivitySecondaryBar from '@components/Pages/Activity/FixedActivitySecondaryBar'
@@ -32,6 +32,7 @@ import MiniInfoTooltip from '@components/Objects/MiniInfoTooltip'
 import GeneralWrapperStyled from '@components/Objects/StyledElements/Wrappers/GeneralWrapper'
 import ActivityIndicators from '@components/Pages/Courses/ActivityIndicators'
 import UserAvatar from '@components/Objects/UserAvatar'
+import { useTranslations } from 'next-intl'
 
 // Lazy load heavy components
 const Canva = lazy(() => import('@components/Objects/Activities/DynamicCanva/DynamicCanva'))
@@ -165,6 +166,7 @@ function getRelativeTime(date: Date): string {
 }
 
 function ActivityClient(props: ActivityClientProps) {
+  const t = useTranslations('activities.page');
   const activityid = props.activityid
   const courseuuid = props.courseuuid
   const orgslug = props.orgslug
@@ -640,11 +642,11 @@ function ActivityClient(props: ActivityClientProps) {
                                 {/* Dates */}
                                 <div className="flex items-center text-xs text-gray-500 gap-2">
                                   <span>
-                                    Created on {new Date(course.creation_date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    {t('createdOn')} {new Date(course.creation_date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
                                   </span>
                                   <span className="mx-1">•</span>
                                   <span>
-                                    Last updated {getRelativeTime(new Date(course.updated_at || course.last_updated || course.creation_date))}
+                                    {t('lastUpdated')} {getRelativeTime(new Date(course.updated_at || course.last_updated || course.creation_date))}
                                   </span>
                                 </div>
                               </div>
@@ -683,7 +685,7 @@ function ActivityClient(props: ActivityClientProps) {
                         <div className="p-7 drop-shadow-xs rounded-lg bg-gray-800">
                           <div className="text-white">
                             <h1 className="font-bold text-2xl">
-                              This activity is not published yet
+                              {t('notPublished')}
                             </h1>
                           </div>
                         </div>
@@ -771,6 +773,7 @@ export function MarkStatus(props: {
   orgslug: string,
   trailData: any
 }) {
+  const t = useTranslations('activities.page');
   const router = useRouter()
   const session = useLHSession() as any;
   const org = useOrg() as any;
@@ -1000,7 +1003,7 @@ export function MarkStatus(props: {
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                   </svg>
                 )}
-                <span className="text-xs font-bold min-w-[90px]">{isLoading ? 'Marking...' : 'Mark as complete'}</span>
+                <span className="text-xs font-bold min-w-[90px]">{isLoading ? t('marking') : t('markAsComplete')}</span>
               </div>
             </div>
             {showUnmarkedTooltip && (
@@ -1131,6 +1134,7 @@ function AssignmentTools(props: {
   orgslug: string
   assignment: any
 }) {
+  const t = useTranslations('activities.page');
   const submission = useAssignmentSubmission() as any
   const session = useLHSession() as any;
   const [finalGrade, setFinalGrade] = React.useState(null) as any;
@@ -1211,7 +1215,7 @@ function AssignmentTools(props: {
             <span className="text-[10px] font-bold mb-1 uppercase">Status</span>
             <div className="flex items-center space-x-2">
               <BookOpenCheck size={17} />
-              <span className="text-xs font-bold">Submit for grading</span>
+              <span className="text-xs font-bold">{t('submitForGrading')}</span>
             </div>
           </div>
         }
