@@ -636,7 +636,16 @@
         "createChapterButton": "Criar Capítulo",
         "chapterNameRequired": "Por favor, forneça um nome para o capítulo",
         "chapterDescriptionRequired": "Por favor, forneça uma descrição para o capítulo",
-        "addActivity": "Adicionar Atividade"
+        "addActivity": "Adicionar Atividade",
+        "buttons": {
+          "publish": "Publicar",
+          "unpublish": "Despublicar",
+          "editAssignment": "Editar Tarefa",
+          "editPage": "Editar Página",
+          "previewActivity": "Pré-visualizar Atividade",
+          "deleteActivity": "Excluir Atividade",
+          "deleteActivityTitle": "Excluir {name}?"
+        }
       },
       "unsplash": {
         "dialogTitle": "Escolha uma imagem do Unsplash",
@@ -1359,6 +1368,7 @@
         "purchaseFailed": "Falha na compra",
         "progress": {
           "readyToBegin": "Pronto para começar",
+          "activity": "atividade",
           "activities": "atividades",
           "startJourney": "Iniciar sua jornada"
         },

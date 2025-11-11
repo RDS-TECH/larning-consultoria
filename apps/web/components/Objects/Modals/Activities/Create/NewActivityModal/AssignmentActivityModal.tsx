@@ -74,7 +74,7 @@ function NewAssignment({ submitActivity, chapterId, course, closeModal }: any) {
 
         if (res.success) {
             toast.dismiss(toast_loading)
-            toast.success(t('../success.assignmentCreated'))
+            toast.success(t('success.assignmentCreated'))
         } else {
             toast.error(res.data.detail)
             await deleteActivity(activity_res.activity_uuid, session.data?.tokens?.access_token)
