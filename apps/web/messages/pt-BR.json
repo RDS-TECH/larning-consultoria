@@ -322,6 +322,265 @@
           "profile": "Perfil",
           "security": "Senha"
         }
+      },
+      "ownedCourses": {
+        "title": "Meus Cursos",
+        "description": "Cursos que você comprou ou assinou",
+        "noCourses": "Nenhum curso adquirido",
+        "noCoursesDescription": "Você ainda não adquiriu nenhum curso",
+        "errorLoading": "Erro ao carregar cursos adquiridos"
+      }
+    },
+    "account": {
+      "password": {
+        "title": "Alterar Senha",
+        "description": "Atualize sua senha para manter sua conta segura",
+        "currentPassword": "Senha Atual",
+        "newPassword": "Nova Senha",
+        "changeWarning": "Você será desconectado após alterar sua senha",
+        "updatePassword": "Atualizar Senha",
+        "validation": {
+          "currentPasswordRequired": "A senha atual é obrigatória",
+          "newPasswordRequired": "A nova senha é obrigatória",
+          "passwordMinLength": "A senha deve ter pelo menos 8 caracteres"
+        },
+        "toast": {
+          "updating": "Atualizando senha...",
+          "updateSuccess": "Senha atualizada com sucesso",
+          "updateFailed": "Falha ao atualizar senha",
+          "tryAgain": "Ocorreu um erro. Por favor, tente novamente.",
+          "loginAgain": "Por favor, faça login novamente com sua nova senha"
+        }
+      },
+      "general": {
+        "title": "Configurações da Conta",
+        "description": "Gerencie suas informações pessoais e preferências",
+        "fields": {
+          "email": "E-mail",
+          "username": "Nome de usuário",
+          "firstName": "Nome",
+          "lastName": "Sobrenome",
+          "bio": "Bio",
+          "bioCharactersLeft": "{count} caracteres restantes"
+        },
+        "placeholders": {
+          "email": "Seu endereço de e-mail",
+          "username": "Seu nome de usuário",
+          "firstName": "Seu nome",
+          "lastName": "Seu sobrenome",
+          "bio": "Conte-nos sobre você",
+          "detailLabel": "Digite o rótulo (ex: Título, Localização)",
+          "detailText": "Digite o texto do detalhe",
+          "selectIcon": "Selecionar ícone"
+        },
+        "additionalDetails": {
+          "title": "Detalhes Adicionais",
+          "clearAll": "Limpar Tudo",
+          "addDetail": "Adicionar Detalhe",
+          "addGeneral": "Adicionar Geral",
+          "addAcademic": "Adicionar Acadêmico",
+          "addProfessional": "Adicionar Profissional",
+          "remove": "Remover",
+          "icon": "Ícone",
+          "text": "Texto"
+        },
+        "profilePicture": {
+          "title": "Foto de Perfil",
+          "changeAvatar": "Alterar Avatar",
+          "uploading": "Enviando",
+          "recommendedSize": "Tamanho recomendado 100x100"
+        },
+        "buttons": {
+          "saveChanges": "Salvar Alterações",
+          "saving": "Salvando..."
+        },
+        "warnings": {
+          "emailChange": "Você será desconectado após alterar seu e-mail"
+        },
+        "toast": {
+          "updating": "Atualizando perfil...",
+          "updateSuccess": "Perfil atualizado com sucesso",
+          "updateFailed": "Falha ao atualizar perfil",
+          "loginWithNewEmail": "Por favor, faça login novamente com seu novo e-mail: {email}",
+          "avatarUpdated": "Avatar atualizado"
+        },
+        "validation": {
+          "invalidEmail": "E-mail inválido",
+          "emailRequired": "E-mail é obrigatório",
+          "usernameRequired": "Nome de usuário é obrigatório",
+          "firstNameRequired": "Nome é obrigatório",
+          "lastNameRequired": "Sobrenome é obrigatório",
+          "bioMaxLength": "A bio deve ter no máximo 400 caracteres"
+        },
+        "iconLabels": {
+          "briefcase": "Maleta",
+          "education": "Educação",
+          "location": "Localização",
+          "organization": "Organização",
+          "speciality": "Especialidade",
+          "website": "Site",
+          "tech": "Tecnologia",
+          "achievement": "Conquista",
+          "book": "Livro",
+          "link": "Link",
+          "community": "Comunidade",
+          "calendar": "Calendário"
+        },
+        "detailTemplates": {
+          "general": {
+            "title": "Título",
+            "affiliation": "Afiliação",
+            "location": "Localização",
+            "website": "Site",
+            "linkedin": "LinkedIn"
+          },
+          "academic": {
+            "institution": "Instituição",
+            "department": "Departamento",
+            "research": "Área de Pesquisa",
+            "academicTitle": "Título Acadêmico"
+          },
+          "professional": {
+            "company": "Empresa",
+            "industry": "Indústria",
+            "expertise": "Especialização",
+            "community": "Comunidade"
+          }
+        }
+      },
+      "profile": {
+        "title": "Construtor de Perfil",
+        "beta": "BETA",
+        "description": "Personalize seu perfil profissional",
+        "sections": {
+          "title": "Seções",
+          "addSection": "Adicionar Seção",
+          "selectOrAdd": "Selecione uma seção para editar ou adicione uma nova",
+          "sectionTitle": "Título da Seção"
+        },
+        "sectionTypes": {
+          "imageGallery": {
+            "label": "Galeria de Imagens",
+            "description": "Adicione uma coleção de imagens",
+            "title": "Galeria de Imagens",
+            "imageUrl": "URL da Imagem",
+            "caption": "Legenda",
+            "addImage": "Adicionar Imagem",
+            "placeholders": {
+              "imageUrl": "Digite a URL da imagem",
+              "caption": "Legenda da imagem"
+            }
+          },
+          "text": {
+            "label": "Texto",
+            "description": "Adicione conteúdo de texto formatado",
+            "title": "Conteúdo de Texto",
+            "content": "Conteúdo",
+            "placeholder": "Digite seu conteúdo aqui..."
+          },
+          "links": {
+            "label": "Links",
+            "description": "Adicione links sociais ou profissionais",
+            "title": "Links",
+            "addLink": "Adicionar Link",
+            "linkTitle": "Título do Link",
+            "url": "URL",
+            "placeholders": {
+              "linkTitle": "Título do link",
+              "url": "URL"
+            }
+          },
+          "skills": {
+            "label": "Habilidades",
+            "description": "Mostre suas habilidades e expertise",
+            "title": "Habilidades",
+            "addSkill": "Adicionar Habilidade",
+            "skillName": "Nome da Habilidade",
+            "level": "Nível",
+            "category": "Categoria",
+            "levels": {
+              "beginner": "Iniciante",
+              "intermediate": "Intermediário",
+              "advanced": "Avançado",
+              "expert": "Especialista"
+            },
+            "placeholders": {
+              "skillName": "Nome da habilidade",
+              "category": "Categoria (opcional)",
+              "selectLevel": "Selecionar nível"
+            }
+          },
+          "experience": {
+            "label": "Experiência",
+            "description": "Adicione experiência de trabalho ou projeto",
+            "title": "Experiência",
+            "addExperience": "Adicionar Experiência",
+            "experienceItems": "Itens de Experiência",
+            "positionTitle": "Título",
+            "organization": "Organização",
+            "startDate": "Data de Início",
+            "endDate": "Data de Término",
+            "current": "Atual",
+            "description": "Descrição",
+            "placeholders": {
+              "title": "Cargo ou função",
+              "organization": "Empresa ou organização",
+              "description": "Descreva sua função e conquistas"
+            }
+          },
+          "education": {
+            "label": "Educação",
+            "description": "Adicione formação acadêmica",
+            "title": "Educação",
+            "addEducation": "Adicionar Educação",
+            "educationItems": "Itens de Educação",
+            "institution": "Instituição",
+            "degree": "Grau",
+            "field": "Campo de Estudo",
+            "startDate": "Data de Início",
+            "endDate": "Data de Término",
+            "current": "Atual",
+            "description": "Descrição",
+            "placeholders": {
+              "institution": "Escola ou universidade",
+              "degree": "Tipo de grau",
+              "field": "Curso ou concentração",
+              "description": "Detalhes adicionais sobre sua educação"
+            }
+          },
+          "affiliation": {
+            "label": "Afiliação",
+            "description": "Adicione afiliações organizacionais",
+            "title": "Afiliação",
+            "addAffiliation": "Adicionar Afiliação",
+            "affiliations": "Afiliações",
+            "name": "Nome",
+            "logoUrl": "URL do Logo",
+            "description": "Descrição",
+            "placeholders": {
+              "name": "Nome da organização",
+              "logoUrl": "URL do logo da organização",
+              "description": "Descrição da organização"
+            }
+          },
+          "courses": {
+            "label": "Cursos",
+            "description": "Exibir cursos criados",
+            "title": "Cursos",
+            "autoDisplay": "Seus cursos criados serão exibidos automaticamente nesta seção."
+          }
+        },
+        "buttons": {
+          "saveChanges": "Salvar Alterações",
+          "saving": "Salvando...",
+          "remove": "Remover"
+        },
+        "toast": {
+          "saving": "Salvando perfil...",
+          "saveSuccess": "Perfil atualizado com sucesso",
+          "saveFailed": "Erro ao atualizar perfil",
+          "loadFailed": "Falha ao carregar dados do perfil"
+        }
       }
     },
     "users": {
@@ -1600,6 +1859,28 @@
       "markAsComplete": "Marcar como concluída",
       "marking": "Marcando...",
       "submitForGrading": "Enviar para avaliação"
+    },
+    "assignment": {
+      "types": {
+        "quiz": "Quiz",
+        "fileSubmission": "Submissão de Arquivo",
+        "form": "Formulário"
+      },
+      "badges": {
+        "teacherView": "Visualização do Professor",
+        "points": "{count} pontos"
+      },
+      "messages": {
+        "dontForgetToSave": "Não se esqueça de salvar !"
+      },
+      "buttons": {
+        "save": "Salvar",
+        "saveProgress": "Salvar Progresso",
+        "grade": "Avaliar"
+      },
+      "grading": {
+        "currentPoints": "Pontos atuais: {points}"
+      }
     }
   },
   "assignments": {
@@ -1610,23 +1891,143 @@
     "submissions": "Submissões",
     "general": "Geral",
     "content": "Conteúdo",
-    "tasks": {
-      "quiz": {
-        "title": "Quiz",
-        "description": "Perguntas com respostas de múltipla escolha"
+    "task": {
+      "general": {
+        "fields": {
+          "title": "Título",
+          "description": "Descrição",
+          "hint": "Dica",
+          "referenceFile": "Arquivo de referência",
+          "allowedFormats": "Formatos permitidos: pdf, docx, mp4, jpg, jpeg, png, pptx, zip",
+          "maxGradeValue": "Valor Máximo da Nota"
+        },
+        "validation": {
+          "gradeRange": "O valor deve estar entre 20 e 100"
+        },
+        "toast": {
+          "updateSuccess": "Tarefa atualizada com sucesso",
+          "updateError": "Erro ao atualizar tarefa, tente novamente mais tarde.",
+          "referenceFileUpdated": "Arquivo de referência atualizado com sucesso"
+        },
+        "buttons": {
+          "submit": "Enviar",
+          "download": "Baixar",
+          "loading": "Carregando",
+          "changeReferenceFile": "Alterar Arquivo de Referência"
+        }
       },
-      "fileSubmission": {
-        "title": "Submissão de arquivo",
-        "description": "Os alunos podem enviar arquivos para esta tarefa"
+      "editor": {
+        "buttons": {
+          "deleteTask": "Excluir Tarefa"
+        },
+        "tabs": {
+          "general": "Geral",
+          "content": "Conteúdo"
+        },
+        "toast": {
+          "deleteSuccess": "Tarefa excluída com sucesso",
+          "deleteError": "Erro ao excluir tarefa, tente novamente mais tarde."
+        },
+        "emptyState": {
+          "noTaskSelected": "Nenhuma Tarefa Selecionada"
+        }
+      }
+    },
+    "tasks": {
+      "modal": {
+        "title": "Adicionar uma Tarefa de Atividade",
+        "description": "Criar uma nova tarefa para esta atividade"
+      },
+      "buttons": {
+        "addTask": "Adicionar Tarefa"
+      }
+    },
+    "newTask": {
+      "untitledTask": "Tarefa Sem Título",
+      "reminder": "Ao editar/adicionar suas tarefas, certifique-se de Despublicar sua Tarefa para evitar problemas com os alunos, você pode Publicá-la novamente quando estiver pronto.",
+      "toast": {
+        "created": "Tarefa criada com sucesso"
+      },
+      "types": {
+        "quiz": {
+          "title": "Quiz",
+          "description": "Perguntas com respostas de múltipla escolha"
+        },
+        "file": {
+          "title": "Submissão de arquivo",
+          "description": "Os alunos podem enviar arquivos para esta tarefa"
+        },
+        "form": {
+          "title": "Formulário",
+          "description": "Formulários de preenchimento para os alunos"
+        }
+      }
+    },
+    "taskTypes": {
+      "quiz": {
+        "placeholders": {
+          "question": "Pergunta",
+          "option": "Opção"
+        },
+        "labels": {
+          "true": "Verdadeiro",
+          "false": "Falso",
+          "markedAsTrue": "Marcado como Verdadeiro",
+          "markedAsFalse": "Marcado como Falso"
+        },
+        "buttons": {
+          "addQuestion": "Adicionar Pergunta"
+        },
+        "errors": {
+          "cannotDeleteLastOption": "Não é possível excluir a última opção. Pelo menos uma opção é necessária."
+        }
       },
       "form": {
-        "title": "Formulário",
-        "description": "Formulários de preenchimento para os alunos"
+        "placeholders": {
+          "question": "Digite sua pergunta com espaços em branco (use ___ para espaços em branco)",
+          "correctAnswer": "Digite a resposta correta",
+          "hint": "Dica (opcional)"
+        },
+        "buttons": {
+          "addQuestion": "Adicionar Pergunta"
+        },
+        "errors": {
+          "cannotDeleteLastBlank": "Não é possível excluir o último espaço em branco. Pelo menos um espaço em branco é necessário."
+        }
+      }
+    },
+    "editor": {
+      "title": "Ferramentas de Tarefa",
+      "tabs": {
+        "editor": "Editor",
+        "submissions": "Submissões"
       },
-      "task": "Tarefa",
-      "hint": "Dica",
-      "referenceDocument": "Documento de Referência",
-      "deleteTask": "Excluir Tarefa"
+      "status": {
+        "published": "Publicado",
+        "unpublished": "Não Publicado"
+      },
+      "buttons": {
+        "edit": "Editar",
+        "preview": "Visualizar",
+        "publish": "Publicar",
+        "unpublish": "Despublicar"
+      },
+      "tooltips": {
+        "editDetails": "Editar Detalhes da Tarefa",
+        "previewAsStudent": "Visualizar a Tarefa como aluno",
+        "makeUnavailable": "Tornar sua Tarefa indisponível para alunos",
+        "makeAvailable": "Tornar sua Tarefa pública e disponível para alunos"
+      },
+      "toast": {
+        "updating": "Atualizando tarefa...",
+        "updateSuccess": "A tarefa foi atualizada com sucesso",
+        "updateError": "Erro ao atualizar tarefa, tente novamente mais tarde."
+      },
+      "mobile": {
+        "title": "Apenas Desktop",
+        "message1": "Esta página só pode ser acessada de um dispositivo desktop.",
+        "message2": "Por favor, mude para um desktop para visualizar e gerenciar a tarefa."
+      }
     },
     "noAssignments": "Nenhuma tarefa disponível",
     "updating": "Atualizando tarefa...",

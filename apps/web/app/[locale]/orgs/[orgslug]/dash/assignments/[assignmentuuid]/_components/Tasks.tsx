@@ -4,8 +4,10 @@ import { FileUp, ListTodo, PanelLeftOpen, Plus, Type } from 'lucide-react';
 import React, { useEffect } from 'react'
 import NewTaskModal from './Modals/NewTaskModal';
 import { useAssignmentsTask, useAssignmentsTaskDispatch } from '@components/Contexts/Assignments/AssignmentsTaskContext';
+import { useTranslations } from 'next-intl';
 
 function AssignmentTasks({ assignment_uuid }: any) {
+    const t = useTranslations('assignments.tasks');
     const assignments = useAssignments() as any;
     const assignmentTask = useAssignmentsTask() as any;
     const assignmentTaskHook = useAssignmentsTaskDispatch() as any;
@@ -30,12 +32,12 @@ function AssignmentTasks({ assignment_uuid }: any) {
                     dialogContent={
                         <NewTaskModal assignment_uuid={assignment_uuid} closeModal={setIsNewTaskModalOpen} />
                     }
-                    dialogTitle="Add an Assignment Task"
-                    dialogDescription="Create a new task for this assignment"
+                    dialogTitle={t('modal.title')}
+                    dialogDescription={t('modal.description')}
                     dialogTrigger={
                         <div className='flex space-x-1.5 px-2 py-2 justify-center bg-black text-white text-xs rounded-md antialiased items-center font-semibold cursor-pointer'>
                             <Plus size={17} />
-                            <p>Add Task</p>
+                            <p>{t('buttons.addTask')}</p>
                         </div>
                     }
                 />)}

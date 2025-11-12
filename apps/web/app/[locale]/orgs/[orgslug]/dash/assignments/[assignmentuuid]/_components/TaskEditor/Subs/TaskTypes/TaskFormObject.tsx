@@ -7,6 +7,7 @@ import { Check, Info, Minus, Plus, PlusCircle, X, Type } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslations } from 'next-intl';
 
 type FormSchema = {
     questionText: string;

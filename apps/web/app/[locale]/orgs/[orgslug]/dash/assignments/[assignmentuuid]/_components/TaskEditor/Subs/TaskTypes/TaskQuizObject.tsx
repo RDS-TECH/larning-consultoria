@@ -7,6 +7,7 @@ import { Check, Info, Minus, Plus, PlusCircle, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslations } from 'next-intl';
 
 type QuizSchema = {
     questionText: string;
@@ -43,6 +44,7 @@ type Submission = {
 };
 
 function TaskQuizObject({ view, assignmentTaskUUID, user_id }: TaskQuizObjectProps) {
+    const t = useTranslations('assignments.taskTypes.quiz');
     const session = useLHSession() as any;
     const access_token = session?.data?.tokens?.access_token;
     const assignmentTaskState = useAssignmentsTask() as any;
@@ -79,7 +81,7 @@ function TaskQuizObject({ view, assignmentTaskUUID, user_id }: TaskQuizObjectPro
             updatedQuestions[qIndex].options.splice(oIndex, 1);
             setQuestions(updatedQuestions);
         } else {
-            toast.error('Cannot delete the last option. At least one option is required.');
+            toast.error(t('errors.cannotDeleteLastOption'));
         }
     };
 
@@ -345,7 +347,7 @@ function TaskQuizObject({ view, assignmentTaskUUID, user_id }: TaskQuizObjectPro
                                     <input
                                         value={question.questionText}
                                         onChange={(e) => handleQuestionChange(qIndex, e.target.value)}
-                                        placeholder="Question"
+                                        placeholder={t('placeholders.question')}
                                         className="w-full px-3 text-neutral-600 bg-[#00008b00] border-2 border-gray-200 rounded-md border-dotted text-sm font-bold"
                                     />
                                 ) : (
@@ -377,7 +379,7 @@ function TaskQuizObject({ view, assignmentTaskUUID, user_id }: TaskQuizObjectPro
                                                     type="text"
                                                     value={option.text}
                                                     onChange={(e) => handleOptionChange(qIndex, oIndex, e.target.value)}
-                                                    placeholder="Option"
+                                                    placeholder={t('placeholders.option')}
                                                     className="w-full mx-2 px-3 pr-6 text-neutral-600 bg-[#00008b00] border-2 border-gray-200 rounded-md border-dotted text-sm font-bold"
                                                 />
                                             ) : (
@@ -394,9 +396,9 @@ function TaskQuizObject({ view, assignmentTaskUUID, user_id }: TaskQuizObjectPro
                                                     >
                                                         {option.assigned_right_answer ? <Check size={12} className="mx-auto" /> : <X size={12} className="mx-auto" />}
                                                         {option.assigned_right_answer ? (
-                                                            <p className="mx-auto font-bold text-xs">True</p>
+                                                            <p className="mx-auto font-bold text-xs">{t('labels.true')}</p>
                                                         ) : (
-                                                            <p className="mx-auto font-bold text-xs">False</p>
+                                                            <p className="mx-auto font-bold text-xs">{t('labels.false')}</p>
                                                         )}
                                                     </div>
                                                     <div
@@ -415,9 +417,9 @@ function TaskQuizObject({ view, assignmentTaskUUID, user_id }: TaskQuizObjectPro
                                                     >
                                                         {option.assigned_right_answer ? <Check size={12} className="mx-auto" /> : <X size={12} className="mx-auto" />}
                                                         {option.assigned_right_answer ? (
-                                                            <p className="mx-auto font-bold text-xs">Marked as True</p>
+                                                            <p className="mx-auto font-bold text-xs">{t('labels.markedAsTrue')}</p>
                                                         ) : (
-                                                            <p className="mx-auto font-bold text-xs">Marked as False</p>
+                                                            <p className="mx-auto font-bold text-xs">{t('labels.markedAsFalse')}</p>
                                                         )}
                                                     </div>
 
@@ -501,7 +503,7 @@ function TaskQuizObject({ view, assignmentTaskUUID, user_id }: TaskQuizObjectPro
                             onClick={addQuestion}
                         >
                             <PlusCircle size={14} className="inline-block" />
-                            <span>Add Question</span>
+                            <span>{t('buttons.addQuestion')}</span>
                         </div>
                     </div>
                 )}

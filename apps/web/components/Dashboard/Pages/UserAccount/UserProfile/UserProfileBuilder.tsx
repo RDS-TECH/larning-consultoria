@@ -463,12 +463,10 @@ const UserProfileBuilder = () => {
                   }
                 }}
               >
-                <SelectTrigger className="w-full p-0 border-0 bg-black">
-                  <div className="w-full">
-                    <Button variant="default" className="w-full bg-black hover:bg-black/90 text-white">
-                      <Plus className="h-4 w-4 mr-2" />
-                      Add Section
-                    </Button>
+                <SelectTrigger className="w-full bg-black hover:bg-black/90 text-white border-black">
+                  <div className="flex items-center justify-center w-full">
+                    <Plus className="h-4 w-4 mr-2" />
+                    <span>Add Section</span>
                   </div>
                 </SelectTrigger>
                 <SelectContent>
