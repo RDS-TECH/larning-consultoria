@@ -19,6 +19,7 @@ export const OrgMenu = (props: any) => {
   const org = useOrg() as any;
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const [isFocusMode, setIsFocusMode] = useState(false)
+  const [logoError, setLogoError] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -54,6 +55,11 @@ export const OrgMenu = (props: any) => {
     };
   }, [pathname]);
 
+  // Reset logo error when org changes
+  useEffect(() => {
+    setLogoError(false);
+  }, [org?.logo_image]);
+
   function closeFeedbackModal() {
     setFeedbackModal(false)
   }
@@ -76,12 +82,27 @@ export const OrgMenu = (props: any) => {
             <div className="logo flex md:w-auto w-full justify-center">
               <Link href={getUriWithOrg(orgslug, '/')}>
                 <div className="flex w-auto h-9 rounded-md items-center m-auto py-1 justify-center">
-                  {org?.logo_image ? (
+                  {org?.logo_image && !logoError ? (
                     <img
                       src={`${getOrgLogoMediaDirectory(org.org_uuid, org?.logo_image)}`}
                       alt="Learnhouse"
                       style={{ width: 'auto', height: '100%' }}
                       className="rounded-md"
+                      onError={(e) => {
+                        console.error('Failed to load logo:', {
+                          org_uuid: org.org_uuid,
+                          logo_image: org?.logo_image,
+                          url: getOrgLogoMediaDirectory(org.org_uuid, org?.logo_image)
+                        });
+                        setLogoError(true);
+                      }}
+                      onLoad={() => {
+                        console.log('Logo loaded successfully:', {
+                          org_uuid: org.org_uuid,
+                          logo_image: org?.logo_image,
+                          url: getOrgLogoMediaDirectory(org.org_uuid, org?.logo_image)
+                        });
+                      }}
                     />
                   ) : (
                     <LearnHouseLogo />
