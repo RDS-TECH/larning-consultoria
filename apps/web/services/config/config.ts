@@ -38,7 +38,8 @@ export const getUriWithOrg = (orgslug: string, path: string) => {
   if (multi_org) {
     return `${LEARNHOUSE_HTTP_PROTOCOL}${orgslug}.${LEARNHOUSE_DOMAIN}${path}`
   }
-  return `${LEARNHOUSE_HTTP_PROTOCOL}${LEARNHOUSE_DOMAIN}${path}`
+  // Modo single-org ainda precisa da estrutura /orgs/{orgslug} nas URLs
+  return `${LEARNHOUSE_HTTP_PROTOCOL}${LEARNHOUSE_DOMAIN}/orgs/${orgslug}${path}`
 }
 
 export const getUriWithoutOrg = (path: string) => {
