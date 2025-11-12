@@ -2027,6 +2027,19 @@
         "title": "Apenas Desktop",
         "message1": "Esta página só pode ser acessada de um dispositivo desktop.",
         "message2": "Por favor, mude para um desktop para visualizar e gerenciar a tarefa."
+      },
+      "submissions": {
+        "status": {
+          "late": "Atrasado",
+          "submitted": "Enviado",
+          "graded": "Avaliado"
+        },
+        "submissionBox": {
+          "submission": "Submissão",
+          "evaluate": "Avaliar",
+          "evaluateTitle": "Avaliar @{username}",
+          "evaluateDescription": "Avaliar a submissão"
+        }
       }
     },
     "noAssignments": "Nenhuma tarefa disponível",
@@ -2329,6 +2342,7 @@
       "description": "Grupos de Usuários são uma forma de agrupar usuários para gerenciar seu acesso aos recursos (Cursos) em sua organização.",
       "createUserGroup": "Criar um Grupo de Usuários",
       "createUserGroupDescription": "Criar um novo Grupo de Usuários para gerenciar usuários",
+      "manageUsersButton": "Gerenciar Usuários",
       "editUserGroup": {
         "fields": {
           "name": "Nome",
@@ -2612,6 +2626,12 @@
         },
         "editor": {
           "sectionTitle": "Título da Seção",
+          "common": {
+            "labels": {
+              "text": "Texto",
+              "background": "Fundo"
+            }
+          },
           "placeholders": {
             "sectionTitle": "Digite o título da seção",
             "headingText": "Digite o texto do título",
@@ -3123,6 +3143,44 @@
   },
   "collections": {
     "title": "Coleções",
+    "new": {
+      "title": "Criar Nova Coleção",
+      "description": "Agrupe seus cursos em uma coleção para torná-los mais fáceis de encontrar e gerenciar.",
+      "fields": {
+        "collectionName": "Nome da Coleção",
+        "visibility": "Visibilidade",
+        "description": "Descrição",
+        "selectCourses": "Selecionar Cursos"
+      },
+      "placeholders": {
+        "enterName": "Digite o nome da coleção",
+        "enterDescription": "Digite a descrição da coleção"
+      },
+      "visibility": {
+        "public": "Coleção Pública - Visível para todos",
+        "private": "Coleção Privada - Visível apenas para membros da organização"
+      },
+      "selectCourses": {
+        "loading": "Carregando cursos...",
+        "noCourses": "Nenhum curso disponível. Crie alguns cursos primeiro.",
+        "selectedCount": "Cursos selecionados: {count}"
+      },
+      "buttons": {
+        "cancel": "Cancelar",
+        "create": "Criar Coleção",
+        "creating": "Criando..."
+      },
+      "toast": {
+        "nameRequired": "Por favor, digite um nome para a coleção",
+        "descriptionRequired": "Por favor, digite uma descrição",
+        "coursesRequired": "Por favor, selecione pelo menos um curso",
+        "created": "Coleção criada com sucesso!",
+        "createError": "Falha ao criar coleção. Por favor, tente novamente."
+      },
+      "errors": {
+        "loadError": "Falha ao carregar cursos. Por favor, tente novamente mais tarde."
+      }
+    },
     "deleteCollection": "Excluir Coleção",
     "confirmDelete": "Excluir '{name}'?",
     "confirmDeleteMessage": "Tem certeza de que deseja excluir esta coleção?",

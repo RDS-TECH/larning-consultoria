@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useState, use } from 'react'
 import { createCollection } from '@services/courses/collections'
 import useSWR from 'swr'
 import { getAPIUrl, getUriWithOrg } from '@services/config/config'
@@ -10,12 +10,14 @@ import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { Loader2, Image as ImageIcon } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { getCourseThumbnailMediaDirectory } from '@services/media/media'
+import { useTranslations } from 'next-intl'
 
-function NewCollection(params: any) {
+function NewCollection({ params }: { params: Promise<{ orgslug: string }> }) {
+  const t = useTranslations('collections.new')
+  const { orgslug } = use(params)
   const org = useOrg() as any
   const session = useLHSession() as any
   const access_token = session?.data?.tokens?.access_token
-  const orgslug = params.params.orgslug
   const [name, setName] = React.useState('')
   const [description, setDescription] = React.useState('')
   const [selectedCourses, setSelectedCourses] = React.useState([]) as any
@@ -43,19 +45,19 @@ function NewCollection(params: any) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
-    
+
     if (!name.trim()) {
-      toast.error('Please enter a collection name')
+      toast.error(t('toast.nameRequired'))
       return
     }
 
     if (!description.trim()) {
-      toast.error('Please enter a description')
+      toast.error(t('toast.descriptionRequired'))
       return
     }
 
     if (selectedCourses.length === 0) {
-      toast.error('Please select at least one course')
+      toast.error(t('toast.coursesRequired'))
       return
     }
 
@@ -70,10 +72,10 @@ function NewCollection(params: any) {
       }
       await createCollection(collection, session.data?.tokens?.access_token)
       await revalidateTags(['collections'], org.slug)
-      toast.success('Collection created successfully!')
+      toast.success(t('toast.created'))
       router.push(getUriWithOrg(orgslug, '/collections'))
     } catch (error) {
-      toast.error('Failed to create collection. Please try again.')
+      toast.error(t('toast.createError'))
     } finally {
       setIsSubmitting(false)
     }
@@ -82,7 +84,7 @@ function NewCollection(params: any) {
   if (error) {
     return (
       <div className="flex items-center justify-center h-[60vh]">
-        <div className="text-red-500">Failed to load courses. Please try again later.</div>
+        <div className="text-red-500">{t('errors.loadError')}</div>
       </div>
     )
   }
@@ -91,19 +93,19 @@ function NewCollection(params: any) {
     <div className="max-w-2xl mx-auto py-12 px-4">
       <div className="space-y-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Create New Collection</h1>
+          <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
           <p className="mt-2 text-sm text-gray-600">
-            Group your courses together in a collection to make them easier to find and manage.
+            {t('description')}
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
             <label className="block">
-              <span className="text-sm font-medium text-gray-700">Collection Name</span>
+              <span className="text-sm font-medium text-gray-700">{t('fields.collectionName')}</span>
               <input
                 type="text"
-                placeholder="Enter collection name"
+                placeholder={t('placeholders.enterName')}
                 value={name}
                 onChange={handleNameChange}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
@@ -112,21 +114,21 @@ function NewCollection(params: any) {
             </label>
 
             <label className="block">
-              <span className="text-sm font-medium text-gray-700">Visibility</span>
+              <span className="text-sm font-medium text-gray-700">{t('fields.visibility')}</span>
               <select
                 onChange={handleVisibilityChange}
                 className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                 defaultValue={isPublic}
               >
-                <option value="true">Public Collection - Visible to everyone</option>
-                <option value="false">Private Collection - Only visible to organization members</option>
+                <option value="true">{t('visibility.public')}</option>
+                <option value="false">{t('visibility.private')}</option>
               </select>
             </label>
 
             <label className="block">
-              <span className="text-sm font-medium text-gray-700">Description</span>
+              <span className="text-sm font-medium text-gray-700">{t('fields.description')}</span>
               <textarea
-                placeholder="Enter collection description"
+                placeholder={t('placeholders.enterDescription')}
                 value={description}
                 onChange={handleDescriptionChange}
                 rows={4}
@@ -136,13 +138,13 @@ function NewCollection(params: any) {
             </label>
 
             <div className="space-y-2">
-              <span className="text-sm font-medium text-gray-700">Select Courses</span>
+              <span className="text-sm font-medium text-gray-700">{t('fields.selectCourses')}</span>
               {isLoading ? (
                 <div className="flex items-center justify-center py-8">
                   <Loader2 className="w-6 h-6 animate-spin text-gray-500" />
                 </div>
               ) : courses?.length === 0 ? (
-                <p className="text-sm text-gray-500 py-4">No courses available. Create some courses first.</p>
+                <p className="text-sm text-gray-500 py-4">{t('selectCourses.noCourses')}</p>
               ) : (
                 <div className="mt-2 border border-gray-200 rounded-lg bg-gray-50">
                   <div className="max-h-[400px] overflow-y-auto p-4 space-y-3 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
@@ -191,7 +193,7 @@ function NewCollection(params: any) {
                   </div>
                   <div className="px-4 py-3 bg-gray-50 border-t border-gray-200">
                     <p className="text-xs text-gray-500">
-                      Selected courses: {selectedCourses.length}
+                      {t('selectCourses.selectedCount', { count: selectedCourses.length })}
                     </p>
                   </div>
                 </div>
@@ -205,7 +207,7 @@ function NewCollection(params: any) {
               onClick={() => router.back()}
               className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
             >
-              Cancel
+              {t('buttons.cancel')}
             </button>
             <button
               type="submit"
@@ -213,7 +215,7 @@ function NewCollection(params: any) {
               className="px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg shadow-xs hover:bg-blue-700 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
             >
               {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
-              <span>{isSubmitting ? 'Creating...' : 'Create Collection'}</span>
+              <span>{isSubmitting ? t('buttons.creating') : t('buttons.create')}</span>
             </button>
           </div>
         </form>

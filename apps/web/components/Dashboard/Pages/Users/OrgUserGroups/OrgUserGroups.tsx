@@ -101,7 +101,7 @@ function OrgUserGroups() {
                                                 dialogTrigger={
                                                     <button className="flex space-x-2 hover:cursor-pointer p-1 px-3 bg-yellow-700 rounded-md font-bold items-center text-sm text-yellow-100">
                                                         <Users className="w-4 h-4" />
-                                                        <span>{t('manageUsers')}</span>
+                                                        <span>{t('manageUsersButton')}</span>
                                                     </button>
                                                 }
                                             />
