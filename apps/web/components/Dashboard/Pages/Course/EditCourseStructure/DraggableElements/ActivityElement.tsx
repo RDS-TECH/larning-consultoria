@@ -1,3 +1,4 @@
+'use client'
 import ConfirmationModal from '@components/Objects/StyledElements/ConfirmationModal/ConfirmationModal'
 import { getAPIUrl, getUriWithOrg } from '@services/config/config'
 import { deleteActivity, updateActivity } from '@services/courses/activities'
@@ -18,6 +19,7 @@ import {
 } from 'lucide-react'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { Draggable } from '@hello-pangea/dnd'
@@ -43,6 +45,7 @@ interface ModifiedActivityInterface {
 
 function ActivityElement(props: ActivitiyElementProps) {
   const router = useRouter()
+  const t = useTranslations('courses.edit.structure');
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
   const [modifiedActivity, setModifiedActivity] = React.useState<
@@ -58,8 +61,8 @@ function ActivityElement(props: ActivitiyElementProps) {
   const withUnpublishedActivities = course ? course.withUnpublishedActivities : false
 
   async function deleteActivityUI() {
-    const toast_loading = toast.loading('Deleting activity...')
-    // Assignments 
+    const toast_loading = toast.loading(t('toast.deletingActivity'))
+    // Assignments
     if (props.activity.activity_type === 'TYPE_ASSIGNMENT') {
       await deleteAssignmentUsingActivityUUID(props.activity.activity_uuid, access_token)
     }
@@ -68,12 +71,12 @@ function ActivityElement(props: ActivitiyElementProps) {
     mutate(`${getAPIUrl()}courses/${props.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
     await revalidateTags(['courses'], props.orgslug)
     toast.dismiss(toast_loading)
-    toast.success('Activity deleted successfully')
+    toast.success(t('toast.activityDeleted'))
     router.refresh()
   }
 
   async function changePublicStatus() {
-    const toast_loading = toast.loading('Updating assignment...')
+    const toast_loading = toast.loading(t('toast.updatingAssignment'))
     await updateActivity(
       {
         ...props.activity,
@@ -84,7 +87,7 @@ function ActivityElement(props: ActivitiyElementProps) {
     )
     mutate(`${getAPIUrl()}courses/${props.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
     toast.dismiss(toast_loading)
-    toast.success('The activity has been updated successfully')
+    toast.success(t('toast.activityUpdated'))
     await revalidateTags(['courses'], props.orgslug)
     router.refresh()
   }
@@ -95,7 +98,7 @@ function ActivityElement(props: ActivitiyElementProps) {
       selectedActivity !== undefined
     ) {
       setIsUpdatingName(true)
-      
+
       let modifiedActivityCopy = {
         ...props.activity,
         name: modifiedActivity.activityName,
@@ -105,10 +108,10 @@ function ActivityElement(props: ActivitiyElementProps) {
         await updateActivity(modifiedActivityCopy, activityUUID, access_token)
         mutate(`${getAPIUrl()}courses/${props.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`)
         await revalidateTags(['courses'], props.orgslug)
-        toast.success('Activity name updated successfully')
+        toast.success(t('toast.activityNameUpdated'))
         router.refresh()
       } catch (error) {
-        toast.error('Failed to update activity name')
+        toast.error(t('toast.activityNameUpdateFailed'))
         console.error('Error updating activity name:', error)
       } finally {
         setIsUpdatingName(false)
@@ -151,7 +154,7 @@ function ActivityElement(props: ActivitiyElementProps) {
                 <input
                   type="text"
                   className="bg-transparent outline-hidden text-xs text-gray-500"
-                  placeholder="Activity name"
+                  placeholder={t('activityNamePlaceholder')}
                   value={
                     modifiedActivity
                       ? modifiedActivity?.activityName
@@ -203,10 +206,10 @@ function ActivityElement(props: ActivitiyElementProps) {
               ) : (
                 <Lock strokeWidth={2} size={12} className="text-gray-600" />
               )}
-              <span>{!props.activity.published ? 'Publish' : 'Unpublish'}</span>
+              <span>{!props.activity.published ? t('buttons.publish') : t('buttons.unpublish')}</span>
             </button>
             <div className="w-px h-3 bg-gray-300 mx-1 self-center rounded-full hidden sm:block" />
-            <ToolTip content="Preview Activity" sideOffset={8}>
+            <ToolTip content={t('buttons.previewActivity')} sideOffset={8}>
               <Link
                 href={
                   getUriWithOrg(props.orgslug, '') +
@@ -226,9 +229,9 @@ function ActivityElement(props: ActivitiyElementProps) {
             </ToolTip>
             {/*   Delete Button  */}
             <ConfirmationModal
-              confirmationMessage="Are you sure you want to delete this activity ?"
-              confirmationButtonText="Delete Activity"
-              dialogTitle={'Delete ' + props.activity.name + ' ?'}
+              confirmationMessage={t('deleteActivityConfirm')}
+              confirmationButtonText={t('buttons.deleteActivity')}
+              dialogTitle={t('buttons.deleteActivityTitle', { name: props.activity.name })}
               dialogTrigger={
                 <button
                   className="p-1 px-2 sm:px-3 bg-red-600 rounded-md flex items-center space-x-1 shadow-md transition-colors duration-200 hover:bg-red-700"
@@ -282,6 +285,7 @@ const ActivityTypeIndicator = ({activityType, isMobile} : { activityType: keyof 
 }
 
 const ActivityElementOptions = ({ activity, isMobile }: { activity: any; isMobile: boolean }) => {
+  const t = useTranslations('courses.edit.structure');
   const [assignmentUUID, setAssignmentUUID] = useState('');
   const org = useOrg() as any;
   const course = useCourse() as any;
@@ -326,7 +330,7 @@ const ActivityElementOptions = ({ activity, isMobile }: { activity: any; isMobil
             target='_blank'
           >
             <div className="text-sky-100 font-bold text-xs flex items-center space-x-1">
-              <FilePenLine size={12} />  <span>Edit Page</span>
+              <FilePenLine size={12} />  <span>{t('buttons.editPage')}</span>
             </div>
           </Link>
         </>
@@ -341,7 +345,7 @@ const ActivityElementOptions = ({ activity, isMobile }: { activity: any; isMobil
             className={`hover:cursor-pointer p-1 ${isMobile ? 'px-2' : 'px-3'} bg-teal-700 rounded-md items-center`}
           >
             <div className="text-sky-100 font-bold text-xs flex items-center space-x-1">
-              <FilePenLine size={12} /> {!isMobile && <span>Edit Assignment</span>}
+              <FilePenLine size={12} /> {!isMobile && <span>{t('buttons.editAssignment')}</span>}
             </div>
           </Link>
         </>

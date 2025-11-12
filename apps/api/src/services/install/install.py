@@ -114,14 +114,26 @@ async def update_install_instance(
 # Install Default roles
 def install_default_elements(db_session: Session):
     """ """
-    # remove all default roles
+    # Check if default roles already exist first
     statement = select(Role).where(Role.role_type == RoleTypeEnum.TYPE_GLOBAL)
-    roles = db_session.exec(statement).all()
+    existing_roles = db_session.exec(statement).all()
 
-    for role in roles:
-        db_session.delete(role)
+    # Only try to remove roles if there are no users yet
+    if existing_roles:
+        # Check if any users exist
+        user_count_statement = select(UserOrganization)
+        user_orgs = db_session.exec(user_count_statement).all()
 
-    db_session.commit()
+        if not user_orgs or len(user_orgs) == 0:
+            # Safe to delete roles since no users exist
+            for role in existing_roles:
+                db_session.delete(role)
+            db_session.commit()
+        else:
+            # Users exist, skip role recreation if we have 4 roles
+            if len(existing_roles) == 4:
+                print("Roles already exist and users are associated. Skipping role recreation.")
+                return
 
     # Check if default roles already exist
     statement = select(Role).where(Role.role_type == RoleTypeEnum.TYPE_GLOBAL)

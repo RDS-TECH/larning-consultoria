@@ -7,7 +7,7 @@ import UserAvatar from '@components/Objects/UserAvatar'
 import useAdminStatus from '@components/Hooks/useAdminStatus'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { useOrg } from '@components/Contexts/OrgContext'
-import { getUriWithoutOrg } from '@services/config/config'
+import { getUriWithoutOrg, getUriWithOrg } from '@services/config/config'
 import Tooltip from '@components/Objects/StyledElements/Tooltip/Tooltip'
 import {
   DropdownMenu,
@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu"
 import { signOut } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 
 interface RoleInfo {
   name: string;
@@ -36,6 +37,7 @@ export const HeaderProfileBox = () => {
   const session = useLHSession() as any
   const { isAdmin, loading, userRoles, rights } = useAdminStatus()
   const org = useOrg() as any
+  const t = useTranslations('navbar.auth')
 
   useEffect(() => { }
     , [session])
@@ -140,10 +142,10 @@ export const HeaderProfileBox = () => {
           <ul className="flex space-x-3 items-center">
             <li>
               <Link
-                href={{ pathname: getUriWithoutOrg('/login'), query: org ? { orgslug: org.slug } : null }} >Login</Link>
+                href={{ pathname: getUriWithoutOrg('/auth/login'), query: org ? { orgslug: org.slug } : null }} >{t('login')}</Link>
             </li>
             <li className="bg-black rounded-lg shadow-md p-2 px-3 text-white">
-              <Link href={{ pathname: getUriWithoutOrg('/signup'), query: org ? { orgslug: org.slug } : null }}>Sign up</Link>
+              <Link href={{ pathname: getUriWithoutOrg('/auth/signup'), query: org ? { orgslug: org.slug } : null }}>{t('signup')}</Link>
             </li>
           </ul>
         </UnidentifiedArea>
@@ -203,31 +205,31 @@ export const HeaderProfileBox = () => {
                 <DropdownMenuSeparator />
                 {rights?.dashboard?.action_access && (
                   <DropdownMenuItem asChild>
-                    <Link href="/dash" className="flex items-center space-x-2">
+                    <Link href={getUriWithOrg(org?.slug, '/dash')} className="flex items-center space-x-2">
                       <Shield size={16} />
-                      <span>Dashboard</span>
+                      <span>{t('dashboard')}</span>
                     </Link>
                   </DropdownMenuItem>
                 )}
                 <DropdownMenuItem asChild>
-                  <Link href="/dash/user-account/settings/general" className="flex items-center space-x-2">
+                  <Link href={getUriWithOrg(org?.slug, '/dash/user-account/settings/general')} className="flex items-center space-x-2">
                     <UserIcon size={16} />
-                    <span>User Settings</span>
+                    <span>{t('userSettings')}</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link href="/dash/user-account/owned" className="flex items-center space-x-2">
+                  <Link href={getUriWithOrg(org?.slug, '/dash/user-account/owned')} className="flex items-center space-x-2">
                     <Package2 size={16} />
-                    <span>My Courses</span>
+                    <span>{t('myCourses')}</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem 
+                <DropdownMenuItem
                   onClick={() => signOut({ callbackUrl: '/' })}
                   className="flex items-center space-x-2 text-red-600 focus:text-red-600"
                 >
                   <LogOut size={16} />
-                  <span>Sign Out</span>
+                  <span>{t('signOut')}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

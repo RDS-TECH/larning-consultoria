@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState, useRef, useMemo, memo } from 'react'
 import { getCourseThumbnailMediaDirectory } from '@services/media/media'
 import { useOrg } from '@components/Contexts/OrgContext'
+import { useTranslations } from 'next-intl'
 
 interface FixedActivitySecondaryBarProps {
   course: any
@@ -14,53 +15,55 @@ interface FixedActivitySecondaryBarProps {
 }
 
 // Memoized navigation buttons component
-const NavigationButtons = memo(({ 
-  prevActivity, 
-  nextActivity, 
-  currentIndex, 
-  allActivities, 
-  navigateToActivity 
-}: { 
-  prevActivity: any, 
-  nextActivity: any, 
-  currentIndex: number, 
-  allActivities: any[], 
-  navigateToActivity: (activity: any) => void 
+const NavigationButtons = memo(({
+  prevActivity,
+  nextActivity,
+  currentIndex,
+  allActivities,
+  navigateToActivity,
+  t
+}: {
+  prevActivity: any,
+  nextActivity: any,
+  currentIndex: number,
+  allActivities: any[],
+  navigateToActivity: (activity: any) => void,
+  t: any
 }) => (
   <div className="flex items-center space-x-2 sm:space-x-3">
     <button
       onClick={() => navigateToActivity(prevActivity)}
       className={`flex items-center space-x-1 sm:space-x-2 py-1.5 px-1.5 sm:px-2 rounded-md transition-all duration-200 ${
-        prevActivity 
-          ? 'text-gray-700 hover:bg-gray-100' 
+        prevActivity
+          ? 'text-gray-700 hover:bg-gray-100'
           : 'text-gray-300 cursor-not-allowed'
       }`}
       disabled={!prevActivity}
-      title={prevActivity ? `Previous: ${prevActivity.name}` : 'No previous activity'}
+      title={prevActivity ? `${t('previous')}: ${prevActivity.name}` : t('noPrevious')}
     >
       <ChevronLeft size={16} className="shrink-0 sm:w-5 sm:h-5" />
       <div className="flex flex-col items-start hidden sm:flex">
-        <span className="text-xs text-gray-500">Previous</span>
+        <span className="text-xs text-gray-500">{t('previous')}</span>
         <span className="text-sm font-medium text-left truncate max-w-[100px] sm:max-w-[150px]">
-          {prevActivity ? prevActivity.name : 'No previous activity'}
+          {prevActivity ? prevActivity.name : t('noPrevious')}
         </span>
       </div>
     </button>
 
     <span className="text-sm font-medium text-gray-500 px-1 sm:px-2">
-      {currentIndex + 1} of {allActivities.length}
+      {currentIndex + 1} {t('of')} {allActivities.length}
     </span>
 
     <button
       onClick={() => navigateToActivity(nextActivity)}
       className={`flex items-center space-x-1 sm:space-x-2 py-1.5 px-1.5 sm:px-2 rounded-md transition-all duration-200`}
       disabled={!nextActivity}
-      title={nextActivity ? `Next: ${nextActivity.name}` : 'No next activity'}
+      title={nextActivity ? `${t('next')}: ${nextActivity.name}` : t('noNext')}
     >
       <div className="flex flex-col items-end hidden sm:flex">
-        <span className={`text-xs ${nextActivity ? 'text-gray-500' : 'text-gray-500'}`}>Next</span>
+        <span className={`text-xs ${nextActivity ? 'text-gray-500' : 'text-gray-500'}`}>{t('next')}</span>
         <span className="text-sm font-medium text-right truncate max-w-[100px] sm:max-w-[150px]">
-          {nextActivity ? nextActivity.name : 'No next activity'}
+          {nextActivity ? nextActivity.name : t('noNext')}
         </span>
       </div>
       <ChevronRight size={16} className="shrink-0 sm:w-5 sm:h-5" />
@@ -71,7 +74,7 @@ const NavigationButtons = memo(({
 NavigationButtons.displayName = 'NavigationButtons';
 
 // Memoized course info component
-const CourseInfo = memo(({ course, org }: { course: any, org: any }) => (
+const CourseInfo = memo(({ course, org, t }: { course: any, org: any, t: any }) => (
   <div className="flex items-center space-x-2 sm:space-x-4 min-w-0 flex-shrink">
     <img
       className="w-[35px] sm:w-[45px] h-[20px] sm:h-[26px] rounded-md object-cover flex-shrink-0"
@@ -83,7 +86,7 @@ const CourseInfo = memo(({ course, org }: { course: any, org: any }) => (
       alt=""
     />
     <div className="flex flex-col -space-y-0.5 min-w-0 hidden sm:block">
-      <p className="text-sm font-medium text-gray-500">Course</p>
+      <p className="text-sm font-medium text-gray-500">{t('course')}</p>
       <h1 className="font-semibold text-gray-900 text-base truncate">
         {course.name}
       </h1>
@@ -94,6 +97,8 @@ const CourseInfo = memo(({ course, org }: { course: any, org: any }) => (
 CourseInfo.displayName = 'CourseInfo';
 
 export default function FixedActivitySecondaryBar(props: FixedActivitySecondaryBarProps): React.ReactNode {
+  const t = useTranslations('activities.navigation')
+  const tBar = useTranslations('activities.secondaryBar')
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [shouldShow, setShouldShow] = useState(false);
@@ -174,8 +179,8 @@ export default function FixedActivitySecondaryBar(props: FixedActivitySecondaryB
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 py-2">
-          <CourseInfo course={props.course} org={org} />
-          
+          <CourseInfo course={props.course} org={org} t={tBar} />
+
           <div className="flex items-center flex-shrink-0">
             <NavigationButtons
               prevActivity={prevActivity}
@@ -183,6 +188,7 @@ export default function FixedActivitySecondaryBar(props: FixedActivitySecondaryB
               currentIndex={currentIndex}
               allActivities={allActivities}
               navigateToActivity={navigateToActivity}
+              t={t}
             />
           </div>
         </div>

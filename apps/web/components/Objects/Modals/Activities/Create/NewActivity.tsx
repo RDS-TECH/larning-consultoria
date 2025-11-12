@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 import DynamicPageActivityImage from 'public/activities_types/dynamic-page-activity.png'
 import VideoPageActivityImage from 'public//activities_types/video-page-activity.png'
@@ -9,6 +11,7 @@ import VideoModal from './NewActivityModal/VideoActivityModal'
 import Image from 'next/image'
 import DocumentPdfModal from './NewActivityModal/DocumentActivityModal'
 import Assignment from './NewActivityModal/AssignmentActivityModal'
+import { useTranslations } from 'next-intl'
 
 function NewActivityModal({
   closeModal,
@@ -19,6 +22,7 @@ function NewActivityModal({
   course,
 }: any) {
   const [selectedView, setSelectedView] = useState('home')
+  const t = useTranslations('activities.creation')
 
   return (
     <>
@@ -30,10 +34,10 @@ function NewActivityModal({
             }}
           >
             <div className="h-20 rounded-lg m-0.5 flex flex-col items-center justify-end text-center bg-white hover:cursor-pointer">
-              <Image unoptimized quality={100} alt="Dynamic Page" src={DynamicPageActivityImage}></Image>
+              <Image unoptimized quality={100} alt={t('dynamicPage')} src={DynamicPageActivityImage}></Image>
             </div>
             <div className="flex text-sm h-5 font-medium text-gray-500 items-center justify-center text-center">
-              Dynamic Page
+              {t('dynamicPage')}
             </div>
           </ActivityOption>
           <ActivityOption
@@ -42,10 +46,10 @@ function NewActivityModal({
             }}
           >
             <div className="h-20 rounded-lg m-0.5 flex flex-col items-center justify-end text-center bg-white hover:cursor-pointer">
-              <Image unoptimized quality={100} alt="Video Page" src={VideoPageActivityImage}></Image>
+              <Image unoptimized quality={100} alt={t('video')} src={VideoPageActivityImage}></Image>
             </div>
             <div className="flex text-sm h-5 font-medium text-gray-500 items-center justify-center text-center">
-              Video
+              {t('video')}
             </div>
           </ActivityOption>
           <ActivityOption
@@ -54,10 +58,10 @@ function NewActivityModal({
             }}
           >
             <div className="h-20 rounded-lg m-0.5 flex flex-col items-center justify-end text-center bg-white hover:cursor-pointer">
-              <Image unoptimized quality={100} alt="Document PDF Page" src={DocumentPdfPageActivityImage}></Image>
+              <Image unoptimized quality={100} alt={t('document')} src={DocumentPdfPageActivityImage}></Image>
             </div>
             <div className="flex text-sm h-5 font-medium text-gray-500 items-center justify-center text-center">
-              Document
+              {t('document')}
             </div>
           </ActivityOption>
           <ActivityOption
@@ -66,10 +70,10 @@ function NewActivityModal({
             }}
           >
             <div className="h-20 rounded-lg m-0.5 flex flex-col items-center justify-end text-center bg-white hover:cursor-pointer">
-              <Image unoptimized quality={100} alt="Assignment Page" src={AssignmentActivityImage}></Image>
+              <Image unoptimized quality={100} alt={t('assignments')} src={AssignmentActivityImage}></Image>
             </div>
             <div className="flex text-sm h-5 font-medium text-gray-500 items-center justify-center text-center">
-              Assignments
+              {t('assignments')}
             </div>
           </ActivityOption>
         </div>

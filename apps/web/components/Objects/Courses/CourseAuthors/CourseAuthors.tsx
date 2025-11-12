@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import UserAvatar from '../../UserAvatar'
 import { getUserAvatarMediaDirectory } from '@services/media/media'
@@ -24,6 +26,7 @@ import FormLayout, {
 } from '@components/Objects/StyledElements/Form/Form'
 import { useFormik } from 'formik'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
 dayjs.extend(relativeTime)
 
@@ -45,17 +48,18 @@ interface CourseAuthorsProps {
 }
 
 const MultipleAuthors = ({ authors, isMobile }: { authors: Author[], isMobile: boolean }) => {
+  const t = useTranslations('public.course.authors')
   const displayedAvatars = authors.slice(0, 3)
   const displayedNames = authors.slice(0, 2)
   const remainingCount = Math.max(0, authors.length - 3)
-  
+
   // Consistent sizes for both avatars and badge
   const avatarSize = isMobile ? 72 : 86
   const borderSize = "border-4"
 
   return (
     <div className="flex flex-col items-center space-y-4 px-2 py-2">
-      <div className="text-[12px] text-neutral-400 font-semibold self-start">Authors & Updates </div>
+      <div className="text-[12px] text-neutral-400 font-semibold self-start">{t('authorsAndUpdates')}</div>
       
       {/* Avatars row */}
       <div className="flex justify-center -space-x-6 relative">
@@ -118,7 +122,7 @@ const MultipleAuthors = ({ authors, isMobile }: { authors: Author[], isMobile: b
               ))}
               {authors.length > 2 && (
                 <span className="text-neutral-500 ml-1">
-                  & {authors.length - 2} more
+                  {t('andMore', { count: authors.length - 2 })}
                 </span>
               )}
             </>
@@ -144,6 +148,7 @@ const MultipleAuthors = ({ authors, isMobile }: { authors: Author[], isMobile: b
 }
 
 const UpdatesSection = () => {
+  const t = useTranslations('public.course.updates')
   const [selectedView, setSelectedView] = React.useState('list')
   const adminStatus = useAdminStatus()
   const course = useCourse() as any
@@ -160,11 +165,11 @@ const UpdatesSection = () => {
         <div className="flex items-center space-x-3">
           <div className="flex items-center space-x-2">
             <Rss size={14} className="text-neutral-400" />
-            <span className="text-sm font-semibold text-neutral-600">Course Updates</span>
+            <span className="text-sm font-semibold text-neutral-600">{t('title')}</span>
           </div>
           {updates && updates.length > 0 && (
             <span className="px-2 py-0.5 text-[11px] font-medium bg-neutral-100 text-neutral-500 rounded-full">
-              {updates.length} {updates.length === 1 ? 'update' : 'updates'}
+              {t('count', { count: updates.length })}
             </span>
           )}
         </div>
@@ -181,7 +186,7 @@ const UpdatesSection = () => {
             `}
           >
             <PencilLine size={12} />
-            <span>{selectedView === 'new' ? 'Cancel' : 'New Update'}</span>
+            <span>{selectedView === 'new' ? t('cancel') : t('newUpdate')}</span>
           </button>
         )}
       </div>
@@ -205,6 +210,7 @@ const UpdatesSection = () => {
 }
 
 const NewUpdateForm = ({ setSelectedView }: { setSelectedView: (view: string) => void }) => {
+  const t = useTranslations('public.course.updates')
   const org = useOrg() as any
   const course = useCourse() as any
   const session = useLHSession() as any
@@ -216,8 +222,8 @@ const NewUpdateForm = ({ setSelectedView }: { setSelectedView: (view: string) =>
     },
     validate: (values) => {
       const errors: any = {}
-      if (!values.title) errors.title = 'Title is required'
-      if (!values.content) errors.content = 'Content is required'
+      if (!values.title) errors.title = t('validation.titleRequired')
+      if (!values.content) errors.content = t('validation.contentRequired')
       return errors
     },
     onSubmit: async (values) => {
@@ -229,11 +235,11 @@ const NewUpdateForm = ({ setSelectedView }: { setSelectedView: (view: string) =>
       }
       const res = await createCourseUpdate(body, session.data?.tokens?.access_token)
       if (res.status === 200) {
-        toast.success('Update added successfully')
+        toast.success(t('toasts.updateAdded'))
         setSelectedView('list')
         mutate(`${getAPIUrl()}courses/${course?.courseStructure.course_uuid}/updates`)
       } else {
-        toast.error('Failed to add update')
+        toast.error(t('toasts.updateFailed'))
       }
     }
   })
@@ -243,7 +249,7 @@ const NewUpdateForm = ({ setSelectedView }: { setSelectedView: (view: string) =>
       <FormLayout onSubmit={formik.handleSubmit} className="space-y-4">
         <FormField name="title">
           <FormLabelAndMessage
-            label="Update Title"
+            label={t('form.titleLabel')}
             message={formik.errors.title}
           />
           <Form.Control asChild>
@@ -252,14 +258,14 @@ const NewUpdateForm = ({ setSelectedView }: { setSelectedView: (view: string) =>
               value={formik.values.title}
               type="text"
               required
-              placeholder="What's new in this update?"
+              placeholder={t('form.titlePlaceholder')}
               className="bg-white border-neutral-200 focus:border-neutral-300 focus:ring-neutral-200"
             />
           </Form.Control>
         </FormField>
         <FormField name="content">
           <FormLabelAndMessage
-            label="Update Content"
+            label={t('form.contentLabel')}
             message={formik.errors.content}
           />
           <Form.Control asChild>
@@ -267,7 +273,7 @@ const NewUpdateForm = ({ setSelectedView }: { setSelectedView: (view: string) =>
               onChange={formik.handleChange}
               value={formik.values.content}
               required
-              placeholder="Share the details of your update..."
+              placeholder={t('form.contentPlaceholder')}
               className="bg-white h-[120px] border-neutral-200 focus:border-neutral-300 focus:ring-neutral-200 resize-none"
             />
           </Form.Control>
@@ -277,7 +283,7 @@ const NewUpdateForm = ({ setSelectedView }: { setSelectedView: (view: string) =>
             type="submit"
             className="px-4 py-1.5 bg-neutral-900 hover:bg-black text-white text-xs font-medium rounded-full transition-colors duration-150"
           >
-            Publish Update
+            {t('form.publishUpdate')}
           </button>
         </div>
       </FormLayout>
@@ -286,6 +292,7 @@ const NewUpdateForm = ({ setSelectedView }: { setSelectedView: (view: string) =>
 }
 
 const UpdatesListView = () => {
+  const t = useTranslations('public.course.updates')
   const course = useCourse() as any
   const adminStatus = useAdminStatus()
   const session = useLHSession() as any
@@ -299,8 +306,8 @@ const UpdatesListView = () => {
     return (
       <div className="flex flex-col items-center justify-center py-8 px-4 text-center bg-neutral-50/50 rounded-lg border border-dashed border-neutral-200">
         <TentTree size={28} className="text-neutral-400 mb-2" />
-        <p className="text-sm text-neutral-600 font-medium">No updates yet</p>
-        <p className="text-xs text-neutral-400 mt-1">Updates about this course will appear here</p>
+        <p className="text-sm text-neutral-600 font-medium">{t('empty.noUpdates')}</p>
+        <p className="text-xs text-neutral-400 mt-1">{t('empty.description')}</p>
       </div>
     )
   }
@@ -341,31 +348,32 @@ const UpdatesListView = () => {
 }
 
 const DeleteUpdateButton = ({ update }: any) => {
+  const t = useTranslations('public.course.updates')
   const session = useLHSession() as any
   const course = useCourse() as any
 
   const handleDelete = async () => {
-    const toast_loading = toast.loading('Deleting update...')
+    const toast_loading = toast.loading(t('toasts.deleting'))
     const res = await deleteCourseUpdate(
       course.courseStructure.course_uuid,
       update.courseupdate_uuid,
       session.data?.tokens?.access_token
     )
-    
+
     if (res.status === 200) {
       toast.dismiss(toast_loading)
-      toast.success('Update deleted successfully')
+      toast.success(t('toasts.deleted'))
       mutate(`${getAPIUrl()}courses/${course?.courseStructure.course_uuid}/updates`)
     } else {
-      toast.error('Failed to delete update')
+      toast.error(t('toasts.deleteFailed'))
     }
   }
 
   return (
     <ConfirmationModal
-      confirmationButtonText="Delete Update"
-      confirmationMessage="Are you sure you want to delete this update?"
-      dialogTitle="Delete Update?"
+      confirmationButtonText={t('delete.button')}
+      confirmationMessage={t('delete.message')}
+      dialogTitle={t('delete.title')}
       buttonid="delete-update-button"
       dialogTrigger={
         <button

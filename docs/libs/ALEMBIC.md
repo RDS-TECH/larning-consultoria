@@ -1,0 +1,420 @@
+# Alembic
+
+Alembic is a lightweight database migration tool for SQLAlchemy.
+
+**Version**: 1.13.2+
+**Official Documentation**: https://alembic.sqlalchemy.org
+**Context7 Library ID**: `/sqlalchemy/alembic`
+
+## Overview
+
+Alembic is used in this project for managing database schema changes. Key features:
+
+- **Version Control**: Track database schema changes over time
+- **Autogenerate**: Automatically detect schema changes from models
+- **Branching**: Support for multiple development branches
+- **Reversible**: Upgrade and downgrade migrations
+- **SQL Generation**: Generate SQL scripts without executing them
+
+## Installation and Setup
+
+```bash
+pip install alembic
+```
+
+### Initialize Alembic
+
+```bash
+alembic init alembic
+```
+
+This creates:
+- `alembic/` directory with migration files
+- `alembic.ini` configuration file
+- `alembic/env.py` environment configuration
+
+## Configuration
+
+### alembic.ini
+
+Update the database connection string:
+
+```ini
+sqlalchemy.url = postgresql://user:password@localhost/dbname
+```
+
+Or use environment variables:
+
+```ini
+sqlalchemy.url = %(DATABASE_URL)s
+```
+
+### env.py
+
+Configure autogenerate support by importing your models:
+
+```python
+from myapp.models import Base
+
+target_metadata = Base.metadata
+```
+
+## Creating Migrations
+
+### Manual Migration
+
+```bash
+alembic revision -m "create users table"
+```
+
+### Autogenerate Migration
+
+Alembic compares your models with the database and generates migrations:
+
+```bash
+alembic revision --autogenerate -m "add email column to users"
+```
+
+This creates a migration file like:
+
+```python
+"""add email column to users
+
+Revision ID: abc123def456
+Revises: previous_revision_id
+Create Date: 2024-01-15 10:30:00.000000
+
+"""
+from alembic import op
+import sqlalchemy as sa
+
+# revision identifiers
+revision = 'abc123def456'
+down_revision = 'previous_revision_id'
+branch_labels = None
+depends_on = None
+
+def upgrade():
+    op.add_column('users', sa.Column('email', sa.String(255), nullable=True))
+
+def downgrade():
+    op.drop_column('users', 'email')
+```
+
+## Running Migrations
+
+### Upgrade
+
+```bash
+# Upgrade to latest version
+alembic upgrade head
+
+# Upgrade to specific revision
+alembic upgrade abc123def456
+
+# Upgrade one revision
+alembic upgrade +1
+```
+
+### Downgrade
+
+```bash
+# Downgrade one revision
+alembic downgrade -1
+
+# Downgrade to specific revision
+alembic downgrade abc123def456
+
+# Downgrade to base (empty database)
+alembic downgrade base
+```
+
+## Migration Operations
+
+### Table Operations
+
+```python
+from alembic import op
+import sqlalchemy as sa
+
+def upgrade():
+    # Create table
+    op.create_table(
+        'users',
+        sa.Column('id', sa.Integer, primary_key=True),
+        sa.Column('name', sa.String(50), nullable=False),
+        sa.Column('email', sa.String(255), nullable=False),
+        sa.Column('created_at', sa.DateTime, server_default=sa.func.now())
+    )
+
+    # Drop table
+    op.drop_table('old_table')
+```
+
+### Column Operations
+
+```python
+def upgrade():
+    # Add column
+    op.add_column('users', sa.Column('phone', sa.String(20)))
+
+    # Drop column
+    op.drop_column('users', 'old_column')
+
+    # Alter column
+    op.alter_column('users', 'email',
+                   existing_type=sa.String(255),
+                   type_=sa.String(320),
+                   nullable=False)
+
+    # Rename column
+    op.alter_column('users', 'username',
+                   new_column_name='user_name')
+```
+
+### Index Operations
+
+```python
+def upgrade():
+    # Create index
+    op.create_index('ix_users_email', 'users', ['email'])
+
+    # Create unique index
+    op.create_index('ix_users_username', 'users', ['username'], unique=True)
+
+    # Create composite index
+    op.create_index('ix_users_name_email', 'users', ['last_name', 'email'])
+
+    # Drop index
+    op.drop_index('ix_users_old', 'users')
+```
+
+### Constraint Operations
+
+```python
+def upgrade():
+    # Add foreign key
+    op.create_foreign_key(
+        'fk_posts_user_id',
+        'posts', 'users',
+        ['user_id'], ['id'],
+        ondelete='CASCADE'
+    )
+
+    # Drop foreign key
+    op.drop_constraint('fk_posts_user_id', 'posts', type_='foreignkey')
+
+    # Add unique constraint
+    op.create_unique_constraint('uq_users_email', 'users', ['email'])
+
+    # Add check constraint
+    op.create_check_constraint(
+        'ck_users_age',
+        'users',
+        'age >= 0'
+    )
+```
+
+## Programmatic Usage
+
+Use Alembic from Python code:
+
+```python
+from alembic import command
+from alembic.config import Config
+
+config = Config("alembic.ini")
+
+# Create new migration
+command.revision(
+    config,
+    message="add user table",
+    autogenerate=True,
+    head="head"
+)
+
+# Upgrade to latest
+command.upgrade(config, "head")
+
+# Downgrade one revision
+command.downgrade(config, "-1")
+
+# Check for pending migrations
+try:
+    command.check(config)
+    print("No pending migrations")
+except AutogenerateDiffsDetected as e:
+    print(f"Pending migrations: {e}")
+```
+
+## Advanced Features
+
+### Stamping
+
+Mark the database at a specific revision without running migrations:
+
+```bash
+# Stamp to head
+alembic stamp head
+
+# Stamp to specific revision
+alembic stamp abc123def456
+```
+
+### Generating SQL
+
+Generate SQL without executing:
+
+```bash
+# Generate upgrade SQL
+alembic upgrade head --sql
+
+# Generate downgrade SQL
+alembic downgrade base --sql
+```
+
+### Multiple Database Engines
+
+Configure `env.py` to support multiple databases:
+
+```python
+from alembic import context
+
+def run_migrations_online():
+    engines = {
+        'main': engine_from_config(
+            config.get_section('main'),
+            prefix='sqlalchemy.',
+        ),
+        'secondary': engine_from_config(
+            config.get_section('secondary'),
+            prefix='sqlalchemy.',
+        )
+    }
+
+    for name, engine in engines.items():
+        with engine.connect() as connection:
+            context.configure(
+                connection=connection,
+                target_metadata=target_metadata.get(name)
+            )
+            with context.begin_transaction():
+                context.run_migrations(engine_name=name)
+```
+
+## Autogenerate Configuration
+
+Customize what autogenerate detects:
+
+```python
+def run_migrations_online():
+    connectable = engine_from_config(
+        config.get_section(config.config_ini_section),
+        prefix="sqlalchemy.",
+    )
+
+    with connectable.connect() as connection:
+        context.configure(
+            connection=connection,
+            target_metadata=target_metadata,
+            # Include/exclude objects
+            include_object=include_object,
+            include_name=include_name,
+            # Compare types and server defaults
+            compare_type=True,
+            compare_server_default=True,
+        )
+
+        with context.begin_transaction():
+            context.run_migrations()
+
+def include_object(object, name, type_, reflected, compare_to):
+    """Filter objects to include in autogenerate"""
+    if type_ == "table" and name.startswith("temp_"):
+        return False
+    return True
+
+def include_name(name, type_, parent_names):
+    """Filter object names to include"""
+    if type_ == "schema" and name == "information_schema":
+        return False
+    return True
+```
+
+## Migration History
+
+```bash
+# Show current revision
+alembic current
+
+# Show all revisions
+alembic history
+
+# Show revision details
+alembic show abc123def456
+```
+
+## Best Practices
+
+1. **Review Autogenerated Migrations**: Always review and test migrations before applying
+2. **Use Descriptive Messages**: Write clear migration messages
+3. **Test Upgrades and Downgrades**: Ensure migrations are reversible
+4. **Keep Migrations Small**: Create focused, atomic migrations
+5. **Version Control**: Commit migration files to source control
+6. **Backup Before Migration**: Always backup production databases
+7. **Test on Staging**: Test migrations on staging before production
+
+## Common Patterns
+
+### Adding a Required Column
+
+When adding a non-nullable column to an existing table:
+
+```python
+def upgrade():
+    # Add column as nullable first
+    op.add_column('users', sa.Column('status', sa.String(20), nullable=True))
+
+    # Set default value for existing rows
+    op.execute("UPDATE users SET status = 'active' WHERE status IS NULL")
+
+    # Make column non-nullable
+    op.alter_column('users', 'status', nullable=False)
+
+def downgrade():
+    op.drop_column('users', 'status')
+```
+
+### Data Migration
+
+```python
+from alembic import op
+from sqlalchemy import orm
+from myapp.models import User
+
+def upgrade():
+    # Get database session
+    bind = op.get_bind()
+    session = orm.Session(bind=bind)
+
+    # Perform data migration
+    for user in session.query(User).all():
+        user.full_name = f"{user.first_name} {user.last_name}"
+
+    session.commit()
+```
+
+## Important Notes
+
+- Alembic uses `revision` identifiers, not timestamps
+- Always review autogenerated migrations before applying
+- Migrations are applied in order based on the dependency chain
+- Use `alembic history` to view the migration graph
+- Test migrations on development/staging before production
+
+## Resources
+
+- [Alembic Documentation](https://alembic.sqlalchemy.org)
+- [Tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
+- [Autogenerate](https://alembic.sqlalchemy.org/en/latest/autogenerate.html)
+- [Operations Reference](https://alembic.sqlalchemy.org/en/latest/ops.html)

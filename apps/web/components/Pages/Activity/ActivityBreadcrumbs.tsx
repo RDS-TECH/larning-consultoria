@@ -1,7 +1,9 @@
+'use client'
 import { Book, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import { getUriWithOrg } from '@services/config/config'
 import React from 'react'
+import { useTranslations } from 'next-intl'
 
 interface ActivityBreadcrumbsProps {
   course: any
@@ -10,6 +12,7 @@ interface ActivityBreadcrumbsProps {
 }
 
 export default function ActivityBreadcrumbs({ course, activity, orgslug }: ActivityBreadcrumbsProps) {
+  const t = useTranslations('activities.breadcrumbs')
   const cleanCourseUuid = course.course_uuid?.replace('course_', '')
 
   return (
@@ -18,7 +21,7 @@ export default function ActivityBreadcrumbs({ course, activity, orgslug }: Activ
         <div className="flex space-x-2 items-center">
           <Book className="text-gray" size={14} />
           <Link href={getUriWithOrg(orgslug, '') + `/courses`}>
-            Courses
+            {t('courses')}
           </Link>
         </div>
         <ChevronRight size={14} />

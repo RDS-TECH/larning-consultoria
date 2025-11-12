@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import React, { useState, useEffect, useRef } from 'react';
 import { NodeViewWrapper } from '@tiptap/react';
 import { Edit2, Save, X, AlignLeft, AlignCenter, AlignRight, Trash } from 'lucide-react';

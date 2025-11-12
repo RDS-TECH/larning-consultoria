@@ -1,6 +1,8 @@
+'use client'
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { CheckIcon, Cross2Icon } from '@radix-ui/react-icons'
+import { useTranslations } from 'next-intl'
 
 interface LinkInputTooltipProps {
   onSave: (url: string) => void
@@ -9,6 +11,7 @@ interface LinkInputTooltipProps {
 }
 
 const LinkInputTooltip: React.FC<LinkInputTooltipProps> = ({ onSave, onCancel, currentUrl }) => {
+  const t = useTranslations('editor.placeholders')
   const [url, setUrl] = useState(currentUrl || '')
 
   useEffect(() => {
@@ -31,7 +34,7 @@ const LinkInputTooltip: React.FC<LinkInputTooltipProps> = ({ onSave, onCancel, c
       <Form onSubmit={handleSubmit}>
         <Input
           type="text"
-          placeholder="Enter URL"
+          placeholder={t('enterUrl')}
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           autoFocus
