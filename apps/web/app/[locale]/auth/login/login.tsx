@@ -174,7 +174,7 @@ const LoginClient = (props: LoginClientProps) => {
             </FormField>
             <div>
               <Link
-                href={{ pathname: getUriWithoutOrg('/forgot'), query: props.org.slug ? { orgslug: props.org.slug } : null }}
+                href={{ pathname: getUriWithoutOrg('/auth/forgot'), query: props.org.slug ? { orgslug: props.org.slug } : null }}
                 passHref
                 className="text-xs text-gray-500 hover:underline"
               >
@@ -192,7 +192,7 @@ const LoginClient = (props: LoginClientProps) => {
           <div className='flex h-0.5 rounded-2xl bg-slate-100 mt-5  mx-10'></div>
           <div className='flex justify-center py-5 mx-auto'>{t('or')}</div>
           <div className='flex flex-col space-y-4'>
-            <Link href={{ pathname: getUriWithoutOrg('/signup'), query: props.org.slug ? { orgslug: props.org.slug } : null }}  className="flex justify-center items-center py-3 text-md w-full bg-gray-800 text-gray-300 space-x-3 font-semibold text-center p-2 rounded-md shadow-sm hover:cursor-pointer">
+            <Link href={{ pathname: getUriWithoutOrg('/auth/signup'), query: props.org.slug ? { orgslug: props.org.slug } : null }}  className="flex justify-center items-center py-3 text-md w-full bg-gray-800 text-gray-300 space-x-3 font-semibold text-center p-2 rounded-md shadow-sm hover:cursor-pointer">
               <UserRoundPlus size={17} />
               <span>{t('signUp')}</span>
             </Link>
