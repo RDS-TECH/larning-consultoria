@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 """
 Script to reset admin password in LearnHouse
-Usage: python reset_admin_password.py <new_password>
-Example: python reset_admin_password.py MyNewPassword123
+Usage: python scripts/reset_admin_password.py <new_password>
+Example: python scripts/reset_admin_password.py MyNewPassword123
+
+This script must be run from the apps/api directory (parent of scripts/)
 """
 import sys
+import os
+
+# Add parent directory to path to import project modules
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
 from sqlalchemy import create_engine
 from sqlmodel import Session, select
 from config.config import get_learnhouse_config
@@ -52,8 +59,9 @@ def reset_admin_password(new_password: str):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python reset_admin_password.py <new_password>")
-        print("Example: python reset_admin_password.py MyNewPassword123")
+        print("Usage: python scripts/reset_admin_password.py <new_password>")
+        print("Example: python scripts/reset_admin_password.py MyNewPassword123")
+        print("\nNote: Run this from the apps/api directory")
         sys.exit(1)
 
     new_password = sys.argv[1]
@@ -62,5 +70,5 @@ if __name__ == "__main__":
         print("❌ Password must be at least 8 characters long")
         sys.exit(1)
 
-    print(f"Resetting admin password to: {new_password}")
+    print(f"Resetting admin password...")
     reset_admin_password(new_password)
