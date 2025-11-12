@@ -184,6 +184,66 @@
       "pleaseSwitch": "Please switch to a desktop to view and manage"
     }
   },
+  "onboarding": {
+    "trigger": {
+      "label": "Onboarding"
+    },
+    "buttons": {
+      "next": "Next",
+      "end": "End",
+      "finish": "Complete Onboarding"
+    },
+    "steps": {
+      "welcome": {
+        "title": "Teach the world!",
+        "description": "Welcome to LearnHouse, an LMS designed for simplicity, ease of use and performance. Discover the new way to create, share and interact with educational content."
+      },
+      "courses": {
+        "title": "Create Courses",
+        "description": "Courses are the main building blocks of LearnHouse, they always contain Chapters and Chapters contain Activities.",
+        "createButton": "Create New Course"
+      },
+      "activities": {
+        "title": "Activities",
+        "description": "Activities are elements you can add to your Courses through Chapters, they can be: Dynamic Pages, Videos, Documents, Quizzes and more coming soon.",
+        "learnMoreButton": "Learn more about activities"
+      },
+      "editor": {
+        "title": "Dynamic Pages and The Editor",
+        "description": "Dynamic pages are pages with dynamic content, like Notion pages they can contain multiple components like Quizzes, Images, Videos, Documents etc.",
+        "learnMoreButton": "Learn more about Dynamic Pages and The Editor"
+      },
+      "ai": {
+        "title": "Artificial Intelligence",
+        "description": "Thinking tools made for teachers and students, with contextual knowledge can answer based on your courses and the unique content you create in LearnHouse.",
+        "learnMoreButton": "Learn more about LearnHouse AI"
+      },
+      "usergroups": {
+        "title": "Group students and optimize access",
+        "description": "With User Groups you can separate students by Groups and give access to Courses depending on their needs.",
+        "createButton": "Create User Groups"
+      },
+      "access": {
+        "title": "Choose whether to make Courses available on the Web or not",
+        "description": "You can choose to make your Courses discoverable by search engines and accessible to unauthenticated users or only provide them to authenticated Users."
+      },
+      "assignments": {
+        "title": "Create and Evaluate Assignments",
+        "description": "Engage students with assignments, track their progress and provide feedback through our intuitive grading system.",
+        "createButton": "Create Assignment"
+      },
+      "payments": {
+        "title": "Monetize Your Content",
+        "description": "Set up payment plans, sell courses and manage subscriptions with our integrated payment system.",
+        "settingsButton": "Payment Settings"
+      },
+      "more": {
+        "title": "To infinity and beyond",
+        "description": "To learn more about LearnHouse, you're welcome to follow our original courses at LearnHouse University.",
+        "universityButton": "LearnHouse University"
+      }
+    }
+  },
   "dashboard": {
     "home": {
       "title": "Dashboard",
@@ -229,6 +289,436 @@
       "organizationSettings": "Organization settings",
       "userAccountSettings": "User account settings",
       "goToDashboardHome": "Go to dashboard home"
+    },
+    "misc": {
+      "breadcrumbs": {
+        "courses": "Courses",
+        "assignments": "Assignments",
+        "accountSettings": "Account Settings",
+        "orgUsers": "Organization users",
+        "orgSettings": "Organization Settings",
+        "payments": "Payments"
+      },
+      "courseOverview": {
+        "course": "Course",
+        "rightsGuide": "Guia de Direitos"
+      },
+      "saveState": {
+        "unsavedChanges": "Unsaved changes",
+        "saving": "Saving...",
+        "saved": "Saved",
+        "save": "Save"
+      }
+    },
+    "userAccount": {
+      "settings": {
+        "title": "Account Settings",
+        "tabs": {
+          "general": "General",
+          "profile": "Profile",
+          "security": "Password"
+        }
+      },
+      "ownedCourses": {
+        "title": "My Courses",
+        "description": "Courses you purchased or subscribed to",
+        "noCourses": "No courses purchased",
+        "noCoursesDescription": "You haven't purchased any courses yet",
+        "errorLoading": "Error loading purchased courses"
+      }
+    },
+    "account": {
+      "password": {
+        "title": "Alterar Password",
+        "description": "Update your password to keep your account secure",
+        "currentPassword": "Password Atual",
+        "newPassword": "Nova Password",
+        "changeWarning": "You will be logged out after changing your password",
+        "updatePassword": "Update Password",
+        "validation": {
+          "currentPasswordRequired": "Current password is required",
+          "newPasswordRequired": "New password is required",
+          "passwordMinLength": "Password must be at least 8 characters"
+        },
+        "toast": {
+          "updating": "Updating password...",
+          "updateSuccess": "Password updated successfully",
+          "updateFailed": "Failed to update password",
+          "tryAgain": "An error occurred. Please try again.",
+          "loginAgain": "Please log in again with your new password"
+        }
+      },
+      "general": {
+        "title": "Account Settings",
+        "description": "Manage your personal information and preferences",
+        "fields": {
+          "email": "Email",
+          "username": "Username",
+          "firstName": "Name",
+          "lastName": "Sobrenome",
+          "bio": "Bio",
+          "bioCharactersLeft": "{count} characters remaining"
+        },
+        "placeholders": {
+          "email": "Your email address",
+          "username": "Your username",
+          "firstName": "Your first name",
+          "lastName": "Your last name",
+          "bio": "Tell us about yourself",
+          "detailLabel": "Enter the label (e.g., Title, Location)",
+          "detailText": "Enter the detail text",
+          "selectIcon": "Select ícone"
+        },
+        "additionalDetails": {
+          "title": "Additional Details",
+          "clearAll": "Clear Tudo",
+          "addDetail": "Add Detalhe",
+          "addGeneral": "Add General",
+          "addAcademic": "Add Acadêmico",
+          "addProfessional": "Add Profissional",
+          "remove": "Remove",
+          "icon": "Ícone",
+          "text": "Texto"
+        },
+        "profilePicture": {
+          "title": "Foto de Profile",
+          "changeAvatar": "Alterar Avatar",
+          "uploading": "Submitting",
+          "recommendedSize": "Tamanho recomendado 100x100"
+        },
+        "buttons": {
+          "saveChanges": "Save Alterações",
+          "saving": "Saving..."
+        },
+        "warnings": {
+          "emailChange": "You will be logged out after changing your email"
+        },
+        "toast": {
+          "updating": "Updating profile...",
+          "updateSuccess": "Profile atualizado com sucesso",
+          "updateFailed": "Failed to update profile",
+          "loginWithNewEmail": "Please log in again with your new email: {email}",
+          "avatarUpdated": "Avatar atualizado"
+        },
+        "validation": {
+          "invalidEmail": "Email inválido",
+          "emailRequired": "Email é obrigatório",
+          "usernameRequired": "Name de usuário é obrigatório",
+          "firstNameRequired": "Name é obrigatório",
+          "lastNameRequired": "Sobrenome é obrigatório",
+          "bioMaxLength": "Bio must be at most 400 characters"
+        },
+        "iconLabels": {
+          "briefcase": "Maleta",
+          "education": "Educação",
+          "location": "Localização",
+          "organization": "Organization",
+          "speciality": "Especialidade",
+          "website": "Site",
+          "tech": "Tecnologia",
+          "achievement": "Conquista",
+          "book": "Livro",
+          "link": "Link",
+          "community": "Comunidade",
+          "calendar": "Calendário"
+        },
+        "detailTemplates": {
+          "general": {
+            "title": "Title",
+            "affiliation": "Afiliação",
+            "location": "Localização",
+            "website": "Site",
+            "linkedin": "LinkedIn"
+          },
+          "academic": {
+            "institution": "Instituição",
+            "department": "Departamento",
+            "research": "Área de Pesquisa",
+            "academicTitle": "Title Acadêmico"
+          },
+          "professional": {
+            "company": "Empresa",
+            "industry": "Indústria",
+            "expertise": "Especialização",
+            "community": "Comunidade"
+          }
+        }
+      },
+      "profile": {
+        "title": "Construtor de Profile",
+        "beta": "BETA",
+        "description": "Personalize your professional profile",
+        "sections": {
+          "title": "Seções",
+          "addSection": "Add Seção",
+          "selectOrAdd": "Selecione uma seção para editar ou adicione uma nova",
+          "sectionTitle": "Title da Seção"
+        },
+        "sectionTypes": {
+          "imageGallery": {
+            "label": "Galeria de Imagens",
+            "description": "Adicione uma coleção de imagens",
+            "title": "Galeria de Imagens",
+            "imageUrl": "URL da Image",
+            "caption": "Legenda",
+            "addImage": "Add Image",
+            "placeholders": {
+              "imageUrl": "Enter a URL da imagem",
+              "caption": "Legenda da imagem"
+            }
+          },
+          "text": {
+            "label": "Texto",
+            "description": "Add formatted text content",
+            "title": "Content de Texto",
+            "content": "Content",
+            "placeholder": "Enter your content here..."
+          },
+          "links": {
+            "label": "Links",
+            "description": "Adicione links sociais ou profissionais",
+            "title": "Links",
+            "addLink": "Add Link",
+            "linkTitle": "Title do Link",
+            "url": "URL",
+            "placeholders": {
+              "linkTitle": "Title do link",
+              "url": "URL"
+            }
+          },
+          "skills": {
+            "label": "Habilidades",
+            "description": "Showcase your skills and expertise",
+            "title": "Habilidades",
+            "addSkill": "Add Habilidade",
+            "skillName": "Name da Habilidade",
+            "level": "Nível",
+            "category": "Categoria",
+            "levels": {
+              "beginner": "Iniciante",
+              "intermediate": "Intermediário",
+              "advanced": "Avançado",
+              "expert": "Especialista"
+            },
+            "placeholders": {
+              "skillName": "Name da habilidade",
+              "category": "Categoria (opcional)",
+              "selectLevel": "Select nível"
+            }
+          },
+          "experience": {
+            "label": "Experiência",
+            "description": "Description",
+            "title": "Experiência",
+            "addExperience": "Add Experiência",
+            "experienceItems": "Itens de Experiência",
+            "positionTitle": "Title",
+            "organization": "Organization",
+            "startDate": "Data de Início",
+            "endDate": "Data de Término",
+            "current": "Atual",
+            "placeholders": {
+              "title": "Cargo ou função",
+              "organization": "Empresa ou organização",
+              "description": "Describe your role and achievements"
+            }
+          },
+          "education": {
+            "label": "Educação",
+            "description": "Description",
+            "title": "Educação",
+            "addEducation": "Add Educação",
+            "educationItems": "Itens de Educação",
+            "institution": "Instituição",
+            "degree": "Grau",
+            "field": "Campo de Estudo",
+            "startDate": "Data de Início",
+            "endDate": "Data de Término",
+            "current": "Atual",
+            "placeholders": {
+              "institution": "Escola ou universidade",
+              "degree": "Tipo de grau",
+              "field": "Course ou concentração",
+              "description": "Additional details about your education"
+            }
+          },
+          "affiliation": {
+            "label": "Afiliação",
+            "description": "Description",
+            "title": "Afiliação",
+            "addAffiliation": "Add Afiliação",
+            "affiliations": "Afiliações",
+            "name": "Name",
+            "logoUrl": "URL do Logo",
+            "placeholders": {
+              "name": "Organization name",
+              "logoUrl": "Organization logo URL",
+              "description": "Organization description"
+            }
+          },
+          "courses": {
+            "label": "Courses",
+            "description": "Exibir cursos criados",
+            "title": "Courses",
+            "autoDisplay": "Seus cursos criados serão exibidos automaticamente nesta seção."
+          }
+        },
+        "buttons": {
+          "saveChanges": "Save Alterações",
+          "saving": "Saving...",
+          "remove": "Remove"
+        },
+        "toast": {
+          "saving": "Saving profile...",
+          "saveSuccess": "Profile atualizado com sucesso",
+          "saveFailed": "Error updating profile",
+          "loadFailed": "Failed to load profile data"
+        }
+      },
+      "professional": {
+        "sections": {
+          "career": {
+            "common": {
+              "workExperience": {
+                "title": "Job title or role",
+                "organization": "Company or organization"
+              },
+              "education": {
+                "institution": "Institution"
+              }
+            }
+          }
+        }
+      }
+    },
+    "users": {
+      "settings": {
+        "pageTitle": "Users",
+        "mobileOnly": {
+          "title": "Only Desktop",
+          "message": "Esta página só é acessível em dispositivos desktop.",
+          "instruction": "Please switch to a desktop to view and manage user settings."
+        },
+        "tabs": {
+          "users": "Users",
+          "usergroups": "Groups de Users",
+          "roles": "Funções",
+          "signups": "Cadastros & Códigos de Convite",
+          "add": "Convidar Membros"
+        },
+        "subpages": {
+          "users": {
+            "title": "Users",
+            "description": "Manage your organization's users, assign roles and permissions"
+          },
+          "usergroups": {
+            "title": "Groups de Users",
+            "description": "Create and manage user groups"
+          },
+          "roles": {
+            "title": "Funções",
+            "description": "Create and manage roles with specific permissions"
+          },
+          "signups": {
+            "title": "Cadastros & Códigos de Convite",
+            "description": "Choose how new users can join your organization"
+          },
+          "add": {
+            "title": "Convidar Membros",
+            "description": "Invite members to join your organization"
+          }
+        }
+      },
+      "access": {
+        "joinMethod": {
+          "title": "Método de Adesão",
+          "description": "Choose how new users can join your organization",
+          "active": "Active",
+          "open": {
+            "title": "Aberto",
+            "description": "Anyone can join",
+            "confirmButton": "Confirmar",
+            "confirmMessage": "Are you sure you want to allow anyone to join your organization?",
+            "confirmTitle": "Mudar para Aberto?"
+          },
+          "closed": {
+            "title": "Only Convite",
+            "description": "Only com código de convite",
+            "confirmButton": "Confirmar",
+            "confirmMessage": "Tem certeza que deseja permitir apenas adesão por convite?",
+            "confirmTitle": "Mudar para Only Convite?"
+          }
+        },
+        "inviteCodes": {
+          "title": "Códigos de Convite",
+          "description": "Manage invite codes for your organization",
+          "generateCode": "Gerar Código",
+          "generateTitle": "Gerar Código de Convite",
+          "generateDescription": "Create a new invite code for your organization",
+          "deleteCode": "Delete",
+          "deleteConfirmTitle": "Delete Código de Convite?",
+          "deleteConfirmMessage": "Tem certeza que deseja excluir este código de convite?",
+          "table": {
+            "code": "Código",
+            "signupLink": "Link de Cadastro",
+            "type": "Tipo",
+            "expirationDate": "Data de Expiração",
+            "actions": "Ações"
+          },
+          "types": {
+            "normal": "Normal",
+            "usergroup": "Group de Users"
+          }
+        },
+        "toast": {
+          "deleting": "Deleting...",
+          "deleteSuccess": "Código de convite excluído com sucesso",
+          "deleteFailed": "Failed ao excluir código de convite",
+          "changingMethod": "Alterando método de adesão...",
+          "changeSuccess": "Método de adesão alterado para {method} com sucesso",
+          "changeFailed": "Failed to change join method"
+        }
+      },
+      "add": {
+        "title": "Convidar Users",
+        "description": "Add users to your organization by sending email invites",
+        "placeholder": "Enter os e-mails separados por vírgula ou quebra de linha exemplo@dominio.com, outro@dominio.com",
+        "inviteCode": "Código de Convite:",
+        "inviteCodeTooltip": "Select an invite code to link invited users",
+        "sendInvites": "Submit Convites",
+        "invitedUsers": {
+          "title": "Users Convidados",
+          "description": "List of users who have been invited to the organization",
+          "table": {
+            "email": "Email",
+            "signupStatus": "Status do Cadastro",
+            "emailSent": "Email Submitted"
+          },
+          "status": {
+            "pending": "Pending",
+            "signed": "Cadastrado",
+            "sent": "Submitted",
+            "no": "Não"
+          }
+        },
+        "toast": {
+          "sending": "Submitting convites...",
+          "sendSuccess": "Convites enviados com sucesso",
+          "sendFailed": "Failed ao enviar convites"
+        }
+      }
+    },
+    "assignments": {
+      "pageTitle": "Assignments",
+      "noCourses": "No curso available",
+      "noAssignments": "No tarefa available para este curso, crie tarefas do curso pelo editor de curso",
+      "labels": {
+        "course": "Course",
+        "assignment": "Assignment",
+        "editor": "Editor",
+        "submissions": "Submissions",
+        "courseEditor": "Editor de Course"
+      }
     }
   },
   "courses": {
@@ -269,7 +759,8 @@
           "atLeastOneLearningItem": "At least one learning item is required",
           "allLearningItemsMustHaveText": "All learning items must have text",
           "invalidJSONFormat": "Invalid JSON format"
-        }
+        },
+        "startJourney": "Start your journey"
       },
       "learningItems": {
         "emptyState": "No learning items added yet. Click the button below to add one.",
@@ -315,7 +806,21 @@
         "changeToUsersConfirm": "Are you sure you want this course to be only accessible to signed in users?",
         "changeToUsersTitle": "Change to Users Only?",
         "removeUserGroupConfirm": "Users from this UserGroup will no longer have access to this course",
-        "linkUserGroupDescription": "Choose a UserGroup to link this course to. Users from this UserGroup will have access to this course."
+        "linkUserGroupDescription": "Choose a UserGroup to link this course to. Users from this UserGroup will have access to this course.",
+        "title": "Access ao curso",
+        "description": "Choose whether you want your course to be publicly available on the internet or accessible only to logged-in users",
+        "public": "Public",
+        "publicDescription": "O curso é publicamente available na internet, é indexado por motores de busca e pode ser acessado por qualquer pessoa",
+        "usersOnly": "Only Users",
+        "usersOnlyDescription": "The course is accessible only to logged-in users, and you can also choose which User Groups can access this course",
+        "active": "Active",
+        "userGroups": "Groups de Users",
+        "userGroupsDescription": "You can choose to give access to this course only to specific user groups by linking it to a User Group",
+        "name": "Name",
+        "actions": "Ações",
+        "deleteLink": "Delete vínculo",
+        "unlinkUserGroup": "Unlink Group de Users?",
+        "linkToUserGroup": "Link a um Group de Users"
       },
       "structure": {
         "createChapterTitle": "Create chapter",
@@ -339,6 +844,21 @@
           "activityUpdated": "The activity has been updated successfully",
           "activityNameUpdated": "Activity name updated successfully",
           "activityNameUpdateFailed": "Failed to update activity name"
+        },
+        "chapterName": "Name do capítulo",
+        "chapterDescription": "Description do capítulo",
+        "createChapterButton": "Create Chapter",
+        "chapterNameRequired": "Por favor, forneça um nome para o capítulo",
+        "chapterDescriptionRequired": "Por favor, forneça uma descrição para o capítulo",
+        "addActivity": "Add Activity",
+        "buttons": {
+          "publish": "Publish",
+          "unpublish": "Unpublish",
+          "editAssignment": "Edit Assignment",
+          "editPage": "Edit Page",
+          "previewActivity": "Preview Activity",
+          "deleteActivity": "Delete Activity",
+          "deleteActivityTitle": "Delete {name}?"
         }
       },
       "unsplash": {
@@ -526,6 +1046,13 @@
           "removeSuccess": "Successfully removed {count} contributor(s)",
           "removeFailed": "Failed to remove contributors"
         }
+      },
+      "tabs": {
+        "general": "General",
+        "content": "Content",
+        "access": "Access",
+        "contributors": "Contributors",
+        "certification": "Certification"
       }
     },
     "dashboard": {
@@ -1028,6 +1555,65 @@
           }
         }
       }
+    },
+    "create": {
+      "title": "Create Course",
+      "description": "Create um novo curso",
+      "fields": {
+        "name": {
+          "label": "Name do Course",
+          "error": "Name do curso é obrigatório"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "thumbnail": {
+          "label": "Thumbnail do Course",
+          "uploadImage": "Upload Image",
+          "chooseFromGallery": "Choose da Galeria"
+        },
+        "learnings": {
+          "label": "Course learnings (What will you teach?)",
+          "placeholder": "Enter to add..."
+        },
+        "tags": {
+          "label": "Tags do Course",
+          "placeholder": "Enter to add..."
+        },
+        "visibility": {
+          "label": "Visibility do Course",
+          "public": "Public (Disponível to view na internet)",
+          "private": "Private (Private for users)",
+          "placeholder": "Selecione a visibilidade"
+        }
+      },
+      "submit": "Create Course",
+      "toast": {
+        "creating": "Creating curso...",
+        "success": "Course criado com sucesso",
+        "failed": "Failed ao criar curso",
+        "unsplashFailed": "Failed ao carregar imagem do Unsplash"
+      }
+    },
+    "thumbnail": {
+      "editContent": "Edit Content",
+      "settings": "Settings",
+      "deleteCourse": "Delete Course",
+      "deleteConfirmButton": "Delete Course",
+      "deleteConfirmMessage": "Tem certeza que deseja excluir este curso?",
+      "deleteConfirmTitle": "Delete {courseName}?",
+      "startLearning": "Start a Aprender",
+      "updated": "Atualizado",
+      "toast": {
+        "deleting": "Deleting curso...",
+        "deleteSuccess": "Course excluído com sucesso",
+        "deleteFailed": "Failed ao excluir curso"
+      }
+    },
+    "page": {
+      "overview": {
+        "description": "Track your progress in the course"
+      }
     }
   },
   "public": {
@@ -1052,23 +1638,41 @@
         "selectPaymentMethod": "Select Payment Method",
         "processing": "Processing...",
         "purchaseSuccess": "Purchase successful!",
-        "purchaseFailed": "Purchase failed"
+        "purchaseFailed": "Purchase failed",
+        "progress": {
+          "readyToBegin": "Pronto para começar",
+          "activity": "atividade",
+          "activities": "atividades",
+          "startJourney": "Iniciar sua jornada"
+        },
+        "buttons": {
+          "startCourseAriaLabel": "Iniciar curso"
+        }
       },
       "authors": {
         "courseAuthors": "Course Authors",
         "author": "Author",
-        "contributor": "Contributor"
+        "contributor": "Contributor",
+        "authorsAndUpdates": "Autores e Atualizações"
       },
       "progress": {
         "yourProgress": "Your Progress",
         "completed": "Completed",
         "inProgress": "In Progress",
-        "notStarted": "Not Started"
+        "notStarted": "Not Started",
+        "title": "Seu Progress",
+        "description": "Acompanhe seu progresso no curso"
       },
       "updates": {
         "courseUpdates": "Course Updates",
         "noUpdates": "No updates yet",
-        "lastUpdate": "Last update"
+        "lastUpdate": "Last update",
+        "title": "Atualizações",
+        "empty": {
+          "noUpdates": "No atualização",
+          "description": "Este curso não possui atualizações ainda."
+        },
+        "newUpdate": "Nova Atualização"
       }
     }
   },
@@ -1080,7 +1684,11 @@
     },
     "auth": {
       "login": "Login",
-      "signup": "Sign up"
+      "signup": "Sign up",
+      "dashboard": "Painel",
+      "userSettings": "Settings do User",
+      "myCourses": "My Courses",
+      "signOut": "Logout"
     },
     "search": {
       "placeholder": "Search courses, users, collections...",
@@ -1257,6 +1865,36 @@
       "deleteTitle": "Delete '{name}'?",
       "deleteMessage": "Are you sure you want to delete this activity?",
       "deleteButton": "Delete Activity"
+    },
+    "page": {
+      "notPublished": "Esta atividade not yet foi publicada",
+      "createdOn": "Created on",
+      "lastUpdated": "Last updated",
+      "markAsComplete": "Marcar como concluída",
+      "marking": "Marcando...",
+      "submitForGrading": "Submit para avaliação"
+    },
+    "assignment": {
+      "types": {
+        "quiz": "Quiz",
+        "fileSubmission": "Submission de File",
+        "form": "Form"
+      },
+      "badges": {
+        "teacherView": "Teacher View",
+        "points": "{count} pontos"
+      },
+      "messages": {
+        "dontForgetToSave": "Don't forget to salvar !"
+      },
+      "buttons": {
+        "save": "Save",
+        "saveProgress": "Save Progress",
+        "grade": "Evaluate"
+      },
+      "grading": {
+        "currentPoints": "Points atuais: {points}"
+      }
     }
   },
   "assignments": {
@@ -1283,7 +1921,14 @@
       "task": "Task",
       "hint": "Hint",
       "referenceDocument": "Reference Document",
-      "deleteTask": "Delete Task"
+      "deleteTask": "Delete Task",
+      "modal": {
+        "title": "Add uma Assignment de Activity",
+        "description": "Create uma nova tarefa para esta atividade"
+      },
+      "buttons": {
+        "addTask": "Add Assignment"
+      }
     },
     "noAssignments": "No assignments available",
     "updating": "Updating assignment...",
@@ -1310,6 +1955,148 @@
     "errors": {
       "update": "An error occurred while updating the assignment",
       "failed": "Failed to update assignment"
+    },
+    "task": {
+      "general": {
+        "fields": {
+          "title": "Title",
+          "description": "Description",
+          "hint": "Hint",
+          "referenceFile": "File de referência",
+          "allowedFormats": "Formatos permitidos: pdf, docx, mp4, jpg, jpeg, png, pptx, zip",
+          "maxGradeValue": "Valor Máximo da Grade"
+        },
+        "validation": {
+          "gradeRange": "O valor deve estar entre 20 e 100"
+        },
+        "toast": {
+          "updateSuccess": "Assignment atualizada com sucesso",
+          "updateError": "Error ao atualizar tarefa, tente novamente mais tarde.",
+          "referenceFileUpdated": "File de referência atualizado com sucesso"
+        },
+        "buttons": {
+          "submit": "Submit",
+          "download": "Download",
+          "loading": "Loading",
+          "changeReferenceFile": "Alterar File de Referência"
+        }
+      },
+      "editor": {
+        "buttons": {
+          "deleteTask": "Delete Assignment"
+        },
+        "tabs": {
+          "general": "General",
+          "content": "Content"
+        },
+        "toast": {
+          "deleteSuccess": "Assignment excluída com sucesso",
+          "deleteError": "Error ao excluir tarefa, tente novamente mais tarde."
+        },
+        "emptyState": {
+          "noTaskSelected": "No Assignment Selecionada"
+        }
+      }
+    },
+    "newTask": {
+      "untitledTask": "Assignment Sem Title",
+      "reminder": "When editing/adding your assignments, make sure to unpublish your Assignment to avoid issues with students, you can republish it when ready.",
+      "toast": {
+        "created": "Assignment criada com sucesso"
+      },
+      "types": {
+        "quiz": {
+          "title": "Quiz",
+          "description": "Perguntas com respostas de múltipla escolha"
+        },
+        "file": {
+          "title": "Submission de arquivo",
+          "description": "Os alunos podem enviar arquivos para esta tarefa"
+        },
+        "form": {
+          "title": "Form",
+          "description": "Formulários de preenchimento para os alunos"
+        }
+      }
+    },
+    "taskTypes": {
+      "quiz": {
+        "placeholders": {
+          "question": "Question",
+          "option": "Option"
+        },
+        "labels": {
+          "true": "True",
+          "false": "False",
+          "markedAsTrue": "Marcado como True",
+          "markedAsFalse": "Marcado como False"
+        },
+        "buttons": {
+          "addQuestion": "Add Question"
+        },
+        "errors": {
+          "cannotDeleteLastOption": "Não é possível excluir a última opção. Pelo menos uma opção é necessária."
+        }
+      },
+      "form": {
+        "placeholders": {
+          "question": "Enter your question with blanks (use ___ for blanks)",
+          "correctAnswer": "Enter a resposta correta",
+          "hint": "Hint (opcional)"
+        },
+        "buttons": {
+          "addQuestion": "Add Question"
+        },
+        "errors": {
+          "cannotDeleteLastBlank": "Não é possível excluir o último espaço em branco. Pelo menos um espaço em branco é necessário."
+        }
+      }
+    },
+    "editor": {
+      "title": "Ferramentas de Assignment",
+      "tabs": {
+        "editor": "Editor",
+        "submissions": "Submissions"
+      },
+      "status": {
+        "published": "Published",
+        "unpublished": "Unpublished"
+      },
+      "buttons": {
+        "edit": "Edit",
+        "preview": "View",
+        "publish": "Publish",
+        "unpublish": "Unpublish"
+      },
+      "tooltips": {
+        "editDetails": "Edit Detalhes da Assignment",
+        "previewAsStudent": "View a Assignment como aluno",
+        "makeUnavailable": "Make your Assignment unavailable to students",
+        "makeAvailable": "Make your Assignment public and available to students"
+      },
+      "toast": {
+        "updating": "Updating tarefa...",
+        "updateSuccess": "A tarefa foi atualizada com sucesso",
+        "updateError": "Error ao atualizar tarefa, tente novamente mais tarde."
+      },
+      "mobile": {
+        "title": "Only Desktop",
+        "message1": "This page can only be accessed de um dispositivo desktop.",
+        "message2": "Please switch to a desktop to view and manage the assignment."
+      },
+      "submissions": {
+        "status": {
+          "late": "Late",
+          "submitted": "Submitted",
+          "graded": "Graded"
+        },
+        "submissionBox": {
+          "submission": "Submission",
+          "evaluate": "Evaluate",
+          "evaluateTitle": "Evaluate @{username}",
+          "evaluateDescription": "Evaluate a submissão"
+        }
+      }
     }
   },
   "users": {
@@ -1665,7 +2452,8 @@
           "created": "Created new usergroup",
           "createError": "Couldn't create new usergroup"
         }
-      }
+      },
+      "manageUsersButton": "Manage Users"
     },
     "invites": {
       "generateCode": "Generate Invite Code",
@@ -1965,6 +2753,12 @@
             "loadingCourses": "Loading courses...",
             "selected": "Selected",
             "select": "Select"
+          },
+          "common": {
+            "labels": {
+              "text": "Texto",
+              "background": "Fundo"
+            }
           }
         },
         "toast": {
@@ -2381,7 +3175,49 @@
     "title": "Collections",
     "deleteCollection": "Delete Collection",
     "confirmDelete": "Delete '{name}'?",
-    "confirmDeleteMessage": "Are you sure you want to delete this collection?"
+    "confirmDeleteMessage": "Are you sure you want to delete this collection?",
+    "new": {
+      "title": "Create Nova Collection",
+      "description": "Group your courses into a collection to make them easier to find and manage.",
+      "fields": {
+        "collectionName": "Name da Collection",
+        "visibility": "Visibility",
+        "description": "Description",
+        "selectCourses": "Select Courses"
+      },
+      "placeholders": {
+        "enterName": "Enter o nome da coleção",
+        "enterDescription": "Enter a descrição da coleção"
+      },
+      "visibility": {
+        "public": "Collection Pública - Visível for everyone",
+        "private": "Private Collection - Visible only to organization members"
+      },
+      "selectCourses": {
+        "loading": "Loading cursos...",
+        "noCourses": "No curso available. Crie alguns cursos primeiro.",
+        "selectedCount": "Courses selecionados: {count}"
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "create": "Create Collection",
+        "creating": "Creating..."
+      },
+      "toast": {
+        "nameRequired": "Por favor, digite um nome para a coleção",
+        "descriptionRequired": "Por favor, digite uma descrição",
+        "coursesRequired": "Por favor, selecione at least um curso",
+        "created": "Collection criada com sucesso!",
+        "createError": "Failed ao criar coleção. Please try again."
+      },
+      "errors": {
+        "loadError": "Failed ao carregar cursos. Please try again mais tarde."
+      }
+    },
+    "emptyState": {
+      "title": "Ainda sem coleções",
+      "message": "Create a collection to add content"
+    }
   },
   "scripts": {
     "title": "Scripts",
@@ -2570,6 +3406,35 @@
       "stepName": "Disabling Installation Mode",
       "message": "You have reached the end of the Installation process, please don't forget to disable installation mode.",
       "docsLink": "LearnHouse Docs"
+    }
+  },
+  "buttons": {
+    "newCourse": "Novo Course",
+    "newCollection": "Nova Collection"
+  },
+  "trail": {
+    "pageTitle": "Trail",
+    "pageDescription": "Check your progress using the trail and easily navigate through your courses.",
+    "title": "Trail",
+    "myProgress": "Meu Progress",
+    "quitAllCourses": "Logout de All os Courses",
+    "quittingCourses": "Saindo dos Courses ({progress}%)",
+    "confirmQuitAll": "Are you sure you want to quit all courses? This action cannot be undone and you will lose all your progress.",
+    "confirmQuitAllTitle": "Logout de All os Courses?",
+    "emptyState": {
+      "title": "No curso em andamento",
+      "message": "Start a course to view your progress here"
+    },
+    "certificates": {
+      "title": "Meus Certificates",
+      "loading": "Loading certificados...",
+      "failedToLoad": "Failed ao carregar certificados",
+      "emptyState": {
+        "title": "No certificado conquistado ainda",
+        "message": "Complete cursos para ganhar certificados"
+      },
+      "awarded": "Concedido em",
+      "verify": "Verificar"
     }
   }
 }
