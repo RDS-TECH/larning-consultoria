@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { NodeViewWrapper } from '@tiptap/react'
 import React from 'react'
 import styled from 'styled-components'

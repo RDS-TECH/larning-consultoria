@@ -1,3 +1,4 @@
+'use client'
 import { useCourse } from '@components/Contexts/CourseContext'
 import { useOrg } from '@components/Contexts/OrgContext'
 import { getAPIUrl } from '@services/config/config'
@@ -9,6 +10,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { mutate } from 'swr'
 import UnsplashImagePicker from './UnsplashImagePicker'
 import toast from 'react-hot-toast'
+import { useTranslations } from 'next-intl'
 
 const MAX_FILE_SIZE = 8_000_000; // 8MB for images
 const MAX_VIDEO_FILE_SIZE = 100_000_000; // 100MB for videos
@@ -25,6 +27,7 @@ type ThumbnailUpdateProps = {
 type TabType = 'image' | 'video';
 
 function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
+  const t = useTranslations('courses.edit.thumbnail');
   const imageInputRef = useRef<HTMLInputElement>(null);
   const videoInputRef = useRef<HTMLInputElement>(null);
   const course = useCourse() as any
@@ -64,22 +67,22 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
   const validateFile = (file: File, type: 'image' | 'video'): boolean => {
     if (type === 'image') {
       if (!VALID_IMAGE_MIME_TYPES.includes(file.type as ValidImageMimeType)) {
-        showError(`Invalid file type: ${file.type}. Please upload only PNG or JPG/JPEG images`);
+        showError(t('errors.invalidImageType', { type: file.type }));
         return false;
       }
 
       if (file.size > MAX_FILE_SIZE) {
-        showError(`File size (${(file.size / 1024 / 1024).toFixed(2)}MB) exceeds the 8MB limit`);
+        showError(t('errors.imageTooLarge', { size: (file.size / 1024 / 1024).toFixed(2) }));
         return false;
       }
     } else {
       if (!VALID_VIDEO_MIME_TYPES.includes(file.type as ValidVideoMimeType)) {
-        showError(`Invalid file type: ${file.type}. Please upload only MP4 or WebM videos`);
+        showError(t('errors.invalidVideoType', { type: file.type }));
         return false;
       }
 
       if (file.size > MAX_VIDEO_FILE_SIZE) {
-        showError(`File size (${(file.size / 1024 / 1024).toFixed(2)}MB) exceeds the 100MB limit`);
+        showError(t('errors.videoTooLarge', { size: (file.size / 1024 / 1024).toFixed(2) }));
         return false;
       }
     }
@@ -89,17 +92,17 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>, type: 'image' | 'video') => {
     const file = event.target.files?.[0];
-    
+
     if (!file) {
-      showError('Please select a file');
+      showError(t('errors.selectFile'));
       return;
     }
-    
+
     if (!validateFile(file, type)) {
       event.target.value = '';
       return;
     }
-    
+
     const blobUrl = URL.createObjectURL(file);
     setLocalThumbnail({ file, url: blobUrl, type });
     await updateThumbnail(file, type);
@@ -110,13 +113,13 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
       setIsLoading(true);
       const response = await fetch(imageUrl);
       const blob = await response.blob();
-      
+
       if (!VALID_IMAGE_MIME_TYPES.includes(blob.type as ValidImageMimeType)) {
-        throw new Error('Invalid image format from Unsplash');
+        throw new Error(t('unsplashInvalidFormat'));
       }
 
       const file = new File([blob], `unsplash_${Date.now()}.jpg`, { type: blob.type });
-      
+
       if (!validateFile(file, 'image')) {
         return;
       }
@@ -125,7 +128,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
       setLocalThumbnail({ file, url: blobUrl, type: 'image' });
       await updateThumbnail(file, 'image');
     } catch (err) {
-      showError('Failed to process Unsplash image');
+      showError(t('unsplashError'));
       setIsLoading(false);
     }
   }
@@ -142,7 +145,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
         formData,
         session.data?.tokens?.access_token
       );
-      
+
       await mutate(`${getAPIUrl()}courses/${course.courseStructure.course_uuid}/meta?with_unpublished_activities=${withUnpublishedActivities}`);
       await new Promise((r) => setTimeout(r, 1500));
 
@@ -150,13 +153,13 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
         showError(res.HTTPmessage);
       } else {
         setLocalThumbnail(null);
-        toast.success('Thumbnail updated successfully', {
+        toast.success(t('uploadSuccess'), {
           duration: 3000,
           position: 'top-center',
         });
       }
     } catch (err) {
-      showError('Failed to update thumbnail');
+      showError(t('uploadError'));
     } finally {
       setIsLoading(false);
     }
@@ -199,7 +202,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
           <div className="max-w-[480px] mx-auto">
             <img
               src={localThumbnail.url}
-              alt="Course thumbnail preview"
+              alt={t('previewAlt')}
               className={`${isLoading ? 'animate-pulse' : ''} w-full aspect-video object-cover rounded-lg border border-gray-200`}
             />
           </div>
@@ -223,7 +226,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
         <div className="max-w-[480px] mx-auto">
           <img
             src={currentThumbnailUrl}
-            alt="Current course thumbnail"
+            alt={t('currentAlt')}
             className="w-full aspect-video object-cover rounded-lg border border-gray-200"
           />
         </div>
@@ -239,7 +242,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
         <div className="flex justify-center items-center mt-4">
           <div className="font-medium text-sm text-green-800 bg-green-50 rounded-full px-4 py-2 flex items-center">
             <ArrowBigUpDash size={16} className="mr-2 animate-bounce" />
-            Uploading...
+            {t('uploading')}
           </div>
         </div>
       );
@@ -261,7 +264,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
             onClick={() => imageInputRef.current?.click()}
           >
             <UploadCloud size={16} />
-            Upload Image
+            {t('uploadImage')}
           </button>
           <button
             type="button"
@@ -269,7 +272,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
             onClick={() => setShowUnsplashPicker(true)}
           >
             <ImageIcon size={16} />
-            Gallery
+            {t('gallery')}
           </button>
         </div>
       );
@@ -290,7 +293,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
           onClick={() => videoInputRef.current?.click()}
         >
           <Video size={16} />
-          Upload Video
+          {t('uploadVideo')}
         </button>
       </div>
     );
@@ -310,7 +313,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
             onClick={() => setActiveTab('image')}
           >
             <ImageIcon size={16} />
-            Image
+            {t('tabImage')}
           </button>
           <button
             className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors ${
@@ -321,7 +324,7 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
             onClick={() => setActiveTab('video')}
           >
             <Video size={16} />
-            Video
+            {t('tabVideo')}
           </button>
         </div>
       )}
@@ -330,14 +333,14 @@ function ThumbnailUpdate({ thumbnailType }: ThumbnailUpdateProps) {
         <div className="space-y-6">
           {renderThumbnailPreview()}
           {renderTabContent()}
-          
+
           <p className="text-sm text-gray-500">
-            {activeTab === 'image' && 'Supported formats: PNG, JPG/JPEG (max 8MB)'}
-            {activeTab === 'video' && 'Supported formats: MP4, WebM (max 100MB)'}
+            {activeTab === 'image' && t('supportedFormatsImage')}
+            {activeTab === 'video' && t('supportedFormatsVideo')}
           </p>
         </div>
       </div>
-      
+
       {showUnsplashPicker && (
         <UnsplashImagePicker
           onSelect={handleUnsplashSelect}

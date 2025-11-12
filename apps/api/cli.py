@@ -13,6 +13,8 @@ from src.services.install.install import (
     install_create_organization_user,
     install_default_elements,
 )
+from src.db.users import User
+from src.security.security import security_hash_password
 
 cli = typer.Typer()
 
@@ -116,6 +118,46 @@ def install(
         print("password: The password you entered")
 
 
+@cli.command()
+def reset_password(
+    email: Annotated[str, typer.Option(help="Email of the user to reset password")] = "admin@school.dev",
+    new_password: Annotated[str, typer.Option(help="New password (leave empty to generate random)")] = ""
+):
+    """Reset user password"""
+    learnhouse_config = get_learnhouse_config()
+    engine = create_engine(
+        learnhouse_config.database_config.sql_connection_string,
+        echo=False,
+        pool_pre_ping=True
+    )
+
+    db_session = Session(engine)
+
+    # Find user by email
+    from sqlmodel import select
+    statement = select(User).where(User.email == email)
+    user = db_session.exec(statement).first()
+
+    if not user:
+        print(f"❌ User with email '{email}' not found!")
+        return
+
+    # Generate or use provided password
+    if not new_password:
+        new_password = generate_password(12)
+        print(f"Generated random password: {new_password}")
+
+    # Hash and update password
+    hashed_password = security_hash_password(new_password)
+    user.password = hashed_password
+    db_session.add(user)
+    db_session.commit()
+
+    print("✅ Password reset successfully!")
+    print(f"Email: {user.email}")
+    print(f"Username: {user.username}")
+    print(f"New password: {new_password}")
+    print("\n⚠️  Remember to change this password after logging in!")
 
 
 @cli.command()

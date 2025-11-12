@@ -1,7 +1,7 @@
 import { NodeViewProps, NodeViewWrapper } from '@tiptap/react'
 import { Node } from '@tiptap/core'
-import { 
-  Loader2, Video, Upload, X, ArrowLeftRight, 
+import {
+  Loader2, Video, Upload, X, ArrowLeftRight,
   CheckCircle2, AlertCircle, Download, Expand
 } from 'lucide-react'
 import React from 'react'
@@ -16,6 +16,7 @@ import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
 import styled from 'styled-components'
 import Modal from '@components/Objects/StyledElements/Modal/Modal'
+import { useTranslations } from 'next-intl'
 
 const SUPPORTED_FILES = constructAcceptValue(['webm', 'mp4'])
 
@@ -157,6 +158,8 @@ interface ExtendedNodeViewProps extends Omit<NodeViewProps, 'extension'> {
 }
 
 function VideoBlockComponent(props: ExtendedNodeViewProps) {
+  const t = useTranslations('blocks.video')
+  const tCommon = useTranslations('common')
   const { node, extension, updateAttributes } = props
   const org = useOrg() as Organization | null
   const course = useCourse() as Course | null
@@ -243,7 +246,7 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
       setError(null)
       handleUpload(file)
     } else {
-      setError('Please upload a supported video format (MP4 or WebM)')
+      setError(t('uploadError'))
     }
   }
 
@@ -282,7 +285,7 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
         setUploadProgress(0)
       }, 1000)
     } catch (err) {
-      setError('Failed to upload video. Please try again.')
+      setError(t('uploadFailed'))
     } finally {
       setIsLoading(false)
     }
@@ -356,14 +359,14 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
                   <button
                     onClick={handleExpand}
                     className="p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
-                    title="Expand video"
+                    title={tCommon('expand')}
                   >
                     <Expand className="w-4 h-4 text-white" />
                   </button>
                   <button
                     onClick={handleDownload}
                     className="p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
-                    title="Download video"
+                    title={tCommon('download')}
                   >
                     <Download className="w-4 h-4 text-white" />
                   </button>
@@ -376,7 +379,7 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
         <Modal
           isDialogOpen={isModalOpen}
           onOpenChange={setIsModalOpen}
-          dialogTitle="Video Player"
+          dialogTitle={t('videoPlayer')}
           minWidth="lg"
           minHeight="lg"
           dialogContent={
@@ -411,7 +414,7 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 text-sm text-zinc-500">
               <Video size={16} />
-              <span className="font-medium">Video Block</span>
+              <span className="font-medium">{t('videoBlock')}</span>
             </div>
             {blockObject && (
               <motion.button
@@ -459,7 +462,7 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
                       className="space-y-3"
                     >
                       <Loader2 className="w-8 h-8 animate-spin mx-auto text-blue-500" />
-                      <div className="text-sm text-zinc-600">Uploading video... {uploadProgress}%</div>
+                      <div className="text-sm text-zinc-600">{t('uploadingVideo')} {uploadProgress}%</div>
                       <div className="w-48 h-1 bg-gray-200 rounded-full mx-auto overflow-hidden">
                         <motion.div
                           className="h-full bg-blue-500 rounded-full"
@@ -479,10 +482,10 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
                       <Upload className="w-8 h-8 mx-auto text-blue-500" />
                       <div>
                         <div className="text-sm font-medium text-zinc-700">
-                          Drop your video here or click to browse
+                          {t('dropVideoHere')}
                         </div>
                         <div className="text-xs text-zinc-500 mt-1">
-                          Supports MP4 and WebM formats
+                          {t('supportsFormats')}
                         </div>
                       </div>
                     </motion.div>
@@ -509,7 +512,7 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
               <div className="flex items-center gap-2 flex-wrap">
                 <div className="text-sm text-zinc-500 font-medium flex items-center gap-1">
                   <ArrowLeftRight size={14} />
-                  Video Size:
+                  {t('videoSize')}:
                 </div>
                 {(Object.keys(VIDEO_SIZES) as VideoSize[]).map((size) => (
                   <SizeButton
@@ -531,7 +534,7 @@ function VideoBlockComponent(props: ExtendedNodeViewProps) {
                   className="ml-auto"
                 >
                   <Download size={14} />
-                  Download
+                  {tCommon('download')}
                 </SizeButton>
               </div>
 

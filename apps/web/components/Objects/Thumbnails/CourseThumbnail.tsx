@@ -19,6 +19,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu"
+import { useTranslations } from 'next-intl'
 
 type Course = {
   course_uuid: string
@@ -50,7 +51,8 @@ type PropsType = {
 export const removeCoursePrefix = (course_uuid: string) => course_uuid.replace('course_', '')
 
 function CourseThumbnail({ course, orgslug, customLink }: PropsType) {
-  const router = useRouter() 
+  const t = useTranslations('courses.thumbnail')
+  const router = useRouter()
   const org = useOrg() as any
   const session = useLHSession() as any
 
@@ -60,14 +62,14 @@ function CourseThumbnail({ course, orgslug, customLink }: PropsType) {
   const remainingAuthorsCount = activeAuthors.length - 3
 
   const deleteCourse = async () => {
-    const toastId = toast.loading('Deleting course...')
+    const toastId = toast.loading(t('toast.deleting'))
     try {
       await deleteCourseFromBackend(course.course_uuid, session.data?.tokens?.access_token)
       await revalidateTags(['courses'], orgslug)
-      toast.success('Course deleted successfully')
+      toast.success(t('toast.deleteSuccess'))
       router.refresh()
     } catch (error) {
-      toast.error('Failed to delete course')
+      toast.error(t('toast.deleteFailed'))
     } finally {
       toast.dismiss(toastId)
     }
@@ -75,7 +77,7 @@ function CourseThumbnail({ course, orgslug, customLink }: PropsType) {
 
   const thumbnailImage = course.thumbnail_image
     ? getCourseThumbnailMediaDirectory(org?.org_uuid, course.course_uuid, course.thumbnail_image)
-    : '../empty_thumbnail.png'
+    : '/empty_thumbnail.png'
 
   return (
     <div className="relative flex flex-col bg-white rounded-xl nice-shadow overflow-hidden min-w-[280px] w-full max-w-sm shrink-0">
@@ -100,7 +102,7 @@ function CourseThumbnail({ course, orgslug, customLink }: PropsType) {
           {course.update_date && (
             <div className="inline-flex h-5 min-w-[140px] items-center justify-center px-2 rounded-md bg-gray-100/80 border border-gray-200">
               <span className="text-[10px] font-medium text-gray-600 truncate">
-                Updated {new Date(course.update_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                {t('updated')} {new Date(course.update_date).toLocaleDateString('pt-BR', { month: 'short', day: 'numeric', year: 'numeric' })}
               </span>
             </div>
           )}
@@ -138,12 +140,12 @@ function CourseThumbnail({ course, orgslug, customLink }: PropsType) {
           )}
         </div>
 
-        <Link 
-          prefetch 
+        <Link
+          prefetch
           href={customLink ? customLink : getUriWithOrg(orgslug, `/course/${removeCoursePrefix(course.course_uuid)}`)}
           className="inline-flex items-center justify-center w-full px-3 py-1.5 bg-black text-white text-xs font-medium rounded-lg hover:bg-gray-800 transition-colors"
         >
-          Start Learning
+          {t('startLearning')}
         </Link>
       </div>
     </div>
@@ -155,6 +157,8 @@ const AdminEditOptions = ({ course, orgSlug, deleteCourse }: {
   orgSlug: string
   deleteCourse: () => Promise<void>
 }) => {
+  const t = useTranslations('courses.thumbnail')
+
   return (
     <AuthenticatedClientElement
       action="update"
@@ -172,22 +176,22 @@ const AdminEditOptions = ({ course, orgSlug, deleteCourse }: {
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuItem asChild>
               <Link prefetch href={getUriWithOrg(orgSlug, `/dash/courses/course/${removeCoursePrefix(course.course_uuid)}/content`)}>
-                <FilePenLine className="mr-2 h-4 w-4" /> Edit Content
+                <FilePenLine className="mr-2 h-4 w-4" /> {t('editContent')}
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link prefetch href={getUriWithOrg(orgSlug, `/dash/courses/course/${removeCoursePrefix(course.course_uuid)}/general`)}>
-                <Settings2 className="mr-2 h-4 w-4" /> Settings
+                <Settings2 className="mr-2 h-4 w-4" /> {t('settings')}
               </Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <ConfirmationModal
-                confirmationButtonText="Delete Course"
-                confirmationMessage="Are you sure you want to delete this course?"
-                dialogTitle={`Delete ${course.name}?`}
+                confirmationButtonText={t('deleteConfirmButton')}
+                confirmationMessage={t('deleteConfirmMessage')}
+                dialogTitle={t('deleteConfirmTitle', { courseName: course.name })}
                 dialogTrigger={
                   <button className="w-full text-left flex items-center px-2 py-1 rounded-md text-sm bg-rose-500/10 hover:bg-rose-500/20 transition-colors text-red-600">
-                    <BookMinus className="mr-4 h-4 w-4" /> Delete Course
+                    <BookMinus className="mr-4 h-4 w-4" /> {t('deleteCourse')}
                   </button>
                 }
                 functionToExecute={deleteCourse}

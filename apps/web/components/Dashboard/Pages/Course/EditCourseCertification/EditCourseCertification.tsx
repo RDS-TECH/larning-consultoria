@@ -1,3 +1,4 @@
+'use client'
 import {
   FormField,
   FormLabelAndMessage,
@@ -11,9 +12,9 @@ import * as Form from '@radix-ui/react-form';
 import React, { useEffect, useState } from 'react';
 import { useCourse, useCourseDispatch } from '@components/Contexts/CourseContext';
 import { useLHSession } from '@components/Contexts/LHSessionContext';
-import { 
-  createCertification, 
-  deleteCertification 
+import {
+  createCertification,
+  deleteCertification
 } from '@services/courses/certifications';
 import {
   CustomSelect,
@@ -25,31 +26,37 @@ import {
 import useSWR from 'swr';
 import { getAPIUrl } from '@services/config/config';
 import toast from 'react-hot-toast';
+import { useTranslations } from 'next-intl';
 
 type EditCourseCertificationProps = {
   orgslug: string
   course_uuid?: string
 }
 
-const validate = (values: any) => {
-  const errors = {} as any;
-
-  if (values.enable_certification && !values.certification_name) {
-    errors.certification_name = 'Required when certification is enabled';
-  } else if (values.certification_name && values.certification_name.length > 100) {
-    errors.certification_name = 'Must be 100 characters or less';
-  }
-
-  if (values.enable_certification && !values.certification_description) {
-    errors.certification_description = 'Required when certification is enabled';
-  } else if (values.certification_description && values.certification_description.length > 500) {
-    errors.certification_description = 'Must be 500 characters or less';
-  }
-
-  return errors;
-};
-
 function EditCourseCertification(props: EditCourseCertificationProps) {
+  const t = useTranslations('courses.edit.certification');
+  const tValidation = useTranslations('courses.edit.certification.validation');
+  const tTypes = useTranslations('courses.edit.certification.types');
+  const tPatterns = useTranslations('courses.edit.certification.patterns');
+  const tToast = useTranslations('courses.edit.certification.toast');
+
+  const validate = (values: any) => {
+    const errors = {} as any;
+
+    if (values.enable_certification && !values.certification_name) {
+      errors.certification_name = tValidation('requiredWhenEnabled');
+    } else if (values.certification_name && values.certification_name.length > 100) {
+      errors.certification_name = tValidation('nameTooLong');
+    }
+
+    if (values.enable_certification && !values.certification_description) {
+      errors.certification_description = tValidation('requiredWhenEnabled');
+    } else if (values.certification_description && values.certification_description.length > 500) {
+      errors.certification_description = tValidation('descriptionTooLong');
+    }
+
+    return errors;
+  };
   const [error, setError] = useState('');
   const [isCreating, setIsCreating] = useState(false);
   const course = useCourse();
@@ -165,15 +172,15 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
 
         // createCertification uses errorHandling which returns JSON directly on success
         if (result) {
-          toast.success('Certification created successfully');
+          toast.success(tToast('created'));
           mutateCertifications();
           formik.setFieldValue('enable_certification', true);
         } else {
           throw new Error('Failed to create certification');
         }
       } catch (e) {
-        setError('Failed to create certification.');
-        toast.error('Failed to create certification');
+        setError(tToast('createFailed'));
+        toast.error(tToast('createFailed'));
         formik.setFieldValue('enable_certification', false);
       } finally {
         setIsCreating(false);
@@ -188,15 +195,15 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
 
         // deleteCertification uses errorHandling which returns JSON directly on success
         if (result) {
-          toast.success('Certification removed successfully');
+          toast.success(tToast('removed'));
           mutateCertifications();
           formik.setFieldValue('enable_certification', false);
         } else {
           throw new Error('Failed to delete certification');
         }
       } catch (e) {
-        setError('Failed to remove certification.');
-        toast.error('Failed to remove certification');
+        setError(tToast('removeFailed'));
+        toast.error(tToast('removeFailed'));
         formik.setFieldValue('enable_certification', true);
       }
     } else {
@@ -245,11 +252,11 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
   }, [formik.values, isLoading, hasExistingCertification, existingCertification]);
 
   if (isLoading || !courseStructure || (courseStructure.course_uuid && access_token && certifications === undefined)) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}</div>;
   }
 
   if (certificationsError) {
-    return <div>Error loading certifications</div>;
+    return <div>{t('errorLoading')}</div>;
   }
 
   return (
@@ -261,9 +268,9 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
             {/* Header Section */}
             <div className="flex items-center justify-between bg-gray-50 px-3 sm:px-5 py-3 rounded-md mb-3">
               <div className="flex flex-col -space-y-1">
-                <h1 className="font-bold text-lg sm:text-xl text-gray-800">Course Certification</h1>
+                <h1 className="font-bold text-lg sm:text-xl text-gray-800">{t('title')}</h1>
                 <h2 className="text-gray-500 text-xs sm:text-sm">
-                  Enable and configure certificates for students who complete this course
+                  {t('description')}
                 </h2>
               </div>
               <div className="flex items-center space-x-3">
@@ -302,19 +309,19 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
                     <div className="flex flex-col bg-gray-50 -space-y-1 px-3 sm:px-5 py-3 rounded-md mb-3">
                       <h3 className="font-bold text-md text-gray-800 flex items-center gap-2">
                         <FileText size={16} />
-                        Basic Information
+                        {t('sections.basicInfo')}
                       </h3>
                       <p className="text-gray-500 text-xs sm:text-sm">
-                        Configure the basic details of your certification
+                        {t('sections.basicInfoDescription')}
                       </p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       {/* Certification Name */}
                       <FormField name="certification_name">
-                        <FormLabelAndMessage 
-                          label="Certification Name" 
-                          message={formik.errors.certification_name} 
+                        <FormLabelAndMessage
+                          label={t('certificationName')}
+                          message={formik.errors.certification_name}
                         />
                         <Form.Control asChild>
                           <Input
@@ -322,7 +329,7 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
                             onChange={formik.handleChange}
                             value={formik.values.certification_name}
                             type="text"
-                            placeholder="e.g., Advanced JavaScript Certification"
+                            placeholder={t('certificationNamePlaceholder')}
                             required
                           />
                         </Form.Control>
@@ -330,7 +337,7 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
 
                       {/* Certification Type */}
                       <FormField name="certification_type">
-                        <FormLabelAndMessage label="Certification Type" />
+                        <FormLabelAndMessage label={t('certificationType')} />
                         <Form.Control asChild>
                           <CustomSelect
                             value={formik.values.certification_type}
@@ -341,27 +348,19 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
                           >
                             <CustomSelectTrigger className="w-full bg-white">
                               <CustomSelectValue>
-                                {formik.values.certification_type === 'completion' ? 'Course Completion' :
-                                 formik.values.certification_type === 'achievement' ? 'Achievement Based' :
-                                 formik.values.certification_type === 'assessment' ? 'Assessment Based' :
-                                 formik.values.certification_type === 'participation' ? 'Participation' :
-                                 formik.values.certification_type === 'mastery' ? 'Skill Mastery' :
-                                 formik.values.certification_type === 'professional' ? 'Professional Development' :
-                                 formik.values.certification_type === 'continuing' ? 'Continuing Education' :
-                                 formik.values.certification_type === 'workshop' ? 'Workshop Attendance' :
-                                 formik.values.certification_type === 'specialization' ? 'Specialization' : 'Course Completion'}
+                                {tTypes(formik.values.certification_type)}
                               </CustomSelectValue>
                             </CustomSelectTrigger>
                             <CustomSelectContent>
-                              <CustomSelectItem value="completion">Course Completion</CustomSelectItem>
-                              <CustomSelectItem value="achievement">Achievement Based</CustomSelectItem>
-                              <CustomSelectItem value="assessment">Assessment Based</CustomSelectItem>
-                              <CustomSelectItem value="participation">Participation</CustomSelectItem>
-                              <CustomSelectItem value="mastery">Skill Mastery</CustomSelectItem>
-                              <CustomSelectItem value="professional">Professional Development</CustomSelectItem>
-                              <CustomSelectItem value="continuing">Continuing Education</CustomSelectItem>
-                              <CustomSelectItem value="workshop">Workshop Attendance</CustomSelectItem>
-                              <CustomSelectItem value="specialization">Specialization</CustomSelectItem>
+                              <CustomSelectItem value="completion">{tTypes('completion')}</CustomSelectItem>
+                              <CustomSelectItem value="achievement">{tTypes('achievement')}</CustomSelectItem>
+                              <CustomSelectItem value="assessment">{tTypes('assessment')}</CustomSelectItem>
+                              <CustomSelectItem value="participation">{tTypes('participation')}</CustomSelectItem>
+                              <CustomSelectItem value="mastery">{tTypes('mastery')}</CustomSelectItem>
+                              <CustomSelectItem value="professional">{tTypes('professional')}</CustomSelectItem>
+                              <CustomSelectItem value="continuing">{tTypes('continuing')}</CustomSelectItem>
+                              <CustomSelectItem value="workshop">{tTypes('workshop')}</CustomSelectItem>
+                              <CustomSelectItem value="specialization">{tTypes('specialization')}</CustomSelectItem>
                             </CustomSelectContent>
                           </CustomSelect>
                         </Form.Control>
@@ -370,16 +369,16 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
 
                     {/* Certification Description */}
                     <FormField name="certification_description">
-                      <FormLabelAndMessage 
-                        label="Certification Description" 
-                        message={formik.errors.certification_description} 
+                      <FormLabelAndMessage
+                        label={t('certificationDescription')}
+                        message={formik.errors.certification_description}
                       />
                       <Form.Control asChild>
                         <Textarea
                           style={{ backgroundColor: 'white', height: '120px', minHeight: '120px' }}
                           onChange={formik.handleChange}
                           value={formik.values.certification_description}
-                          placeholder="Describe what this certification represents and its value..."
+                          placeholder={t('descriptionPlaceholder')}
                           required
                         />
                       </Form.Control>
@@ -389,42 +388,34 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
                     <div className="flex flex-col bg-gray-50 -space-y-1 px-3 sm:px-5 py-3 rounded-md mb-3">
                       <h3 className="font-bold text-md text-gray-800 flex items-center gap-2">
                         <Award size={16} />
-                        Certificate Design
+                        {t('sections.design')}
                       </h3>
                       <p className="text-gray-500 text-xs sm:text-sm">
-                        Choose a decorative pattern for your certificate
+                        {t('sections.designDescription')}
                       </p>
                     </div>
 
                     {/* Pattern Selection */}
                     <FormField name="certificate_pattern">
-                      <FormLabelAndMessage label="Certificate Pattern" />
+                      <FormLabelAndMessage label={t('certificatePattern')} />
                       <Form.Control asChild>
                         <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                           {[
-                            { value: 'royal', name: 'Royal', description: 'Ornate with crown motifs' },
-                            { value: 'tech', name: 'Tech', description: 'Circuit-inspired patterns' },
-                            { value: 'nature', name: 'Nature', description: 'Organic leaf patterns' },
-                            { value: 'geometric', name: 'Geometric', description: 'Abstract shapes & lines' },
-                            { value: 'vintage', name: 'Vintage', description: 'Art deco styling' },
-                            { value: 'waves', name: 'Waves', description: 'Flowing water patterns' },
-                            { value: 'minimal', name: 'Minimal', description: 'Clean and simple' },
-                            { value: 'professional', name: 'Professional', description: 'Business-ready design' },
-                            { value: 'academic', name: 'Academic', description: 'Traditional university style' },
-                            { value: 'modern', name: 'Modern', description: 'Contemporary clean lines' }
+                            'royal', 'tech', 'nature', 'geometric', 'vintage',
+                            'waves', 'minimal', 'professional', 'academic', 'modern'
                           ].map((pattern) => (
                             <div
-                              key={pattern.value}
+                              key={pattern}
                               className={`p-3 border-2 rounded-lg cursor-pointer transition-all ${
-                                formik.values.certificate_pattern === pattern.value
+                                formik.values.certificate_pattern === pattern
                                   ? 'border-blue-500 bg-blue-50'
                                   : 'border-gray-200 hover:border-gray-300'
                               }`}
-                              onClick={() => formik.setFieldValue('certificate_pattern', pattern.value)}
+                              onClick={() => formik.setFieldValue('certificate_pattern', pattern)}
                             >
                               <div className="text-center">
-                                <div className="text-sm font-medium text-gray-900">{pattern.name}</div>
-                                <div className="text-xs text-gray-500 mt-1">{pattern.description}</div>
+                                <div className="text-sm font-medium text-gray-900">{tPatterns(`${pattern}.name`)}</div>
+                                <div className="text-xs text-gray-500 mt-1">{tPatterns(`${pattern}.description`)}</div>
                               </div>
                             </div>
                           ))}
@@ -434,14 +425,14 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
 
                     {/* Custom Instructor */}
                     <FormField name="certificate_instructor">
-                      <FormLabelAndMessage label="Instructor Name (Optional)" />
+                      <FormLabelAndMessage label={t('instructorName')} />
                       <Form.Control asChild>
                         <Input
                           style={{ backgroundColor: 'white' }}
                           onChange={formik.handleChange}
                           value={formik.values.certificate_instructor}
                           type="text"
-                          placeholder="e.g., Dr. Jane Smith"
+                          placeholder={t('instructorNamePlaceholder')}
                         />
                       </Form.Control>
                     </FormField>
@@ -454,10 +445,10 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
                     <div className="flex flex-col bg-gray-50 -space-y-1 px-3 sm:px-5 py-3 rounded-t-xl mb-3">
                       <h3 className="font-bold text-md text-gray-800 flex items-center gap-2">
                         <Award size={16} />
-                        Certificate Preview
+                        {t('sections.preview')}
                       </h3>
                       <p className="text-gray-500 text-xs sm:text-sm">
-                        Live preview of your certificate
+                        {t('sections.previewDescription')}
                       </p>
                     </div>
                     
@@ -479,9 +470,9 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
             {!formik.values.enable_certification && (
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
                 <Award className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="font-medium text-gray-700 mb-2">No Certification Configured</h3>
+                <h3 className="font-medium text-gray-700 mb-2">{t('noCertification.title')}</h3>
                 <p className="text-sm text-gray-500 mb-4">
-                  Enable certification to provide students with certificates upon course completion.
+                  {t('noCertification.description')}
                 </p>
                 <button
                   type="button"
@@ -490,7 +481,7 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Award size={16} />
-                  {isCreating ? 'Creating...' : 'Enable Certification'}
+                  {isCreating ? t('noCertification.creating') : t('noCertification.button')}
                 </button>
               </div>
             )}
@@ -501,9 +492,9 @@ function EditCourseCertification(props: EditCourseCertificationProps) {
                 <div className="animate-spin mx-auto mb-4">
                   <Settings className="w-16 h-16 text-blue-500" />
                 </div>
-                <h3 className="font-medium text-blue-700 mb-2">Creating Certification...</h3>
+                <h3 className="font-medium text-blue-700 mb-2">{t('creating.title')}</h3>
                 <p className="text-sm text-blue-600">
-                  Please wait while we set up your course certification.
+                  {t('creating.description')}
                 </p>
               </div>
             )}

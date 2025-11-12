@@ -12,17 +12,18 @@ import { Textarea } from "@components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@components/ui/select";
 import { Label } from "@components/ui/label";
 import currencyCodes from 'currency-codes';
+import { useTranslations } from 'next-intl';
 
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Name is required'),
-  description: Yup.string().required('Description is required'),
+const getValidationSchema = (t: any) => Yup.object().shape({
+  name: Yup.string().required(t('validation.nameRequired')),
+  description: Yup.string().required(t('validation.descriptionRequired')),
   amount: Yup.number()
-    .min(1, 'Amount must be greater than zero')
-    .required('Amount is required'),
+    .min(1, t('validation.amountMinimum'))
+    .required(t('validation.amountRequired')),
   benefits: Yup.string(),
-  currency: Yup.string().required('Currency is required'),
-  product_type: Yup.string().oneOf(['one_time', 'subscription']).required('Product type is required'),
-  price_type: Yup.string().oneOf(['fixed_price', 'customer_choice']).required('Price type is required'),
+  currency: Yup.string().required(t('validation.currencyRequired')),
+  product_type: Yup.string().oneOf(['one_time', 'subscription']).required(t('validation.productTypeRequired')),
+  price_type: Yup.string().oneOf(['fixed_price', 'customer_choice']).required(t('validation.priceTypeRequired')),
 });
 
 interface ProductFormValues {
@@ -36,6 +37,9 @@ interface ProductFormValues {
 }
 
 const CreateProductForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) => {
+  const t = useTranslations('payments.products');
+  const tCommon = useTranslations('common.actions');
+  const tDashboard = useTranslations('dashboard.payments.products');
   const org = useOrg() as any;
   const session = useLHSession() as any;
   const [currencies, setCurrencies] = useState<{ code: string; name: string }[]>([]);
@@ -58,20 +62,22 @@ const CreateProductForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) =
     currency: 'USD',
   };
 
+  const validationSchema = getValidationSchema(t);
+
   const handleSubmit = async (values: ProductFormValues, { setSubmitting, resetForm }: any) => {
     try {
       const res = await createProduct(org.id, values, session.data?.tokens?.access_token);
       if (res.success) {
-        toast.success('Product created successfully');
+        toast.success(t('createSuccess'));
         mutate([`/payments/${org.id}/products`, session.data?.tokens?.access_token]);
         resetForm();
         onSuccess();
       } else {
-        toast.error('Failed to create product');
+        toast.error(t('createFailed'));
       }
     } catch (error) {
       console.error('Error creating product:', error);
-      toast.error('An error occurred while creating the product');
+      toast.error(t('createError'));
     } finally {
       setSubmitting(false);
     }
@@ -87,47 +93,47 @@ const CreateProductForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) =
         <Form className="space-y-4">
           <div className='px-1.5 py-2 flex-col space-y-3'>
             <div>
-              <Label htmlFor="name">Product Name</Label>
-              <Field name="name" as={Input} placeholder="Product Name" />
+              <Label htmlFor="name">{t('productName')}</Label>
+              <Field name="name" as={Input} placeholder={t('productName')} />
               <ErrorMessage name="name" component="div" className="text-red-500 text-sm mt-1" />
             </div>
 
             <div>
-              <Label htmlFor="description">Description</Label>
-              <Field name="description" as={Textarea} placeholder="Product Description" />
+              <Label htmlFor="description">{t('productDescription')}</Label>
+              <Field name="description" as={Textarea} placeholder={t('productDescription')} />
               <ErrorMessage name="description" component="div" className="text-red-500 text-sm mt-1" />
             </div>
-            
+
             <div>
-              <Label htmlFor="product_type">Product Type</Label>
+              <Label htmlFor="product_type">{tDashboard('productType')}</Label>
               <Select
                 value={values.product_type}
                 onValueChange={(value) => setFieldValue('product_type', value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Product Type" />
+                  <SelectValue placeholder={tDashboard('productType')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="one_time">One Time</SelectItem>
-                  <SelectItem value="subscription">Subscription</SelectItem>
+                  <SelectItem value="one_time">{tDashboard('types.oneTime')}</SelectItem>
+                  <SelectItem value="subscription">{tDashboard('types.subscription')}</SelectItem>
                 </SelectContent>
               </Select>
               <ErrorMessage name="product_type" component="div" className="text-red-500 text-sm mt-1" />
             </div>
 
             <div>
-              <Label htmlFor="price_type">Price Type</Label>
+              <Label htmlFor="price_type">{tDashboard('priceType')}</Label>
               <Select
                 value={values.price_type}
                 onValueChange={(value) => setFieldValue('price_type', value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Price Type" />
+                  <SelectValue placeholder={tDashboard('priceType')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="fixed_price">Fixed Price</SelectItem>
+                  <SelectItem value="fixed_price">{tDashboard('priceTypes.fixedPrice')}</SelectItem>
                   {values.product_type !== 'subscription' && (
-                    <SelectItem value="customer_choice">Customer Choice</SelectItem>
+                    <SelectItem value="customer_choice">{tDashboard('priceTypes.customerChoice')}</SelectItem>
                   )}
                 </SelectContent>
               </Select>
@@ -137,19 +143,19 @@ const CreateProductForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) =
             <div className="flex space-x-2">
               <div className="grow">
                 <Label htmlFor="amount">
-                  {values.price_type === 'fixed_price' ? 'Price' : 'Minimum Amount'}
+                  {values.price_type === 'fixed_price' ? t('price') : tDashboard('minimumAmount')}
                 </Label>
-                <Field name="amount" as={Input} type="number" placeholder={values.price_type === 'fixed_price' ? 'Price' : 'Minimum Amount'} />
+                <Field name="amount" as={Input} type="number" placeholder={values.price_type === 'fixed_price' ? t('price') : tDashboard('minimumAmount')} />
                 <ErrorMessage name="amount" component="div" className="text-red-500 text-sm mt-1" />
               </div>
               <div className="w-1/3">
-                <Label htmlFor="currency">Currency</Label>
+                <Label htmlFor="currency">{t('currency')}</Label>
                 <Select
                   value={values.currency}
                   onValueChange={(value) => setFieldValue('currency', value)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Currency" />
+                    <SelectValue placeholder={t('currency')} />
                   </SelectTrigger>
                   <SelectContent>
                     {currencies.map((currency) => (
@@ -164,15 +170,15 @@ const CreateProductForm: React.FC<{ onSuccess: () => void }> = ({ onSuccess }) =
             </div>
 
             <div>
-              <Label htmlFor="benefits">Benefits</Label>
-              <Field name="benefits" as={Textarea} placeholder="Product Benefits" />
+              <Label htmlFor="benefits">{t('productBenefits')}</Label>
+              <Field name="benefits" as={Textarea} placeholder={t('productBenefits')} />
               <ErrorMessage name="benefits" component="div" className="text-red-500 text-sm mt-1" />
             </div>
           </div>
 
           <div className="flex justify-end">
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Creating...' : 'Create Product'}
+              {isSubmitting ? tDashboard('creating') : t('createProduct')}
             </Button>
           </div>
         </Form>

@@ -42,7 +42,8 @@ import {
 import { toast } from 'react-hot-toast'
 import { signOut } from 'next-auth/react'
 import { getUriWithoutOrg } from '@services/config/config';
-import { useDebounce } from '@/hooks/useDebounce';
+import { useDebounce } from '@hooks/useDebounce';
+import { useTranslations } from 'next-intl';
 
 const SUPPORTED_FILES = constructAcceptValue(['jpg', 'png', 'webp', 'gif'])
 
@@ -108,12 +109,12 @@ const DETAIL_TEMPLATES = {
   ]
 } as const;
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Email is required'),
-  username: Yup.string().required('Username is required'),
-  first_name: Yup.string().required('First name is required'),
-  last_name: Yup.string().required('Last name is required'),
-  bio: Yup.string().max(400, 'Bio must be 400 characters or less'),
+const getValidationSchema = (t: any) => Yup.object().shape({
+  email: Yup.string().email(t('validation.invalidEmail')).required(t('validation.emailRequired')),
+  username: Yup.string().required(t('validation.usernameRequired')),
+  first_name: Yup.string().required(t('validation.firstNameRequired')),
+  last_name: Yup.string().required(t('validation.lastNameRequired')),
+  bio: Yup.string().max(400, t('validation.bioMaxLength')),
   details: Yup.object().shape({})
 });
 
@@ -255,6 +256,7 @@ const UserEditForm = ({
     handleFileChange: (event: any) => Promise<void>;
   };
 }) => {
+  const t = useTranslations('dashboard.account.general');
   // Memoize template handlers
   const templateHandlers = useMemo(() => 
     Object.entries(DETAIL_TEMPLATES).reduce((acc, [key, template]) => ({
@@ -293,10 +295,10 @@ const UserEditForm = ({
       <div className="flex flex-col gap-0">
         <div className="flex flex-col bg-gray-50 -space-y-1 px-5 py-3 mx-3 my-3 rounded-md">
           <h1 className="font-bold text-xl text-gray-800">
-            Account Settings
+            {t('title')}
           </h1>
           <h2 className="text-gray-500 text-md">
-            Manage your personal information and preferences
+            {t('description')}
           </h2>
         </div>
 
@@ -304,14 +306,14 @@ const UserEditForm = ({
           {/* Profile Information Section */}
           <div className="flex-1 min-w-0 space-y-4">
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t('fields.email')}</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 value={values.email}
                 onChange={handleChange}
-                placeholder="Your email address"
+                placeholder={t('placeholders.email')}
               />
               {touched.email && errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -319,19 +321,19 @@ const UserEditForm = ({
               {values.email !== values.email && (
                 <div className="flex items-center space-x-2 mt-2 text-amber-600 bg-amber-50 p-2 rounded-md">
                   <AlertTriangle size={16} />
-                  <span className="text-sm">You will be logged out after changing your email</span>
+                  <span className="text-sm">{t('warnings.emailChange')}</span>
                 </div>
               )}
             </div>
 
             <div>
-              <Label htmlFor="username">Username</Label>
+              <Label htmlFor="username">{t('fields.username')}</Label>
               <Input
                 id="username"
                 name="username"
                 value={values.username}
                 onChange={handleChange}
-                placeholder="Your username"
+                placeholder={t('placeholders.username')}
               />
               {touched.username && errors.username && (
                 <p className="text-red-500 text-sm mt-1">{errors.username}</p>
@@ -339,13 +341,13 @@ const UserEditForm = ({
             </div>
 
             <div>
-              <Label htmlFor="first_name">First Name</Label>
+              <Label htmlFor="first_name">{t('fields.firstName')}</Label>
               <Input
                 id="first_name"
                 name="first_name"
                 value={values.first_name}
                 onChange={handleChange}
-                placeholder="Your first name"
+                placeholder={t('placeholders.firstName')}
               />
               {touched.first_name && errors.first_name && (
                 <p className="text-red-500 text-sm mt-1">{errors.first_name}</p>
@@ -353,13 +355,13 @@ const UserEditForm = ({
             </div>
 
             <div>
-              <Label htmlFor="last_name">Last Name</Label>
+              <Label htmlFor="last_name">{t('fields.lastName')}</Label>
               <Input
                 id="last_name"
                 name="last_name"
                 value={values.last_name}
                 onChange={handleChange}
-                placeholder="Your last name"
+                placeholder={t('placeholders.lastName')}
               />
               {touched.last_name && errors.last_name && (
                 <p className="text-red-500 text-sm mt-1">{errors.last_name}</p>
@@ -368,9 +370,9 @@ const UserEditForm = ({
 
             <div>
               <Label htmlFor="bio">
-                Bio
+                {t('fields.bio')}
                 <span className="text-gray-500 text-sm ml-2">
-                  ({400 - (values.bio?.length || 0)} characters left)
+                  ({t('fields.bioCharactersLeft', { count: 400 - (values.bio?.length || 0) })})
                 </span>
               </Label>
               <Textarea
@@ -378,7 +380,7 @@ const UserEditForm = ({
                 name="bio"
                 value={values.bio}
                 onChange={handleChange}
-                placeholder="Tell us about yourself"
+                placeholder={t('placeholders.bio')}
                 className="min-h-[150px]"
                 maxLength={400}
               />
@@ -390,7 +392,7 @@ const UserEditForm = ({
             <div className="space-y-4">
               <div className="flex flex-col gap-3">
                 <div className="flex justify-between items-center">
-                  <Label>Additional Details</Label>
+                  <Label>{t('additionalDetails.title')}</Label>
                   <div className="flex gap-2">
                     <Button
                       type="button"
@@ -401,7 +403,7 @@ const UserEditForm = ({
                         setFieldValue('details', {});
                       }}
                     >
-                      Clear All
+                      {t('additionalDetails.clearAll')}
                     </Button>
                     <Button
                       type="button"
@@ -410,16 +412,16 @@ const UserEditForm = ({
                       onClick={() => {
                         const newDetails = { ...values.details };
                         const id = `detail-${Date.now()}`;
-                        newDetails[id] = { 
+                        newDetails[id] = {
                           id,
                           label: 'New Detail',
                           icon: '',
-                          text: '' 
+                          text: ''
                         };
                         setFieldValue('details', newDetails);
                       }}
                     >
-                      Add Detail
+                      {t('additionalDetails.addDetail')}
                     </Button>
                   </div>
                 </div>
@@ -448,7 +450,7 @@ const UserEditForm = ({
                       {key === 'general' && <Briefcase className="w-4 h-4" />}
                       {key === 'academic' && <GraduationCap className="w-4 h-4" />}
                       {key === 'professional' && <Building2 className="w-4 h-4" />}
-                      Add {key.charAt(0).toUpperCase() + key.slice(1)}
+                      {t(`additionalDetails.add${key.charAt(0).toUpperCase() + key.slice(1)}`)}
                     </Button>
                   ))}
                 </div>
@@ -485,7 +487,7 @@ const UserEditForm = ({
           <div className="lg:w-80 w-full">
             <div className="bg-gray-50/50 p-6 rounded-lg nice-shadow h-full">
               <div className="flex flex-col items-center space-y-6">
-                <Label className="font-bold">Profile Picture</Label>
+                <Label className="font-bold">{t('profilePicture.title')}</Label>
                 {profilePicture.error && (
                   <div className="flex items-center bg-red-200 rounded-md text-red-950 px-4 py-2 text-sm">
                     <FileWarning size={16} className="mr-2" />
@@ -510,7 +512,7 @@ const UserEditForm = ({
                 {profilePicture.isLoading ? (
                   <div className="font-bold animate-pulse antialiased bg-green-200 text-gray text-sm rounded-md px-4 py-2 flex items-center">
                     <ArrowBigUpDash size={16} className="mr-2" />
-                    <span>Uploading</span>
+                    <span>{t('profilePicture.uploading')}</span>
                   </div>
                 ) : (
                   <>
@@ -528,13 +530,13 @@ const UserEditForm = ({
                       className="w-full"
                     >
                       <UploadCloud size={16} className="mr-2" />
-                      Change Avatar
+                      {t('profilePicture.changeAvatar')}
                     </Button>
                   </>
                 )}
                 <div className="flex items-center text-xs text-gray-500">
                   <Info size={13} className="mr-2" />
-                  <p>Recommended size 100x100</p>
+                  <p>{t('profilePicture.recommendedSize')}</p>
                 </div>
               </div>
             </div>
@@ -542,12 +544,12 @@ const UserEditForm = ({
         </div>
 
         <div className="flex flex-row-reverse mt-0 mx-5 mb-5">
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             disabled={isSubmitting}
             className="bg-black text-white hover:bg-black/90"
           >
-            {isSubmitting ? 'Saving...' : 'Save Changes'}
+            {isSubmitting ? t('buttons.saving') : t('buttons.saveChanges')}
           </Button>
         </div>
       </div>
@@ -556,6 +558,7 @@ const UserEditForm = ({
 };
 
 function UserEditGeneral() {
+  const t = useTranslations('dashboard.account.general');
   const session = useLHSession() as any;
   const access_token = session?.data?.tokens?.access_token;
   const [localAvatar, setLocalAvatar] = React.useState(null) as any
@@ -572,7 +575,7 @@ function UserEditGeneral() {
           setUserData(data);
         } catch (error) {
           console.error('Error fetching user data:', error);
-          setError('Failed to load user data');
+          setError(t('toast.updateFailed'));
         }
       }
     };
@@ -592,19 +595,19 @@ function UserEditGeneral() {
     } else {
       setIsLoading(false)
       setError('')
-      setSuccess('Avatar Updated')
+      setSuccess(t('toast.avatarUpdated'))
     }
   }
 
   const handleEmailChange = async (newEmail: string) => {
-    toast.success('Profile Updated Successfully', { duration: 4000 })
-    
+    toast.success(t('toast.updateSuccess'), { duration: 4000 })
+
     // Show message about logging in with new email
-    toast((t: any) => (
+    toast((toastInstance: any) => (
       <div className="flex items-center gap-2">
-        <span>Please login again with your new email: {newEmail}</span>
+        <span>{t('toast.loginWithNewEmail', { email: newEmail })}</span>
       </div>
-    ), { 
+    ), {
       duration: 4000,
       icon: '📧'
     })
@@ -636,11 +639,11 @@ function UserEditGeneral() {
           bio: userData.bio || '',
           details: userData.details || {},
         }}
-        validationSchema={validationSchema}
+        validationSchema={getValidationSchema(t)}
         onSubmit={(values, { setSubmitting }) => {
           const isEmailChanged = values.email !== userData.email
-          const loadingToast = toast.loading('Updating profile...')
-          
+          const loadingToast = toast.loading(t('toast.updating'))
+
           setTimeout(() => {
             setSubmitting(false)
             updateProfile(values, userData.id, access_token)
@@ -649,13 +652,13 @@ function UserEditGeneral() {
                 if (isEmailChanged) {
                   handleEmailChange(values.email)
                 } else {
-                  toast.success('Profile Updated Successfully')
+                  toast.success(t('toast.updateSuccess'))
                 }
                 // Refresh user data after successful update
                 getUser(userData.id, access_token).then(setUserData);
               })
               .catch(() => {
-                toast.error('Failed to update profile', { id: loadingToast })
+                toast.error(t('toast.updateFailed'), { id: loadingToast })
               })
           }, 400)
         }}

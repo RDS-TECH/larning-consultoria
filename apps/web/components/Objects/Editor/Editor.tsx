@@ -14,6 +14,7 @@ import {
   useAIEditor,
   useAIEditorDispatch,
 } from '@components/Contexts/AI/AIEditorContext'
+import { useTranslations } from 'next-intl'
 
 // Extensions
 import InfoCallout from './Extensions/Callout/Info/InfoCallout'
@@ -68,6 +69,7 @@ interface Editor {
 }
 
 function Editor(props: Editor) {
+  const t = useTranslations('editor')
   const dispatchAIEditor = useAIEditorDispatch() as any
   const aiEditorState = useAIEditor() as AIEditorStateTypes
   const is_ai_feature_enabled = useGetAIFeatures({ feature: 'editor' })
@@ -190,10 +192,10 @@ function Editor(props: Editor) {
     return (
       <div className="h-screen w-full bg-[#f8f8f8] flex items-center justify-center p-4">
         <div className="bg-white p-6 rounded-lg shadow-md text-center">
-          <h2 className="text-xl font-bold mb-4">Desktop Only</h2>
+          <h2 className="text-xl font-bold mb-4">{t('desktopOnly')}</h2>
           <Monitor className='mx-auto my-5' size={60} />
-          <p>The editor is only accessible from a desktop device.</p>
-          <p>Please switch to a desktop to view.</p>
+          <p>{t('desktopOnlyDescription')}</p>
+          <p>{t('pleaseSwitchToDesktop')}</p>
         </div>
       </div>
     )
@@ -271,7 +273,7 @@ function Editor(props: Editor) {
                           alt=""
                         />
                       </i>{' '}
-                      <i className="not-italic text-xs font-bold">AI Editor</i>
+                      <i className="not-italic text-xs font-bold">{t('aiEditor')}</i>
                     </div>
                   )}
                 </div>
@@ -290,9 +292,9 @@ function Editor(props: Editor) {
                   onClick={() => props.setContent(editor.getJSON())}
                 >
                   {' '}
-                  Save{' '}
+                  {t('save')}{' '}
                 </div>
-                <ToolTip content="Preview">
+                <ToolTip content={t('preview')}>
                   <Link
                     target="_blank"
                     href={`/course/${course_uuid}/activity/${activity_uuid}`}

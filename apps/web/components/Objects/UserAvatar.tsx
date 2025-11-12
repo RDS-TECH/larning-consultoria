@@ -57,7 +57,8 @@ function UserAvatar(props: UserAvatarProps) {
     // If predefined avatar is specified
     if (props.predefined_avatar) {
       const avatarType = props.predefined_avatar === 'ai' ? 'ai_avatar.png' : 'empty_avatar.png'
-      return getUriWithOrg(params.orgslug, `/${avatarType}`)
+      // Use absolute path for avatars (they're in public folder)
+      return `/${avatarType}`
     }
 
     // If avatar_url prop is provided
@@ -97,8 +98,8 @@ function UserAvatar(props: UserAvatarProps) {
       return getUserAvatarMediaDirectory(session.data.user.user_uuid, avatarUrl)
     }
 
-    // Fallback to empty avatar
-    return getUriWithOrg(params.orgslug, '/empty_avatar.png')
+    // Fallback to empty avatar (absolute path from public folder)
+    return '/empty_avatar.png'
   }
 
   const avatarImage = (

@@ -1,3 +1,5 @@
+'use client'
+
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import {
   sendActivityAIChatMessage,
@@ -17,12 +19,14 @@ import {
 } from '@components/Contexts/AI/AIChatBotContext'
 import useGetAIFeatures from '../../../Hooks/useGetAIFeatures'
 import UserAvatar from '@components/Objects/UserAvatar'
+import { useTranslations } from 'next-intl'
 
 type AIActivityAskProps = {
   activity: any
 }
 
 function AIActivityAsk(props: AIActivityAskProps) {
+  const t = useTranslations('activities.ai')
   const is_ai_feature_enabled = useGetAIFeatures({ feature: 'activity_ask' })
   const [isButtonAvailable, setIsButtonAvailable] = React.useState(false)
   const dispatchAIChatBot = useAIChatBotDispatch() as any
@@ -55,7 +59,7 @@ function AIActivityAsk(props: AIActivityAskProps) {
                 alt=""
               />
             </i>{' '}
-            <i className="not-italic text-xs font-bold">Ask AI</i>
+            <i className="not-italic text-xs font-bold">{t('askAI')}</i>
           </div>
         </div>
       )}
@@ -74,6 +78,7 @@ type ActivityChatMessageBoxProps = {
 }
 
 function ActivityChatMessageBox(props: ActivityChatMessageBoxProps) {
+  const t = useTranslations('activities.ai')
   const session = useLHSession() as any
   const access_token = session?.data?.tokens?.access_token;
   const aiChatBotState = useAIChatBot() as AIChatBotStateTypes
@@ -234,13 +239,13 @@ function ActivityChatMessageBox(props: ActivityChatMessageBoxProps) {
                   />
                   <span className="text-sm font-semibold text-white/70">
                     {' '}
-                    AI
+                    {t('ai')}
                   </span>
                 </div>
                 <div className="bg-white/5 text-white/40 py-0.5 px-3 flex space-x-1 rounded-full items-center">
                   <FlaskConical size={14} />
                   <span className="text-xs font-semibold antialiased ">
-                    Experimental
+                    {t('experimental')}
                   </span>
                 </div>
               </div>
@@ -276,7 +281,7 @@ function ActivityChatMessageBox(props: ActivityChatMessageBoxProps) {
                     <AlertTriangle size={20} className="text-red-500" />
                     <div className="flex flex-col">
                       <h3 className="font-semibold text-red-200">
-                        Something wrong happened
+                        {t('somethingWrong')}
                       </h3>
                       <span className="text-red-100 text-sm ">
                         {aiChatBotState.error.error_message}
@@ -299,7 +304,7 @@ function ActivityChatMessageBox(props: ActivityChatMessageBoxProps) {
                     onChange={handleChange}
                     disabled={aiChatBotState.isWaitingForResponse}
                     value={aiChatBotState.chatInputValue}
-                    placeholder="Ask AI About this Lecture"
+                    placeholder={t('askAboutLecture')}
                     type="text"
                     className={inputClass}
                     name=""
@@ -378,6 +383,7 @@ const AIMessagePlaceHolder = (props: {
   activity_uuid: string
   sendMessage: any
 }) => {
+  const t = useTranslations('activities.ai')
   const session = useLHSession() as any
   const [feedbackModal, setFeedbackModal] = React.useState(false)
   const aiChatBotState = useAIChatBot() as AIChatBotStateTypes
@@ -406,12 +412,12 @@ const AIMessagePlaceHolder = (props: {
               alt=""
             />
             <p className="pt-3 text-2xl font-semibold text-white/70 flex justify-center space-x-2 items-center">
-              <span className="items-center">Hello</span>
+              <span className="items-center">{t('hello')}</span>
               <span className="capitalize flex space-x-2 items-center">
                 <UserAvatar rounded="rounded-lg" border="border-2" width={35} />
                 <span>{session.data.user.username},</span>
               </span>
-              <span>how can we help today ?</span>
+              <span>{t('howCanWeHelp')}</span>
             </p>
           </motion.div>
           <motion.div
@@ -451,13 +457,16 @@ const AIChatPredefinedQuestion = (props: {
   sendMessage: any
   label: string
 }) => {
+  const t = useTranslations('activities.ai.predefinedQuestions')
+  const tTooltips = useTranslations('activities.ai.tooltips')
+
   function getQuestion(label: string) {
     if (label === 'about') {
-      return `What is this Activity about ?`
+      return t('about')
     } else if (label === 'flashcards') {
-      return `Generate flashcards about this Activity`
+      return t('flashcards')
     } else if (label === 'examples') {
-      return `Explain this Activity in practical examples`
+      return t('examples')
     }
   }
 
@@ -468,7 +477,7 @@ const AIChatPredefinedQuestion = (props: {
     >
       {props.label === 'about' && <BadgeInfo size={15} />}
       {props.label === 'flashcards' && <NotebookTabs size={15} />}
-      {props.label === 'examples' && <div className="text-white/50">Ex</div>}
+      {props.label === 'examples' && <div className="text-white/50">{tTooltips('ex')}</div>}
       <span>{getQuestion(props.label)}</span>
     </div>
   )

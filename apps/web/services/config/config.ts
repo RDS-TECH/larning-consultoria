@@ -11,7 +11,8 @@ export const getAPIUrl = () => {
     console.error('NEXT_PUBLIC_LEARNHOUSE_API_URL is not defined. Please check your environment variables and redeploy.')
     return ''
   }
-  return LEARNHOUSE_API_URL
+  // Garantir que a URL termine com /
+  return LEARNHOUSE_API_URL.endsWith('/') ? LEARNHOUSE_API_URL : `${LEARNHOUSE_API_URL}/`
 }
 
 export const getBackendUrl = () => {
@@ -27,14 +28,26 @@ export const isMultiOrgModeEnabled = () =>
   process.env.NEXT_PUBLIC_LEARNHOUSE_MULTI_ORG?.toLowerCase() === 'true' ? true : false
 
 export const getUriWithOrg = (orgslug: string, path: string) => {
+  // Em desenvolvimento local (localhost), sempre incluir o orgslug na rota
+  if (LEARNHOUSE_DOMAIN === 'localhost') {
+    // Estrutura: /orgs/{orgslug}{path}
+    return `/orgs/${orgslug}${path}`
+  }
+
   const multi_org = isMultiOrgModeEnabled()
   if (multi_org) {
     return `${LEARNHOUSE_HTTP_PROTOCOL}${orgslug}.${LEARNHOUSE_DOMAIN}${path}`
   }
-  return `${LEARNHOUSE_HTTP_PROTOCOL}${LEARNHOUSE_DOMAIN}${path}`
+  // Modo single-org ainda precisa da estrutura /orgs/{orgslug} nas URLs
+  return `${LEARNHOUSE_HTTP_PROTOCOL}${LEARNHOUSE_DOMAIN}/orgs/${orgslug}${path}`
 }
 
 export const getUriWithoutOrg = (path: string) => {
+  // Em desenvolvimento local (localhost), usar URL relativa para preservar a porta
+  if (LEARNHOUSE_DOMAIN === 'localhost') {
+    return path
+  }
+
   const multi_org = isMultiOrgModeEnabled()
   if (multi_org) {
     return `${LEARNHOUSE_HTTP_PROTOCOL}${LEARNHOUSE_DOMAIN}${path}`

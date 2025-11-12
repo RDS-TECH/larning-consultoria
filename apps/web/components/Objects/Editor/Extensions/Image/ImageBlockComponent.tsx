@@ -11,10 +11,13 @@ import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { FileUploadBlock, FileUploadBlockButton, FileUploadBlockInput } from '../../FileUploadBlock'
 import { constructAcceptValue } from '@/lib/constants';
 import Modal from '@components/Objects/StyledElements/Modal/Modal'
+import { useTranslations } from 'next-intl'
 
 const SUPPORTED_FILES = constructAcceptValue(['jpg', 'png', 'webp', 'gif'])
 
 function ImageBlockComponent(props: any) {
+  const t = useTranslations('blocks.image')
+  const tCommon = useTranslations('common')
   const org = useOrg() as any
   const course = useCourse() as any
   const editorState = useEditorProvider() as any
@@ -171,21 +174,21 @@ function ImageBlockComponent(props: any) {
                   <button
                     onClick={() => handleAlignmentChange('left')}
                     className={`p-1.5 rounded-md hover:bg-gray-100 text-gray-600 ${alignment === 'left' ? 'bg-gray-100' : ''}`}
-                    title="Align left"
+                    title={t('alignLeft')}
                   >
                     <AlignLeft size={16} />
                   </button>
                   <button
                     onClick={() => handleAlignmentChange('center')}
                     className={`p-1.5 rounded-md hover:bg-gray-100 text-gray-600 ${alignment === 'center' ? 'bg-gray-100' : ''}`}
-                    title="Center align"
+                    title={t('centerAlign')}
                   >
                     <AlignCenter size={16} />
                   </button>
                   <button
                     onClick={() => handleAlignmentChange('right')}
                     className={`p-1.5 rounded-md hover:bg-gray-100 text-gray-600 ${alignment === 'right' ? 'bg-gray-100' : ''}`}
-                    title="Align right"
+                    title={t('alignRight')}
                   >
                     <AlignRight size={16} />
                   </button>
@@ -193,7 +196,7 @@ function ImageBlockComponent(props: any) {
                   <button
                     onClick={handleExpand}
                     className="p-1.5 rounded-md hover:bg-gray-100 text-gray-600"
-                    title="Expand image"
+                    title={tCommon('expand')}
                   >
                     <Expand size={16} />
                   </button>
@@ -216,14 +219,14 @@ function ImageBlockComponent(props: any) {
                 <button
                   onClick={handleExpand}
                   className="p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
-                  title="Expand image"
+                  title={tCommon('expand')}
                 >
                   <Expand className="w-4 h-4 text-white" />
                 </button>
                 <button
                   onClick={handleDownload}
                   className="p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
-                  title="Download image"
+                  title={tCommon('download')}
                 >
                   <Download className="w-4 h-4 text-white" />
                 </button>
@@ -243,7 +246,7 @@ function ImageBlockComponent(props: any) {
         <Modal
           isDialogOpen={isModalOpen}
           onOpenChange={setIsModalOpen}
-          dialogTitle="Image Viewer"
+          dialogTitle={t('imageViewer')}
           minWidth="lg"
           minHeight="lg"
           dialogContent={

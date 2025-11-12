@@ -1,3 +1,7 @@
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const withNextIntl = createNextIntlPlugin('./i18n.ts');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
@@ -14,9 +18,6 @@ const nextConfig = {
   },
   reactStrictMode: false,
   output: 'standalone',
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
 }
 
-module.exports = nextConfig
+module.exports = withNextIntl(nextConfig);

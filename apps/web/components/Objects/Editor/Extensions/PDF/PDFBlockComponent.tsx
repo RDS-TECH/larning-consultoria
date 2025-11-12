@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { NodeViewWrapper } from '@tiptap/react'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
@@ -15,6 +16,8 @@ import Modal from '@components/Objects/StyledElements/Modal/Modal'
 const SUPPORTED_FILES = constructAcceptValue(['pdf'])
 
 function PDFBlockComponent(props: any) {
+  const t = useTranslations('blocks.pdf')
+  const tCommon = useTranslations('common')
   const org = useOrg() as any
   const course = useCourse() as any
   const session = useLHSession() as any
@@ -106,7 +109,7 @@ function PDFBlockComponent(props: any) {
                 <button
                   onClick={handleExpand}
                   className="p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
-                  title="Expand PDF"
+                  title={tCommon('expand')}
                 >
                   <Expand className="w-4 h-4 text-white" />
                 </button>
@@ -114,7 +117,7 @@ function PDFBlockComponent(props: any) {
                   <button
                     onClick={handleDownload}
                     className="p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
-                    title="Download PDF"
+                    title={tCommon('download')}
                   >
                     <Download className="w-4 h-4 text-white" />
                   </button>
@@ -134,7 +137,7 @@ function PDFBlockComponent(props: any) {
         <Modal
           isDialogOpen={isModalOpen}
           onOpenChange={setIsModalOpen}
-          dialogTitle="PDF Document"
+          dialogTitle={t('pdfDocument')}
           minWidth="xl"
           minHeight="xl"
           dialogContent={

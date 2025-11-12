@@ -13,8 +13,10 @@ import { mutate } from 'swr'
 import { updateCourse } from '@services/courses/courses'
 import { updateCertification } from '@services/courses/certifications'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
+import { useTranslations } from 'next-intl'
 
 function SaveState(props: { orgslug: string }) {
+  const t = useTranslations('dashboard.misc.saveState')
   const [isLoading, setIsLoading] = useState(false)
   const course = useCourse() as any
   const session = useLHSession() as any;
@@ -136,7 +138,7 @@ function SaveState(props: { orgslug: string }) {
       ) : (
         <div className="text-gray-600 flex space-x-2 items-center antialiased">
           <Timer size={15} />
-          <div>Unsaved changes</div>
+          <div>{t('unsavedChanges')}</div>
         </div>
       )}
       <div
@@ -157,11 +159,11 @@ function SaveState(props: { orgslug: string }) {
           <SaveAllIcon size={20} />
         )}
         {isLoading ? (
-          <div className="">Saving...</div>
+          <div className="">{t('saving')}</div>
         ) : saved ? (
-          <div className="">Saved</div>
+          <div className="">{t('saved')}</div>
         ) : (
-          <div className="">Save</div>
+          <div className="">{t('save')}</div>
         )}
       </div>
     </div>
