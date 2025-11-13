@@ -763,7 +763,10 @@
         "creating": "Criando curso...",
         "success": "Curso criado com sucesso",
         "failed": "Falha ao criar curso",
-        "unsplashFailed": "Falha ao carregar imagem do Unsplash"
+        "unsplashFailed": "Falha ao carregar imagem do Unsplash",
+        "invalidFileType": "Tipo de arquivo inválido. Use apenas JPG, PNG, WebP ou GIF",
+        "fileTooLarge": "Arquivo muito grande. O tamanho máximo é 5MB",
+        "imageSelected": "Imagem selecionada com sucesso"
       }
     },
     "thumbnail": {

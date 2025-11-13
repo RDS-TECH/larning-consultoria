@@ -13,6 +13,7 @@ import React, { useEffect } from 'react'
 import { BarLoader } from 'react-spinners'
 import { revalidateTags } from '@services/utils/ts/requests'
 import { useRouter } from 'next/navigation'
+import { getUriWithOrg } from '@services/config/config'
 import { useLHSession } from '@components/Contexts/LHSessionContext'
 import toast from 'react-hot-toast'
 import { useFormik } from 'formik'
@@ -74,9 +75,11 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
           toast.dismiss(toast_loading)
           toast.success(t('toast.success'))
 
-          if (res.data.org_id === orgId) {
+          if (res.data.org_id === orgId && res.data.course_uuid) {
             closeModal()
-            router.refresh()
+            // Redirect to the course edit page
+            const courseUrl = getUriWithOrg(orgslug, `/dash/courses/course/${res.data.course_uuid}/general`)
+            router.push(courseUrl)
             await revalidateTags(['courses'], orgslug)
           }
         } else {
@@ -107,7 +110,20 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {
+      console.log('File selected:', file.name, file.type, file.size)
+      // Validate file type
+      const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
+      if (!validTypes.includes(file.type)) {
+        toast.error(t('toast.invalidFileType'))
+        return
+      }
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error(t('toast.fileTooLarge'))
+        return
+      }
       formik.setFieldValue('thumbnail', file)
+      toast.success(t('toast.imageSelected'))
     }
   }
 

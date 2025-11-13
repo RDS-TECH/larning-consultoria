@@ -1590,10 +1590,13 @@
       },
       "submit": "Create Course",
       "toast": {
-        "creating": "Creating curso...",
-        "success": "Course criado com sucesso",
-        "failed": "Failed ao criar curso",
-        "unsplashFailed": "Failed ao carregar imagem do Unsplash"
+        "creating": "Creating course...",
+        "success": "Course created successfully",
+        "failed": "Failed to create course",
+        "unsplashFailed": "Failed to load image from Unsplash",
+        "invalidFileType": "Invalid file type. Use only JPG, PNG, WebP or GIF",
+        "fileTooLarge": "File too large. Maximum size is 5MB",
+        "imageSelected": "Image selected successfully"
       }
     },
     "thumbnail": {
