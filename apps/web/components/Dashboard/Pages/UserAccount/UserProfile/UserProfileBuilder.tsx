@@ -168,8 +168,8 @@ interface ProfileData {
 }
 
 const UserProfileBuilder = () => {
-  const t = useTranslations('userAccount.profile')
-  const tSections = useTranslations('userAccount.profile.sectionTypes')
+  const t = useTranslations('courses.dashboard.userAccount.profile')
+  const tSections = useTranslations('courses.dashboard.userAccount.profile.sectionTypes')
   const session = useLHSession() as any
   const access_token = session?.data?.tokens?.access_token
   const [profileData, setProfileData] = React.useState<ProfileData>({
