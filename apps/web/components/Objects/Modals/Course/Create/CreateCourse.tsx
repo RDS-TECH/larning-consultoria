@@ -82,8 +82,11 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
             console.log('Course UUID:', res.data.course_uuid)
             console.log('Org slug:', orgslug)
 
+            // Remove "course_" prefix from UUID for URL
+            const uuidWithoutPrefix = res.data.course_uuid.replace('course_', '')
+
             // Redirect to the course edit page using relative path
-            const courseUrl = `/orgs/${orgslug}/dash/courses/course/${res.data.course_uuid}/general`
+            const courseUrl = `/orgs/${orgslug}/dash/courses/course/${uuidWithoutPrefix}/general`
             console.log('Redirecting to:', courseUrl)
 
             await revalidateTags(['courses'], orgslug)
