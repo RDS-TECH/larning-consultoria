@@ -63,7 +63,7 @@ function BreadCrumbs(props: BreadCrumbsProps) {
             <div className="flex space-x-2 items-center">
               {' '}
               <School className="text-gray" size={14}></School>
-              <Link href={getUriWithOrg(org?.slug, '/dash/users')}>{t('orgSettings')}</Link>
+              <Link href={getUriWithOrg(org?.slug, '/dash/org/settings/general')}>{t('orgSettings')}</Link>
             </div>
           ) : (
             ''
