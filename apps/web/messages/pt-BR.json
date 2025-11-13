@@ -1326,14 +1326,15 @@
           }
         },
         "profile": {
-          "builder": {
-            "title": "Construtor de Perfil",
-            "beta": "BETA",
-            "description": "Personalize seu perfil profissional",
-            "sections": "Seções",
-            "addSection": "Adicionar Seção",
-            "selectSection": "Selecione uma seção para editar ou adicione uma nova",
-            "sectionTypes": {
+          "title": "Construtor de Perfil",
+          "beta": "BETA",
+          "subtitle": "Personalize seu perfil profissional",
+          "sections": "Seções",
+          "addSection": "Adicionar Seção",
+          "selectSection": "Selecione uma seção para editar ou adicione uma nova",
+          "saveChanges": "Salvar Alterações",
+          "saving": "Salvando...",
+          "sectionTypes": {
               "imageGallery": {
                 "label": "Galeria de Imagens",
                 "description": "Adicione uma coleção de imagens",

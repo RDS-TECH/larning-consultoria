@@ -10,6 +10,7 @@ import { useLHSession } from '@components/Contexts/LHSessionContext'
 import { updateProfile } from '@services/settings/profile'
 import { getUser } from '@services/users/users'
 import { toast } from 'react-hot-toast'
+import { useTranslations } from 'next-intl'
 
 // Define section types and their configurations
 const SECTION_TYPES = {
@@ -167,6 +168,8 @@ interface ProfileData {
 }
 
 const UserProfileBuilder = () => {
+  const t = useTranslations('userAccount.profile')
+  const tSections = useTranslations('userAccount.profile.sectionTypes')
   const session = useLHSession() as any
   const access_token = session?.data?.tokens?.access_token
   const [profileData, setProfileData] = React.useState<ProfileData>({
@@ -350,16 +353,16 @@ const UserProfileBuilder = () => {
         {/* Header */}
         <div className="flex items-center justify-between border-b pb-4">
           <div>
-            <h2 className="text-xl font-semibold flex items-center">Profile Builder <div className="text-xs ml-2 bg-gray-200 text-gray-700 px-2 py-1 rounded-full">BETA</div></h2>
-            <p className="text-gray-600">Customize your professional profile</p>
+            <h2 className="text-xl font-semibold flex items-center">{t('title')} <div className="text-xs ml-2 bg-gray-200 text-gray-700 px-2 py-1 rounded-full">{t('beta')}</div></h2>
+            <p className="text-gray-600">{t('subtitle')}</p>
           </div>
-          <Button 
-            variant="default" 
+          <Button
+            variant="default"
             onClick={handleSave}
             disabled={isSaving}
             className="bg-black hover:bg-black/90"
           >
-            {isSaving ? 'Saving...' : 'Save Changes'}
+            {isSaving ? t('saving') : t('saveChanges')}
           </Button>
         </div>
 
@@ -367,7 +370,7 @@ const UserProfileBuilder = () => {
         <div className="grid grid-cols-4 gap-6">
           {/* Sections Panel */}
           <div className="col-span-1 border-r pr-4">
-            <h3 className="font-medium mb-4">Sections</h3>
+            <h3 className="font-medium mb-4">{t('sections')}</h3>
             <DragDropContext onDragEnd={onDragEnd}>
               <Droppable droppableId="sections">
                 {(provided) => (
@@ -466,7 +469,7 @@ const UserProfileBuilder = () => {
                 <SelectTrigger className="w-full bg-black hover:bg-black/90 text-white border-black">
                   <div className="flex items-center justify-center w-full">
                     <Plus className="h-4 w-4 mr-2" />
-                    <span>Add Section</span>
+                    <span>{t('addSection')}</span>
                   </div>
                 </SelectTrigger>
                 <SelectContent>
@@ -497,7 +500,7 @@ const UserProfileBuilder = () => {
               />
             ) : (
               <div className="h-full flex items-center justify-center text-gray-500">
-                Select a section to edit or add a new one
+                {t('selectSection')}
               </div>
             )}
           </div>

@@ -1281,14 +1281,15 @@
           }
         },
         "profile": {
-          "builder": {
-            "title": "Profile Builder",
-            "beta": "BETA",
-            "description": "Customize your professional profile",
-            "sections": "Sections",
-            "addSection": "Add Section",
-            "selectSection": "Select a section to edit or add a new one",
-            "sectionTypes": {
+          "title": "Profile Builder",
+          "beta": "BETA",
+          "subtitle": "Customize your professional profile",
+          "sections": "Sections",
+          "addSection": "Add Section",
+          "selectSection": "Select a section to edit or add a new one",
+          "saveChanges": "Save Changes",
+          "saving": "Saving...",
+          "sectionTypes": {
               "imageGallery": {
                 "label": "Image Gallery",
                 "description": "Add a collection of images",
