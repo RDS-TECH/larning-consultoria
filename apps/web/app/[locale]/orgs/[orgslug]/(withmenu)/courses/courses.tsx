@@ -34,29 +34,31 @@ function Courses(props: CourseProps) {
     <div className="w-full">
       <GeneralWrapperStyled>
         <div className="flex flex-col space-y-2 mb-2">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between w-full">
             <TypeOfContentTitle title={t('title')} type="cou" />
-            <AuthenticatedClientElement
-              checkMethod="roles"
-              action="create"
-              ressourceType="courses"
-              orgId={props.org_id}
-            >
-              <Modal
-                isDialogOpen={newCourseModal}
-                onOpenChange={setNewCourseModal}
-                minHeight="md"
-                dialogContent={
-                  <CreateCourseModal
-                    closeModal={closeNewCourseModal}
-                    orgslug={orgslug}
-                  />
-                }
-                dialogTitle={t('createCourse')}
-                dialogDescription={t('createCourseDescription')}
-                dialogTrigger={<NewCourseButton />}
-              />
-            </AuthenticatedClientElement>
+            <div className="flex items-center">
+              <AuthenticatedClientElement
+                checkMethod="roles"
+                action="create"
+                ressourceType="courses"
+                orgId={props.org_id}
+              >
+                <Modal
+                  isDialogOpen={newCourseModal}
+                  onOpenChange={setNewCourseModal}
+                  minHeight="md"
+                  dialogContent={
+                    <CreateCourseModal
+                      closeModal={closeNewCourseModal}
+                      orgslug={orgslug}
+                    />
+                  }
+                  dialogTitle={t('createCourse')}
+                  dialogDescription={t('createCourseDescription')}
+                  dialogTrigger={<NewCourseButton />}
+                />
+              </AuthenticatedClientElement>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
