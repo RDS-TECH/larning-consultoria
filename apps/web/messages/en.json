@@ -2512,6 +2512,29 @@
       "title": "Course Ownership Types"
     },
     "edit": {
+      "settings": {
+        "tabs": {
+          "general": "General",
+          "landing": "Landing Page",
+          "previews": "Images & Previews",
+          "socials": "Socials",
+          "other": "Other"
+        },
+        "titles": {
+          "general": "General",
+          "landing": "Landing Page",
+          "previews": "Previews",
+          "socials": "Socials",
+          "other": "Other"
+        },
+        "subtitles": {
+          "general": "Manage your organization settings",
+          "landing": "Customize your organization landing page",
+          "previews": "Manage your organization previews",
+          "socials": "Manage your organization social media links",
+          "other": "Manage additional organization settings"
+        }
+      },
       "general": {
         "title": "Organization Settings",
         "subtitle": "Manage your organization's profile and settings",

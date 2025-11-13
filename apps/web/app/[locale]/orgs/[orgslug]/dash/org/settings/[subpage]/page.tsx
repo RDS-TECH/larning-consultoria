@@ -10,6 +10,7 @@ import OrgEditImages from '@components/Dashboard/Pages/Org/OrgEditImages/OrgEdit
 import OrgEditSocials from '@components/Dashboard/Pages/Org/OrgEditSocials/OrgEditSocials'
 import OrgEditLanding from '@components/Dashboard/Pages/Org/OrgEditLanding/OrgEditLanding'
 import OrgEditOther from '@components/Dashboard/Pages/Org/OrgEditOther/OrgEditOther'
+import { useTranslations } from 'next-intl'
 
 export type OrgParams = {
   subpage: string
@@ -18,22 +19,23 @@ export type OrgParams = {
 
 interface TabItem {
   id: string
-  label: string
+  labelKey: string
   icon: LucideIcon
 }
 
 const SETTING_TABS: TabItem[] = [
-  { id: 'general', label: 'General', icon: TextIcon },
-  { id: 'landing', label: 'Landing Page', icon: LayoutDashboardIcon },
-  { id: 'previews', label: 'Images & Previews', icon: ImageIcon },
-  { id: 'socials', label: 'Socials', icon: Share2Icon },
-  { id: 'other', label: 'Other', icon: CodeIcon },
+  { id: 'general', labelKey: 'general', icon: TextIcon },
+  { id: 'landing', labelKey: 'landing', icon: LayoutDashboardIcon },
+  { id: 'previews', labelKey: 'previews', icon: ImageIcon },
+  { id: 'socials', labelKey: 'socials', icon: Share2Icon },
+  { id: 'other', labelKey: 'other', icon: CodeIcon },
 ]
 
-function TabLink({ tab, isActive, orgslug }: { 
-  tab: TabItem, 
-  isActive: boolean, 
-  orgslug: string 
+function TabLink({ tab, isActive, orgslug, label }: {
+  tab: TabItem,
+  isActive: boolean,
+  orgslug: string,
+  label: string
 }) {
   return (
     <Link href={getUriWithOrg(orgslug, '') + `/dash/org/settings/${tab.id}`}>
@@ -44,7 +46,7 @@ function TabLink({ tab, isActive, orgslug }: {
       >
         <div className="flex items-center space-x-2.5 mx-2.5">
           <tab.icon size={16} />
-          <div>{tab.label}</div>
+          <div>{label}</div>
         </div>
       </div>
     </Link>
@@ -53,31 +55,21 @@ function TabLink({ tab, isActive, orgslug }: {
 
 function OrgPage(props: { params: Promise<OrgParams> }) {
   const params = use(props.params);
-  const [H1Label, setH1Label] = React.useState('')
-  const [H2Label, setH2Label] = React.useState('')
+  const t = useTranslations('organization.edit.settings')
+  const tTabs = useTranslations('organization.edit.settings.tabs')
 
-  function handleLabels() {
-    if (params.subpage == 'general') {
-      setH1Label('General')
-      setH2Label('Manage your organization settings')
-    } else if (params.subpage == 'previews') {
-      setH1Label('Previews')
-      setH2Label('Manage your organization previews')
-    } else if (params.subpage == 'socials') {
-      setH1Label('Socials')
-      setH2Label('Manage your organization social media links')
-    } else if (params.subpage == 'landing') {
-      setH1Label('Landing Page')
-      setH2Label('Customize your organization landing page')
-    } else if (params.subpage == 'other') {
-      setH1Label('Other')
-      setH2Label('Manage additional organization settings')
+  const getPageLabels = () => {
+    const labels = {
+      general: { title: t('titles.general'), subtitle: t('subtitles.general') },
+      previews: { title: t('titles.previews'), subtitle: t('subtitles.previews') },
+      socials: { title: t('titles.socials'), subtitle: t('subtitles.socials') },
+      landing: { title: t('titles.landing'), subtitle: t('subtitles.landing') },
+      other: { title: t('titles.other'), subtitle: t('subtitles.other') },
     }
+    return labels[params.subpage as keyof typeof labels] || { title: '', subtitle: '' }
   }
 
-  useEffect(() => {
-    handleLabels()
-  }, [params.subpage, params])
+  const pageLabels = getPageLabels()
 
   return (
     <div className="h-full w-full bg-[#f8f8f8] flex flex-col">
@@ -86,10 +78,10 @@ function OrgPage(props: { params: Promise<OrgParams> }) {
         <div className="my-2  py-2">
           <div className="w-100 flex flex-col space-y-1">
             <div className="pt-3 flex font-bold text-4xl tracking-tighter">
-              {H1Label}
+              {pageLabels.title}
             </div>
             <div className="flex font-medium text-gray-400 text-md">
-              {H2Label}{' '}
+              {pageLabels.subtitle}{' '}
             </div>
           </div>
         </div>
@@ -100,6 +92,7 @@ function OrgPage(props: { params: Promise<OrgParams> }) {
               tab={tab}
               isActive={params.subpage === tab.id}
               orgslug={params.orgslug}
+              label={tTabs(tab.labelKey)}
             />
           ))}
         </div>

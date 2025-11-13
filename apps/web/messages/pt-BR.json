@@ -2482,6 +2482,29 @@
       "title": "Tipos de Propriedade do Curso"
     },
     "edit": {
+      "settings": {
+        "tabs": {
+          "general": "Geral",
+          "landing": "Página de Destino",
+          "previews": "Imagens e Pré-visualizações",
+          "socials": "Redes Sociais",
+          "other": "Outros"
+        },
+        "titles": {
+          "general": "Geral",
+          "landing": "Página de Destino",
+          "previews": "Pré-visualizações",
+          "socials": "Redes Sociais",
+          "other": "Outros"
+        },
+        "subtitles": {
+          "general": "Gerencie as configurações da sua organização",
+          "landing": "Personalize a página de destino da sua organização",
+          "previews": "Gerencie as pré-visualizações da sua organização",
+          "socials": "Gerencie os links de redes sociais da sua organização",
+          "other": "Gerencie configurações adicionais da organização"
+        }
+      },
       "general": {
         "title": "Configurações da Organização",
         "subtitle": "Gerencie o perfil e configurações da sua organização",
