@@ -20,7 +20,8 @@ export const getBackendUrl = () => {
     console.error('NEXT_PUBLIC_LEARNHOUSE_BACKEND_URL is not defined. Please check your environment variables and redeploy.')
     return ''
   }
-  return LEARNHOUSE_BACKEND_URL
+  // Garantir que a URL termine com /
+  return LEARNHOUSE_BACKEND_URL.endsWith('/') ? LEARNHOUSE_BACKEND_URL : `${LEARNHOUSE_BACKEND_URL}/`
 }
 
 // Multi Organization Mode
