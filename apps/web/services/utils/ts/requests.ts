@@ -138,8 +138,8 @@ export const getResponseMetadata = async (
 }
 
 export const revalidateTags = async (tags: string[], orgslug: string) => {
-  const url = getUriWithOrg(orgslug, '')
+  // API routes are global and should not include orgslug in the path
   tags.forEach((tag) => {
-    fetch(`${url}/api/revalidate?tag=${tag}`)
+    fetch(`/api/revalidate?tag=${tag}`)
   })
 }
