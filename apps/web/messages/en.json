@@ -1618,8 +1618,7 @@
       "overview": {
         "description": "Track your progress in the course"
       }
-    }
-  },
+    },
   "public": {
     "landing": {
       "collections": "Collections",
