@@ -70,24 +70,38 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
           session.data?.tokens?.access_token
         )
 
+        console.log('Course creation response:', res)
+
         if (res.success) {
+          console.log('Course created successfully:', res.data)
           await revalidateTags(['courses'], orgslug)
           toast.dismiss(toast_loading)
           toast.success(t('toast.success'))
 
-          if (res.data.org_id === orgId && res.data.course_uuid) {
-            closeModal()
-            // Redirect to the course edit page
-            const courseUrl = getUriWithOrg(orgslug, `/dash/courses/course/${res.data.course_uuid}/general`)
-            router.push(courseUrl)
+          if (res.data?.course_uuid) {
+            console.log('Course UUID:', res.data.course_uuid)
+            console.log('Org slug:', orgslug)
+
+            // Redirect to the course edit page using relative path
+            const courseUrl = `/orgs/${orgslug}/dash/courses/course/${res.data.course_uuid}/general`
+            console.log('Redirecting to:', courseUrl)
+
             await revalidateTags(['courses'], orgslug)
+            closeModal()
+            router.push(courseUrl)
+          } else {
+            console.error('No course_uuid in response:', res.data)
+            toast.error('Curso criado, mas ocorreu um erro ao redirecionar')
           }
         } else {
-          toast.error(res.data.detail)
+          console.error('Course creation failed:', res)
+          toast.error(res.data?.detail || t('toast.failed'))
         }
       } catch (error) {
+        console.error('Error creating course:', error)
         toast.error(t('toast.failed'))
       } finally {
+        toast.dismiss(toast_loading)
         setSubmitting(false)
       }
     }
