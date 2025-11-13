@@ -20,6 +20,7 @@ export const OrgMenu = (props: any) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const [isFocusMode, setIsFocusMode] = useState(false)
   const [logoError, setLogoError] = useState(false)
+  const [logoLoaded, setLogoLoaded] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -55,9 +56,10 @@ export const OrgMenu = (props: any) => {
     };
   }, [pathname]);
 
-  // Reset logo error when org changes
+  // Reset logo error and loaded state when org changes
   useEffect(() => {
     setLogoError(false);
+    setLogoLoaded(false);
   }, [org?.logo_image]);
 
   function closeFeedbackModal() {
@@ -89,19 +91,18 @@ export const OrgMenu = (props: any) => {
                       style={{ width: 'auto', height: '100%' }}
                       className="rounded-md"
                       onError={(e) => {
-                        console.error('Failed to load logo:', {
-                          org_uuid: org.org_uuid,
-                          logo_image: org?.logo_image,
-                          url: getOrgLogoMediaDirectory(org.org_uuid, org?.logo_image)
-                        });
-                        setLogoError(true);
+                        // Only set error if the image hasn't been loaded successfully before
+                        if (!logoLoaded) {
+                          console.error('Failed to load logo:', {
+                            org_uuid: org.org_uuid,
+                            logo_image: org?.logo_image,
+                            url: getOrgLogoMediaDirectory(org.org_uuid, org?.logo_image)
+                          });
+                          setLogoError(true);
+                        }
                       }}
                       onLoad={() => {
-                        console.log('Logo loaded successfully:', {
-                          org_uuid: org.org_uuid,
-                          logo_image: org?.logo_image,
-                          url: getOrgLogoMediaDirectory(org.org_uuid, org?.logo_image)
-                        });
+                        setLogoLoaded(true);
                       }}
                     />
                   ) : (
