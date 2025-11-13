@@ -12,47 +12,39 @@ import { getUser } from '@services/users/users'
 import { toast } from 'react-hot-toast'
 import { useTranslations } from 'next-intl'
 
-// Define section types and their configurations
+// Define section types and their icons
 const SECTION_TYPES = {
   'image-gallery': {
     icon: ImageIcon,
-    label: 'Image Gallery',
-    description: 'Add a collection of images'
+    translationKey: 'imageGallery'
   },
   'text': {
     icon: TextIcon,
-    label: 'Text',
-    description: 'Add formatted text content'
+    translationKey: 'text'
   },
   'links': {
     icon: LinkIcon,
-    label: 'Links',
-    description: 'Add social or professional links'
+    translationKey: 'links'
   },
   'skills': {
     icon: Award,
-    label: 'Skills',
-    description: 'Showcase your skills and expertise'
+    translationKey: 'skills'
   },
   'experience': {
     icon: Briefcase,
-    label: 'Experience',
-    description: 'Add work or project experience'
+    translationKey: 'experience'
   },
   'education': {
     icon: GraduationCap,
-    label: 'Education',
-    description: 'Add educational background'
+    translationKey: 'education'
   },
   'affiliation': {
     icon: MapPin,
-    label: 'Affiliation',
-    description: 'Add organizational affiliations'
+    translationKey: 'affiliation'
   },
   'courses': {
     icon: BookOpen,
-    label: 'Courses',
-    description: 'Display authored courses'
+    translationKey: 'courses'
   }
 } as const
 
@@ -214,10 +206,11 @@ const UserProfileBuilder = () => {
   }, [session?.data?.user?.id, access_token])
 
   const createEmptySection = (type: keyof typeof SECTION_TYPES): ProfileSection => {
+    const translationKey = SECTION_TYPES[type].translationKey
     const baseSection = {
       id: `section-${Date.now()}`,
       type,
-      title: `${SECTION_TYPES[type].label} Section`
+      title: tSections(`${translationKey}.label`)
     }
 
     switch (type) {
@@ -473,15 +466,15 @@ const UserProfileBuilder = () => {
                   </div>
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.entries(SECTION_TYPES).map(([type, { icon: Icon, label, description }]) => (
+                  {Object.entries(SECTION_TYPES).map(([type, { icon: Icon, translationKey }]) => (
                     <SelectItem key={type} value={type}>
                       <div className="flex items-center space-x-3 py-1">
                         <div className="p-1.5 bg-gray-50 rounded-md">
                           <Icon size={16} className="text-gray-600" />
                         </div>
                         <div className="flex-1">
-                          <div className="font-medium text-sm text-gray-700">{label}</div>
-                          <div className="text-xs text-gray-500">{description}</div>
+                          <div className="font-medium text-sm text-gray-700">{tSections(`${translationKey}.label`)}</div>
+                          <div className="text-xs text-gray-500">{tSections(`${translationKey}.description`)}</div>
                         </div>
                       </div>
                     </SelectItem>
