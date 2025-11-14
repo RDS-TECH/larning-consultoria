@@ -77,7 +77,7 @@ function CoursesHome(params: CourseProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {courses.map((course: any) => (
           <div key={course.course_uuid}>
-            <CourseThumbnail customLink={`/dash/courses/course/${removeCoursePrefix(course.course_uuid)}/general`} course={course} orgslug={orgslug} />
+            <CourseThumbnail customLink={`/orgs/${orgslug}/dash/courses/course/${removeCoursePrefix(course.course_uuid)}/general`} course={course} orgslug={orgslug} />
           </div>
         ))}
         {courses.length === 0 && (
