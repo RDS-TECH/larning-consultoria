@@ -42,6 +42,7 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
   const [orgId, setOrgId] = React.useState(null) as any
   const [showUnsplashPicker, setShowUnsplashPicker] = React.useState(false)
   const [isUploading, setIsUploading] = React.useState(false)
+  const [thumbnailPreview, setThumbnailPreview] = React.useState<string | null>(null)
 
   const formik = useFormik({
     initialValues: {
@@ -119,6 +120,15 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
     }
   }, [orgslug])
 
+  // Cleanup object URL when component unmounts
+  useEffect(() => {
+    return () => {
+      if (thumbnailPreview) {
+        URL.revokeObjectURL(thumbnailPreview)
+      }
+    }
+  }, [thumbnailPreview])
+
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {
@@ -133,6 +143,15 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
         toast.error(t('toast.fileTooLarge'))
         return
       }
+
+      // Revoke previous object URL to prevent memory leak
+      if (thumbnailPreview) {
+        URL.revokeObjectURL(thumbnailPreview)
+      }
+
+      // Create new object URL and update state
+      const objectUrl = URL.createObjectURL(file)
+      setThumbnailPreview(objectUrl)
       formik.setFieldValue('thumbnail', file)
       toast.success(t('toast.imageSelected'))
     }
@@ -144,7 +163,17 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
       const response = await fetch(imageUrl)
       const blob = await response.blob()
       const file = new File([blob], 'unsplash_image.jpg', { type: 'image/jpeg' })
+
+      // Revoke previous object URL
+      if (thumbnailPreview) {
+        URL.revokeObjectURL(thumbnailPreview)
+      }
+
+      // Create new object URL
+      const objectUrl = URL.createObjectURL(file)
+      setThumbnailPreview(objectUrl)
       formik.setFieldValue('thumbnail', file)
+      toast.success(t('toast.imageSelected'))
     } catch (error) {
       toast.error(t('toast.unsplashFailed'))
     }
@@ -190,15 +219,17 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
         <div className="w-auto bg-gray-50 rounded-xl outline outline-1 outline-gray-200 h-[200px] shadow-sm">
           <div className="flex flex-col justify-center items-center h-full">
             <div className="flex flex-col justify-center items-center">
-              {formik.values.thumbnail ? (
+              {thumbnailPreview ? (
                 <img
-                  src={URL.createObjectURL(formik.values.thumbnail)}
-                  className={`${isUploading ? 'animate-pulse' : ''} shadow-sm w-[200px] h-[100px] rounded-md`}
+                  src={thumbnailPreview}
+                  alt="Course thumbnail preview"
+                  className={`${isUploading ? 'animate-pulse' : ''} shadow-sm w-[200px] h-[100px] rounded-md object-cover`}
                 />
               ) : (
                 <img
                   src="/empty_thumbnail.png"
-                  className="shadow-sm w-[200px] h-[100px] rounded-md bg-gray-200"
+                  alt="Empty thumbnail placeholder"
+                  className="shadow-sm w-[200px] h-[100px] rounded-md bg-gray-200 object-cover"
                 />
               )}
               <div className="flex justify-center items-center space-x-2">
