@@ -1,0 +1,6 @@
+# Railway Deploy Marker
+# This file forces Railway to detect changes
+# Last updated: 2025-11-14 17:45:00
+# Critical fix: Course URLs now include /orgs/{orgslug} prefix
+# All console errors have been removed
+# Deploy this immediately!
