@@ -31,7 +31,6 @@ import UserAvatar from '@components/Objects/UserAvatar'
 import { Input } from '@/components/ui/input'
 import { useDebounce } from '@hooks/useDebounce'
 import { getUserAvatarMediaDirectory } from '@services/media/media'
-import { removeCoursePrefix } from '@components/Objects/Thumbnails/CourseThumbnail'
 
 type EditCourseContributorsProps = {
     orgslug: string
@@ -100,8 +99,15 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
     const dispatchCourse = useCourseDispatch() as any;
     const org = useOrg() as any;
 
+    // DEBUG: Log the course_uuid to check for duplication
+    React.useEffect(() => {
+        if (courseStructure?.course_uuid) {
+            console.log('[EditCourseContributors] courseStructure.course_uuid:', courseStructure.course_uuid);
+        }
+    }, [courseStructure?.course_uuid]);
+
     const { data: contributors } = useSWR<Contributor[]>(
-        courseStructure ? `${getAPIUrl()}courses/${removeCoursePrefix(courseStructure.course_uuid)}/contributors` : null,
+        courseStructure ? `${getAPIUrl()}courses/${courseStructure.course_uuid}/contributors` : null,
         (url: string) => swrFetcher(url, access_token)
     );
 
@@ -196,7 +202,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
         if (selectedUsers.length === 0) return;
 
         try {
-            const response = await bulkAddContributors(removeCoursePrefix(courseStructure.course_uuid), selectedUsers, access_token);
+            const response = await bulkAddContributors(courseStructure.course_uuid, selectedUsers, access_token);
             if (response.status === 200) {
                 const result = response.data as BulkAddResponse;
 
@@ -211,7 +217,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                 });
 
                 // Refresh contributors list
-                mutate(`${getAPIUrl()}courses/${removeCoursePrefix(courseStructure.course_uuid)}/contributors`);
+                mutate(`${getAPIUrl()}courses/${courseStructure.course_uuid}/contributors`);
                 // Clear selection and search
                 setSelectedUsers([]);
                 setSearchQuery('');
@@ -240,10 +246,10 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
                 authorship_status: data.authorship_status || currentContributor.authorship_status
             };
 
-            const res = await editContributor(removeCoursePrefix(courseStructure.course_uuid), contributorId, updatedData.authorship, updatedData.authorship_status, access_token);
+            const res = await editContributor(courseStructure.course_uuid, contributorId, updatedData.authorship, updatedData.authorship_status, access_token);
             if (res.status === 200 && res.data?.status === 'success') {
                 toast.success(res.data.detail || tToast('updateSuccess'));
-                mutate(`${getAPIUrl()}courses/${removeCoursePrefix(courseStructure.course_uuid)}/contributors`);
+                mutate(`${getAPIUrl()}courses/${courseStructure.course_uuid}/contributors`);
             } else {
                 toast.error(`${tToast('updateFailed')}: ${res.data?.detail || ''}`);
             }
@@ -350,7 +356,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
 
 
             const response = await bulkRemoveContributors(
-                removeCoursePrefix(courseStructure.course_uuid),
+                courseStructure.course_uuid,
                 selectedUsernames, // Send as raw array, not stringified
                 access_token
             );
@@ -358,7 +364,7 @@ function EditCourseContributors(props: EditCourseContributorsProps) {
             if (response.status === 200) {
                 toast.success(tToast('removeSuccess', { count: selectedContributors.length }));
                 // Refresh contributors list
-                mutate(`${getAPIUrl()}courses/${removeCoursePrefix(courseStructure.course_uuid)}/contributors`);
+                mutate(`${getAPIUrl()}courses/${courseStructure.course_uuid}/contributors`);
                 // Clear selection
                 setSelectedContributors([]);
             }
