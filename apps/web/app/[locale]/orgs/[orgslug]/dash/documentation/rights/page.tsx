@@ -2,9 +2,9 @@
 import React from 'react'
 import { getUriWithOrg } from '@services/config/config'
 import { useOrg } from '@components/Contexts/OrgContext'
-import { 
-  Shield, 
-  Users, 
+import {
+  Shield,
+  Users,
   Crown,
   User,
   UserCog,
@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 
 interface RightsDocumentationProps {
   params: Promise<{ orgslug: string }>
@@ -21,63 +22,100 @@ interface RightsDocumentationProps {
 
 const RightsDocumentation = ({ params }: RightsDocumentationProps) => {
   const org = useOrg() as any
+  const t = useTranslations('documentation.rights')
+  const tRoles = useTranslations('documentation.rights.roleHierarchy')
+  const tOwnership = useTranslations('documentation.rights.courseOwnership')
 
   const roleHierarchy = [
     {
-      name: 'Admin',
+      name: tRoles('admin.name'),
       icon: <Crown className="w-6 h-6 text-purple-600" />,
       color: 'bg-purple-50 border-purple-200',
-      description: 'Full platform control with all permissions',
-      permissions: ['All permissions', 'Manage organization', 'Manage users', 'Manage courses', 'Manage roles'],
+      description: tRoles('admin.description'),
+      permissions: [
+        tRoles('admin.permissions.all'),
+        tRoles('admin.permissions.manageOrg'),
+        tRoles('admin.permissions.manageUsers'),
+        tRoles('admin.permissions.manageCourses'),
+        tRoles('admin.permissions.manageRoles')
+      ],
       level: 4
     },
     {
-      name: 'Maintainer',
+      name: tRoles('maintainer.name'),
       icon: <Shield className="w-6 h-6 text-blue-600" />,
       color: 'bg-blue-50 border-blue-200',
-      description: 'Mid-level manager with wide permissions',
-      permissions: ['Manage courses', 'Manage users', 'Manage assignments', ],
+      description: tRoles('maintainer.description'),
+      permissions: [
+        tRoles('maintainer.permissions.manageCourses'),
+        tRoles('maintainer.permissions.manageUsers'),
+        tRoles('maintainer.permissions.manageAssignments')
+      ],
       level: 3
     },
     {
-      name: 'Instructor',
+      name: tRoles('instructor.name'),
       icon: <GraduationCap className="w-6 h-6 text-green-600" />,
       color: 'bg-green-50 border-green-200',
-      description: 'Can create courses but need ownership for content creation',
-      permissions: ['Create courses', 'Manage own courses', 'Create assignments', 'Grade assignments'],
+      description: tRoles('instructor.description'),
+      permissions: [
+        tRoles('instructor.permissions.createCourses'),
+        tRoles('instructor.permissions.manageOwnCourses'),
+        tRoles('instructor.permissions.createAssignments'),
+        tRoles('instructor.permissions.gradeAssignments')
+      ],
       level: 2
     },
     {
-      name: 'User',
+      name: tRoles('user.name'),
       icon: <User className="w-6 h-6 text-gray-600" />,
       color: 'bg-gray-50 border-gray-200',
-      description: 'Read-Only Learner',
-      permissions: ['View courses', 'Submit assignments', 'Take assessments'],
+      description: tRoles('user.description'),
+      permissions: [
+        tRoles('user.permissions.viewCourses'),
+        tRoles('user.permissions.submitAssignments'),
+        tRoles('user.permissions.takeAssessments')
+      ],
       level: 1
     }
   ]
 
   const courseOwnershipTypes = [
     {
-      name: 'Creator',
+      name: tOwnership('creator.name'),
       icon: <Crown className="w-5 h-5 text-yellow-600" />,
       color: 'bg-yellow-50 border-yellow-200',
-      description: 'Original course creator with full control',
-      permissions: ['Full course control', 'Manage contributors', 'Change access settings', 'Delete course']
+      description: tOwnership('creator.description'),
+      permissions: [
+        tOwnership('creator.permissions.fullControl'),
+        tOwnership('creator.permissions.manageContributors'),
+        tOwnership('creator.permissions.changeAccess'),
+        tOwnership('creator.permissions.deleteCourse')
+      ]
     },
     {
-      name: 'Maintainer',
+      name: tOwnership('maintainer.name'),
       icon: <Shield className="w-5 h-5 text-blue-600" />,
       color: 'bg-blue-50 border-blue-200',
-      description: 'Course maintainer with extensive permissions',
-      permissions: ['Manage course content', 'Manage contributors', 'Change access settings', 'Cannot delete course']
+      description: tOwnership('maintainer.description'),
+      permissions: [
+        tOwnership('maintainer.permissions.manageContent'),
+        tOwnership('maintainer.permissions.manageContributors'),
+        tOwnership('maintainer.permissions.changeAccess'),
+        tOwnership('maintainer.permissions.cannotDelete')
+      ]
     },
     {
-      name: 'Contributor',
+      name: tOwnership('contributor.name'),
       icon: <UserCog className="w-5 h-5 text-green-600" />,
       color: 'bg-green-50 border-green-200',
-      description: 'Course contributor with limited permissions',
-      permissions: ['Edit course content', 'Create activities', 'Cannot manage contributors', 'Cannot change access']
+      description: tOwnership('contributor.description'),
+      permissions: [
+        tOwnership('contributor.permissions.editContent'),
+        tOwnership('contributor.permissions.createActivities'),
+        tOwnership('contributor.permissions.cannotManageContributors'),
+        tOwnership('contributor.permissions.cannotChangeAccess')
+      ]
     }
   ]
 
@@ -85,7 +123,7 @@ const RightsDocumentation = ({ params }: RightsDocumentationProps) => {
     <div className="min-h-screen bg-[#f8f8f8] flex items-center justify-center p-6 pt-16 w-full">
       <div className="w-full max-w-none mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Icon */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
@@ -96,29 +134,29 @@ const RightsDocumentation = ({ params }: RightsDocumentationProps) => {
         </motion.div>
 
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="text-center mb-12"
         >
-          <Link 
+          <Link
             href={getUriWithOrg(org?.slug, '/dash')}
             className="inline-flex items-center space-x-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span className="font-medium">Back to Dashboard</span>
+            <span className="font-medium">{t('backToDashboard')}</span>
           </Link>
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <h1 className="text-4xl font-bold text-gray-900">Authorizations & Rights Guide</h1>
+            <h1 className="text-4xl font-bold text-gray-900">{t('title')}</h1>
           </div>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Understanding LearnHouse permissions, roles, and access controls based on RBAC system
+            {t('subtitle')}
           </p>
         </motion.div>
 
         {/* Role Hierarchy Section */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -126,7 +164,7 @@ const RightsDocumentation = ({ params }: RightsDocumentationProps) => {
         >
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center flex items-center justify-center space-x-2">
             <Crown className="w-6 h-6 text-purple-600" />
-            <span>Role Hierarchy</span>
+            <span>{tRoles('title')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {roleHierarchy.map((role, index) => (
@@ -156,7 +194,7 @@ const RightsDocumentation = ({ params }: RightsDocumentationProps) => {
         </motion.section>
 
         {/* Course Ownership Types */}
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
@@ -164,7 +202,7 @@ const RightsDocumentation = ({ params }: RightsDocumentationProps) => {
         >
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center flex items-center justify-center space-x-2">
             <Users className="w-6 h-6 text-blue-600" />
-            <span>Course Ownership Types</span>
+            <span>{tOwnership('title')}</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {courseOwnershipTypes.map((type, index) => (
@@ -197,4 +235,4 @@ const RightsDocumentation = ({ params }: RightsDocumentationProps) => {
   )
 }
 
-export default RightsDocumentation 
+export default RightsDocumentation

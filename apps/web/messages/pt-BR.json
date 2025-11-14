@@ -3428,5 +3428,87 @@
       "message": "Você chegou ao final do processo de instalação, por favor não se esqueça de desabilitar o modo de instalação.",
       "docsLink": "Documentação do LearnHouse"
     }
+  },
+  "documentation": {
+    "rights": {
+      "backToDashboard": "Voltar ao Painel",
+      "title": "Guia de Autorizações e Direitos",
+      "subtitle": "Compreendendo as permissões, funções e controles de acesso do LearnHouse baseados no sistema RBAC",
+      "roleHierarchy": {
+        "title": "Hierarquia de Funções",
+        "admin": {
+          "name": "Administrador",
+          "description": "Controle total da plataforma com todas as permissões",
+          "permissions": {
+            "all": "Todas as permissões",
+            "manageOrg": "Gerenciar organização",
+            "manageUsers": "Gerenciar usuários",
+            "manageCourses": "Gerenciar cursos",
+            "manageRoles": "Gerenciar funções"
+          }
+        },
+        "maintainer": {
+          "name": "Mantenedor",
+          "description": "Gerente de nível médio com amplas permissões",
+          "permissions": {
+            "manageCourses": "Gerenciar cursos",
+            "manageUsers": "Gerenciar usuários",
+            "manageAssignments": "Gerenciar atividades"
+          }
+        },
+        "instructor": {
+          "name": "Instrutor",
+          "description": "Pode criar cursos mas precisa de propriedade para criação de conteúdo",
+          "permissions": {
+            "createCourses": "Criar cursos",
+            "manageOwnCourses": "Gerenciar próprios cursos",
+            "createAssignments": "Criar atividades",
+            "gradeAssignments": "Avaliar atividades"
+          }
+        },
+        "user": {
+          "name": "Usuário",
+          "description": "Aprendiz Somente Leitura",
+          "permissions": {
+            "viewCourses": "Visualizar cursos",
+            "submitAssignments": "Enviar atividades",
+            "takeAssessments": "Fazer avaliações"
+          }
+        }
+      },
+      "courseOwnership": {
+        "title": "Tipos de Propriedade de Curso",
+        "creator": {
+          "name": "Criador",
+          "description": "Criador original do curso com controle total",
+          "permissions": {
+            "fullControl": "Controle total do curso",
+            "manageContributors": "Gerenciar colaboradores",
+            "changeAccess": "Alterar configurações de acesso",
+            "deleteCourse": "Excluir curso"
+          }
+        },
+        "maintainer": {
+          "name": "Mantenedor",
+          "description": "Mantenedor do curso com permissões extensas",
+          "permissions": {
+            "manageContent": "Gerenciar conteúdo do curso",
+            "manageContributors": "Gerenciar colaboradores",
+            "changeAccess": "Alterar configurações de acesso",
+            "cannotDelete": "Não pode excluir curso"
+          }
+        },
+        "contributor": {
+          "name": "Colaborador",
+          "description": "Colaborador do curso com permissões limitadas",
+          "permissions": {
+            "editContent": "Editar conteúdo do curso",
+            "createActivities": "Criar atividades",
+            "cannotManageContributors": "Não pode gerenciar colaboradores",
+            "cannotChangeAccess": "Não pode alterar acesso"
+          }
+        }
+      }
+    }
   }
 }

@@ -3462,5 +3462,87 @@
       "awarded": "Concedido em",
       "verify": "Verificar"
     }
+  },
+  "documentation": {
+    "rights": {
+      "backToDashboard": "Back to Dashboard",
+      "title": "Authorizations & Rights Guide",
+      "subtitle": "Understanding LearnHouse permissions, roles, and access controls based on RBAC system",
+      "roleHierarchy": {
+        "title": "Role Hierarchy",
+        "admin": {
+          "name": "Admin",
+          "description": "Full platform control with all permissions",
+          "permissions": {
+            "all": "All permissions",
+            "manageOrg": "Manage organization",
+            "manageUsers": "Manage users",
+            "manageCourses": "Manage courses",
+            "manageRoles": "Manage roles"
+          }
+        },
+        "maintainer": {
+          "name": "Maintainer",
+          "description": "Mid-level manager with wide permissions",
+          "permissions": {
+            "manageCourses": "Manage courses",
+            "manageUsers": "Manage users",
+            "manageAssignments": "Manage assignments"
+          }
+        },
+        "instructor": {
+          "name": "Instructor",
+          "description": "Can create courses but need ownership for content creation",
+          "permissions": {
+            "createCourses": "Create courses",
+            "manageOwnCourses": "Manage own courses",
+            "createAssignments": "Create assignments",
+            "gradeAssignments": "Grade assignments"
+          }
+        },
+        "user": {
+          "name": "User",
+          "description": "Read-Only Learner",
+          "permissions": {
+            "viewCourses": "View courses",
+            "submitAssignments": "Submit assignments",
+            "takeAssessments": "Take assessments"
+          }
+        }
+      },
+      "courseOwnership": {
+        "title": "Course Ownership Types",
+        "creator": {
+          "name": "Creator",
+          "description": "Original course creator with full control",
+          "permissions": {
+            "fullControl": "Full course control",
+            "manageContributors": "Manage contributors",
+            "changeAccess": "Change access settings",
+            "deleteCourse": "Delete course"
+          }
+        },
+        "maintainer": {
+          "name": "Maintainer",
+          "description": "Course maintainer with extensive permissions",
+          "permissions": {
+            "manageContent": "Manage course content",
+            "manageContributors": "Manage contributors",
+            "changeAccess": "Change access settings",
+            "cannotDelete": "Cannot delete course"
+          }
+        },
+        "contributor": {
+          "name": "Contributor",
+          "description": "Course contributor with limited permissions",
+          "permissions": {
+            "editContent": "Edit course content",
+            "createActivities": "Create activities",
+            "cannotManageContributors": "Cannot manage contributors",
+            "cannotChangeAccess": "Cannot change access"
+          }
+        }
+      }
+    }
   }
 }
