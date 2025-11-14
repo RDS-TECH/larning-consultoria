@@ -216,7 +216,7 @@ function CoursesActions({ courseuuid, orgslug, course, trailData }: CourseAction
           border="border-2" 
           borderColor="border-white"
         />
-        <span>{action === 'start' ? 'Start Course' : 'Leave Course'}</span>
+        <span>{action === 'start' ? t('startCourse') : t('leaveCourse')}</span>
         <ArrowRight className="w-5 h-5" />
       </>
     );
