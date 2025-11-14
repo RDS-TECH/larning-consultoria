@@ -19,7 +19,13 @@ declare global {
   };
 }
 
-export const isDevEnv = LEARNHOUSE_TOP_DOMAIN == 'localhost' ? true : false
+// Detect development environment more robustly
+// Checks for localhost OR domains containing 'dev' OR Railway deployments OR NODE_ENV
+export const isDevEnv =
+  LEARNHOUSE_TOP_DOMAIN == 'localhost' ||
+  LEARNHOUSE_TOP_DOMAIN?.includes('dev') ||
+  LEARNHOUSE_TOP_DOMAIN?.includes('railway') ||
+  process.env.NODE_ENV === 'development'
 
 export const nextAuthOptions = {
   debug: false,

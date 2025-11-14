@@ -91,15 +91,9 @@ export const OrgMenu = (props: any) => {
                       style={{ width: 'auto', height: '100%' }}
                       className="rounded-md"
                       onError={(e) => {
-                        // Only set error if the image hasn't been loaded successfully before
-                        if (!logoLoaded) {
-                          console.error('Failed to load logo:', {
-                            org_uuid: org.org_uuid,
-                            logo_image: org?.logo_image,
-                            url: getOrgLogoMediaDirectory(org.org_uuid, org?.logo_image)
-                          });
-                          setLogoError(true);
-                        }
+                        // Silently fallback to default logo when custom logo fails to load
+                        // This is expected behavior when logo hasn't been uploaded or storage is ephemeral
+                        setLogoError(true);
                       }}
                       onLoad={() => {
                         setLogoLoaded(true);
