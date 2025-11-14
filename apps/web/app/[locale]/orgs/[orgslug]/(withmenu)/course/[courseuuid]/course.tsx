@@ -40,8 +40,6 @@ const CourseClient = (props: any) => {
     (url) => swrFetcher(url, access_token)
   );
 
-  console.log(course)
-
   function getLearningTags() {
     if (!course?.learnings) {
       setLearnings([])

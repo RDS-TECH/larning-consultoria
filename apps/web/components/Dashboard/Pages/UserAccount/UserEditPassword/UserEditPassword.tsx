@@ -95,6 +95,7 @@ function UserEditPassword() {
                     name="old_password"
                     onChange={handleChange}
                     className="mt-1"
+                    autoComplete="current-password"
                   />
                   {touched.old_password && errors.old_password && (
                     <p className="text-red-500 text-sm mt-1">{errors.old_password}</p>
@@ -109,6 +110,7 @@ function UserEditPassword() {
                     name="new_password"
                     onChange={handleChange}
                     className="mt-1"
+                    autoComplete="new-password"
                   />
                   {touched.new_password && errors.new_password && (
                     <p className="text-red-500 text-sm mt-1">{errors.new_password}</p>

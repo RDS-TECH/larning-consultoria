@@ -24,7 +24,6 @@ function AssignmentSubmissionsSubPage({ assignment_uuid }: { assignment_uuid: st
     );
 
     useEffect(() => {
-        console.log(assignmentSubmission);
     }, [session, assignmentSubmission]);
 
     const renderSubmissions = (status: string) => {
@@ -86,7 +85,6 @@ function SubmissionBox({ assignment_uuid, user_id, submission }: any) {
     );
 
     useEffect(() => {
-        console.log(user);
     }
         , [session, user]);
 

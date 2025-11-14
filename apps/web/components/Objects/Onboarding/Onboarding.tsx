@@ -218,7 +218,6 @@ const Onboarding: React.FC = () => {
       localStorage.removeItem('onboardingLastStep'); // Clean up stored step
       setIsModalOpen(false);
       setIsOnboardingComplete(true);
-      console.log('Onboarding completed');
     }
   };
 
@@ -227,7 +226,6 @@ const Onboarding: React.FC = () => {
     localStorage.removeItem('onboardingLastStep'); // Clean up stored step
     setIsModalOpen(false);
     setIsOnboardingComplete(true);
-    console.log('Onboarding skipped');
   };
 
   const goToStep = (index: number) => {

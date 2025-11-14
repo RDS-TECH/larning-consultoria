@@ -70,24 +70,19 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
           session.data?.tokens?.access_token
         )
 
-        console.log('Course creation response:', res)
 
         if (res.success) {
-          console.log('Course created successfully:', res.data)
           await revalidateTags(['courses'], orgslug)
           toast.dismiss(toast_loading)
           toast.success(t('toast.success'))
 
           if (res.data?.course_uuid) {
-            console.log('Course UUID:', res.data.course_uuid)
-            console.log('Org slug:', orgslug)
 
             // Remove "course_" prefix from UUID for URL
             const uuidWithoutPrefix = res.data.course_uuid.replace('course_', '')
 
             // Redirect to the course edit page using relative path
             const courseUrl = `/orgs/${orgslug}/dash/courses/course/${uuidWithoutPrefix}/general`
-            console.log('Redirecting to:', courseUrl)
 
             await revalidateTags(['courses'], orgslug)
             closeModal()
@@ -127,7 +122,6 @@ function CreateCourseModal({ closeModal, orgslug }: any) {
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {
-      console.log('File selected:', file.name, file.type, file.size)
       // Validate file type
       const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
       if (!validTypes.includes(file.type)) {

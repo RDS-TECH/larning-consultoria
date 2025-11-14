@@ -145,7 +145,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           session?.data?.tokens?.access_token
         );
         
-        console.log('Search API Response:', response); // Debug log
 
         // Type assertion and safe access
         const typedResponse = response.data as any;
@@ -157,7 +156,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           users: Array.isArray(typedResponse?.users) ? typedResponse.users : []
         };
 
-        console.log('Processed Results:', processedResults); // Debug log
         
         setSearchResults(processedResults);
       } catch (error) {

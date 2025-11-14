@@ -52,8 +52,6 @@ function VideoActivity({ activity, course }: VideoActivityProps) {
     <div className="w-full max-w-full px-2 sm:px-4">
       {activity && (
         <>
-          {console.log('Activity type:', activity.activity_sub_type)}
-          {console.log('Video source:', getVideoSrc())}
           {activity.activity_sub_type === 'SUBTYPE_VIDEO_HOSTED' && (
             <div className="my-3 md:my-5 w-full">
               <div className="relative w-full aspect-video rounded-lg overflow-hidden ring-1 ring-gray-300/30 dark:ring-gray-600/30 sm:ring-gray-200/10 sm:dark:ring-gray-700/20 shadow-xs sm:shadow-none">

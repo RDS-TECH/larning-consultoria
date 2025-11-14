@@ -19,10 +19,6 @@ function HomeClient() {
   const { data: orgs, error } = useSWR(`${getAPIUrl()}orgs/user/page/1/limit/10`, (url) => swrFetcher(url, access_token))
 
   useEffect(() => {
-    console.log('🔍 DEBUG Session:', session);
-    console.log('🔑 DEBUG Token:', access_token);
-    console.log('🏢 DEBUG Orgs:', orgs);
-    console.log('❌ DEBUG Error:', error);
   }, [session, orgs, error, access_token])
   return (
     <div className='flex flex-col'>
